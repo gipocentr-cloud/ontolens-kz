@@ -1,0 +1,10 @@
+{
+  "payload/app-1.txt": "deploy/payload/app-1.txt",
+  "payload/app-2.txt": "deploy/payload/app-2.txt",
+  "payload/app-3.txt": "deploy/payload/app-3.txt",
+  "payload/manifest.txt": "deploy/payload/manifest.txt",
+  "payload/demo-geodeticont-kz.ttl.txt": "deploy/payload/demo-geodeticont-kz.ttl.txt",
+  "payload/demo-geodeticont-kz-docs.ttl.txt": "deploy/payload/demo-geodeticont-kz-docs.ttl.txt",
+  "payload/demo-geodeticont-kz-shapes.ttl.txt": "deploy/payload/demo-geodeticont-kz-shapes.ttl.txt",
+  "payload/geodeticont-kz.profile.json.txt": "deploy/payload/geodeticont-kz.profile.json.txt"
+}

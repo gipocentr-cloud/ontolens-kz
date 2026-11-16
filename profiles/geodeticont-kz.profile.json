@@ -1,0 +1,60 @@
+{
+  "id": "geodeticont-kz",
+  "title": "GeodeticOnt-KZ — строительная геодезия РК",
+  "languages": [
+    "ru",
+    "kk",
+    "en"
+  ],
+  "minDefinitionLength": 25,
+  "structuralClasses": [
+    "GeodeticEntity",
+    "GeodeticWork",
+    "MeasurementMethod",
+    "SettingOutWork",
+    "AsBuiltSurvey",
+    "DeformationMonitoring",
+    "GeodeticActivity",
+    "ConstructionObject",
+    "LinearInfrastructureObject",
+    "RoadObject",
+    "StructuralElement",
+    "ControlNetwork",
+    "ControlPoint",
+    "Benchmark",
+    "CoordinateSystem",
+    "HeightSystem",
+    "Instrument",
+    "AccuracyRequirement",
+    "Tolerance",
+    "Deviation",
+    "Measurement",
+    "RegulatoryDocument",
+    "TechnicalReport",
+    "CartographicProduct",
+    "DigitalCartographicData",
+    "GISObject",
+    "RoadSurveyObject"
+  ],
+  "targets": {
+    "terms": 119,
+    "collections": 16,
+    "objprops": 18,
+    "datprops": 13,
+    "bridges": 6
+  },
+  "map": {
+    "layout": "cluster",
+    "corner": "bottom-right",
+    "width": 240,
+    "height": 180,
+    "zoomThresholds": [
+      0.4,
+      0.8,
+      1.6
+    ]
+  },
+  "rootClasses": [
+    "GeodeticEntity"
+  ]
+}

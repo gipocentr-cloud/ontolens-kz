@@ -1,0 +1,57 @@
+{
+  "namespace": "http://ontogeo.kz/geodeticont-kz#",
+  "triples": 2186,
+  "owl_class_total": 152,
+  "named_classes_in_ns": 146,
+  "object_properties": 18,
+  "datatype_properties": 13,
+  "skos_concepts": 119,
+  "collections": 16,
+  "collection_sizes": {
+    "http://ontogeo.kz/geodeticont-kz#Block01_ControlNetworks": 18,
+    "http://ontogeo.kz/geodeticont-kz#Block02_CoordinateAndHeightSystems": 15,
+    "http://ontogeo.kz/geodeticont-kz#Block03_LevellingNetworks": 1,
+    "http://ontogeo.kz/geodeticont-kz#Block04_ControlPointsMarksAndBenchmarks": 9,
+    "http://ontogeo.kz/geodeticont-kz#Block05_MeasurementMethods": 17,
+    "http://ontogeo.kz/geodeticont-kz#Block06_SettingOutWorks": 2,
+    "http://ontogeo.kz/geodeticont-kz#Block07_AsBuiltSurveys": 6,
+    "http://ontogeo.kz/geodeticont-kz#Block08_DeformationMonitoring": 4,
+    "http://ontogeo.kz/geodeticont-kz#Block09_Instruments": 6,
+    "http://ontogeo.kz/geodeticont-kz#Block10_AccuracyAndTolerances": 4,
+    "http://ontogeo.kz/geodeticont-kz#Block11_TopographyAndCartography": 11,
+    "http://ontogeo.kz/geodeticont-kz#Block12_UndergroundUtilities": 2,
+    "http://ontogeo.kz/geodeticont-kz#Block13_GisAndDigitalData": 2,
+    "http://ontogeo.kz/geodeticont-kz#Block14_ReportingAndDocumentation": 6,
+    "http://ontogeo.kz/geodeticont-kz#Block15_OrganisationOfGeodeticWorks": 5,
+    "http://ontogeo.kz/geodeticont-kz#Block16_RoadSurveyAndDiagnostics": 11
+  },
+  "concepts_outside_collections": 0,
+  "lang_tags": {
+    "en": 511,
+    "kk": 103,
+    "ru": 352
+  },
+  "classes_without_parent": 1,
+  "classes_without_parent_list": [
+    "http://ontogeo.kz/geodeticont-kz#GeodeticEntity"
+  ],
+  "classes_multi_parent": 0,
+  "subclass_cycles": 0,
+  "classes_without_label": 0,
+  "classes_without_definition": 35,
+  "provenance_literal_triples": 0,
+  "provenance_iri_triples": 222,
+  "classes_with_provenance": 111,
+  "classes_with_provenance_iri": 111,
+  "properties_without_domain_or_range": 0,
+  "properties_without_label": 0,
+  "properties_declared_unused": 27,
+  "bridges_by_namespace": {
+    "http://www.buildingsmart-tech.org/ifcOWL/IFC4": 4,
+    "http://www.opengis.net/ont/geosparql": 2
+  },
+  "max_depth": 6,
+  "avg_depth": 3.4,
+  "duplicate_labels": 6,
+  "owl_imports": 0
+}

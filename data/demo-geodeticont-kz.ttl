@@ -1,0 +1,2374 @@
+@prefix :        <http://ontogeo.kz/geodeticont-kz#> .
+@prefix owl:     <http://www.w3.org/2002/07/owl#> .
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+@prefix skos:    <http://www.w3.org/2004/02/skos/core#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix sh:      <http://www.w3.org/ns/shacl#> .
+@prefix ifc:     <http://www.buildingsmart-tech.org/ifcOWL/IFC4#> .
+@prefix geo:     <http://www.opengis.net/ont/geosparql#> .
+@prefix doc:     <http://ontogeo.kz/geodeticont-kz/doc/> .
+
+##############################################################################
+#
+#    Ontology
+#
+##############################################################################
+
+<http://ontogeo.kz/geodeticont-kz> rdf:type owl:Ontology ;
+    owl:versionIRI <http://ontogeo.kz/geodeticont-kz/0.9-demo> ;
+    owl:versionInfo "0.9-demo-synthetic" ;
+    dcterms:title "GeodeticOnt-KZ (СИНТЕТИЧЕСКИЙ ДЕМОНАБОР)"@ru ;
+    dcterms:title "GeodeticOnt-KZ (SYNTHETIC DEMO DATASET)"@en ;
+    dcterms:license <https://creativecommons.org/licenses/by/4.0/> ;
+    dcterms:created "2026-09-20"^^xsd:date ;
+    rdfs:comment "ВНИМАНИЕ: набор сгенерирован скриптом build/make_demo_data.py для проверки визуализатора OntoLens. Определения вымышлены и не являются нормативными. Реальный пакет GeodeticOnt-KZ собирается по заданию v2.2."@ru ;
+    rdfs:comment "WARNING: synthetic dataset generated to exercise the OntoLens viewer. Definitions are invented and carry no normative force."@en .
+
+
+##############################################################################
+#
+#    Object Properties
+#
+##############################################################################
+
+###  http://ontogeo.kz/geodeticont-kz#regulatedBy
+:regulatedBy rdf:type owl:ObjectProperty ;
+    rdfs:domain :Deviation ;
+    rdfs:range :RegulatoryDocument ;
+    skos:prefLabel "регулируется документом"@ru ;
+    skos:prefLabel "regulated by"@en .
+
+###  http://ontogeo.kz/geodeticont-kz#appliesTo
+:appliesTo rdf:type owl:ObjectProperty ;
+    rdfs:domain :AccuracyRequirement ;
+    rdfs:range :ConstructionObject ;
+    skos:prefLabel "применяется к"@ru ;
+    skos:prefLabel "applies to"@en .
+
+###  http://ontogeo.kz/geodeticont-kz#hasMeasurement
+:hasMeasurement rdf:type owl:ObjectProperty ;
+    rdfs:domain :ConstructionObject ;
+    rdfs:range :Measurement ;
+    skos:prefLabel "имеет измерение"@ru ;
+    skos:prefLabel "has measurement"@en .
+
+###  http://ontogeo.kz/geodeticont-kz#hasTolerance
+:hasTolerance rdf:type owl:ObjectProperty ;
+    rdfs:domain :ConstructionObject ;
+    rdfs:range :Tolerance ;
+    skos:prefLabel "имеет допуск"@ru ;
+    skos:prefLabel "has tolerance"@en .
+
+###  http://ontogeo.kz/geodeticont-kz#hasDeviation
+:hasDeviation rdf:type owl:ObjectProperty ;
+    rdfs:domain :ConstructionObject ;
+    rdfs:range :Deviation ;
+    skos:prefLabel "имеет отклонение"@ru ;
+    skos:prefLabel "has deviation"@en .
+
+###  http://ontogeo.kz/geodeticont-kz#exceedsTolerance
+:exceedsTolerance rdf:type owl:ObjectProperty ;
+    rdfs:domain :Deviation ;
+    rdfs:range :Tolerance ;
+    skos:prefLabel "превышает допуск"@ru ;
+    skos:prefLabel "exceeds tolerance"@en .
+
+###  http://ontogeo.kz/geodeticont-kz#performedAtStage
+:performedAtStage rdf:type owl:ObjectProperty ;
+    rdfs:domain :GeodeticWork ;
+    rdfs:range :ConstructionObject ;
+    skos:prefLabel "выполняется на стадии"@ru ;
+    skos:prefLabel "performed at stage"@en .
+
+###  http://ontogeo.kz/geodeticont-kz#documentedBy
+:documentedBy rdf:type owl:ObjectProperty ;
+    rdfs:domain :GeodeticWork ;
+    rdfs:range :TechnicalReport ;
+    skos:prefLabel "документируется"@ru ;
+    skos:prefLabel "documented by"@en .
+
+###  http://ontogeo.kz/geodeticont-kz#providesEvidenceFor
+:providesEvidenceFor rdf:type owl:ObjectProperty ;
+    rdfs:domain :Measurement ;
+    rdfs:range :TechnicalReport ;
+    skos:prefLabel "служит подтверждением для"@ru ;
+    skos:prefLabel "provides evidence for"@en .
+
+###  http://ontogeo.kz/geodeticont-kz#linkedToBIMElement
+:linkedToBIMElement rdf:type owl:ObjectProperty ;
+    rdfs:domain :ConstructionObject ;
+    rdfs:range ifc:IfcProduct ;
+    skos:prefLabel "связан с элементом BIM"@ru ;
+    skos:prefLabel "linked to BIM element"@en .
+
+###  http://ontogeo.kz/geodeticont-kz#linkedToGISObject
+:linkedToGISObject rdf:type owl:ObjectProperty ;
+    rdfs:domain :ConstructionObject ;
+    rdfs:range :GISObject ;
+    skos:prefLabel "связан с объектом ГИС"@ru ;
+    skos:prefLabel "linked to GIS object"@en .
+
+###  http://ontogeo.kz/geodeticont-kz#duplicatesRequirement
+:duplicatesRequirement rdf:type owl:ObjectProperty ;
+    rdfs:domain skos:Concept ;
+    rdfs:range skos:Concept ;
+    skos:prefLabel "дублирует требование"@ru ;
+    skos:prefLabel "duplicates requirement"@en .
+
+###  http://ontogeo.kz/geodeticont-kz#hasLegacyEquivalent
+:hasLegacyEquivalent rdf:type owl:ObjectProperty ;
+    rdfs:domain skos:Concept ;
+    rdfs:range skos:Concept ;
+    skos:prefLabel "имеет устаревший эквивалент"@ru ;
+    skos:prefLabel "has legacy equivalent"@en .
+
+###  http://ontogeo.kz/geodeticont-kz#replacesTerm
+:replacesTerm rdf:type owl:ObjectProperty ;
+    rdfs:domain skos:Concept ;
+    rdfs:range skos:Concept ;
+    skos:prefLabel "заменяет термин"@ru ;
+    skos:prefLabel "replaces term"@en .
+
+###  http://ontogeo.kz/geodeticont-kz#hasCoordinateSystem
+:hasCoordinateSystem rdf:type owl:ObjectProperty ;
+    rdfs:domain :ControlNetwork ;
+    rdfs:range :CoordinateSystem ;
+    skos:prefLabel "имеет систему координат"@ru ;
+    skos:prefLabel "has coordinate system"@en .
+
+###  http://ontogeo.kz/geodeticont-kz#hasHeightSystem
+:hasHeightSystem rdf:type owl:ObjectProperty ;
+    rdfs:domain :ControlNetwork ;
+    rdfs:range :HeightSystem ;
+    skos:prefLabel "имеет систему высот"@ru ;
+    skos:prefLabel "has height system"@en .
+
+###  http://ontogeo.kz/geodeticont-kz#hasAccuracyRequirement
+:hasAccuracyRequirement rdf:type owl:ObjectProperty ;
+    rdfs:domain :GeodeticWork ;
+    rdfs:range :AccuracyRequirement ;
+    skos:prefLabel "имеет требование точности"@ru ;
+    skos:prefLabel "has accuracy requirement"@en .
+
+###  http://ontogeo.kz/geodeticont-kz#generatedFromSurvey
+:generatedFromSurvey rdf:type owl:ObjectProperty ;
+    rdfs:domain :CartographicProduct ;
+    rdfs:range :AsBuiltSurvey ;
+    skos:prefLabel "получен из съёмки"@ru ;
+    skos:prefLabel "generated from survey"@en .
+
+
+##############################################################################
+#
+#    Data Properties
+#
+##############################################################################
+
+###  http://ontogeo.kz/geodeticont-kz#measuredValue
+:measuredValue rdf:type owl:DatatypeProperty ;
+    rdfs:domain :Deviation ;
+    rdfs:range xsd:decimal ;
+    skos:prefLabel "измеренное значение"@ru ;
+    skos:prefLabel "measured value"@en .
+
+###  http://ontogeo.kz/geodeticont-kz#permittedValue
+:permittedValue rdf:type owl:DatatypeProperty ;
+    rdfs:domain :Tolerance ;
+    rdfs:range xsd:decimal ;
+    skos:prefLabel "допустимое значение"@ru ;
+    skos:prefLabel "permitted value"@en .
+
+###  http://ontogeo.kz/geodeticont-kz#toleranceValue
+:toleranceValue rdf:type owl:DatatypeProperty ;
+    rdfs:domain :Tolerance ;
+    rdfs:range xsd:decimal ;
+    skos:prefLabel "значение допуска"@ru ;
+    skos:prefLabel "tolerance value"@en .
+
+###  http://ontogeo.kz/geodeticont-kz#unitOfMeasurement
+:unitOfMeasurement rdf:type owl:DatatypeProperty ;
+    rdfs:domain :Measurement ;
+    rdfs:range xsd:string ;
+    skos:prefLabel "единица измерения"@ru ;
+    skos:prefLabel "unit of measurement"@en .
+
+###  http://ontogeo.kz/geodeticont-kz#accuracyClass
+:accuracyClass rdf:type owl:DatatypeProperty ;
+    rdfs:domain :AccuracyRequirement ;
+    rdfs:range xsd:string ;
+    skos:prefLabel "класс точности"@ru ;
+    skos:prefLabel "accuracy class"@en .
+
+###  http://ontogeo.kz/geodeticont-kz#coordinateValueX
+:coordinateValueX rdf:type owl:DatatypeProperty ;
+    rdfs:domain :ControlPoint ;
+    rdfs:range xsd:decimal ;
+    skos:prefLabel "координата X"@ru ;
+    skos:prefLabel "coordinate value X"@en .
+
+###  http://ontogeo.kz/geodeticont-kz#coordinateValueY
+:coordinateValueY rdf:type owl:DatatypeProperty ;
+    rdfs:domain :ControlPoint ;
+    rdfs:range xsd:decimal ;
+    skos:prefLabel "координата Y"@ru ;
+    skos:prefLabel "coordinate value Y"@en .
+
+###  http://ontogeo.kz/geodeticont-kz#elevationValue
+:elevationValue rdf:type owl:DatatypeProperty ;
+    rdfs:domain :ControlPoint ;
+    rdfs:range xsd:decimal ;
+    skos:prefLabel "отметка"@ru ;
+    skos:prefLabel "elevation value"@en .
+
+###  http://ontogeo.kz/geodeticont-kz#measurementDate
+:measurementDate rdf:type owl:DatatypeProperty ;
+    rdfs:domain :Measurement ;
+    rdfs:range xsd:date ;
+    skos:prefLabel "дата измерения"@ru ;
+    skos:prefLabel "measurement date"@en .
+
+###  http://ontogeo.kz/geodeticont-kz#clauseNumber
+:clauseNumber rdf:type owl:DatatypeProperty ;
+    rdfs:domain :RegulatoryDocument ;
+    rdfs:range xsd:string ;
+    skos:prefLabel "пункт документа"@ru ;
+    skos:prefLabel "clause number"@en .
+
+###  http://ontogeo.kz/geodeticont-kz#documentStatus
+:documentStatus rdf:type owl:DatatypeProperty ;
+    rdfs:domain :RegulatoryDocument ;
+    rdfs:range xsd:string ;
+    skos:prefLabel "статус документа"@ru ;
+    skos:prefLabel "document status"@en .
+
+###  http://ontogeo.kz/geodeticont-kz#documentYear
+:documentYear rdf:type owl:DatatypeProperty ;
+    rdfs:domain :RegulatoryDocument ;
+    rdfs:range xsd:gYear ;
+    skos:prefLabel "год документа"@ru ;
+    skos:prefLabel "document year"@en .
+
+###  http://ontogeo.kz/geodeticont-kz#canBeFormalizedAsRule
+:canBeFormalizedAsRule rdf:type owl:DatatypeProperty ;
+    rdfs:domain :AccuracyRequirement ;
+    rdfs:range xsd:boolean ;
+    skos:prefLabel "формализуемо как правило"@ru ;
+    skos:prefLabel "can be formalized as rule"@en .
+
+
+##############################################################################
+#
+#    External class stubs (bridge targets, no owl:imports)
+#
+##############################################################################
+
+geo:Feature rdf:type owl:Class .
+geo:SpatialObject rdf:type owl:Class .
+ifc:IfcAnnotation rdf:type owl:Class .
+ifc:IfcBuildingElement rdf:type owl:Class .
+ifc:IfcGrid rdf:type owl:Class .
+ifc:IfcProduct rdf:type owl:Class .
+
+
+##############################################################################
+#
+#    Structural classes (27)
+#
+##############################################################################
+
+###  http://ontogeo.kz/geodeticont-kz#GeodeticEntity
+:GeodeticEntity rdf:type owl:Class ;
+    skos:prefLabel "геодезическая сущность"@ru ;
+    skos:prefLabel "geodetic entity"@en .
+
+###  http://ontogeo.kz/geodeticont-kz#GeodeticWork
+:GeodeticWork rdf:type owl:Class ;
+    rdfs:subClassOf :GeodeticEntity ;
+    skos:prefLabel "геодезические работы"@ru ;
+    skos:prefLabel "geodetic work"@en .
+
+###  http://ontogeo.kz/geodeticont-kz#MeasurementMethod
+:MeasurementMethod rdf:type owl:Class ;
+    rdfs:subClassOf :GeodeticWork ;
+    skos:prefLabel "метод измерений"@ru ;
+    skos:prefLabel "measurement method"@en .
+
+###  http://ontogeo.kz/geodeticont-kz#SettingOutWork
+:SettingOutWork rdf:type owl:Class ;
+    rdfs:subClassOf :GeodeticWork ;
+    skos:prefLabel "разбивочные работы"@ru ;
+    skos:prefLabel "setting-out work"@en .
+
+###  http://ontogeo.kz/geodeticont-kz#AsBuiltSurvey
+:AsBuiltSurvey rdf:type owl:Class ;
+    rdfs:subClassOf :GeodeticWork ;
+    skos:prefLabel "исполнительная съёмка"@ru ;
+    skos:prefLabel "as-built survey"@en .
+
+###  http://ontogeo.kz/geodeticont-kz#DeformationMonitoring
+:DeformationMonitoring rdf:type owl:Class ;
+    rdfs:subClassOf :GeodeticWork ;
+    skos:prefLabel "мониторинг деформаций"@ru ;
+    skos:prefLabel "deformation monitoring"@en .
+
+###  http://ontogeo.kz/geodeticont-kz#GeodeticActivity
+:GeodeticActivity rdf:type owl:Class ;
+    rdfs:subClassOf :GeodeticWork ;
+    skos:prefLabel "геодезическая деятельность"@ru ;
+    skos:prefLabel "geodetic activity"@en .
+
+###  http://ontogeo.kz/geodeticont-kz#ConstructionObject
+:ConstructionObject rdf:type owl:Class ;
+    rdfs:subClassOf :GeodeticEntity ;
+    rdfs:subClassOf ifc:IfcProduct ;
+    rdfs:subClassOf geo:SpatialObject ;
+    skos:prefLabel "объект строительства"@ru ;
+    skos:prefLabel "construction object"@en .
+
+###  http://ontogeo.kz/geodeticont-kz#LinearInfrastructureObject
+:LinearInfrastructureObject rdf:type owl:Class ;
+    rdfs:subClassOf :ConstructionObject ;
+    skos:prefLabel "линейный объект инфраструктуры"@ru ;
+    skos:prefLabel "linear infrastructure object"@en .
+
+###  http://ontogeo.kz/geodeticont-kz#RoadObject
+:RoadObject rdf:type owl:Class ;
+    rdfs:subClassOf :LinearInfrastructureObject ;
+    skos:prefLabel "дорожный объект"@ru ;
+    skos:prefLabel "road object"@en .
+
+###  http://ontogeo.kz/geodeticont-kz#StructuralElement
+:StructuralElement rdf:type owl:Class ;
+    rdfs:subClassOf :ConstructionObject ;
+    rdfs:subClassOf ifc:IfcBuildingElement ;
+    skos:prefLabel "строительная конструкция"@ru ;
+    skos:prefLabel "structural element"@en .
+
+###  http://ontogeo.kz/geodeticont-kz#ControlNetwork
+:ControlNetwork rdf:type owl:Class ;
+    rdfs:subClassOf :GeodeticEntity ;
+    skos:prefLabel "геодезическая сеть"@ru ;
+    skos:prefLabel "control network"@en .
+
+###  http://ontogeo.kz/geodeticont-kz#ControlPoint
+:ControlPoint rdf:type owl:Class ;
+    rdfs:subClassOf :GeodeticEntity ;
+    rdfs:subClassOf ifc:IfcAnnotation ;
+    rdfs:subClassOf geo:Feature ;
+    skos:prefLabel "геодезический пункт"@ru ;
+    skos:prefLabel "control point"@en .
+
+###  http://ontogeo.kz/geodeticont-kz#Benchmark
+:Benchmark rdf:type owl:Class ;
+    rdfs:subClassOf :ControlPoint ;
+    skos:prefLabel "репер"@ru ;
+    skos:prefLabel "benchmark"@en .
+
+###  http://ontogeo.kz/geodeticont-kz#CoordinateSystem
+:CoordinateSystem rdf:type owl:Class ;
+    rdfs:subClassOf :GeodeticEntity ;
+    skos:prefLabel "система координат"@ru ;
+    skos:prefLabel "coordinate system"@en .
+
+###  http://ontogeo.kz/geodeticont-kz#HeightSystem
+:HeightSystem rdf:type owl:Class ;
+    rdfs:subClassOf :GeodeticEntity ;
+    skos:prefLabel "система высот"@ru ;
+    skos:prefLabel "height system"@en .
+
+###  http://ontogeo.kz/geodeticont-kz#Instrument
+:Instrument rdf:type owl:Class ;
+    rdfs:subClassOf :GeodeticEntity ;
+    skos:prefLabel "геодезический прибор"@ru ;
+    skos:prefLabel "instrument"@en .
+
+###  http://ontogeo.kz/geodeticont-kz#AccuracyRequirement
+:AccuracyRequirement rdf:type owl:Class ;
+    rdfs:subClassOf :GeodeticEntity ;
+    skos:prefLabel "требование точности"@ru ;
+    skos:prefLabel "accuracy requirement"@en .
+
+###  http://ontogeo.kz/geodeticont-kz#Tolerance
+:Tolerance rdf:type owl:Class ;
+    rdfs:subClassOf :AccuracyRequirement ;
+    skos:prefLabel "допуск"@ru ;
+    skos:prefLabel "tolerance"@en .
+
+###  http://ontogeo.kz/geodeticont-kz#Deviation
+:Deviation rdf:type owl:Class ;
+    rdfs:subClassOf :GeodeticEntity ;
+    skos:prefLabel "отклонение"@ru ;
+    skos:prefLabel "deviation"@en .
+
+###  http://ontogeo.kz/geodeticont-kz#Measurement
+:Measurement rdf:type owl:Class ;
+    rdfs:subClassOf :GeodeticEntity ;
+    skos:prefLabel "измерение"@ru ;
+    skos:prefLabel "measurement"@en .
+
+###  http://ontogeo.kz/geodeticont-kz#RegulatoryDocument
+:RegulatoryDocument rdf:type owl:Class ;
+    rdfs:subClassOf :GeodeticEntity ;
+    skos:prefLabel "нормативный документ"@ru ;
+    skos:prefLabel "regulatory document"@en .
+
+###  http://ontogeo.kz/geodeticont-kz#TechnicalReport
+:TechnicalReport rdf:type owl:Class ;
+    rdfs:subClassOf :RegulatoryDocument ;
+    skos:prefLabel "технический отчёт"@ru ;
+    skos:prefLabel "technical report"@en .
+
+###  http://ontogeo.kz/geodeticont-kz#CartographicProduct
+:CartographicProduct rdf:type owl:Class ;
+    rdfs:subClassOf :GeodeticEntity ;
+    skos:prefLabel "картографическая продукция"@ru ;
+    skos:prefLabel "cartographic product"@en .
+
+###  http://ontogeo.kz/geodeticont-kz#DigitalCartographicData
+:DigitalCartographicData rdf:type owl:Class ;
+    rdfs:subClassOf :CartographicProduct ;
+    skos:prefLabel "цифровые картографические данные"@ru ;
+    skos:prefLabel "digital cartographic data"@en .
+
+###  http://ontogeo.kz/geodeticont-kz#GISObject
+:GISObject rdf:type owl:Class ;
+    rdfs:subClassOf :GeodeticEntity ;
+    skos:prefLabel "объект ГИС"@ru ;
+    skos:prefLabel "GIS object"@en .
+
+###  http://ontogeo.kz/geodeticont-kz#RoadSurveyObject
+:RoadSurveyObject rdf:type owl:Class ;
+    rdfs:subClassOf :GeodeticEntity ;
+    skos:prefLabel "объект дорожного обследования"@ru ;
+    skos:prefLabel "road survey object"@en .
+
+
+##############################################################################
+#
+#    Term classes (119) — punning owl:Class + skos:Concept
+#
+##############################################################################
+
+###  http://ontogeo.kz/geodeticont-kz#GeodeticControlNetwork
+:GeodeticControlNetwork rdf:type owl:Class , skos:Concept ;
+    rdfs:subClassOf :ControlNetwork ;
+    skos:prefLabel "геодезическая опорная сеть"@ru ;
+    skos:prefLabel "geodetic control network"@en ;
+    skos:prefLabel "геодезиялық тірек желісі"@kk ;
+    skos:definition "система закреплённых на местности пунктов, положение которых определено в единой системе координат"@ru ;
+    skos:definition "system of monumented points whose positions are determined in a common coordinate system"@en ;
+    dcterms:identifier "1"^^xsd:integer ;
+    rdfs:isDefinedBy doc:d01 ;
+    dcterms:source doc:d01 ;
+    skos:inScheme :GeodeticOntKZScheme ;
+    skos:editorialNote "English label and definition: authors' translation, not source-attested"@en ;
+    skos:editorialNote "Kazakh label: source-attested"@en .
+
+###  http://ontogeo.kz/geodeticont-kz#StateGeodeticNetwork
+:StateGeodeticNetwork rdf:type owl:Class , skos:Concept ;
+    rdfs:subClassOf :GeodeticControlNetwork ;
+    skos:prefLabel "государственная геодезическая сеть"@ru ;
+    skos:prefLabel "state geodetic network"@en ;
+    skos:prefLabel "мемлекеттік геодезиялық желі"@kk ;
+    skos:definition "геодезическая сеть, создаваемая и поддерживаемая уполномоченным государственным органом"@ru ;
+    skos:definition "geodetic network established and maintained by the authorised state body"@en ;
+    dcterms:identifier "2"^^xsd:integer ;
+    rdfs:isDefinedBy doc:d01 ;
+    dcterms:source doc:d01 ;
+    skos:inScheme :GeodeticOntKZScheme ;
+    skos:editorialNote "English label and definition: authors' translation, not source-attested"@en ;
+    skos:editorialNote "Kazakh label: source-attested"@en .
+
+###  http://ontogeo.kz/geodeticont-kz#CondensationNetwork
+:CondensationNetwork rdf:type owl:Class , skos:Concept ;
+    rdfs:subClassOf :GeodeticControlNetwork ;
+    skos:prefLabel "геодезическая сеть сгущения"@ru ;
+    skos:prefLabel "densification network"@en ;
+    skos:prefLabel "тығыздау желісі"@kk ;
+    skos:definition "сеть, создаваемая для увеличения плотности пунктов государственной геодезической сети"@ru ;
+    skos:definition "network established to increase the density of state network points"@en ;
+    dcterms:identifier "3"^^xsd:integer ;
+    rdfs:isDefinedBy doc:d01 ;
+    dcterms:source doc:d01 ;
+    skos:inScheme :GeodeticOntKZScheme ;
+    skos:editorialNote "Kazakh label: expert-reviewed, not source-attested"@en .
+
+###  http://ontogeo.kz/geodeticont-kz#SurveyJustificationNetwork
+:SurveyJustificationNetwork rdf:type owl:Class , skos:Concept ;
+    rdfs:subClassOf :GeodeticControlNetwork ;
+    skos:prefLabel "съёмочное обоснование"@ru ;
+    skos:prefLabel "survey control"@en ;
+    skos:prefLabel "түсіру негіздемесі"@kk ;
+    skos:definition "совокупность пунктов, служащих непосредственной основой для топографической съёмки"@ru ;
+    skos:definition "set of points serving as the immediate basis for topographic survey"@en ;
+    dcterms:identifier "4"^^xsd:integer ;
+    rdfs:isDefinedBy doc:d02 ;
+    dcterms:source doc:d02 ;
+    skos:inScheme :GeodeticOntKZScheme ;
+    skos:editorialNote "English label and definition: authors' translation, not source-attested"@en ;
+    skos:editorialNote "Kazakh label: expert-reviewed, not source-attested"@en .
+
+###  http://ontogeo.kz/geodeticont-kz#ConstructionGeodeticGrid
+:ConstructionGeodeticGrid rdf:type owl:Class , skos:Concept ;
+    rdfs:subClassOf :GeodeticControlNetwork ;
+    rdfs:subClassOf ifc:IfcGrid ;
+    skos:prefLabel "строительная геодезическая сетка"@ru ;
+    skos:prefLabel "construction geodetic grid"@en ;
+    skos:prefLabel "құрылыс геодезиялық торы"@kk ;
+    skos:definition "система взаимно перпендикулярных линий, закреплённая на площадке строительства"@ru ;
+    skos:definition "system of mutually perpendicular lines monumented on the construction site"@en ;
+    dcterms:identifier "5"^^xsd:integer ;
+    rdfs:isDefinedBy doc:d01 ;
+    dcterms:source doc:d01 ;
+    skos:inScheme :GeodeticOntKZScheme ;
+    skos:editorialNote "English label and definition: authors' translation, not source-attested"@en ;
+    skos:editorialNote "Kazakh label: expert-reviewed, not source-attested"@en .
+
+###  http://ontogeo.kz/geodeticont-kz#PlanControlNetwork
+:PlanControlNetwork rdf:type owl:Class , skos:Concept ;
+    rdfs:subClassOf :GeodeticControlNetwork ;
+    skos:prefLabel "плановая геодезическая сеть"@ru ;
+    skos:prefLabel "horizontal control network"@en ;
+    skos:definition "геодезическая сеть, для пунктов которой определены плановые координаты"@ru ;
+    skos:definition "geodetic network for whose points horizontal coordinates are determined"@en ;
+    dcterms:identifier "6"^^xsd:integer ;
+    rdfs:isDefinedBy doc:d01 ;
+    dcterms:source doc:d01 ;
+    skos:inScheme :GeodeticOntKZScheme .
+
+###  http://ontogeo.kz/geodeticont-kz#HeightControlNetwork
+:HeightControlNetwork rdf:type owl:Class , skos:Concept ;
+    rdfs:subClassOf :GeodeticControlNetwork ;
+    skos:prefLabel "высотная геодезическая сеть"@ru ;
+    skos:prefLabel "vertical control network"@en ;
+    skos:prefLabel "биіктік геодезиялық желі"@kk ;
+    skos:definition "геодезическая сеть, для пунктов которой определены высоты"@ru ;
+    skos:definition "geodetic network for whose points heights are determined"@en ;
+    dcterms:identifier "7"^^xsd:integer ;
+    rdfs:isDefinedBy doc:d01 ;
+    dcterms:source doc:d01 ;
+    skos:inScheme :GeodeticOntKZScheme ;
+    skos:editorialNote "English label and definition: authors' translation, not source-attested"@en ;
+    skos:editorialNote "Kazakh label: expert-reviewed, not source-attested"@en .
+
+###  http://ontogeo.kz/geodeticont-kz#Triangulation
+:Triangulation rdf:type owl:Class , skos:Concept ;
+    rdfs:subClassOf :MeasurementMethod ;
+    skos:prefLabel "триангуляция"@ru ;
+    skos:prefLabel "triangulation"@en ;
+    skos:prefLabel "триангуляция"@kk ;
+    skos:definition "метод построения геодезической сети в виде системы смежных треугольников"@ru ;
+    skos:definition "method of building a geodetic network as a system of adjacent triangles"@en ;
+    dcterms:identifier "8"^^xsd:integer ;
+    rdfs:isDefinedBy doc:d03 ;
+    dcterms:source doc:d03 ;
+    skos:inScheme :GeodeticOntKZScheme ;
+    skos:editorialNote "English label and definition: authors' translation, not source-attested"@en ;
+    skos:editorialNote "Kazakh label: expert-reviewed, not source-attested"@en .
+
+###  http://ontogeo.kz/geodeticont-kz#Trilateration
+:Trilateration rdf:type owl:Class , skos:Concept ;
+    rdfs:subClassOf :MeasurementMethod ;
+    skos:prefLabel "трилатерация"@ru ;
+    skos:prefLabel "trilateration"@en ;
+    skos:prefLabel "трилатерация"@kk ;
+    skos:definition "метод построения геодезической сети измерением длин сторон треугольников"@ru ;
+    skos:definition "method of building a geodetic network by measuring triangle side lengths"@en ;
+    dcterms:identifier "9"^^xsd:integer ;
+    rdfs:isDefinedBy doc:d03 ;
+    dcterms:source doc:d03 ;
+    skos:inScheme :GeodeticOntKZScheme ;
+    skos:editorialNote "Kazakh label: expert-reviewed, not source-attested"@en .
+
+###  http://ontogeo.kz/geodeticont-kz#Polygonometry
+:Polygonometry rdf:type owl:Class , skos:Concept ;
+    rdfs:subClassOf :MeasurementMethod ;
+    skos:prefLabel "полигонометрия"@ru ;
+    skos:prefLabel "polygonometry"@en ;
+    skos:prefLabel "полигонометрия"@kk ;
+    skos:definition "метод построения геодезической сети в виде ломаных ходов с измерением углов и длин"@ru ;
+    skos:definition "method of building a geodetic network as traverses with measured angles and lengths"@en ;
+    dcterms:identifier "10"^^xsd:integer ;
+    rdfs:isDefinedBy doc:d03 ;
+    dcterms:source doc:d03 ;
+    skos:inScheme :GeodeticOntKZScheme ;
+    skos:editorialNote "English label and definition: authors' translation, not source-attested"@en ;
+    skos:editorialNote "Kazakh label: expert-reviewed, not source-attested"@en .
+
+###  http://ontogeo.kz/geodeticont-kz#GeodeticTraverse
+:GeodeticTraverse rdf:type owl:Class , skos:Concept ;
+    rdfs:subClassOf :ControlNetwork ;
+    skos:prefLabel "геодезический ход"@ru ;
+    skos:prefLabel "geodetic traverse"@en ;
+    skos:prefLabel "геодезиялық жүріс"@kk ;
+    skos:altLabel "теодолитный ход"@ru ;
+    skos:definition "последовательность закреплённых точек, между которыми измерены расстояния и углы"@ru ;
+    skos:definition "sequence of monumented points between which distances and angles are measured"@en ;
+    dcterms:identifier "11"^^xsd:integer ;
+    rdfs:isDefinedBy doc:d03 ;
+    dcterms:source doc:d03 ;
+    skos:inScheme :GeodeticOntKZScheme ;
+    skos:editorialNote "English label and definition: authors' translation, not source-attested"@en ;
+    skos:editorialNote "Kazakh label: expert-reviewed, not source-attested"@en ;
+    skos:changeNote "merged duplicate entry"@en .
+
+###  http://ontogeo.kz/geodeticont-kz#ClosedTraverse
+:ClosedTraverse rdf:type owl:Class , skos:Concept ;
+    rdfs:subClassOf :GeodeticTraverse ;
+    skos:prefLabel "замкнутый ход"@ru ;
+    skos:prefLabel "closed traverse"@en ;
+    skos:prefLabel "тұйық жүріс"@kk ;
+    skos:definition "геодезический ход, начинающийся и заканчивающийся на одном и том же пункте"@ru ;
+    skos:definition "traverse beginning and ending at the same point"@en ;
+    dcterms:identifier "12"^^xsd:integer ;
+    rdfs:isDefinedBy doc:d03 ;
+    dcterms:source doc:d03 ;
+    skos:inScheme :GeodeticOntKZScheme ;
+    skos:editorialNote "Kazakh label: expert-reviewed, not source-attested"@en .
+
+###  http://ontogeo.kz/geodeticont-kz#NetworkOrder
+:NetworkOrder rdf:type owl:Class , skos:Concept ;
+    rdfs:subClassOf :AccuracyRequirement ;
+    skos:prefLabel "класс (разряд) сети"@ru ;
+    skos:prefLabel "network order"@en ;
+    skos:prefLabel "желі класы"@kk ;
+    skos:definition "характеристика геодезической сети, определяющая нормируемую точность её построения"@ru ;
+    skos:definition "characteristic of a geodetic network defining its required accuracy"@en ;
+    dcterms:identifier "13"^^xsd:integer ;
+    rdfs:isDefinedBy doc:d01 ;
+    dcterms:source doc:d01 ;
+    skos:inScheme :GeodeticOntKZScheme ;
+    skos:editorialNote "English label and definition: authors' translation, not source-attested"@en ;
+    skos:editorialNote "Kazakh label: expert-reviewed, not source-attested"@en .
+
+###  http://ontogeo.kz/geodeticont-kz#NetworkAdjustment
+:NetworkAdjustment rdf:type owl:Class , skos:Concept ;
+    rdfs:subClassOf :GeodeticActivity ;
+    skos:prefLabel "уравнивание сети"@ru ;
+    skos:prefLabel "network adjustment"@en ;
+    skos:prefLabel "желіні теңестіру"@kk ;
+    skos:definition "математическая обработка избыточных измерений с целью получения согласованных координат"@ru ;
+    skos:definition "mathematical processing of redundant measurements to obtain consistent coordinates"@en ;
+    dcterms:identifier "14"^^xsd:integer ;
+    rdfs:isDefinedBy doc:d03 ;
+    dcterms:source doc:d03 ;
+    skos:inScheme :GeodeticOntKZScheme ;
+    skos:editorialNote "English label and definition: authors' translation, not source-attested"@en ;
+    skos:editorialNote "Kazakh label: expert-reviewed, not source-attested"@en .
+
+###  http://ontogeo.kz/geodeticont-kz#ReferenceStation
+:ReferenceStation rdf:type owl:Class , skos:Concept ;
+    rdfs:subClassOf :ControlPoint ;
+    skos:prefLabel "базовая станция"@ru ;
+    skos:prefLabel "reference station"@en ;
+    skos:prefLabel "базалық станция"@kk ;
+    skos:definition "постоянно действующий пункт спутниковых наблюдений с известными координатами"@ru ;
+    skos:definition "permanently operating satellite observation point with known coordinates"@en ;
+    dcterms:identifier "15"^^xsd:integer ;
+    rdfs:isDefinedBy doc:d04 ;
+    dcterms:source doc:d04 ;
+    skos:inScheme :GeodeticOntKZScheme ;
+    skos:editorialNote "Kazakh label: expert-reviewed, not source-attested"@en .
+
+###  http://ontogeo.kz/geodeticont-kz#CORSNetwork
+:CORSNetwork rdf:type owl:Class , skos:Concept ;
+    rdfs:subClassOf :ControlNetwork ;
+    skos:prefLabel "сеть постоянно действующих станций"@ru ;
+    skos:prefLabel "CORS network"@en ;
+    skos:definition "совокупность базовых станций, обеспечивающих спутниковые определения в реальном времени"@ru ;
+    skos:definition "set of reference stations providing real-time satellite positioning"@en ;
+    dcterms:identifier "16"^^xsd:integer ;
+    rdfs:isDefinedBy doc:d04 ;
+    dcterms:source doc:d04 ;
+    skos:inScheme :GeodeticOntKZScheme ;
+    skos:editorialNote "English label and definition: authors' translation, not source-attested"@en .
+
+###  http://ontogeo.kz/geodeticont-kz#LocalControlNetwork
+:LocalControlNetwork rdf:type owl:Class , skos:Concept ;
+    rdfs:subClassOf :GeodeticControlNetwork ;
+    skos:prefLabel "локальная геодезическая сеть"@ru ;
+    skos:prefLabel "local control network"@en ;
+    skos:prefLabel "жергілікті геодезиялық желі"@kk ;
+    skos:definition "геодезическая сеть, создаваемая на ограниченной территории для конкретного объекта"@ru ;
+    skos:definition "geodetic network established over a limited area for a specific facility"@en ;
+    dcterms:identifier "17"^^xsd:integer ;
+    rdfs:isDefinedBy doc:d02 ;
+    dcterms:source doc:d02 ;
+    skos:inScheme :GeodeticOntKZScheme ;
+    skos:editorialNote "English label and definition: authors' translation, not source-attested"@en ;
+    skos:editorialNote "Kazakh label: expert-reviewed, not source-attested"@en .
+
+###  http://ontogeo.kz/geodeticont-kz#NetworkDensity
+:NetworkDensity rdf:type owl:Class , skos:Concept ;
+    rdfs:subClassOf :ControlNetwork ;
+    skos:prefLabel "плотность пунктов сети"@ru ;
+    skos:prefLabel "network point density"@en ;
+    dcterms:identifier "18"^^xsd:integer ;
+    skos:inScheme :GeodeticOntKZScheme .
+
+###  http://ontogeo.kz/geodeticont-kz#CoordinateSystemWGS84
+:CoordinateSystemWGS84 rdf:type owl:Class , skos:Concept ;
+    rdfs:subClassOf :CoordinateSystem ;
+    skos:prefLabel "система координат WGS-84"@ru ;
+    skos:prefLabel "WGS-84 coordinate system"@en ;
+    skos:prefLabel "WGS-84 координаталар жүйесі"@kk ;
+    skos:definition "общеземная геоцентрическая система координат, используемая в спутниковых определениях"@ru ;
+    skos:definition "global geocentric coordinate system used in satellite positioning"@en ;
+    dcterms:identifier "19"^^xsd:integer ;
+    rdfs:isDefinedBy doc:d04 ;
+    dcterms:source doc:d04 ;
+    skos:inScheme :GeodeticOntKZScheme ;
+    skos:editorialNote "English label and definition: authors' translation, not source-attested"@en ;
+    skos:editorialNote "Kazakh label: source-attested"@en .
+
+###  http://ontogeo.kz/geodeticont-kz#NationalCoordinateSystem
+:NationalCoordinateSystem rdf:type owl:Class , skos:Concept ;
+    rdfs:subClassOf :CoordinateSystem ;
+    skos:prefLabel "государственная система координат"@ru ;
+    skos:prefLabel "national coordinate system"@en ;
+    skos:prefLabel "мемлекеттік координаталар жүйесі"@kk ;
+    skos:definition "система координат, установленная уполномоченным органом для территории страны"@ru ;
+    skos:definition "coordinate system established by the authorised body for the national territory"@en ;
+    dcterms:identifier "20"^^xsd:integer ;
+    rdfs:isDefinedBy doc:d01 ;
+    dcterms:source doc:d01 ;
+    skos:inScheme :GeodeticOntKZScheme ;
+    skos:editorialNote "English label and definition: authors' translation, not source-attested"@en ;
+    skos:editorialNote "Kazakh label: expert-reviewed, not source-attested"@en .
+
+###  http://ontogeo.kz/geodeticont-kz#LocalCoordinateSystem
+:LocalCoordinateSystem rdf:type owl:Class , skos:Concept ;
+    rdfs:subClassOf :CoordinateSystem ;
+    skos:prefLabel "местная система координат"@ru ;
+    skos:prefLabel "local coordinate system"@en ;
+    skos:prefLabel "жергілікті координаталар жүйесі"@kk ;
+    skos:definition "система координат, устанавливаемая для отдельной территории или объекта строительства"@ru ;
+    skos:definition "coordinate system established for a particular area or construction facility"@en ;
+    dcterms:identifier "21"^^xsd:integer ;
+    rdfs:isDefinedBy doc:d02 ;
+    dcterms:source doc:d02 ;
+    skos:inScheme :GeodeticOntKZScheme ;
+    skos:editorialNote "Kazakh label: expert-reviewed, not source-attested"@en .
+
+###  http://ontogeo.kz/geodeticont-kz#ConstructionCoordinateSystem
+:ConstructionCoordinateSystem rdf:type owl:Class , skos:Concept ;
+    rdfs:subClassOf :CoordinateSystem ;
+    skos:prefLabel "строительная система координат"@ru ;
+    skos:prefLabel "construction coordinate system"@en ;
+    skos:prefLabel "құрылыс координаталар жүйесі"@kk ;
+    skos:definition "прямоугольная система координат, оси которой совмещены с осями сооружения"@ru ;
+    skos:definition "rectangular coordinate system whose axes coincide with the axes of a structure"@en ;
+    dcterms:identifier "22"^^xsd:integer ;
+    rdfs:isDefinedBy doc:d02 ;
+    dcterms:source doc:d02 ;
+    skos:inScheme :GeodeticOntKZScheme ;
+    skos:editorialNote "English label and definition: authors' translation, not source-attested"@en ;
+    skos:editorialNote "Kazakh label: expert-reviewed, not source-attested"@en .
+
+###  http://ontogeo.kz/geodeticont-kz#CoordinateTransformation
+:CoordinateTransformation rdf:type owl:Class , skos:Concept ;
+    rdfs:subClassOf :GeodeticActivity ;
+    skos:prefLabel "преобразование координат"@ru ;
+    skos:prefLabel "coordinate transformation"@en ;
+    skos:prefLabel "координаталарды түрлендіру"@kk ;
+    skos:definition "переход от одной системы координат к другой по заданным параметрам"@ru ;
+    skos:definition "transition from one coordinate system to another using given parameters"@en ;
+    dcterms:identifier "23"^^xsd:integer ;
+    rdfs:isDefinedBy doc:d04 ;
+    dcterms:source doc:d04 ;
+    skos:inScheme :GeodeticOntKZScheme ;
+    skos:editorialNote "English label and definition: authors' translation, not source-attested"@en ;
+    skos:editorialNote "Kazakh label: expert-reviewed, not source-attested"@en ;
+    :canBeFormalizedAsRule false .
+
+###  http://ontogeo.kz/geodeticont-kz#MapProjection
+:MapProjection rdf:type owl:Class , skos:Concept ;
+    rdfs:subClassOf :CoordinateSystem ;
+    skos:prefLabel "картографическая проекция"@ru ;
+    skos:prefLabel "map projection"@en ;
+    skos:prefLabel "картографиялық проекция"@kk ;
+    skos:definition "математически определённое отображение поверхности эллипсоида на плоскость"@ru ;
+    skos:definition "mathematically defined mapping of the ellipsoid surface onto a plane"@en ;
+    dcterms:identifier "24"^^xsd:integer ;
+    rdfs:isDefinedBy doc:d05 ;
+    dcterms:source doc:d05 ;
+    skos:inScheme :GeodeticOntKZScheme ;
+    skos:editorialNote "Kazakh label: expert-reviewed, not source-attested"@en .
+
+###  http://ontogeo.kz/geodeticont-kz#GaussKrugerProjection
+:GaussKrugerProjection rdf:type owl:Class , skos:Concept ;
+    rdfs:subClassOf :MapProjection ;
+    skos:prefLabel "проекция Гаусса — Крюгера"@ru ;
+    skos:prefLabel "Gauss-Kruger projection"@en ;
+    skos:prefLabel "Гаусс — Крюгер проекциясы"@kk ;
+    skos:definition "равноугольная поперечно-цилиндрическая проекция, применяемая в топографических работах"@ru ;
+    skos:definition "conformal transverse cylindrical projection used in topographic work"@en ;
+    dcterms:identifier "25"^^xsd:integer ;
+    rdfs:isDefinedBy doc:d05 ;
+    dcterms:source doc:d05 ;
+    skos:inScheme :GeodeticOntKZScheme ;
+    skos:editorialNote "English label and definition: authors' translation, not source-attested"@en ;
+    skos:editorialNote "Kazakh label: expert-reviewed, not source-attested"@en .
+
+###  http://ontogeo.kz/geodeticont-kz#CoordinateZone
+:CoordinateZone rdf:type owl:Class , skos:Concept ;
+    rdfs:subClassOf :CoordinateSystem ;
+    skos:prefLabel "координатная зона"@ru ;
+    skos:prefLabel "coordinate zone"@en ;
+    skos:prefLabel "координаталық аймақ"@kk ;
+    skos:definition "часть земной поверхности, отображаемая в проекции с единым осевым меридианом"@ru ;
+    skos:definition "part of the Earth surface mapped with a single central meridian"@en ;
+    dcterms:identifier "26"^^xsd:integer ;
+    rdfs:isDefinedBy doc:d05 ;
+    dcterms:source doc:d05 ;
+    skos:inScheme :GeodeticOntKZScheme ;
+    skos:editorialNote "English label and definition: authors' translation, not source-attested"@en ;
+    skos:editorialNote "Kazakh label: expert-reviewed, not source-attested"@en .
+
+###  http://ontogeo.kz/geodeticont-kz#ReferenceEllipsoid
+:ReferenceEllipsoid rdf:type owl:Class , skos:Concept ;
+    rdfs:subClassOf :CoordinateSystem ;
+    skos:prefLabel "референц-эллипсоид"@ru ;
+    skos:prefLabel "reference ellipsoid"@en ;
+    skos:prefLabel "референц-эллипсоид"@kk ;
+    skos:definition "эллипсоид вращения, принятый за математическую модель фигуры Земли"@ru ;
+    skos:definition "ellipsoid of revolution adopted as a mathematical model of the Earth"@en ;
+    dcterms:identifier "27"^^xsd:integer ;
+    rdfs:isDefinedBy doc:d01 ;
+    dcterms:source doc:d01 ;
+    skos:inScheme :GeodeticOntKZScheme ;
+    skos:editorialNote "Kazakh label: expert-reviewed, not source-attested"@en .
+
+###  http://ontogeo.kz/geodeticont-kz#Geoid
+:Geoid rdf:type owl:Class , skos:Concept ;
+    rdfs:subClassOf :HeightSystem ;
+    skos:prefLabel "геоид"@ru ;
+    skos:prefLabel "geoid"@en ;
+    skos:prefLabel "геоид"@kk ;
+    skos:definition "эквипотенциальная поверхность гравитационного поля Земли, совпадающая со средним уровнем моря"@ru ;
+    skos:definition "equipotential surface of the Earth gravity field coinciding with mean sea level"@en ;
+    dcterms:identifier "28"^^xsd:integer ;
+    rdfs:isDefinedBy doc:d01 ;
+    dcterms:source doc:d01 ;
+    skos:inScheme :GeodeticOntKZScheme ;
+    skos:editorialNote "English label and definition: authors' translation, not source-attested"@en ;
+    skos:editorialNote "Kazakh label: expert-reviewed, not source-attested"@en .
+
+###  http://ontogeo.kz/geodeticont-kz#BalticHeightSystem
+:BalticHeightSystem rdf:type owl:Class , skos:Concept ;
+    rdfs:subClassOf :HeightSystem ;
+    skos:prefLabel "Балтийская система высот"@ru ;
+    skos:prefLabel "Baltic height system"@en ;
+    skos:prefLabel "Балтық биіктік жүйесі"@kk ;
+    skos:definition "система нормальных высот, отсчитываемых от нуля Кронштадтского футштока"@ru ;
+    skos:definition "system of normal heights referenced to the zero of the Kronstadt tide gauge"@en ;
+    dcterms:identifier "29"^^xsd:integer ;
+    rdfs:isDefinedBy doc:d01 ;
+    dcterms:source doc:d01 ;
+    skos:inScheme :GeodeticOntKZScheme ;
+    skos:editorialNote "English label and definition: authors' translation, not source-attested"@en ;
+    skos:editorialNote "Kazakh label: expert-reviewed, not source-attested"@en .
+
+###  http://ontogeo.kz/geodeticont-kz#AbsoluteElevation
+:AbsoluteElevation rdf:type owl:Class , skos:Concept ;
+    rdfs:subClassOf :Measurement ;
+    skos:prefLabel "абсолютная отметка"@ru ;
+    skos:prefLabel "absolute elevation"@en ;
+    skos:prefLabel "абсолюттік белгі"@kk ;
+    skos:definition "высота точки над принятой уровенной поверхностью"@ru ;
+    skos:definition "height of a point above the adopted level surface"@en ;
+    dcterms:identifier "30"^^xsd:integer ;
+    rdfs:isDefinedBy doc:d02 ;
+    dcterms:source doc:d02 ;
+    skos:inScheme :GeodeticOntKZScheme ;
+    skos:editorialNote "Kazakh label: expert-reviewed, not source-attested"@en .
+
+###  http://ontogeo.kz/geodeticont-kz#RelativeElevation
+:RelativeElevation rdf:type owl:Class , skos:Concept ;
+    rdfs:subClassOf :Measurement ;
+    skos:prefLabel "относительная отметка"@ru ;
+    skos:prefLabel "relative elevation"@en ;
+    skos:prefLabel "салыстырмалы белгі"@kk ;
+    skos:definition "высота точки относительно условного нуля, принятого на объекте"@ru ;
+    skos:definition "height of a point relative to a datum adopted for the facility"@en ;
+    dcterms:identifier "31"^^xsd:integer ;
+    rdfs:isDefinedBy doc:d02 ;
+    dcterms:source doc:d02 ;
+    skos:inScheme :GeodeticOntKZScheme ;
+    skos:editorialNote "English label and definition: authors' translation, not source-attested"@en ;
+    skos:editorialNote "Kazakh label: expert-reviewed, not source-attested"@en .
+
+###  http://ontogeo.kz/geodeticont-kz#ConditionalZero
+:ConditionalZero rdf:type owl:Class , skos:Concept ;
+    rdfs:subClassOf :HeightSystem ;
+    skos:prefLabel "условный нуль"@ru ;
+    skos:prefLabel "conditional datum"@en ;
+    skos:prefLabel "шартты нөл"@kk ;
+    skos:definition "высотная отметка, принимаемая за начало отсчёта высот на объекте строительства"@ru ;
+    skos:definition "elevation adopted as the origin of heights on the construction site"@en ;
+    dcterms:identifier "32"^^xsd:integer ;
+    rdfs:isDefinedBy doc:d02 ;
+    dcterms:source doc:d02 ;
+    skos:inScheme :GeodeticOntKZScheme ;
+    skos:editorialNote "English label and definition: authors' translation, not source-attested"@en ;
+    skos:editorialNote "Kazakh label: expert-reviewed, not source-attested"@en .
+
+###  http://ontogeo.kz/geodeticont-kz#HeightDatumTransfer
+:HeightDatumTransfer rdf:type owl:Class , skos:Concept ;
+    rdfs:subClassOf :GeodeticActivity ;
+    skos:prefLabel "передача отметки"@ru ;
+    skos:prefLabel "elevation transfer"@en ;
+    skos:prefLabel "белгіні беру"@kk ;
+    skos:definition "перенос высотной отметки с исходного репера на монтажный горизонт"@ru ;
+    skos:definition "transfer of an elevation from a source benchmark to an erection level"@en ;
+    dcterms:identifier "33"^^xsd:integer ;
+    rdfs:isDefinedBy doc:d02 ;
+    dcterms:source doc:d02 ;
+    skos:inScheme :GeodeticOntKZScheme ;
+    skos:editorialNote "Kazakh label: expert-reviewed, not source-attested"@en .
+
+###  http://ontogeo.kz/geodeticont-kz#LevellingNetwork
+:LevellingNetwork rdf:type owl:Class , skos:Concept ;
+    rdfs:subClassOf :ControlNetwork ;
+    skos:prefLabel "нивелирная сеть"@ru ;
+    skos:prefLabel "levelling network"@en ;
+    skos:prefLabel "нивелирлік желі"@kk ;
+    skos:definition "геодезическая сеть, пункты которой связаны нивелирными ходами"@ru ;
+    skos:definition "geodetic network whose points are connected by levelling lines"@en ;
+    dcterms:identifier "34"^^xsd:integer ;
+    rdfs:isDefinedBy doc:d01 ;
+    dcterms:source doc:d01 ;
+    skos:inScheme :GeodeticOntKZScheme ;
+    skos:editorialNote "English label and definition: authors' translation, not source-attested"@en ;
+    skos:editorialNote "Kazakh label: expert-reviewed, not source-attested"@en .
+
+###  http://ontogeo.kz/geodeticont-kz#GeodeticPoint
+:GeodeticPoint rdf:type owl:Class , skos:Concept ;
+    rdfs:subClassOf :ControlPoint ;
+    skos:prefLabel "геодезический пункт"@ru ;
+    skos:prefLabel "geodetic point"@en ;
+    skos:prefLabel "геодезиялық пункт"@kk ;
+    skos:definition "точка, положение которой определено в системе координат и закреплено на местности"@ru ;
+    skos:definition "point whose position is determined in a coordinate system and monumented on the ground"@en ;
+    dcterms:identifier "35"^^xsd:integer ;
+    rdfs:isDefinedBy doc:d01 ;
+    dcterms:source doc:d01 ;
+    skos:inScheme :GeodeticOntKZScheme ;
+    skos:editorialNote "English label and definition: authors' translation, not source-attested"@en ;
+    skos:editorialNote "Kazakh label: expert-reviewed, not source-attested"@en .
+
+###  http://ontogeo.kz/geodeticont-kz#GeodeticMark
+:GeodeticMark rdf:type owl:Class , skos:Concept ;
+    rdfs:subClassOf :ControlPoint ;
+    skos:prefLabel "геодезический знак"@ru ;
+    skos:prefLabel "geodetic mark"@en ;
+    skos:prefLabel "геодезиялық белгі"@kk ;
+    skos:definition "сооружение или устройство, обозначающее и закрепляющее геодезический пункт"@ru ;
+    skos:definition "structure or device marking and monumenting a geodetic point"@en ;
+    dcterms:identifier "36"^^xsd:integer ;
+    rdfs:isDefinedBy doc:d01 ;
+    dcterms:source doc:d01 ;
+    skos:inScheme :GeodeticOntKZScheme ;
+    skos:editorialNote "Kazakh label: expert-reviewed, not source-attested"@en .
+
+###  http://ontogeo.kz/geodeticont-kz#CentreOfPoint
+:CentreOfPoint rdf:type owl:Class , skos:Concept ;
+    rdfs:subClassOf :ControlPoint ;
+    skos:prefLabel "центр пункта"@ru ;
+    skos:prefLabel "point centre"@en ;
+    skos:prefLabel "пункт орталығы"@kk ;
+    skos:definition "часть геодезического знака, фиксирующая положение пункта"@ru ;
+    skos:definition "part of a geodetic mark fixing the position of the point"@en ;
+    dcterms:identifier "37"^^xsd:integer ;
+    rdfs:isDefinedBy doc:d01 ;
+    dcterms:source doc:d01 ;
+    skos:inScheme :GeodeticOntKZScheme ;
+    skos:editorialNote "English label and definition: authors' translation, not source-attested"@en ;
+    skos:editorialNote "Kazakh label: expert-reviewed, not source-attested"@en .
+
+###  http://ontogeo.kz/geodeticont-kz#DeepBenchmark
+:DeepBenchmark rdf:type owl:Class , skos:Concept ;
+    rdfs:subClassOf :Benchmark ;
+    skos:prefLabel "глубинный репер"@ru ;
+    skos:prefLabel "deep benchmark"@en ;
+    skos:prefLabel "терең репер"@kk ;
+    skos:definition "репер, закладываемый до устойчивых грунтов и практически не подверженный смещениям"@ru ;
+    skos:definition "benchmark founded on stable ground and practically free from displacement"@en ;
+    dcterms:identifier "38"^^xsd:integer ;
+    rdfs:isDefinedBy doc:d06 ;
+    dcterms:source doc:d06 ;
+    skos:inScheme :GeodeticOntKZScheme ;
+    skos:editorialNote "English label and definition: authors' translation, not source-attested"@en ;
+    skos:editorialNote "Kazakh label: expert-reviewed, not source-attested"@en .
+
+###  http://ontogeo.kz/geodeticont-kz#WallBenchmark
+:WallBenchmark rdf:type owl:Class , skos:Concept ;
+    rdfs:subClassOf :Benchmark ;
+    skos:prefLabel "стенной репер"@ru ;
+    skos:prefLabel "wall benchmark"@en ;
+    skos:prefLabel "қабырға реперi"@kk ;
+    skos:definition "репер, закладываемый в стену капитального сооружения"@ru ;
+    skos:definition "benchmark set into the wall of a permanent structure"@en ;
+    dcterms:identifier "39"^^xsd:integer ;
+    rdfs:isDefinedBy doc:d06 ;
+    dcterms:source doc:d06 ;
+    skos:inScheme :GeodeticOntKZScheme ;
+    skos:editorialNote "Kazakh label: expert-reviewed, not source-attested"@en .
+
+###  http://ontogeo.kz/geodeticont-kz#WorkingBenchmark
+:WorkingBenchmark rdf:type owl:Class , skos:Concept ;
+    rdfs:subClassOf :Benchmark ;
+    skos:prefLabel "рабочий репер"@ru ;
+    skos:prefLabel "working benchmark"@en ;
+    skos:prefLabel "жұмыс реперi"@kk ;
+    skos:definition "репер, используемый для непосредственной передачи высот при производстве работ"@ru ;
+    skos:definition "benchmark used for direct transfer of heights during works"@en ;
+    dcterms:identifier "40"^^xsd:integer ;
+    rdfs:isDefinedBy doc:d06 ;
+    dcterms:source doc:d06 ;
+    skos:inScheme :GeodeticOntKZScheme ;
+    skos:editorialNote "English label and definition: authors' translation, not source-attested"@en ;
+    skos:editorialNote "Kazakh label: expert-reviewed, not source-attested"@en .
+
+###  http://ontogeo.kz/geodeticont-kz#OrientationPoint
+:OrientationPoint rdf:type owl:Class , skos:Concept ;
+    rdfs:subClassOf :ControlPoint ;
+    skos:prefLabel "ориентирный пункт"@ru ;
+    skos:prefLabel "orientation point"@en ;
+    skos:prefLabel "бағдарлық пункт"@kk ;
+    skos:definition "пункт, служащий для ориентирования направлений на геодезическом пункте"@ru ;
+    skos:definition "point used for orienting directions at a geodetic point"@en ;
+    dcterms:identifier "41"^^xsd:integer ;
+    rdfs:isDefinedBy doc:d01 ;
+    dcterms:source doc:d01 ;
+    skos:inScheme :GeodeticOntKZScheme ;
+    skos:editorialNote "English label and definition: authors' translation, not source-attested"@en ;
+    skos:editorialNote "Kazakh label: expert-reviewed, not source-attested"@en .
+
+###  http://ontogeo.kz/geodeticont-kz#TemporaryMark
+:TemporaryMark rdf:type owl:Class , skos:Concept ;
+    rdfs:subClassOf :ControlPoint ;
+    skos:prefLabel "временный знак"@ru ;
+    skos:prefLabel "temporary mark"@en ;
+    skos:prefLabel "уақытша белгі"@kk ;
+    skos:definition "знак, закрепляющий точку на срок производства работ"@ru ;
+    skos:definition "mark fixing a point for the duration of the works"@en ;
+    dcterms:identifier "42"^^xsd:integer ;
+    rdfs:isDefinedBy doc:d02 ;
+    dcterms:source doc:d02 ;
+    skos:inScheme :GeodeticOntKZScheme ;
+    skos:editorialNote "Kazakh label: expert-reviewed, not source-attested"@en .
+
+###  http://ontogeo.kz/geodeticont-kz#PointPreservation
+:PointPreservation rdf:type owl:Class , skos:Concept ;
+    rdfs:subClassOf :ControlPoint ;
+    skos:prefLabel "сохранность пункта"@ru ;
+    skos:prefLabel "point preservation"@en ;
+    dcterms:identifier "43"^^xsd:integer ;
+    skos:inScheme :GeodeticOntKZScheme ;
+    skos:editorialNote "English label and definition: authors' translation, not source-attested"@en .
+
+###  http://ontogeo.kz/geodeticont-kz#AngleMeasurement
+:AngleMeasurement rdf:type owl:Class , skos:Concept ;
+    rdfs:subClassOf :MeasurementMethod ;
+    skos:prefLabel "угловые измерения"@ru ;
+    skos:prefLabel "angle measurement"@en ;
+    skos:prefLabel "бұрыштық өлшеулер"@kk ;
+    skos:definition "измерение горизонтальных и вертикальных углов между направлениями"@ru ;
+    skos:definition "measurement of horizontal and vertical angles between directions"@en ;
+    dcterms:identifier "44"^^xsd:integer ;
+    rdfs:isDefinedBy doc:d03 ;
+    dcterms:source doc:d03 ;
+    skos:inScheme :GeodeticOntKZScheme ;
+    skos:editorialNote "English label and definition: authors' translation, not source-attested"@en ;
+    skos:editorialNote "Kazakh label: expert-reviewed, not source-attested"@en .
+
+###  http://ontogeo.kz/geodeticont-kz#LinearMeasurement
+:LinearMeasurement rdf:type owl:Class , skos:Concept ;
+    rdfs:subClassOf :MeasurementMethod ;
+    skos:prefLabel "линейные измерения"@ru ;
+    skos:prefLabel "linear measurement"@en ;
+    skos:prefLabel "сызықтық өлшеулер"@kk ;
+    skos:definition "измерение расстояний между точками"@ru ;
+    skos:definition "measurement of distances between points"@en ;
+    dcterms:identifier "45"^^xsd:integer ;
+    rdfs:isDefinedBy doc:d03 ;
+    dcterms:source doc:d03 ;
+    skos:inScheme :GeodeticOntKZScheme ;
+    skos:editorialNote "Kazakh label: expert-reviewed, not source-attested"@en .
+
+###  http://ontogeo.kz/geodeticont-kz#Levelling
+:Levelling rdf:type owl:Class , skos:Concept ;
+    rdfs:subClassOf :MeasurementMethod ;
+    skos:prefLabel "нивелирование"@ru ;
+    skos:prefLabel "levelling"@en ;
+    skos:prefLabel "нивелирлеу"@kk ;
+    skos:definition "определение превышений между точками земной поверхности"@ru ;
+    skos:definition "determination of height differences between points"@en ;
+    dcterms:identifier "46"^^xsd:integer ;
+    rdfs:isDefinedBy doc:d06 ;
+    dcterms:source doc:d06 ;
+    skos:inScheme :GeodeticOntKZScheme ;
+    skos:editorialNote "English label and definition: authors' translation, not source-attested"@en ;
+    skos:editorialNote "Kazakh label: source-attested"@en .
+
+###  http://ontogeo.kz/geodeticont-kz#GeometricLevelling
+:GeometricLevelling rdf:type owl:Class , skos:Concept ;
+    rdfs:subClassOf :Levelling ;
+    skos:prefLabel "геометрическое нивелирование"@ru ;
+    skos:prefLabel "geometric levelling"@en ;
+    skos:prefLabel "геометриялық нивелирлеу"@kk ;
+    skos:definition "нивелирование горизонтальным лучом визирования"@ru ;
+    skos:definition "levelling with a horizontal line of sight"@en ;
+    dcterms:identifier "47"^^xsd:integer ;
+    rdfs:isDefinedBy doc:d06 ;
+    dcterms:source doc:d06 ;
+    skos:inScheme :GeodeticOntKZScheme ;
+    skos:editorialNote "English label and definition: authors' translation, not source-attested"@en ;
+    skos:editorialNote "Kazakh label: expert-reviewed, not source-attested"@en .
+
+###  http://ontogeo.kz/geodeticont-kz#TrigonometricLevelling
+:TrigonometricLevelling rdf:type owl:Class , skos:Concept ;
+    rdfs:subClassOf :Levelling ;
+    skos:prefLabel "тригонометрическое нивелирование"@ru ;
+    skos:prefLabel "trigonometric levelling"@en ;
+    skos:prefLabel "тригонометриялық нивелирлеу"@kk ;
+    skos:definition "определение превышений по измеренным вертикальным углам и расстояниям"@ru ;
+    skos:definition "determination of height differences from measured vertical angles and distances"@en ;
+    dcterms:identifier "48"^^xsd:integer ;
+    rdfs:isDefinedBy doc:d06 ;
+    dcterms:source doc:d06 ;
+    skos:inScheme :GeodeticOntKZScheme ;
+    skos:editorialNote "Kazakh label: expert-reviewed, not source-attested"@en ;
+    skos:historyNote "исторический эквивалент журнала измерения зенитных расстояний; целевой термин уточняется"@ru .
+
+###  http://ontogeo.kz/geodeticont-kz#SatelliteMeasurement
+:SatelliteMeasurement rdf:type owl:Class , skos:Concept ;
+    rdfs:subClassOf :MeasurementMethod ;
+    skos:prefLabel "спутниковые измерения"@ru ;
+    skos:prefLabel "satellite measurement"@en ;
+    skos:prefLabel "серіктік өлшеулер"@kk ;
+    skos:definition "определение координат по сигналам глобальных навигационных спутниковых систем"@ru ;
+    skos:definition "determination of coordinates from GNSS signals"@en ;
+    dcterms:identifier "49"^^xsd:integer ;
+    rdfs:isDefinedBy doc:d04 ;
+    dcterms:source doc:d04 ;
+    skos:inScheme :GeodeticOntKZScheme ;
+    skos:editorialNote "English label and definition: authors' translation, not source-attested"@en ;
+    skos:editorialNote "Kazakh label: expert-reviewed, not source-attested"@en .
+
+###  http://ontogeo.kz/geodeticont-kz#RTKMethod
+:RTKMethod rdf:type owl:Class , skos:Concept ;
+    rdfs:subClassOf :SatelliteMeasurement ;
+    skos:prefLabel "метод RTK"@ru ;
+    skos:prefLabel "real-time kinematic method"@en ;
+    skos:definition "спутниковый метод определения координат в реальном времени с поправками базовой станции"@ru ;
+    skos:definition "satellite method of real-time positioning using base station corrections"@en ;
+    dcterms:identifier "50"^^xsd:integer ;
+    rdfs:isDefinedBy doc:d04 ;
+    dcterms:source doc:d04 ;
+    skos:inScheme :GeodeticOntKZScheme ;
+    skos:editorialNote "English label and definition: authors' translation, not source-attested"@en .
+
+###  http://ontogeo.kz/geodeticont-kz#StaticMethod
+:StaticMethod rdf:type owl:Class , skos:Concept ;
+    rdfs:subClassOf :SatelliteMeasurement ;
+    skos:prefLabel "статический метод"@ru ;
+    skos:prefLabel "static method"@en ;
+    skos:prefLabel "статикалық әдіс"@kk ;
+    skos:definition "спутниковый метод с длительным одновременным наблюдением на двух и более пунктах"@ru ;
+    skos:definition "satellite method with prolonged simultaneous observation at two or more points"@en ;
+    dcterms:identifier "51"^^xsd:integer ;
+    rdfs:isDefinedBy doc:d04 ;
+    dcterms:source doc:d04 ;
+    skos:inScheme :GeodeticOntKZScheme ;
+    skos:editorialNote "Kazakh label: expert-reviewed, not source-attested"@en .
+
+###  http://ontogeo.kz/geodeticont-kz#TacheometricSurvey
+:TacheometricSurvey rdf:type owl:Class , skos:Concept ;
+    rdfs:subClassOf :MeasurementMethod ;
+    skos:prefLabel "тахеометрическая съёмка"@ru ;
+    skos:prefLabel "tacheometric survey"@en ;
+    skos:prefLabel "тахеометриялық түсіру"@kk ;
+    skos:definition "съёмка, при которой плановое и высотное положение точек определяется одновременно"@ru ;
+    skos:definition "survey in which planimetric and height positions are determined simultaneously"@en ;
+    dcterms:identifier "52"^^xsd:integer ;
+    rdfs:isDefinedBy doc:d05 ;
+    dcterms:source doc:d05 ;
+    skos:inScheme :GeodeticOntKZScheme ;
+    skos:editorialNote "English label and definition: authors' translation, not source-attested"@en ;
+    skos:editorialNote "Kazakh label: expert-reviewed, not source-attested"@en ;
+    skos:historyNote "журнал тахеометрической съёмки не имеет канонического эквивалента среди 119 терминов [VERIFY target]"@ru .
+
+###  http://ontogeo.kz/geodeticont-kz#LaserScanning
+:LaserScanning rdf:type owl:Class , skos:Concept ;
+    rdfs:subClassOf :MeasurementMethod ;
+    skos:prefLabel "лазерное сканирование"@ru ;
+    skos:prefLabel "laser scanning"@en ;
+    skos:prefLabel "лазерлік сканерлеу"@kk ;
+    skos:definition "получение облака точек поверхности объекта дальномерным сканирующим устройством"@ru ;
+    skos:definition "acquisition of a point cloud of an object surface by a scanning rangefinder"@en ;
+    dcterms:identifier "53"^^xsd:integer ;
+    rdfs:isDefinedBy doc:d07 ;
+    dcterms:source doc:d07 ;
+    skos:inScheme :GeodeticOntKZScheme ;
+    skos:editorialNote "English label and definition: authors' translation, not source-attested"@en ;
+    skos:editorialNote "Kazakh label: expert-reviewed, not source-attested"@en .
+
+###  http://ontogeo.kz/geodeticont-kz#PhotogrammetricMethod
+:PhotogrammetricMethod rdf:type owl:Class , skos:Concept ;
+    rdfs:subClassOf :MeasurementMethod ;
+    skos:prefLabel "фотограмметрический метод"@ru ;
+    skos:prefLabel "photogrammetric method"@en ;
+    skos:prefLabel "фотограмметриялық әдіс"@kk ;
+    skos:definition "определение формы и положения объектов по их изображениям"@ru ;
+    skos:definition "determination of the shape and position of objects from their images"@en ;
+    dcterms:identifier "54"^^xsd:integer ;
+    rdfs:isDefinedBy doc:d07 ;
+    dcterms:source doc:d07 ;
+    skos:inScheme :GeodeticOntKZScheme ;
+    skos:editorialNote "Kazakh label: expert-reviewed, not source-attested"@en .
+
+###  http://ontogeo.kz/geodeticont-kz#AerialSurvey
+:AerialSurvey rdf:type owl:Class , skos:Concept ;
+    rdfs:subClassOf :PhotogrammetricMethod ;
+    skos:prefLabel "аэрофотосъёмка"@ru ;
+    skos:prefLabel "aerial survey"@en ;
+    skos:prefLabel "аэротүсіру"@kk ;
+    skos:definition "фотографирование местности с воздушного носителя для составления планов"@ru ;
+    skos:definition "photographing of terrain from an airborne carrier for map production"@en ;
+    dcterms:identifier "55"^^xsd:integer ;
+    rdfs:isDefinedBy doc:d07 ;
+    dcterms:source doc:d07 ;
+    skos:inScheme :GeodeticOntKZScheme ;
+    skos:editorialNote "English label and definition: authors' translation, not source-attested"@en ;
+    skos:editorialNote "Kazakh label: expert-reviewed, not source-attested"@en .
+
+###  http://ontogeo.kz/geodeticont-kz#UAVSurvey
+:UAVSurvey rdf:type owl:Class , skos:Concept ;
+    rdfs:subClassOf :AerialSurvey ;
+    skos:prefLabel "съёмка с БПЛА"@ru ;
+    skos:prefLabel "UAV survey"@en ;
+    skos:definition "аэросъёмка, выполняемая беспилотным воздушным судном"@ru ;
+    skos:definition "aerial survey performed by an unmanned aerial vehicle"@en ;
+    dcterms:identifier "56"^^xsd:integer ;
+    rdfs:isDefinedBy doc:d07 ;
+    dcterms:source doc:d07 ;
+    skos:inScheme :GeodeticOntKZScheme ;
+    skos:editorialNote "English label and definition: authors' translation, not source-attested"@en .
+
+###  http://ontogeo.kz/geodeticont-kz#ObservationSeries
+:ObservationSeries rdf:type owl:Class , skos:Concept ;
+    rdfs:subClassOf :Measurement ;
+    skos:prefLabel "приём измерений"@ru ;
+    skos:prefLabel "observation series"@en ;
+    skos:prefLabel "өлшеу қабылдауы"@kk ;
+    skos:definition "совокупность измерений, выполняемых в установленной последовательности"@ru ;
+    skos:definition "set of measurements performed in a prescribed sequence"@en ;
+    dcterms:identifier "57"^^xsd:integer ;
+    rdfs:isDefinedBy doc:d03 ;
+    dcterms:source doc:d03 ;
+    skos:inScheme :GeodeticOntKZScheme ;
+    skos:editorialNote "Kazakh label: expert-reviewed, not source-attested"@en .
+
+###  http://ontogeo.kz/geodeticont-kz#RedundantMeasurement
+:RedundantMeasurement rdf:type owl:Class , skos:Concept ;
+    rdfs:subClassOf :Measurement ;
+    skos:prefLabel "избыточное измерение"@ru ;
+    skos:prefLabel "redundant measurement"@en ;
+    skos:prefLabel "артық өлшеу"@kk ;
+    skos:definition "измерение сверх минимально необходимого для определения искомых величин"@ru ;
+    skos:definition "measurement in excess of the minimum required to determine the unknowns"@en ;
+    dcterms:identifier "58"^^xsd:integer ;
+    rdfs:isDefinedBy doc:d03 ;
+    dcterms:source doc:d03 ;
+    skos:inScheme :GeodeticOntKZScheme ;
+    skos:editorialNote "English label and definition: authors' translation, not source-attested"@en ;
+    skos:editorialNote "Kazakh label: expert-reviewed, not source-attested"@en .
+
+###  http://ontogeo.kz/geodeticont-kz#MeasurementSeriesMean
+:MeasurementSeriesMean rdf:type owl:Class , skos:Concept ;
+    rdfs:subClassOf :Measurement ;
+    skos:prefLabel "среднее из приёмов"@ru ;
+    skos:prefLabel "mean of series"@en ;
+    dcterms:identifier "59"^^xsd:integer ;
+    skos:inScheme :GeodeticOntKZScheme ;
+    skos:editorialNote "English label and definition: authors' translation, not source-attested"@en .
+
+###  http://ontogeo.kz/geodeticont-kz#GroundPenetratingRadar
+:GroundPenetratingRadar rdf:type owl:Class , skos:Concept ;
+    rdfs:subClassOf :MeasurementMethod ;
+    skos:prefLabel "георадарное обследование"@ru ;
+    skos:prefLabel "ground penetrating radar survey"@en ;
+    skos:prefLabel "георадарлық зерттеу"@kk ;
+    skos:definition "неразрушающее обследование конструкции электромагнитным зондированием"@ru ;
+    skos:definition "non-destructive investigation of a structure by electromagnetic sounding"@en ;
+    dcterms:identifier "60"^^xsd:integer ;
+    rdfs:isDefinedBy doc:d08 ;
+    dcterms:source doc:d08 ;
+    skos:inScheme :GeodeticOntKZScheme ;
+    skos:editorialNote "Kazakh label: expert-reviewed, not source-attested"@en .
+
+###  http://ontogeo.kz/geodeticont-kz#SettingOut
+:SettingOut rdf:type owl:Class , skos:Concept ;
+    rdfs:subClassOf :SettingOutWork ;
+    skos:prefLabel "разбивочные работы"@ru ;
+    skos:prefLabel "setting out"@en ;
+    skos:prefLabel "бөлу жұмыстары"@kk ;
+    skos:definition "перенесение в натуру проектного положения осей и точек сооружения"@ru ;
+    skos:definition "transfer of the design position of axes and points of a structure to the ground"@en ;
+    dcterms:identifier "61"^^xsd:integer ;
+    rdfs:isDefinedBy doc:d02 ;
+    dcterms:source doc:d02 ;
+    skos:inScheme :GeodeticOntKZScheme ;
+    skos:editorialNote "English label and definition: authors' translation, not source-attested"@en ;
+    skos:editorialNote "Kazakh label: expert-reviewed, not source-attested"@en .
+
+###  http://ontogeo.kz/geodeticont-kz#MainAxes
+:MainAxes rdf:type owl:Class , skos:Concept ;
+    rdfs:subClassOf :ConstructionObject ;
+    skos:prefLabel "основные оси сооружения"@ru ;
+    skos:prefLabel "main axes of a structure"@en ;
+    skos:prefLabel "ғимараттың негізгі осьтері"@kk ;
+    skos:definition "оси, определяющие положение и ориентирование сооружения на местности"@ru ;
+    skos:definition "axes defining the position and orientation of a structure on the ground"@en ;
+    dcterms:identifier "62"^^xsd:integer ;
+    rdfs:isDefinedBy doc:d02 ;
+    dcterms:source doc:d02 ;
+    skos:inScheme :GeodeticOntKZScheme ;
+    skos:editorialNote "English label and definition: authors' translation, not source-attested"@en ;
+    skos:editorialNote "Kazakh label: expert-reviewed, not source-attested"@en .
+
+###  http://ontogeo.kz/geodeticont-kz#AsBuiltSurveying
+:AsBuiltSurveying rdf:type owl:Class , skos:Concept ;
+    rdfs:subClassOf :AsBuiltSurvey ;
+    skos:prefLabel "исполнительная съёмка"@ru ;
+    skos:prefLabel "as-built survey"@en ;
+    skos:prefLabel "атқарушылық түсіру"@kk ;
+    skos:definition "съёмка, выполняемая для определения фактического положения построенных элементов"@ru ;
+    skos:definition "survey performed to determine the actual position of constructed elements"@en ;
+    dcterms:identifier "63"^^xsd:integer ;
+    rdfs:isDefinedBy doc:d02 ;
+    dcterms:source doc:d02 ;
+    skos:inScheme :GeodeticOntKZScheme ;
+    skos:editorialNote "Kazakh label: expert-reviewed, not source-attested"@en .
+
+###  http://ontogeo.kz/geodeticont-kz#AsBuiltDrawing
+:AsBuiltDrawing rdf:type owl:Class , skos:Concept ;
+    rdfs:subClassOf :TechnicalReport ;
+    skos:prefLabel "исполнительная геодезическая схема"@ru ;
+    skos:prefLabel "as-built geodetic drawing"@en ;
+    skos:prefLabel "атқарушылық геодезиялық сызба"@kk ;
+    skos:definition "документ, отображающий фактическое положение элементов и отклонения от проекта"@ru ;
+    skos:definition "document showing the actual position of elements and deviations from the design"@en ;
+    dcterms:identifier "64"^^xsd:integer ;
+    rdfs:isDefinedBy doc:d02 ;
+    dcterms:source doc:d02 ;
+    skos:inScheme :GeodeticOntKZScheme ;
+    skos:editorialNote "English label and definition: authors' translation, not source-attested"@en ;
+    skos:editorialNote "Kazakh label: expert-reviewed, not source-attested"@en .
+
+###  http://ontogeo.kz/geodeticont-kz#AsBuiltSurveyOfUtilities
+:AsBuiltSurveyOfUtilities rdf:type owl:Class , skos:Concept ;
+    rdfs:subClassOf :AsBuiltSurvey ;
+    skos:prefLabel "исполнительная съёмка инженерных сетей"@ru ;
+    skos:prefLabel "as-built survey of utilities"@en ;
+    skos:definition "съёмка проложенных инженерных сетей до их засыпки"@ru ;
+    skos:definition "survey of laid utility networks before backfilling"@en ;
+    dcterms:identifier "65"^^xsd:integer ;
+    rdfs:isDefinedBy doc:d09 ;
+    dcterms:source doc:d09 ;
+    skos:inScheme :GeodeticOntKZScheme ;
+    skos:editorialNote "English label and definition: authors' translation, not source-attested"@en .
+
+###  http://ontogeo.kz/geodeticont-kz#ErectionHorizon
+:ErectionHorizon rdf:type owl:Class , skos:Concept ;
+    rdfs:subClassOf :ConstructionObject ;
+    skos:prefLabel "монтажный горизонт"@ru ;
+    skos:prefLabel "erection level"@en ;
+    skos:prefLabel "монтаждық горизонт"@kk ;
+    skos:definition "условная горизонтальная плоскость, от которой ведётся монтаж конструкций"@ru ;
+    skos:definition "conventional horizontal plane from which structures are erected"@en ;
+    dcterms:identifier "66"^^xsd:integer ;
+    rdfs:isDefinedBy doc:d02 ;
+    dcterms:source doc:d02 ;
+    skos:inScheme :GeodeticOntKZScheme ;
+    skos:editorialNote "Kazakh label: expert-reviewed, not source-attested"@en .
+
+###  http://ontogeo.kz/geodeticont-kz#ControlSurvey
+:ControlSurvey rdf:type owl:Class , skos:Concept ;
+    rdfs:subClassOf :GeodeticActivity ;
+    skos:prefLabel "контрольные измерения"@ru ;
+    skos:prefLabel "control survey"@en ;
+    skos:prefLabel "бақылау өлшеулері"@kk ;
+    skos:definition "измерения, выполняемые для проверки результатов ранее выполненных работ"@ru ;
+    skos:definition "measurements performed to check the results of previously executed works"@en ;
+    dcterms:identifier "67"^^xsd:integer ;
+    rdfs:isDefinedBy doc:d02 ;
+    dcterms:source doc:d02 ;
+    skos:inScheme :GeodeticOntKZScheme ;
+    skos:editorialNote "English label and definition: authors' translation, not source-attested"@en ;
+    skos:editorialNote "Kazakh label: expert-reviewed, not source-attested"@en .
+
+###  http://ontogeo.kz/geodeticont-kz#SurveyCompleteness
+:SurveyCompleteness rdf:type owl:Class , skos:Concept ;
+    rdfs:subClassOf :AccuracyRequirement ;
+    skos:prefLabel "полнота исполнительной съёмки"@ru ;
+    skos:prefLabel "completeness of as-built survey"@en ;
+    dcterms:identifier "68"^^xsd:integer ;
+    skos:inScheme :GeodeticOntKZScheme ;
+    skos:editorialNote "English label and definition: authors' translation, not source-attested"@en .
+
+###  http://ontogeo.kz/geodeticont-kz#DeformationObservation
+:DeformationObservation rdf:type owl:Class , skos:Concept ;
+    rdfs:subClassOf :DeformationMonitoring ;
+    skos:prefLabel "наблюдения за деформациями"@ru ;
+    skos:prefLabel "deformation observation"@en ;
+    skos:prefLabel "деформацияларды бақылау"@kk ;
+    skos:definition "периодические измерения, выполняемые для определения изменений положения сооружения"@ru ;
+    skos:definition "periodic measurements performed to determine changes in the position of a structure"@en ;
+    dcterms:identifier "69"^^xsd:integer ;
+    rdfs:isDefinedBy doc:d10 ;
+    dcterms:source doc:d10 ;
+    skos:inScheme :GeodeticOntKZScheme ;
+    skos:editorialNote "Kazakh label: expert-reviewed, not source-attested"@en .
+
+###  http://ontogeo.kz/geodeticont-kz#Settlement
+:Settlement rdf:type owl:Class , skos:Concept ;
+    rdfs:subClassOf :Deviation ;
+    skos:prefLabel "осадка сооружения"@ru ;
+    skos:prefLabel "settlement of a structure"@en ;
+    skos:prefLabel "ғимарат отыруы"@kk ;
+    skos:definition "вертикальное перемещение сооружения, вызванное деформацией основания"@ru ;
+    skos:definition "vertical displacement of a structure caused by deformation of its foundation soil"@en ;
+    dcterms:identifier "70"^^xsd:integer ;
+    rdfs:isDefinedBy doc:d10 ;
+    dcterms:source doc:d10 ;
+    skos:inScheme :GeodeticOntKZScheme ;
+    skos:editorialNote "English label and definition: authors' translation, not source-attested"@en ;
+    skos:editorialNote "Kazakh label: expert-reviewed, not source-attested"@en ;
+    :canBeFormalizedAsRule false .
+
+###  http://ontogeo.kz/geodeticont-kz#Tilt
+:Tilt rdf:type owl:Class , skos:Concept ;
+    rdfs:subClassOf :Deviation ;
+    skos:prefLabel "крен сооружения"@ru ;
+    skos:prefLabel "tilt of a structure"@en ;
+    skos:prefLabel "ғимараттың еңкеюі"@kk ;
+    skos:definition "отклонение оси сооружения от вертикали"@ru ;
+    skos:definition "deviation of the axis of a structure from the vertical"@en ;
+    dcterms:identifier "71"^^xsd:integer ;
+    rdfs:isDefinedBy doc:d10 ;
+    dcterms:source doc:d10 ;
+    skos:inScheme :GeodeticOntKZScheme ;
+    skos:editorialNote "English label and definition: authors' translation, not source-attested"@en ;
+    skos:editorialNote "Kazakh label: expert-reviewed, not source-attested"@en ;
+    :canBeFormalizedAsRule false .
+
+###  http://ontogeo.kz/geodeticont-kz#ObservationCycle
+:ObservationCycle rdf:type owl:Class , skos:Concept ;
+    rdfs:subClassOf :DeformationMonitoring ;
+    skos:prefLabel "цикл наблюдений"@ru ;
+    skos:prefLabel "observation cycle"@en ;
+    skos:prefLabel "бақылау циклі"@kk ;
+    skos:definition "совокупность измерений, выполненных в один приём наблюдений за деформациями"@ru ;
+    skos:definition "set of measurements performed in one epoch of deformation observations"@en ;
+    dcterms:identifier "72"^^xsd:integer ;
+    rdfs:isDefinedBy doc:d10 ;
+    dcterms:source doc:d10 ;
+    skos:inScheme :GeodeticOntKZScheme ;
+    skos:editorialNote "Kazakh label: expert-reviewed, not source-attested"@en .
+
+###  http://ontogeo.kz/geodeticont-kz#Theodolite
+:Theodolite rdf:type owl:Class , skos:Concept ;
+    rdfs:subClassOf :Instrument ;
+    skos:prefLabel "теодолит"@ru ;
+    skos:prefLabel "theodolite"@en ;
+    skos:prefLabel "теодолит"@kk ;
+    skos:definition "прибор для измерения горизонтальных и вертикальных углов"@ru ;
+    skos:definition "instrument for measuring horizontal and vertical angles"@en ;
+    dcterms:identifier "73"^^xsd:integer ;
+    rdfs:isDefinedBy doc:d03 ;
+    dcterms:source doc:d03 ;
+    skos:inScheme :GeodeticOntKZScheme ;
+    skos:editorialNote "English label and definition: authors' translation, not source-attested"@en ;
+    skos:editorialNote "Kazakh label: source-attested"@en .
+
+###  http://ontogeo.kz/geodeticont-kz#Level
+:Level rdf:type owl:Class , skos:Concept ;
+    rdfs:subClassOf :Instrument ;
+    skos:prefLabel "нивелир"@ru ;
+    skos:prefLabel "level"@en ;
+    skos:prefLabel "нивелир"@kk ;
+    skos:definition "прибор для измерения превышений горизонтальным лучом визирования"@ru ;
+    skos:definition "instrument for measuring height differences with a horizontal line of sight"@en ;
+    dcterms:identifier "74"^^xsd:integer ;
+    rdfs:isDefinedBy doc:d06 ;
+    dcterms:source doc:d06 ;
+    skos:inScheme :GeodeticOntKZScheme ;
+    skos:editorialNote "English label and definition: authors' translation, not source-attested"@en ;
+    skos:editorialNote "Kazakh label: expert-reviewed, not source-attested"@en .
+
+###  http://ontogeo.kz/geodeticont-kz#TotalStation
+:TotalStation rdf:type owl:Class , skos:Concept ;
+    rdfs:subClassOf :Instrument ;
+    skos:prefLabel "электронный тахеометр"@ru ;
+    skos:prefLabel "total station"@en ;
+    skos:prefLabel "электрондық тахеометр"@kk ;
+    skos:definition "прибор, объединяющий измерение углов и расстояний с регистрацией результатов"@ru ;
+    skos:definition "instrument combining angle and distance measurement with data recording"@en ;
+    dcterms:identifier "75"^^xsd:integer ;
+    rdfs:isDefinedBy doc:d03 ;
+    dcterms:source doc:d03 ;
+    skos:inScheme :GeodeticOntKZScheme ;
+    skos:editorialNote "Kazakh label: expert-reviewed, not source-attested"@en .
+
+###  http://ontogeo.kz/geodeticont-kz#GNSSReceiver
+:GNSSReceiver rdf:type owl:Class , skos:Concept ;
+    rdfs:subClassOf :Instrument ;
+    skos:prefLabel "спутниковый приёмник"@ru ;
+    skos:prefLabel "GNSS receiver"@en ;
+    skos:prefLabel "серіктік қабылдағыш"@kk ;
+    skos:definition "прибор для приёма и обработки сигналов навигационных спутников"@ru ;
+    skos:definition "device for receiving and processing navigation satellite signals"@en ;
+    dcterms:identifier "76"^^xsd:integer ;
+    rdfs:isDefinedBy doc:d04 ;
+    dcterms:source doc:d04 ;
+    skos:inScheme :GeodeticOntKZScheme ;
+    skos:editorialNote "English label and definition: authors' translation, not source-attested"@en ;
+    skos:editorialNote "Kazakh label: expert-reviewed, not source-attested"@en .
+
+###  http://ontogeo.kz/geodeticont-kz#LevellingStaff
+:LevellingStaff rdf:type owl:Class , skos:Concept ;
+    rdfs:subClassOf :Instrument ;
+    skos:prefLabel "нивелирная рейка"@ru ;
+    skos:prefLabel "levelling staff"@en ;
+    skos:prefLabel "нивелир рейкасы"@kk ;
+    skos:definition "мерное приспособление со шкалой для отсчётов при нивелировании"@ru ;
+    skos:definition "graduated measuring device for taking readings during levelling"@en ;
+    dcterms:identifier "77"^^xsd:integer ;
+    rdfs:isDefinedBy doc:d06 ;
+    dcterms:source doc:d06 ;
+    skos:inScheme :GeodeticOntKZScheme ;
+    skos:editorialNote "English label and definition: authors' translation, not source-attested"@en ;
+    skos:editorialNote "Kazakh label: expert-reviewed, not source-attested"@en .
+
+###  http://ontogeo.kz/geodeticont-kz#InstrumentCalibration
+:InstrumentCalibration rdf:type owl:Class , skos:Concept ;
+    rdfs:subClassOf :GeodeticActivity ;
+    skos:prefLabel "поверка прибора"@ru ;
+    skos:prefLabel "instrument calibration"@en ;
+    dcterms:identifier "78"^^xsd:integer ;
+    skos:inScheme :GeodeticOntKZScheme .
+
+###  http://ontogeo.kz/geodeticont-kz#ActualDeviation
+:ActualDeviation rdf:type owl:Class , skos:Concept ;
+    rdfs:subClassOf :Deviation ;
+    skos:prefLabel "действительное отклонение геометрического параметра"@ru ;
+    skos:prefLabel "actual deviation of a geometric parameter"@en ;
+    skos:prefLabel "геометриялық параметрдің нақты ауытқуы"@kk ;
+    skos:altLabel "фактическое отклонение геометрического параметра"@ru ;
+    skos:definition "алгебраическая разность между действительным и номинальным значениями геометрического параметра"@ru ;
+    skos:definition "algebraic difference between the actual and the nominal value of a geometric parameter"@en ;
+    dcterms:identifier "79"^^xsd:integer ;
+    rdfs:isDefinedBy doc:d02 ;
+    dcterms:source doc:d02 ;
+    skos:inScheme :GeodeticOntKZScheme ;
+    skos:editorialNote "English label and definition: authors' translation, not source-attested"@en ;
+    skos:editorialNote "Kazakh label: expert-reviewed, not source-attested"@en ;
+    skos:changeNote "merged duplicate entry"@en .
+
+###  http://ontogeo.kz/geodeticont-kz#LimitDeviation
+:LimitDeviation rdf:type owl:Class , skos:Concept ;
+    rdfs:subClassOf :Tolerance ;
+    skos:prefLabel "предельное отклонение геометрического параметра"@ru ;
+    skos:prefLabel "limit deviation of a geometric parameter"@en ;
+    skos:prefLabel "геометриялық параметрдің шектік ауытқуы"@kk ;
+    skos:definition "алгебраическая разность между наибольшим предельным и номинальным значениями геометрического параметра"@ru ;
+    skos:definition "algebraic difference between the maximum limit and the nominal value of a geometric parameter"@en ;
+    dcterms:identifier "80"^^xsd:integer ;
+    rdfs:isDefinedBy doc:d02 ;
+    dcterms:source doc:d02 ;
+    skos:inScheme :GeodeticOntKZScheme ;
+    skos:editorialNote "English label and definition: authors' translation, not source-attested"@en ;
+    skos:editorialNote "Kazakh label: expert-reviewed, not source-attested"@en ;
+    :canBeFormalizedAsRule true .
+
+###  http://ontogeo.kz/geodeticont-kz#Misclosure
+:Misclosure rdf:type owl:Class , skos:Concept ;
+    rdfs:subClassOf :Deviation ;
+    skos:prefLabel "невязка"@ru ;
+    skos:prefLabel "misclosure"@en ;
+    skos:prefLabel "байланыспау"@kk ;
+    skos:definition "разность между полученным и теоретическим значениями измеренной величины"@ru ;
+    skos:definition "difference between the obtained and the theoretical value of a measured quantity"@en ;
+    dcterms:identifier "81"^^xsd:integer ;
+    rdfs:isDefinedBy doc:d03 ;
+    dcterms:source doc:d03 ;
+    skos:inScheme :GeodeticOntKZScheme ;
+    skos:editorialNote "Kazakh label: source-attested"@en ;
+    :canBeFormalizedAsRule false .
+
+###  http://ontogeo.kz/geodeticont-kz#AccuracyClass
+:AccuracyClass rdf:type owl:Class , skos:Concept ;
+    rdfs:subClassOf :AccuracyRequirement ;
+    skos:prefLabel "класс точности"@ru ;
+    skos:prefLabel "accuracy class"@en ;
+    skos:prefLabel "дәлдік класы"@kk ;
+    skos:definition "характеристика, определяющая нормируемые пределы погрешности измерений"@ru ;
+    skos:definition "characteristic defining the permissible limits of measurement error"@en ;
+    dcterms:identifier "82"^^xsd:integer ;
+    rdfs:isDefinedBy doc:d01 ;
+    dcterms:source doc:d01 ;
+    skos:inScheme :GeodeticOntKZScheme ;
+    skos:editorialNote "English label and definition: authors' translation, not source-attested"@en ;
+    skos:editorialNote "Kazakh label: source-attested"@en ;
+    :canBeFormalizedAsRule false .
+
+###  http://ontogeo.kz/geodeticont-kz#TopographicSurvey
+:TopographicSurvey rdf:type owl:Class , skos:Concept ;
+    rdfs:subClassOf :GeodeticWork ;
+    skos:prefLabel "топографическая съёмка"@ru ;
+    skos:prefLabel "topographic survey"@en ;
+    skos:prefLabel "топографиялық түсіру"@kk ;
+    skos:definition "комплекс работ по определению положения объектов местности для составления плана"@ru ;
+    skos:definition "set of works determining the position of terrain features for map production"@en ;
+    dcterms:identifier "83"^^xsd:integer ;
+    rdfs:isDefinedBy doc:d05 ;
+    dcterms:source doc:d05 ;
+    skos:inScheme :GeodeticOntKZScheme ;
+    skos:editorialNote "English label and definition: authors' translation, not source-attested"@en ;
+    skos:editorialNote "Kazakh label: expert-reviewed, not source-attested"@en .
+
+###  http://ontogeo.kz/geodeticont-kz#TopographicPlan
+:TopographicPlan rdf:type owl:Class , skos:Concept ;
+    rdfs:subClassOf :CartographicProduct ;
+    skos:prefLabel "топографический план"@ru ;
+    skos:prefLabel "topographic plan"@en ;
+    skos:prefLabel "топографиялық жоспар"@kk ;
+    skos:altLabel "план местности"@ru ;
+    skos:definition "картографическое изображение участка местности в крупном масштабе"@ru ;
+    skos:definition "large-scale cartographic representation of a terrain area"@en ;
+    dcterms:identifier "84"^^xsd:integer ;
+    rdfs:isDefinedBy doc:d05 ;
+    dcterms:source doc:d05 ;
+    skos:inScheme :GeodeticOntKZScheme ;
+    skos:editorialNote "Kazakh label: expert-reviewed, not source-attested"@en ;
+    skos:changeNote "merged duplicate entry"@en .
+
+###  http://ontogeo.kz/geodeticont-kz#TopographicMap
+:TopographicMap rdf:type owl:Class , skos:Concept ;
+    rdfs:subClassOf :CartographicProduct ;
+    skos:prefLabel "топографическая карта"@ru ;
+    skos:prefLabel "topographic map"@en ;
+    skos:prefLabel "топографиялық карта"@kk ;
+    skos:definition "картографическое изображение местности с отображением рельефа и объектов"@ru ;
+    skos:definition "cartographic representation of terrain showing relief and features"@en ;
+    dcterms:identifier "85"^^xsd:integer ;
+    rdfs:isDefinedBy doc:d05 ;
+    dcterms:source doc:d05 ;
+    skos:inScheme :GeodeticOntKZScheme ;
+    skos:editorialNote "English label and definition: authors' translation, not source-attested"@en ;
+    skos:editorialNote "Kazakh label: source-attested"@en .
+
+###  http://ontogeo.kz/geodeticont-kz#MapScale
+:MapScale rdf:type owl:Class , skos:Concept ;
+    rdfs:subClassOf :CartographicProduct ;
+    skos:prefLabel "масштаб плана"@ru ;
+    skos:prefLabel "map scale"@en ;
+    skos:prefLabel "жоспар масштабы"@kk ;
+    skos:definition "отношение длины отрезка на плане к соответствующей длине на местности"@ru ;
+    skos:definition "ratio of a length on the plan to the corresponding length on the ground"@en ;
+    dcterms:identifier "86"^^xsd:integer ;
+    rdfs:isDefinedBy doc:d05 ;
+    dcterms:source doc:d05 ;
+    skos:inScheme :GeodeticOntKZScheme ;
+    skos:editorialNote "English label and definition: authors' translation, not source-attested"@en ;
+    skos:editorialNote "Kazakh label: expert-reviewed, not source-attested"@en .
+
+###  http://ontogeo.kz/geodeticont-kz#ContourInterval
+:ContourInterval rdf:type owl:Class , skos:Concept ;
+    rdfs:subClassOf :CartographicProduct ;
+    skos:prefLabel "высота сечения рельефа"@ru ;
+    skos:prefLabel "contour interval"@en ;
+    skos:prefLabel "бедер қимасының биіктігі"@kk ;
+    skos:definition "разность высот смежных горизонталей на плане"@ru ;
+    skos:definition "height difference between adjacent contour lines on a plan"@en ;
+    dcterms:identifier "87"^^xsd:integer ;
+    rdfs:isDefinedBy doc:d05 ;
+    dcterms:source doc:d05 ;
+    skos:inScheme :GeodeticOntKZScheme ;
+    skos:editorialNote "Kazakh label: expert-reviewed, not source-attested"@en .
+
+###  http://ontogeo.kz/geodeticont-kz#Contour
+:Contour rdf:type owl:Class , skos:Concept ;
+    rdfs:subClassOf :CartographicProduct ;
+    skos:prefLabel "горизонталь"@ru ;
+    skos:prefLabel "contour line"@en ;
+    skos:prefLabel "горизонталь"@kk ;
+    skos:definition "линия на плане, соединяющая точки с одинаковой высотой"@ru ;
+    skos:definition "line on a plan connecting points of equal height"@en ;
+    dcterms:identifier "88"^^xsd:integer ;
+    rdfs:isDefinedBy doc:d05 ;
+    dcterms:source doc:d05 ;
+    skos:inScheme :GeodeticOntKZScheme ;
+    skos:editorialNote "English label and definition: authors' translation, not source-attested"@en ;
+    skos:editorialNote "Kazakh label: expert-reviewed, not source-attested"@en .
+
+###  http://ontogeo.kz/geodeticont-kz#ReliefRepresentation
+:ReliefRepresentation rdf:type owl:Class , skos:Concept ;
+    rdfs:subClassOf :CartographicProduct ;
+    skos:prefLabel "изображение рельефа"@ru ;
+    skos:prefLabel "relief representation"@en ;
+    skos:prefLabel "бедерді бейнелеу"@kk ;
+    skos:definition "способ передачи форм земной поверхности на плане или карте"@ru ;
+    skos:definition "method of depicting landforms on a plan or map"@en ;
+    dcterms:identifier "89"^^xsd:integer ;
+    rdfs:isDefinedBy doc:d05 ;
+    dcterms:source doc:d05 ;
+    skos:inScheme :GeodeticOntKZScheme ;
+    skos:editorialNote "English label and definition: authors' translation, not source-attested"@en ;
+    skos:editorialNote "Kazakh label: expert-reviewed, not source-attested"@en .
+
+###  http://ontogeo.kz/geodeticont-kz#SituationDetail
+:SituationDetail rdf:type owl:Class , skos:Concept ;
+    rdfs:subClassOf :CartographicProduct ;
+    skos:prefLabel "контур ситуации"@ru ;
+    skos:prefLabel "situation detail"@en ;
+    skos:definition "элемент местности, отображаемый на плане замкнутой или незамкнутой линией"@ru ;
+    skos:definition "terrain feature depicted on a plan by a closed or open line"@en ;
+    dcterms:identifier "90"^^xsd:integer ;
+    rdfs:isDefinedBy doc:d05 ;
+    dcterms:source doc:d05 ;
+    skos:inScheme :GeodeticOntKZScheme .
+
+###  http://ontogeo.kz/geodeticont-kz#SurveyScaleAccuracy
+:SurveyScaleAccuracy rdf:type owl:Class , skos:Concept ;
+    rdfs:subClassOf :AccuracyRequirement ;
+    skos:prefLabel "точность масштаба"@ru ;
+    skos:prefLabel "scale accuracy"@en ;
+    dcterms:identifier "91"^^xsd:integer ;
+    skos:inScheme :GeodeticOntKZScheme ;
+    skos:editorialNote "English label and definition: authors' translation, not source-attested"@en .
+
+###  http://ontogeo.kz/geodeticont-kz#OrthoPhotoMap
+:OrthoPhotoMap rdf:type owl:Class , skos:Concept ;
+    rdfs:subClassOf :CartographicProduct ;
+    skos:prefLabel "ортофотоплан"@ru ;
+    skos:prefLabel "orthophoto map"@en ;
+    skos:prefLabel "ортофотожоспар"@kk ;
+    skos:definition "план, составленный по трансформированным аэрофотоснимкам"@ru ;
+    skos:definition "plan compiled from rectified aerial photographs"@en ;
+    dcterms:identifier "92"^^xsd:integer ;
+    rdfs:isDefinedBy doc:d07 ;
+    dcterms:source doc:d07 ;
+    skos:inScheme :GeodeticOntKZScheme ;
+    skos:editorialNote "English label and definition: authors' translation, not source-attested"@en ;
+    skos:editorialNote "Kazakh label: expert-reviewed, not source-attested"@en .
+
+###  http://ontogeo.kz/geodeticont-kz#DigitalTerrainModel
+:DigitalTerrainModel rdf:type owl:Class , skos:Concept ;
+    rdfs:subClassOf :DigitalCartographicData ;
+    skos:prefLabel "цифровая модель рельефа"@ru ;
+    skos:prefLabel "digital terrain model"@en ;
+    skos:prefLabel "бедердің сандық моделі"@kk ;
+    skos:definition "цифровое представление поверхности земли набором высотных отметок"@ru ;
+    skos:definition "digital representation of the ground surface by a set of elevations"@en ;
+    dcterms:identifier "93"^^xsd:integer ;
+    rdfs:isDefinedBy doc:d11 ;
+    dcterms:source doc:d11 ;
+    skos:inScheme :GeodeticOntKZScheme ;
+    skos:editorialNote "Kazakh label: expert-reviewed, not source-attested"@en .
+
+###  http://ontogeo.kz/geodeticont-kz#UndergroundUtility
+:UndergroundUtility rdf:type owl:Class , skos:Concept ;
+    rdfs:subClassOf :ConstructionObject ;
+    skos:prefLabel "подземная инженерная сеть"@ru ;
+    skos:prefLabel "underground utility"@en ;
+    skos:prefLabel "жерасты инженерлік желісі"@kk ;
+    skos:definition "инженерная коммуникация, проложенная ниже поверхности земли"@ru ;
+    skos:definition "utility line laid below the ground surface"@en ;
+    dcterms:identifier "94"^^xsd:integer ;
+    rdfs:isDefinedBy doc:d09 ;
+    dcterms:source doc:d09 ;
+    skos:inScheme :GeodeticOntKZScheme ;
+    skos:editorialNote "English label and definition: authors' translation, not source-attested"@en ;
+    skos:editorialNote "Kazakh label: expert-reviewed, not source-attested"@en .
+
+###  http://ontogeo.kz/geodeticont-kz#UtilityDetectionSurvey
+:UtilityDetectionSurvey rdf:type owl:Class , skos:Concept ;
+    rdfs:subClassOf :AsBuiltSurvey ;
+    skos:prefLabel "съёмка подземных коммуникаций"@ru ;
+    skos:prefLabel "underground utility survey"@en ;
+    skos:definition "работы по определению планово-высотного положения подземных коммуникаций"@ru ;
+    skos:definition "works determining the planimetric and height position of underground utilities"@en ;
+    dcterms:identifier "95"^^xsd:integer ;
+    rdfs:isDefinedBy doc:d09 ;
+    dcterms:source doc:d09 ;
+    skos:inScheme :GeodeticOntKZScheme ;
+    skos:editorialNote "English label and definition: authors' translation, not source-attested"@en .
+
+###  http://ontogeo.kz/geodeticont-kz#GeoinformationSystem
+:GeoinformationSystem rdf:type owl:Class , skos:Concept ;
+    rdfs:subClassOf :GISObject ;
+    skos:prefLabel "геоинформационная система"@ru ;
+    skos:prefLabel "geographic information system"@en ;
+    skos:prefLabel "геоақпараттық жүйе"@kk ;
+    skos:definition "система сбора, хранения и анализа пространственных данных"@ru ;
+    skos:definition "system for collecting, storing and analysing spatial data"@en ;
+    dcterms:identifier "96"^^xsd:integer ;
+    rdfs:isDefinedBy doc:d11 ;
+    dcterms:source doc:d11 ;
+    skos:inScheme :GeodeticOntKZScheme ;
+    skos:editorialNote "Kazakh label: expert-reviewed, not source-attested"@en .
+
+###  http://ontogeo.kz/geodeticont-kz#SpatialDataLayer
+:SpatialDataLayer rdf:type owl:Class , skos:Concept ;
+    rdfs:subClassOf :GISObject ;
+    skos:prefLabel "слой пространственных данных"@ru ;
+    skos:prefLabel "spatial data layer"@en ;
+    skos:prefLabel "кеңістіктік деректер қабаты"@kk ;
+    skos:definition "совокупность однотипных пространственных объектов с общими атрибутами"@ru ;
+    skos:definition "set of spatial features of the same type sharing common attributes"@en ;
+    dcterms:identifier "97"^^xsd:integer ;
+    rdfs:isDefinedBy doc:d11 ;
+    dcterms:source doc:d11 ;
+    skos:inScheme :GeodeticOntKZScheme ;
+    skos:editorialNote "English label and definition: authors' translation, not source-attested"@en ;
+    skos:editorialNote "Kazakh label: expert-reviewed, not source-attested"@en .
+
+###  http://ontogeo.kz/geodeticont-kz#FieldDocumentation
+:FieldDocumentation rdf:type owl:Class , skos:Concept ;
+    rdfs:subClassOf :TechnicalReport ;
+    skos:prefLabel "полевая техническая документация"@ru ;
+    skos:prefLabel "field technical documentation"@en ;
+    skos:prefLabel "дала техникалық құжаттамасы"@kk ;
+    skos:definition "документация, оформляемая непосредственно при производстве полевых работ"@ru ;
+    skos:definition "documentation prepared directly during field works"@en ;
+    dcterms:identifier "98"^^xsd:integer ;
+    rdfs:isDefinedBy doc:d12 ;
+    dcterms:source doc:d12 ;
+    skos:inScheme :GeodeticOntKZScheme ;
+    skos:editorialNote "English label and definition: authors' translation, not source-attested"@en ;
+    skos:editorialNote "Kazakh label: expert-reviewed, not source-attested"@en .
+
+###  http://ontogeo.kz/geodeticont-kz#FieldLog
+:FieldLog rdf:type owl:Class , skos:Concept ;
+    rdfs:subClassOf :TechnicalReport ;
+    skos:prefLabel "полевой журнал"@ru ;
+    skos:prefLabel "field log"@en ;
+    skos:prefLabel "дала журналы"@kk ;
+    skos:definition "документ для записи результатов полевых измерений"@ru ;
+    skos:definition "document for recording the results of field measurements"@en ;
+    dcterms:identifier "99"^^xsd:integer ;
+    rdfs:isDefinedBy doc:d12 ;
+    dcterms:source doc:d12 ;
+    skos:inScheme :GeodeticOntKZScheme ;
+    skos:editorialNote "Kazakh label: expert-reviewed, not source-attested"@en ;
+    :hasLegacyEquivalent :FieldDocumentation .
+
+###  http://ontogeo.kz/geodeticont-kz#TechnicalReportDoc
+:TechnicalReportDoc rdf:type owl:Class , skos:Concept ;
+    rdfs:subClassOf :TechnicalReport ;
+    skos:prefLabel "технический отчёт о геодезических работах"@ru ;
+    skos:prefLabel "technical report on geodetic works"@en ;
+    skos:prefLabel "геодезиялық жұмыстар туралы техникалық есеп"@kk ;
+    skos:definition "итоговый документ, содержащий сведения о выполненных работах и их результатах"@ru ;
+    skos:definition "final document containing information on the works performed and their results"@en ;
+    dcterms:identifier "100"^^xsd:integer ;
+    rdfs:isDefinedBy doc:d12 ;
+    dcterms:source doc:d12 ;
+    skos:inScheme :GeodeticOntKZScheme ;
+    skos:editorialNote "English label and definition: authors' translation, not source-attested"@en ;
+    skos:editorialNote "Kazakh label: expert-reviewed, not source-attested"@en .
+
+###  http://ontogeo.kz/geodeticont-kz#SurveyProgramme
+:SurveyProgramme rdf:type owl:Class , skos:Concept ;
+    rdfs:subClassOf :RegulatoryDocument ;
+    skos:prefLabel "программа работ"@ru ;
+    skos:prefLabel "survey programme"@en ;
+    skos:prefLabel "жұмыс бағдарламасы"@kk ;
+    skos:definition "документ, устанавливающий состав, объём и порядок выполнения работ"@ru ;
+    skos:definition "document establishing the scope, volume and sequence of works"@en ;
+    dcterms:identifier "101"^^xsd:integer ;
+    rdfs:isDefinedBy doc:d12 ;
+    dcterms:source doc:d12 ;
+    skos:inScheme :GeodeticOntKZScheme ;
+    skos:editorialNote "English label and definition: authors' translation, not source-attested"@en ;
+    skos:editorialNote "Kazakh label: expert-reviewed, not source-attested"@en .
+
+###  http://ontogeo.kz/geodeticont-kz#AcceptanceCertificate
+:AcceptanceCertificate rdf:type owl:Class , skos:Concept ;
+    rdfs:subClassOf :TechnicalReport ;
+    skos:prefLabel "акт приёмки"@ru ;
+    skos:prefLabel "acceptance certificate"@en ;
+    skos:prefLabel "қабылдау актісі"@kk ;
+    skos:definition "документ, удостоверяющий приёмку выполненных работ"@ru ;
+    skos:definition "document certifying acceptance of completed works"@en ;
+    dcterms:identifier "102"^^xsd:integer ;
+    rdfs:isDefinedBy doc:d12 ;
+    dcterms:source doc:d12 ;
+    skos:inScheme :GeodeticOntKZScheme ;
+    skos:editorialNote "Kazakh label: expert-reviewed, not source-attested"@en .
+
+###  http://ontogeo.kz/geodeticont-kz#ArchiveCopy
+:ArchiveCopy rdf:type owl:Class , skos:Concept ;
+    rdfs:subClassOf :TechnicalReport ;
+    skos:prefLabel "архивный экземпляр"@ru ;
+    skos:prefLabel "archive copy"@en ;
+    dcterms:identifier "103"^^xsd:integer ;
+    skos:inScheme :GeodeticOntKZScheme ;
+    skos:editorialNote "English label and definition: authors' translation, not source-attested"@en .
+
+###  http://ontogeo.kz/geodeticont-kz#GeodeticSupport
+:GeodeticSupport rdf:type owl:Class , skos:Concept ;
+    rdfs:subClassOf :GeodeticWork ;
+    skos:prefLabel "геодезическое обеспечение строительства"@ru ;
+    skos:prefLabel "geodetic support of construction"@en ;
+    skos:prefLabel "құрылысты геодезиялық қамтамасыз ету"@kk ;
+    skos:definition "комплекс работ, обеспечивающий соблюдение проектного положения объектов строительства"@ru ;
+    skos:definition "set of works ensuring compliance with the design position of construction objects"@en ;
+    dcterms:identifier "104"^^xsd:integer ;
+    rdfs:isDefinedBy doc:d02 ;
+    dcterms:source doc:d02 ;
+    skos:inScheme :GeodeticOntKZScheme ;
+    skos:editorialNote "English label and definition: authors' translation, not source-attested"@en ;
+    skos:editorialNote "Kazakh label: expert-reviewed, not source-attested"@en .
+
+###  http://ontogeo.kz/geodeticont-kz#GeodeticService
+:GeodeticService rdf:type owl:Class , skos:Concept ;
+    rdfs:subClassOf :GeodeticActivity ;
+    skos:prefLabel "геодезическая служба"@ru ;
+    skos:prefLabel "geodetic service"@en ;
+    skos:prefLabel "геодезиялық қызмет"@kk ;
+    skos:definition "подразделение, выполняющее геодезические работы на объекте строительства"@ru ;
+    skos:definition "unit performing geodetic works on a construction site"@en ;
+    dcterms:identifier "105"^^xsd:integer ;
+    rdfs:isDefinedBy doc:d02 ;
+    dcterms:source doc:d02 ;
+    skos:inScheme :GeodeticOntKZScheme ;
+    skos:editorialNote "Kazakh label: expert-reviewed, not source-attested"@en .
+
+###  http://ontogeo.kz/geodeticont-kz#ContractorResponsibility
+:ContractorResponsibility rdf:type owl:Class , skos:Concept ;
+    rdfs:subClassOf :GeodeticActivity ;
+    skos:prefLabel "ответственность подрядчика"@ru ;
+    skos:prefLabel "contractor responsibility"@en ;
+    dcterms:identifier "106"^^xsd:integer ;
+    skos:inScheme :GeodeticOntKZScheme ;
+    skos:editorialNote "English label and definition: authors' translation, not source-attested"@en .
+
+###  http://ontogeo.kz/geodeticont-kz#GeodeticTaskAssignment
+:GeodeticTaskAssignment rdf:type owl:Class , skos:Concept ;
+    rdfs:subClassOf :RegulatoryDocument ;
+    skos:prefLabel "задание на геодезические работы"@ru ;
+    skos:prefLabel "geodetic task assignment"@en ;
+    skos:prefLabel "геодезиялық жұмыстарға тапсырма"@kk ;
+    skos:definition "документ, определяющий содержание и требования к выполняемым работам"@ru ;
+    skos:definition "document defining the content of and requirements for the works to be performed"@en ;
+    dcterms:identifier "107"^^xsd:integer ;
+    rdfs:isDefinedBy doc:d12 ;
+    dcterms:source doc:d12 ;
+    skos:inScheme :GeodeticOntKZScheme ;
+    skos:editorialNote "English label and definition: authors' translation, not source-attested"@en ;
+    skos:editorialNote "Kazakh label: expert-reviewed, not source-attested"@en .
+
+###  http://ontogeo.kz/geodeticont-kz#QualityControl
+:QualityControl rdf:type owl:Class , skos:Concept ;
+    rdfs:subClassOf :GeodeticActivity ;
+    skos:prefLabel "контроль качества геодезических работ"@ru ;
+    skos:prefLabel "quality control of geodetic works"@en ;
+    skos:prefLabel "геодезиялық жұмыстардың сапасын бақылау"@kk ;
+    skos:definition "совокупность мероприятий по проверке соответствия работ установленным требованиям"@ru ;
+    skos:definition "set of activities verifying compliance of works with established requirements"@en ;
+    dcterms:identifier "108"^^xsd:integer ;
+    rdfs:isDefinedBy doc:d02 ;
+    dcterms:source doc:d02 ;
+    skos:inScheme :GeodeticOntKZScheme ;
+    skos:editorialNote "Kazakh label: expert-reviewed, not source-attested"@en .
+
+###  http://ontogeo.kz/geodeticont-kz#RoadPavement
+:RoadPavement rdf:type owl:Class , skos:Concept ;
+    rdfs:subClassOf :RoadObject ;
+    skos:prefLabel "дорожная одежда"@ru ;
+    skos:prefLabel "road pavement"@en ;
+    skos:prefLabel "жол киімі"@kk ;
+    skos:definition "многослойная конструкция проезжей части, воспринимающая нагрузку от транспорта"@ru ;
+    skos:definition "multi-layer carriageway structure taking the traffic load"@en ;
+    dcterms:identifier "109"^^xsd:integer ;
+    rdfs:isDefinedBy doc:d08 ;
+    dcterms:source doc:d08 ;
+    skos:inScheme :GeodeticOntKZScheme ;
+    skos:editorialNote "English label and definition: authors' translation, not source-attested"@en ;
+    skos:editorialNote "Kazakh label: source-attested"@en ;
+    skos:scopeNote "road-survey and diagnostics submodule; flagged by reviewers as lying at the edge of construction geodesy"@en .
+
+###  http://ontogeo.kz/geodeticont-kz#PavementLayer
+:PavementLayer rdf:type owl:Class , skos:Concept ;
+    rdfs:subClassOf :RoadPavement ;
+    skos:prefLabel "слой дорожной одежды"@ru ;
+    skos:prefLabel "pavement layer"@en ;
+    skos:prefLabel "жол киімінің қабаты"@kk ;
+    skos:definition "конструктивный элемент дорожной одежды из однородного материала"@ru ;
+    skos:definition "structural element of a road pavement made of a homogeneous material"@en ;
+    dcterms:identifier "110"^^xsd:integer ;
+    rdfs:isDefinedBy doc:d08 ;
+    dcterms:source doc:d08 ;
+    skos:inScheme :GeodeticOntKZScheme ;
+    skos:editorialNote "English label and definition: authors' translation, not source-attested"@en ;
+    skos:editorialNote "Kazakh label: expert-reviewed, not source-attested"@en ;
+    skos:scopeNote "road-survey and diagnostics submodule; flagged by reviewers as lying at the edge of construction geodesy"@en .
+
+###  http://ontogeo.kz/geodeticont-kz#PavementThickness
+:PavementThickness rdf:type owl:Class , skos:Concept ;
+    rdfs:subClassOf :RoadSurveyObject ;
+    skos:prefLabel "толщина слоя дорожной одежды"@ru ;
+    skos:prefLabel "pavement layer thickness"@en ;
+    skos:definition "расстояние между верхней и нижней границами слоя дорожной одежды"@ru ;
+    skos:definition "distance between the upper and lower boundaries of a pavement layer"@en ;
+    dcterms:identifier "111"^^xsd:integer ;
+    rdfs:isDefinedBy doc:d08 ;
+    dcterms:source doc:d08 ;
+    skos:inScheme :GeodeticOntKZScheme ;
+    skos:scopeNote "road-survey and diagnostics submodule; flagged by reviewers as lying at the edge of construction geodesy"@en ;
+    :canBeFormalizedAsRule false .
+
+###  http://ontogeo.kz/geodeticont-kz#Rutting
+:Rutting rdf:type owl:Class , skos:Concept ;
+    rdfs:subClassOf :PavementFailure ;
+    skos:prefLabel "колея"@ru ;
+    skos:prefLabel "rutting"@en ;
+    skos:prefLabel "қолтаңба"@kk ;
+    skos:definition "продольная деформация проезжей части в виде углубления по полосе наката"@ru ;
+    skos:definition "longitudinal deformation of the carriageway as a depression along the wheel path"@en ;
+    dcterms:identifier "112"^^xsd:integer ;
+    rdfs:isDefinedBy doc:d08 ;
+    dcterms:source doc:d08 ;
+    skos:inScheme :GeodeticOntKZScheme ;
+    skos:editorialNote "English label and definition: authors' translation, not source-attested"@en ;
+    skos:editorialNote "Kazakh label: expert-reviewed, not source-attested"@en ;
+    skos:scopeNote "road-survey and diagnostics submodule; flagged by reviewers as lying at the edge of construction geodesy"@en .
+
+###  http://ontogeo.kz/geodeticont-kz#PavementCracking
+:PavementCracking rdf:type owl:Class , skos:Concept ;
+    rdfs:subClassOf :PavementFailure ;
+    skos:prefLabel "трещина дорожного покрытия"@ru ;
+    skos:prefLabel "pavement cracking"@en ;
+    skos:prefLabel "жол жабынының жарығы"@kk ;
+    skos:definition "нарушение сплошности покрытия в виде разрыва материала"@ru ;
+    skos:definition "discontinuity of the surfacing in the form of a rupture of the material"@en ;
+    dcterms:identifier "113"^^xsd:integer ;
+    rdfs:isDefinedBy doc:d08 ;
+    dcterms:source doc:d08 ;
+    skos:inScheme :GeodeticOntKZScheme ;
+    skos:editorialNote "English label and definition: authors' translation, not source-attested"@en ;
+    skos:editorialNote "Kazakh label: expert-reviewed, not source-attested"@en ;
+    skos:scopeNote "road-survey and diagnostics submodule; flagged by reviewers as lying at the edge of construction geodesy"@en .
+
+###  http://ontogeo.kz/geodeticont-kz#Pothole
+:Pothole rdf:type owl:Class , skos:Concept ;
+    rdfs:subClassOf :PavementFailure ;
+    skos:prefLabel "выбоина"@ru ;
+    skos:prefLabel "pothole"@en ;
+    skos:prefLabel "шұңқыр"@kk ;
+    skos:definition "локальное разрушение покрытия с образованием углубления"@ru ;
+    skos:definition "local destruction of the surfacing forming a cavity"@en ;
+    dcterms:identifier "114"^^xsd:integer ;
+    rdfs:isDefinedBy doc:d08 ;
+    dcterms:source doc:d08 ;
+    skos:inScheme :GeodeticOntKZScheme ;
+    skos:editorialNote "Kazakh label: expert-reviewed, not source-attested"@en ;
+    skos:scopeNote "road-survey and diagnostics submodule; flagged by reviewers as lying at the edge of construction geodesy"@en .
+
+###  http://ontogeo.kz/geodeticont-kz#RoadRoughness
+:RoadRoughness rdf:type owl:Class , skos:Concept ;
+    rdfs:subClassOf :RoadSurveyObject ;
+    skos:prefLabel "ровность покрытия"@ru ;
+    skos:prefLabel "road roughness"@en ;
+    skos:prefLabel "жабынның тегістігі"@kk ;
+    skos:definition "характеристика продольного профиля покрытия, влияющая на условия движения"@ru ;
+    skos:definition "characteristic of the longitudinal surface profile affecting driving conditions"@en ;
+    dcterms:identifier "115"^^xsd:integer ;
+    rdfs:isDefinedBy doc:d08 ;
+    dcterms:source doc:d08 ;
+    skos:inScheme :GeodeticOntKZScheme ;
+    skos:editorialNote "English label and definition: authors' translation, not source-attested"@en ;
+    skos:editorialNote "Kazakh label: expert-reviewed, not source-attested"@en ;
+    skos:scopeNote "road-survey and diagnostics submodule; flagged by reviewers as lying at the edge of construction geodesy"@en .
+
+###  http://ontogeo.kz/geodeticont-kz#PavementFailure
+:PavementFailure rdf:type owl:Class , skos:Concept ;
+    rdfs:subClassOf :RoadObject ;
+    skos:prefLabel "дефект дорожной одежды"@ru ;
+    skos:prefLabel "pavement failure"@en ;
+    skos:prefLabel "жол киімінің ақауы"@kk ;
+    skos:definition "нарушение сплошности или геометрии дорожной одежды, снижающее её эксплуатационные качества"@ru ;
+    skos:definition "discontinuity or geometric defect of a road pavement reducing its serviceability"@en ;
+    dcterms:identifier "116"^^xsd:integer ;
+    rdfs:isDefinedBy doc:d08 ;
+    dcterms:source doc:d08 ;
+    skos:inScheme :GeodeticOntKZScheme ;
+    skos:editorialNote "English label and definition: authors' translation, not source-attested"@en ;
+    skos:editorialNote "Kazakh label: expert-reviewed, not source-attested"@en ;
+    skos:scopeNote "road-survey and diagnostics submodule; flagged by reviewers as lying at the edge of construction geodesy"@en .
+
+###  http://ontogeo.kz/geodeticont-kz#RadarProfile
+:RadarProfile rdf:type owl:Class , skos:Concept ;
+    rdfs:subClassOf :RoadSurveyObject ;
+    skos:prefLabel "георадарный профиль"@ru ;
+    skos:prefLabel "radar profile"@en ;
+    skos:prefLabel "георадарлық профиль"@kk ;
+    skos:definition "результат непрерывного электромагнитного зондирования вдоль заданной линии"@ru ;
+    skos:definition "result of continuous electromagnetic sounding along a given line"@en ;
+    dcterms:identifier "117"^^xsd:integer ;
+    rdfs:isDefinedBy doc:d08 ;
+    dcterms:source doc:d08 ;
+    skos:inScheme :GeodeticOntKZScheme ;
+    skos:editorialNote "Kazakh label: expert-reviewed, not source-attested"@en ;
+    skos:scopeNote "road-survey and diagnostics submodule; flagged by reviewers as lying at the edge of construction geodesy"@en .
+
+###  http://ontogeo.kz/geodeticont-kz#OverhaulInterval
+:OverhaulInterval rdf:type owl:Class , skos:Concept ;
+    rdfs:subClassOf :RoadSurveyObject ;
+    skos:prefLabel "межремонтный срок службы"@ru ;
+    skos:prefLabel "overhaul interval"@en ;
+    skos:prefLabel "жөндеуаралық қызмет мерзімі"@kk ;
+    skos:definition "нормируемый период эксплуатации до очередного капитального ремонта"@ru ;
+    skos:definition "normative period of operation until the next major repair"@en ;
+    dcterms:identifier "118"^^xsd:integer ;
+    rdfs:isDefinedBy doc:d08 ;
+    dcterms:source doc:d08 ;
+    skos:inScheme :GeodeticOntKZScheme ;
+    skos:editorialNote "English label and definition: authors' translation, not source-attested"@en ;
+    skos:editorialNote "Kazakh label: expert-reviewed, not source-attested"@en ;
+    skos:scopeNote "road-survey and diagnostics submodule; flagged by reviewers as lying at the edge of construction geodesy"@en .
+
+###  http://ontogeo.kz/geodeticont-kz#RoadDiagnostics
+:RoadDiagnostics rdf:type owl:Class , skos:Concept ;
+    rdfs:subClassOf :RoadSurveyObject ;
+    skos:prefLabel "диагностика автомобильной дороги"@ru ;
+    skos:prefLabel "road diagnostics"@en ;
+    skos:prefLabel "автомобиль жолын диагностикалау"@kk ;
+    skos:definition "обследование дороги с целью оценки её транспортно-эксплуатационного состояния"@ru ;
+    skos:definition "inspection of a road to assess its transport and operational condition"@en ;
+    dcterms:identifier "119"^^xsd:integer ;
+    rdfs:isDefinedBy doc:d08 ;
+    dcterms:source doc:d08 ;
+    skos:inScheme :GeodeticOntKZScheme ;
+    skos:editorialNote "English label and definition: authors' translation, not source-attested"@en ;
+    skos:editorialNote "Kazakh label: source-attested"@en ;
+    skos:scopeNote "road-survey and diagnostics submodule; flagged by reviewers as lying at the edge of construction geodesy"@en .
+
+
+##############################################################################
+#
+#    Concept scheme and thematic blocks (16 skos:Collection)
+#
+##############################################################################
+
+:GeodeticOntKZScheme rdf:type skos:ConceptScheme ;
+    skos:prefLabel "Тематические блоки GeodeticOnt-KZ"@ru ;
+    skos:prefLabel "GeodeticOnt-KZ thematic blocks"@en .
+
+###  Block 01
+:Block01_ControlNetworks rdf:type skos:Collection ;
+    skos:prefLabel "1 · Опорные сети"@ru ;
+    skos:prefLabel "1 · Control networks"@en ;
+    skos:member :GeodeticControlNetwork ,
+        :StateGeodeticNetwork ,
+        :CondensationNetwork ,
+        :SurveyJustificationNetwork ,
+        :ConstructionGeodeticGrid ,
+        :PlanControlNetwork ,
+        :HeightControlNetwork ,
+        :Triangulation ,
+        :Trilateration ,
+        :Polygonometry ,
+        :GeodeticTraverse ,
+        :ClosedTraverse ,
+        :NetworkOrder ,
+        :NetworkAdjustment ,
+        :ReferenceStation ,
+        :CORSNetwork ,
+        :LocalControlNetwork ,
+        :NetworkDensity .
+
+###  Block 02
+:Block02_CoordinateAndHeightSystems rdf:type skos:Collection ;
+    skos:prefLabel "2 · Системы координат и высот"@ru ;
+    skos:prefLabel "2 · Coordinate and height systems"@en ;
+    skos:member :CoordinateSystemWGS84 ,
+        :NationalCoordinateSystem ,
+        :LocalCoordinateSystem ,
+        :ConstructionCoordinateSystem ,
+        :CoordinateTransformation ,
+        :MapProjection ,
+        :GaussKrugerProjection ,
+        :CoordinateZone ,
+        :ReferenceEllipsoid ,
+        :Geoid ,
+        :BalticHeightSystem ,
+        :AbsoluteElevation ,
+        :RelativeElevation ,
+        :ConditionalZero ,
+        :HeightDatumTransfer .
+
+###  Block 03
+:Block03_LevellingNetworks rdf:type skos:Collection ;
+    skos:prefLabel "3 · Нивелирные сети"@ru ;
+    skos:prefLabel "3 · Levelling networks"@en ;
+    skos:member :LevellingNetwork .
+
+###  Block 04
+:Block04_ControlPointsMarksAndBenchmarks rdf:type skos:Collection ;
+    skos:prefLabel "4 · Пункты, знаки и реперы"@ru ;
+    skos:prefLabel "4 · Control points, marks and benchmarks"@en ;
+    skos:member :GeodeticPoint ,
+        :GeodeticMark ,
+        :CentreOfPoint ,
+        :DeepBenchmark ,
+        :WallBenchmark ,
+        :WorkingBenchmark ,
+        :OrientationPoint ,
+        :TemporaryMark ,
+        :PointPreservation .
+
+###  Block 05
+:Block05_MeasurementMethods rdf:type skos:Collection ;
+    skos:prefLabel "5 · Методы измерений"@ru ;
+    skos:prefLabel "5 · Measurement methods"@en ;
+    skos:member :AngleMeasurement ,
+        :LinearMeasurement ,
+        :Levelling ,
+        :GeometricLevelling ,
+        :TrigonometricLevelling ,
+        :SatelliteMeasurement ,
+        :RTKMethod ,
+        :StaticMethod ,
+        :TacheometricSurvey ,
+        :LaserScanning ,
+        :PhotogrammetricMethod ,
+        :AerialSurvey ,
+        :UAVSurvey ,
+        :ObservationSeries ,
+        :RedundantMeasurement ,
+        :MeasurementSeriesMean ,
+        :GroundPenetratingRadar .
+
+###  Block 06
+:Block06_SettingOutWorks rdf:type skos:Collection ;
+    skos:prefLabel "6 · Разбивочные работы"@ru ;
+    skos:prefLabel "6 · Setting-out works"@en ;
+    skos:member :SettingOut ,
+        :MainAxes .
+
+###  Block 07
+:Block07_AsBuiltSurveys rdf:type skos:Collection ;
+    skos:prefLabel "7 · Исполнительные съёмки"@ru ;
+    skos:prefLabel "7 · As-built surveys"@en ;
+    skos:member :AsBuiltSurveying ,
+        :AsBuiltDrawing ,
+        :AsBuiltSurveyOfUtilities ,
+        :ErectionHorizon ,
+        :ControlSurvey ,
+        :SurveyCompleteness .
+
+###  Block 08
+:Block08_DeformationMonitoring rdf:type skos:Collection ;
+    skos:prefLabel "8 · Мониторинг деформаций"@ru ;
+    skos:prefLabel "8 · Deformation monitoring"@en ;
+    skos:member :DeformationObservation ,
+        :Settlement ,
+        :Tilt ,
+        :ObservationCycle .
+
+###  Block 09
+:Block09_Instruments rdf:type skos:Collection ;
+    skos:prefLabel "9 · Инструменты"@ru ;
+    skos:prefLabel "9 · Instruments"@en ;
+    skos:member :Theodolite ,
+        :Level ,
+        :TotalStation ,
+        :GNSSReceiver ,
+        :LevellingStaff ,
+        :InstrumentCalibration .
+
+###  Block 10
+:Block10_AccuracyAndTolerances rdf:type skos:Collection ;
+    skos:prefLabel "10 · Точность и допуски"@ru ;
+    skos:prefLabel "10 · Accuracy and tolerances"@en ;
+    skos:member :ActualDeviation ,
+        :LimitDeviation ,
+        :Misclosure ,
+        :AccuracyClass .
+
+###  Block 11
+:Block11_TopographyAndCartography rdf:type skos:Collection ;
+    skos:prefLabel "11 · Топография и картография"@ru ;
+    skos:prefLabel "11 · Topography and cartography"@en ;
+    skos:member :TopographicSurvey ,
+        :TopographicPlan ,
+        :TopographicMap ,
+        :MapScale ,
+        :ContourInterval ,
+        :Contour ,
+        :ReliefRepresentation ,
+        :SituationDetail ,
+        :SurveyScaleAccuracy ,
+        :OrthoPhotoMap ,
+        :DigitalTerrainModel .
+
+###  Block 12
+:Block12_UndergroundUtilities rdf:type skos:Collection ;
+    skos:prefLabel "12 · Подземные коммуникации"@ru ;
+    skos:prefLabel "12 · Underground utilities"@en ;
+    skos:member :UndergroundUtility ,
+        :UtilityDetectionSurvey .
+
+###  Block 13
+:Block13_GisAndDigitalData rdf:type skos:Collection ;
+    skos:prefLabel "13 · ГИС и цифровые данные"@ru ;
+    skos:prefLabel "13 · GIS and digital data"@en ;
+    skos:member :GeoinformationSystem ,
+        :SpatialDataLayer .
+
+###  Block 14
+:Block14_ReportingAndDocumentation rdf:type skos:Collection ;
+    skos:prefLabel "14 · Отчётность и документация"@ru ;
+    skos:prefLabel "14 · Reporting and documentation"@en ;
+    skos:member :FieldDocumentation ,
+        :FieldLog ,
+        :TechnicalReportDoc ,
+        :SurveyProgramme ,
+        :AcceptanceCertificate ,
+        :ArchiveCopy .
+
+###  Block 15
+:Block15_OrganisationOfGeodeticWorks rdf:type skos:Collection ;
+    skos:prefLabel "15 · Организация геодезических работ"@ru ;
+    skos:prefLabel "15 · Organisation of geodetic works"@en ;
+    skos:member :GeodeticSupport ,
+        :GeodeticService ,
+        :ContractorResponsibility ,
+        :GeodeticTaskAssignment ,
+        :QualityControl .
+
+###  Block 16
+:Block16_RoadSurveyAndDiagnostics rdf:type skos:Collection ;
+    skos:prefLabel "16 · Дорожное обследование"@ru ;
+    skos:prefLabel "16 · Road survey and diagnostics"@en ;
+    skos:scopeNote "road-survey and diagnostics submodule; flagged by reviewers as lying at the edge of construction geodesy"@en ;
+    skos:member :RoadPavement ,
+        :PavementLayer ,
+        :PavementThickness ,
+        :Rutting ,
+        :PavementCracking ,
+        :Pothole ,
+        :RoadRoughness ,
+        :PavementFailure ,
+        :RadarProfile ,
+        :OverhaulInterval ,
+        :RoadDiagnostics .
+

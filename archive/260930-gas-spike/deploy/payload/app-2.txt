@@ -1,0 +1,2066 @@
+AerialSurvey rdf:type owl:Class , skos:Concept ;
+    rdfs:subClassOf :PhotogrammetricMethod ;
+    skos:prefLabel "аэрофотосъёмка"@ru ;
+    skos:prefLabel "aerial survey"@en ;
+    skos:prefLabel "аэротүсіру"@kk ;
+    skos:definition "фотографирование местности с воздушного носителя для составления планов"@ru ;
+    skos:definition "photographing of terrain from an airborne carrier for map production"@en ;
+    dcterms:identifier "55"^^xsd:integer ;
+    rdfs:isDefinedBy doc:d07 ;
+    dcterms:source doc:d07 ;
+    skos:inScheme :GeodeticOntKZScheme ;
+    skos:editorialNote "English label and definition: authors' translation, not source-attested"@en ;
+    skos:editorialNote "Kazakh label: expert-reviewed, not source-attested"@en .
+
+###  http://ontogeo.kz/geodeticont-kz#UAVSurvey
+:UAVSurvey rdf:type owl:Class , skos:Concept ;
+    rdfs:subClassOf :AerialSurvey ;
+    skos:prefLabel "съёмка с БПЛА"@ru ;
+    skos:prefLabel "UAV survey"@en ;
+    skos:definition "аэросъёмка, выполняемая беспилотным воздушным судном"@ru ;
+    skos:definition "aerial survey performed by an unmanned aerial vehicle"@en ;
+    dcterms:identifier "56"^^xsd:integer ;
+    rdfs:isDefinedBy doc:d07 ;
+    dcterms:source doc:d07 ;
+    skos:inScheme :GeodeticOntKZScheme ;
+    skos:editorialNote "English label and definition: authors' translation, not source-attested"@en .
+
+###  http://ontogeo.kz/geodeticont-kz#ObservationSeries
+:ObservationSeries rdf:type owl:Class , skos:Concept ;
+    rdfs:subClassOf :Measurement ;
+    skos:prefLabel "приём измерений"@ru ;
+    skos:prefLabel "observation series"@en ;
+    skos:prefLabel "өлшеу қабылдауы"@kk ;
+    skos:definition "совокупность измерений, выполняемых в установленной последовательности"@ru ;
+    skos:definition "set of measurements performed in a prescribed sequence"@en ;
+    dcterms:identifier "57"^^xsd:integer ;
+    rdfs:isDefinedBy doc:d03 ;
+    dcterms:source doc:d03 ;
+    skos:inScheme :GeodeticOntKZScheme ;
+    skos:editorialNote "Kazakh label: expert-reviewed, not source-attested"@en .
+
+###  http://ontogeo.kz/geodeticont-kz#RedundantMeasurement
+:RedundantMeasurement rdf:type owl:Class , skos:Concept ;
+    rdfs:subClassOf :Measurement ;
+    skos:prefLabel "избыточное измерение"@ru ;
+    skos:prefLabel "redundant measurement"@en ;
+    skos:prefLabel "артық өлшеу"@kk ;
+    skos:definition "измерение сверх минимально необходимого для определения искомых величин"@ru ;
+    skos:definition "measurement in excess of the minimum required to determine the unknowns"@en ;
+    dcterms:identifier "58"^^xsd:integer ;
+    rdfs:isDefinedBy doc:d03 ;
+    dcterms:source doc:d03 ;
+    skos:inScheme :GeodeticOntKZScheme ;
+    skos:editorialNote "English label and definition: authors' translation, not source-attested"@en ;
+    skos:editorialNote "Kazakh label: expert-reviewed, not source-attested"@en .
+
+###  http://ontogeo.kz/geodeticont-kz#MeasurementSeriesMean
+:MeasurementSeriesMean rdf:type owl:Class , skos:Concept ;
+    rdfs:subClassOf :Measurement ;
+    skos:prefLabel "среднее из приёмов"@ru ;
+    skos:prefLabel "mean of series"@en ;
+    dcterms:identifier "59"^^xsd:integer ;
+    skos:inScheme :GeodeticOntKZScheme ;
+    skos:editorialNote "English label and definition: authors' translation, not source-attested"@en .
+
+###  http://ontogeo.kz/geodeticont-kz#GroundPenetratingRadar
+:GroundPenetratingRadar rdf:type owl:Class , skos:Concept ;
+    rdfs:subClassOf :MeasurementMethod ;
+    skos:prefLabel "георадарное обследование"@ru ;
+    skos:prefLabel "ground penetrating radar survey"@en ;
+    skos:prefLabel "георадарлық зерттеу"@kk ;
+    skos:definition "неразрушающее обследование конструкции электромагнитным зондированием"@ru ;
+    skos:definition "non-destructive investigation of a structure by electromagnetic sounding"@en ;
+    dcterms:identifier "60"^^xsd:integer ;
+    rdfs:isDefinedBy doc:d08 ;
+    dcterms:source doc:d08 ;
+    skos:inScheme :GeodeticOntKZScheme ;
+    skos:editorialNote "Kazakh label: expert-reviewed, not source-attested"@en .
+
+###  http://ontogeo.kz/geodeticont-kz#SettingOut
+:SettingOut rdf:type owl:Class , skos:Concept ;
+    rdfs:subClassOf :SettingOutWork ;
+    skos:prefLabel "разбивочные работы"@ru ;
+    skos:prefLabel "setting out"@en ;
+    skos:prefLabel "бөлу жұмыстары"@kk ;
+    skos:definition "перенесение в натуру проектного положения осей и точек сооружения"@ru ;
+    skos:definition "transfer of the design position of axes and points of a structure to the ground"@en ;
+    dcterms:identifier "61"^^xsd:integer ;
+    rdfs:isDefinedBy doc:d02 ;
+    dcterms:source doc:d02 ;
+    skos:inScheme :GeodeticOntKZScheme ;
+    skos:editorialNote "English label and definition: authors' translation, not source-attested"@en ;
+    skos:editorialNote "Kazakh label: expert-reviewed, not source-attested"@en .
+
+###  http://ontogeo.kz/geodeticont-kz#MainAxes
+:MainAxes rdf:type owl:Class , skos:Concept ;
+    rdfs:subClassOf :ConstructionObject ;
+    skos:prefLabel "основные оси сооружения"@ru ;
+    skos:prefLabel "main axes of a structure"@en ;
+    skos:prefLabel "ғимараттың негізгі осьтері"@kk ;
+    skos:definition "оси, определяющие положение и ориентирование сооружения на местности"@ru ;
+    skos:definition "axes defining the position and orientation of a structure on the ground"@en ;
+    dcterms:identifier "62"^^xsd:integer ;
+    rdfs:isDefinedBy doc:d02 ;
+    dcterms:source doc:d02 ;
+    skos:inScheme :GeodeticOntKZScheme ;
+    skos:editorialNote "English label and definition: authors' translation, not source-attested"@en ;
+    skos:editorialNote "Kazakh label: expert-reviewed, not source-attested"@en .
+
+###  http://ontogeo.kz/geodeticont-kz#AsBuiltSurveying
+:AsBuiltSurveying rdf:type owl:Class , skos:Concept ;
+    rdfs:subClassOf :AsBuiltSurvey ;
+    skos:prefLabel "исполнительная съёмка"@ru ;
+    skos:prefLabel "as-built survey"@en ;
+    skos:prefLabel "атқарушылық түсіру"@kk ;
+    skos:definition "съёмка, выполняемая для определения фактического положения построенных элементов"@ru ;
+    skos:definition "survey performed to determine the actual position of constructed elements"@en ;
+    dcterms:identifier "63"^^xsd:integer ;
+    rdfs:isDefinedBy doc:d02 ;
+    dcterms:source doc:d02 ;
+    skos:inScheme :GeodeticOntKZScheme ;
+    skos:editorialNote "Kazakh label: expert-reviewed, not source-attested"@en .
+
+###  http://ontogeo.kz/geodeticont-kz#AsBuiltDrawing
+:AsBuiltDrawing rdf:type owl:Class , skos:Concept ;
+    rdfs:subClassOf :TechnicalReport ;
+    skos:prefLabel "исполнительная геодезическая схема"@ru ;
+    skos:prefLabel "as-built geodetic drawing"@en ;
+    skos:prefLabel "атқарушылық геодезиялық сызба"@kk ;
+    skos:definition "документ, отображающий фактическое положение элементов и отклонения от проекта"@ru ;
+    skos:definition "document showing the actual position of elements and deviations from the design"@en ;
+    dcterms:identifier "64"^^xsd:integer ;
+    rdfs:isDefinedBy doc:d02 ;
+    dcterms:source doc:d02 ;
+    skos:inScheme :GeodeticOntKZScheme ;
+    skos:editorialNote "English label and definition: authors' translation, not source-attested"@en ;
+    skos:editorialNote "Kazakh label: expert-reviewed, not source-attested"@en .
+
+###  http://ontogeo.kz/geodeticont-kz#AsBuiltSurveyOfUtilities
+:AsBuiltSurveyOfUtilities rdf:type owl:Class , skos:Concept ;
+    rdfs:subClassOf :AsBuiltSurvey ;
+    skos:prefLabel "исполнительная съёмка инженерных сетей"@ru ;
+    skos:prefLabel "as-built survey of utilities"@en ;
+    skos:definition "съёмка проложенных инженерных сетей до их засыпки"@ru ;
+    skos:definition "survey of laid utility networks before backfilling"@en ;
+    dcterms:identifier "65"^^xsd:integer ;
+    rdfs:isDefinedBy doc:d09 ;
+    dcterms:source doc:d09 ;
+    skos:inScheme :GeodeticOntKZScheme ;
+    skos:editorialNote "English label and definition: authors' translation, not source-attested"@en .
+
+###  http://ontogeo.kz/geodeticont-kz#ErectionHorizon
+:ErectionHorizon rdf:type owl:Class , skos:Concept ;
+    rdfs:subClassOf :ConstructionObject ;
+    skos:prefLabel "монтажный горизонт"@ru ;
+    skos:prefLabel "erection level"@en ;
+    skos:prefLabel "монтаждық горизонт"@kk ;
+    skos:definition "условная горизонтальная плоскость, от которой ведётся монтаж конструкций"@ru ;
+    skos:definition "conventional horizontal plane from which structures are erected"@en ;
+    dcterms:identifier "66"^^xsd:integer ;
+    rdfs:isDefinedBy doc:d02 ;
+    dcterms:source doc:d02 ;
+    skos:inScheme :GeodeticOntKZScheme ;
+    skos:editorialNote "Kazakh label: expert-reviewed, not source-attested"@en .
+
+###  http://ontogeo.kz/geodeticont-kz#ControlSurvey
+:ControlSurvey rdf:type owl:Class , skos:Concept ;
+    rdfs:subClassOf :GeodeticActivity ;
+    skos:prefLabel "контрольные измерения"@ru ;
+    skos:prefLabel "control survey"@en ;
+    skos:prefLabel "бақылау өлшеулері"@kk ;
+    skos:definition "измерения, выполняемые для проверки результатов ранее выполненных работ"@ru ;
+    skos:definition "measurements performed to check the results of previously executed works"@en ;
+    dcterms:identifier "67"^^xsd:integer ;
+    rdfs:isDefinedBy doc:d02 ;
+    dcterms:source doc:d02 ;
+    skos:inScheme :GeodeticOntKZScheme ;
+    skos:editorialNote "English label and definition: authors' translation, not source-attested"@en ;
+    skos:editorialNote "Kazakh label: expert-reviewed, not source-attested"@en .
+
+###  http://ontogeo.kz/geodeticont-kz#SurveyCompleteness
+:SurveyCompleteness rdf:type owl:Class , skos:Concept ;
+    rdfs:subClassOf :AccuracyRequirement ;
+    skos:prefLabel "полнота исполнительной съёмки"@ru ;
+    skos:prefLabel "completeness of as-built survey"@en ;
+    dcterms:identifier "68"^^xsd:integer ;
+    skos:inScheme :GeodeticOntKZScheme ;
+    skos:editorialNote "English label and definition: authors' translation, not source-attested"@en .
+
+###  http://ontogeo.kz/geodeticont-kz#DeformationObservation
+:DeformationObservation rdf:type owl:Class , skos:Concept ;
+    rdfs:subClassOf :DeformationMonitoring ;
+    skos:prefLabel "наблюдения за деформациями"@ru ;
+    skos:prefLabel "deformation observation"@en ;
+    skos:prefLabel "деформацияларды бақылау"@kk ;
+    skos:definition "периодические измерения, выполняемые для определения изменений положения сооружения"@ru ;
+    skos:definition "periodic measurements performed to determine changes in the position of a structure"@en ;
+    dcterms:identifier "69"^^xsd:integer ;
+    rdfs:isDefinedBy doc:d10 ;
+    dcterms:source doc:d10 ;
+    skos:inScheme :GeodeticOntKZScheme ;
+    skos:editorialNote "Kazakh label: expert-reviewed, not source-attested"@en .
+
+###  http://ontogeo.kz/geodeticont-kz#Settlement
+:Settlement rdf:type owl:Class , skos:Concept ;
+    rdfs:subClassOf :Deviation ;
+    skos:prefLabel "осадка сооружения"@ru ;
+    skos:prefLabel "settlement of a structure"@en ;
+    skos:prefLabel "ғимарат отыруы"@kk ;
+    skos:definition "вертикальное перемещение сооружения, вызванное деформацией основания"@ru ;
+    skos:definition "vertical displacement of a structure caused by deformation of its foundation soil"@en ;
+    dcterms:identifier "70"^^xsd:integer ;
+    rdfs:isDefinedBy doc:d10 ;
+    dcterms:source doc:d10 ;
+    skos:inScheme :GeodeticOntKZScheme ;
+    skos:editorialNote "English label and definition: authors' translation, not source-attested"@en ;
+    skos:editorialNote "Kazakh label: expert-reviewed, not source-attested"@en ;
+    :canBeFormalizedAsRule false .
+
+###  http://ontogeo.kz/geodeticont-kz#Tilt
+:Tilt rdf:type owl:Class , skos:Concept ;
+    rdfs:subClassOf :Deviation ;
+    skos:prefLabel "крен сооружения"@ru ;
+    skos:prefLabel "tilt of a structure"@en ;
+    skos:prefLabel "ғимараттың еңкеюі"@kk ;
+    skos:definition "отклонение оси сооружения от вертикали"@ru ;
+    skos:definition "deviation of the axis of a structure from the vertical"@en ;
+    dcterms:identifier "71"^^xsd:integer ;
+    rdfs:isDefinedBy doc:d10 ;
+    dcterms:source doc:d10 ;
+    skos:inScheme :GeodeticOntKZScheme ;
+    skos:editorialNote "English label and definition: authors' translation, not source-attested"@en ;
+    skos:editorialNote "Kazakh label: expert-reviewed, not source-attested"@en ;
+    :canBeFormalizedAsRule false .
+
+###  http://ontogeo.kz/geodeticont-kz#ObservationCycle
+:ObservationCycle rdf:type owl:Class , skos:Concept ;
+    rdfs:subClassOf :DeformationMonitoring ;
+    skos:prefLabel "цикл наблюдений"@ru ;
+    skos:prefLabel "observation cycle"@en ;
+    skos:prefLabel "бақылау циклі"@kk ;
+    skos:definition "совокупность измерений, выполненных в один приём наблюдений за деформациями"@ru ;
+    skos:definition "set of measurements performed in one epoch of deformation observations"@en ;
+    dcterms:identifier "72"^^xsd:integer ;
+    rdfs:isDefinedBy doc:d10 ;
+    dcterms:source doc:d10 ;
+    skos:inScheme :GeodeticOntKZScheme ;
+    skos:editorialNote "Kazakh label: expert-reviewed, not source-attested"@en .
+
+###  http://ontogeo.kz/geodeticont-kz#Theodolite
+:Theodolite rdf:type owl:Class , skos:Concept ;
+    rdfs:subClassOf :Instrument ;
+    skos:prefLabel "теодолит"@ru ;
+    skos:prefLabel "theodolite"@en ;
+    skos:prefLabel "теодолит"@kk ;
+    skos:definition "прибор для измерения горизонтальных и вертикальных углов"@ru ;
+    skos:definition "instrument for measuring horizontal and vertical angles"@en ;
+    dcterms:identifier "73"^^xsd:integer ;
+    rdfs:isDefinedBy doc:d03 ;
+    dcterms:source doc:d03 ;
+    skos:inScheme :GeodeticOntKZScheme ;
+    skos:editorialNote "English label and definition: authors' translation, not source-attested"@en ;
+    skos:editorialNote "Kazakh label: source-attested"@en .
+
+###  http://ontogeo.kz/geodeticont-kz#Level
+:Level rdf:type owl:Class , skos:Concept ;
+    rdfs:subClassOf :Instrument ;
+    skos:prefLabel "нивелир"@ru ;
+    skos:prefLabel "level"@en ;
+    skos:prefLabel "нивелир"@kk ;
+    skos:definition "прибор для измерения превышений горизонтальным лучом визирования"@ru ;
+    skos:definition "instrument for measuring height differences with a horizontal line of sight"@en ;
+    dcterms:identifier "74"^^xsd:integer ;
+    rdfs:isDefinedBy doc:d06 ;
+    dcterms:source doc:d06 ;
+    skos:inScheme :GeodeticOntKZScheme ;
+    skos:editorialNote "English label and definition: authors' translation, not source-attested"@en ;
+    skos:editorialNote "Kazakh label: expert-reviewed, not source-attested"@en .
+
+###  http://ontogeo.kz/geodeticont-kz#TotalStation
+:TotalStation rdf:type owl:Class , skos:Concept ;
+    rdfs:subClassOf :Instrument ;
+    skos:prefLabel "электронный тахеометр"@ru ;
+    skos:prefLabel "total station"@en ;
+    skos:prefLabel "электрондық тахеометр"@kk ;
+    skos:definition "прибор, объединяющий измерение углов и расстояний с регистрацией результатов"@ru ;
+    skos:definition "instrument combining angle and distance measurement with data recording"@en ;
+    dcterms:identifier "75"^^xsd:integer ;
+    rdfs:isDefinedBy doc:d03 ;
+    dcterms:source doc:d03 ;
+    skos:inScheme :GeodeticOntKZScheme ;
+    skos:editorialNote "Kazakh label: expert-reviewed, not source-attested"@en .
+
+###  http://ontogeo.kz/geodeticont-kz#GNSSReceiver
+:GNSSReceiver rdf:type owl:Class , skos:Concept ;
+    rdfs:subClassOf :Instrument ;
+    skos:prefLabel "спутниковый приёмник"@ru ;
+    skos:prefLabel "GNSS receiver"@en ;
+    skos:prefLabel "серіктік қабылдағыш"@kk ;
+    skos:definition "прибор для приёма и обработки сигналов навигационных спутников"@ru ;
+    skos:definition "device for receiving and processing navigation satellite signals"@en ;
+    dcterms:identifier "76"^^xsd:integer ;
+    rdfs:isDefinedBy doc:d04 ;
+    dcterms:source doc:d04 ;
+    skos:inScheme :GeodeticOntKZScheme ;
+    skos:editorialNote "English label and definition: authors' translation, not source-attested"@en ;
+    skos:editorialNote "Kazakh label: expert-reviewed, not source-attested"@en .
+
+###  http://ontogeo.kz/geodeticont-kz#LevellingStaff
+:LevellingStaff rdf:type owl:Class , skos:Concept ;
+    rdfs:subClassOf :Instrument ;
+    skos:prefLabel "нивелирная рейка"@ru ;
+    skos:prefLabel "levelling staff"@en ;
+    skos:prefLabel "нивелир рейкасы"@kk ;
+    skos:definition "мерное приспособление со шкалой для отсчётов при нивелировании"@ru ;
+    skos:definition "graduated measuring device for taking readings during levelling"@en ;
+    dcterms:identifier "77"^^xsd:integer ;
+    rdfs:isDefinedBy doc:d06 ;
+    dcterms:source doc:d06 ;
+    skos:inScheme :GeodeticOntKZScheme ;
+    skos:editorialNote "English label and definition: authors' translation, not source-attested"@en ;
+    skos:editorialNote "Kazakh label: expert-reviewed, not source-attested"@en .
+
+###  http://ontogeo.kz/geodeticont-kz#InstrumentCalibration
+:InstrumentCalibration rdf:type owl:Class , skos:Concept ;
+    rdfs:subClassOf :GeodeticActivity ;
+    skos:prefLabel "поверка прибора"@ru ;
+    skos:prefLabel "instrument calibration"@en ;
+    dcterms:identifier "78"^^xsd:integer ;
+    skos:inScheme :GeodeticOntKZScheme .
+
+###  http://ontogeo.kz/geodeticont-kz#ActualDeviation
+:ActualDeviation rdf:type owl:Class , skos:Concept ;
+    rdfs:subClassOf :Deviation ;
+    skos:prefLabel "действительное отклонение геометрического параметра"@ru ;
+    skos:prefLabel "actual deviation of a geometric parameter"@en ;
+    skos:prefLabel "геометриялық параметрдің нақты ауытқуы"@kk ;
+    skos:altLabel "фактическое отклонение геометрического параметра"@ru ;
+    skos:definition "алгебраическая разность между действительным и номинальным значениями геометрического параметра"@ru ;
+    skos:definition "algebraic difference between the actual and the nominal value of a geometric parameter"@en ;
+    dcterms:identifier "79"^^xsd:integer ;
+    rdfs:isDefinedBy doc:d02 ;
+    dcterms:source doc:d02 ;
+    skos:inScheme :GeodeticOntKZScheme ;
+    skos:editorialNote "English label and definition: authors' translation, not source-attested"@en ;
+    skos:editorialNote "Kazakh label: expert-reviewed, not source-attested"@en ;
+    skos:changeNote "merged duplicate entry"@en .
+
+###  http://ontogeo.kz/geodeticont-kz#LimitDeviation
+:LimitDeviation rdf:type owl:Class , skos:Concept ;
+    rdfs:subClassOf :Tolerance ;
+    skos:prefLabel "предельное отклонение геометрического параметра"@ru ;
+    skos:prefLabel "limit deviation of a geometric parameter"@en ;
+    skos:prefLabel "геометриялық параметрдің шектік ауытқуы"@kk ;
+    skos:definition "алгебраическая разность между наибольшим предельным и номинальным значениями геометрического параметра"@ru ;
+    skos:definition "algebraic difference between the maximum limit and the nominal value of a geometric parameter"@en ;
+    dcterms:identifier "80"^^xsd:integer ;
+    rdfs:isDefinedBy doc:d02 ;
+    dcterms:source doc:d02 ;
+    skos:inScheme :GeodeticOntKZScheme ;
+    skos:editorialNote "English label and definition: authors' translation, not source-attested"@en ;
+    skos:editorialNote "Kazakh label: expert-reviewed, not source-attested"@en ;
+    :canBeFormalizedAsRule true .
+
+###  http://ontogeo.kz/geodeticont-kz#Misclosure
+:Misclosure rdf:type owl:Class , skos:Concept ;
+    rdfs:subClassOf :Deviation ;
+    skos:prefLabel "невязка"@ru ;
+    skos:prefLabel "misclosure"@en ;
+    skos:prefLabel "байланыспау"@kk ;
+    skos:definition "разность между полученным и теоретическим значениями измеренной величины"@ru ;
+    skos:definition "difference between the obtained and the theoretical value of a measured quantity"@en ;
+    dcterms:identifier "81"^^xsd:integer ;
+    rdfs:isDefinedBy doc:d03 ;
+    dcterms:source doc:d03 ;
+    skos:inScheme :GeodeticOntKZScheme ;
+    skos:editorialNote "Kazakh label: source-attested"@en ;
+    :canBeFormalizedAsRule false .
+
+###  http://ontogeo.kz/geodeticont-kz#AccuracyClass
+:AccuracyClass rdf:type owl:Class , skos:Concept ;
+    rdfs:subClassOf :AccuracyRequirement ;
+    skos:prefLabel "класс точности"@ru ;
+    skos:prefLabel "accuracy class"@en ;
+    skos:prefLabel "дәлдік класы"@kk ;
+    skos:definition "характеристика, определяющая нормируемые пределы погрешности измерений"@ru ;
+    skos:definition "characteristic defining the permissible limits of measurement error"@en ;
+    dcterms:identifier "82"^^xsd:integer ;
+    rdfs:isDefinedBy doc:d01 ;
+    dcterms:source doc:d01 ;
+    skos:inScheme :GeodeticOntKZScheme ;
+    skos:editorialNote "English label and definition: authors' translation, not source-attested"@en ;
+    skos:editorialNote "Kazakh label: source-attested"@en ;
+    :canBeFormalizedAsRule false .
+
+###  http://ontogeo.kz/geodeticont-kz#TopographicSurvey
+:TopographicSurvey rdf:type owl:Class , skos:Concept ;
+    rdfs:subClassOf :GeodeticWork ;
+    skos:prefLabel "топографическая съёмка"@ru ;
+    skos:prefLabel "topographic survey"@en ;
+    skos:prefLabel "топографиялық түсіру"@kk ;
+    skos:definition "комплекс работ по определению положения объектов местности для составления плана"@ru ;
+    skos:definition "set of works determining the position of terrain features for map production"@en ;
+    dcterms:identifier "83"^^xsd:integer ;
+    rdfs:isDefinedBy doc:d05 ;
+    dcterms:source doc:d05 ;
+    skos:inScheme :GeodeticOntKZScheme ;
+    skos:editorialNote "English label and definition: authors' translation, not source-attested"@en ;
+    skos:editorialNote "Kazakh label: expert-reviewed, not source-attested"@en .
+
+###  http://ontogeo.kz/geodeticont-kz#TopographicPlan
+:TopographicPlan rdf:type owl:Class , skos:Concept ;
+    rdfs:subClassOf :CartographicProduct ;
+    skos:prefLabel "топографический план"@ru ;
+    skos:prefLabel "topographic plan"@en ;
+    skos:prefLabel "топографиялық жоспар"@kk ;
+    skos:altLabel "план местности"@ru ;
+    skos:definition "картографическое изображение участка местности в крупном масштабе"@ru ;
+    skos:definition "large-scale cartographic representation of a terrain area"@en ;
+    dcterms:identifier "84"^^xsd:integer ;
+    rdfs:isDefinedBy doc:d05 ;
+    dcterms:source doc:d05 ;
+    skos:inScheme :GeodeticOntKZScheme ;
+    skos:editorialNote "Kazakh label: expert-reviewed, not source-attested"@en ;
+    skos:changeNote "merged duplicate entry"@en .
+
+###  http://ontogeo.kz/geodeticont-kz#TopographicMap
+:TopographicMap rdf:type owl:Class , skos:Concept ;
+    rdfs:subClassOf :CartographicProduct ;
+    skos:prefLabel "топографическая карта"@ru ;
+    skos:prefLabel "topographic map"@en ;
+    skos:prefLabel "топографиялық карта"@kk ;
+    skos:definition "картографическое изображение местности с отображением рельефа и объектов"@ru ;
+    skos:definition "cartographic representation of terrain showing relief and features"@en ;
+    dcterms:identifier "85"^^xsd:integer ;
+    rdfs:isDefinedBy doc:d05 ;
+    dcterms:source doc:d05 ;
+    skos:inScheme :GeodeticOntKZScheme ;
+    skos:editorialNote "English label and definition: authors' translation, not source-attested"@en ;
+    skos:editorialNote "Kazakh label: source-attested"@en .
+
+###  http://ontogeo.kz/geodeticont-kz#MapScale
+:MapScale rdf:type owl:Class , skos:Concept ;
+    rdfs:subClassOf :CartographicProduct ;
+    skos:prefLabel "масштаб плана"@ru ;
+    skos:prefLabel "map scale"@en ;
+    skos:prefLabel "жоспар масштабы"@kk ;
+    skos:definition "отношение длины отрезка на плане к соответствующей длине на местности"@ru ;
+    skos:definition "ratio of a length on the plan to the corresponding length on the ground"@en ;
+    dcterms:identifier "86"^^xsd:integer ;
+    rdfs:isDefinedBy doc:d05 ;
+    dcterms:source doc:d05 ;
+    skos:inScheme :GeodeticOntKZScheme ;
+    skos:editorialNote "English label and definition: authors' translation, not source-attested"@en ;
+    skos:editorialNote "Kazakh label: expert-reviewed, not source-attested"@en .
+
+###  http://ontogeo.kz/geodeticont-kz#ContourInterval
+:ContourInterval rdf:type owl:Class , skos:Concept ;
+    rdfs:subClassOf :CartographicProduct ;
+    skos:prefLabel "высота сечения рельефа"@ru ;
+    skos:prefLabel "contour interval"@en ;
+    skos:prefLabel "бедер қимасының биіктігі"@kk ;
+    skos:definition "разность высот смежных горизонталей на плане"@ru ;
+    skos:definition "height difference between adjacent contour lines on a plan"@en ;
+    dcterms:identifier "87"^^xsd:integer ;
+    rdfs:isDefinedBy doc:d05 ;
+    dcterms:source doc:d05 ;
+    skos:inScheme :GeodeticOntKZScheme ;
+    skos:editorialNote "Kazakh label: expert-reviewed, not source-attested"@en .
+
+###  http://ontogeo.kz/geodeticont-kz#Contour
+:Contour rdf:type owl:Class , skos:Concept ;
+    rdfs:subClassOf :CartographicProduct ;
+    skos:prefLabel "горизонталь"@ru ;
+    skos:prefLabel "contour line"@en ;
+    skos:prefLabel "горизонталь"@kk ;
+    skos:definition "линия на плане, соединяющая точки с одинаковой высотой"@ru ;
+    skos:definition "line on a plan connecting points of equal height"@en ;
+    dcterms:identifier "88"^^xsd:integer ;
+    rdfs:isDefinedBy doc:d05 ;
+    dcterms:source doc:d05 ;
+    skos:inScheme :GeodeticOntKZScheme ;
+    skos:editorialNote "English label and definition: authors' translation, not source-attested"@en ;
+    skos:editorialNote "Kazakh label: expert-reviewed, not source-attested"@en .
+
+###  http://ontogeo.kz/geodeticont-kz#ReliefRepresentation
+:ReliefRepresentation rdf:type owl:Class , skos:Concept ;
+    rdfs:subClassOf :CartographicProduct ;
+    skos:prefLabel "изображение рельефа"@ru ;
+    skos:prefLabel "relief representation"@en ;
+    skos:prefLabel "бедерді бейнелеу"@kk ;
+    skos:definition "способ передачи форм земной поверхности на плане или карте"@ru ;
+    skos:definition "method of depicting landforms on a plan or map"@en ;
+    dcterms:identifier "89"^^xsd:integer ;
+    rdfs:isDefinedBy doc:d05 ;
+    dcterms:source doc:d05 ;
+    skos:inScheme :GeodeticOntKZScheme ;
+    skos:editorialNote "English label and definition: authors' translation, not source-attested"@en ;
+    skos:editorialNote "Kazakh label: expert-reviewed, not source-attested"@en .
+
+###  http://ontogeo.kz/geodeticont-kz#SituationDetail
+:SituationDetail rdf:type owl:Class , skos:Concept ;
+    rdfs:subClassOf :CartographicProduct ;
+    skos:prefLabel "контур ситуации"@ru ;
+    skos:prefLabel "situation detail"@en ;
+    skos:definition "элемент местности, отображаемый на плане замкнутой или незамкнутой линией"@ru ;
+    skos:definition "terrain feature depicted on a plan by a closed or open line"@en ;
+    dcterms:identifier "90"^^xsd:integer ;
+    rdfs:isDefinedBy doc:d05 ;
+    dcterms:source doc:d05 ;
+    skos:inScheme :GeodeticOntKZScheme .
+
+###  http://ontogeo.kz/geodeticont-kz#SurveyScaleAccuracy
+:SurveyScaleAccuracy rdf:type owl:Class , skos:Concept ;
+    rdfs:subClassOf :AccuracyRequirement ;
+    skos:prefLabel "точность масштаба"@ru ;
+    skos:prefLabel "scale accuracy"@en ;
+    dcterms:identifier "91"^^xsd:integer ;
+    skos:inScheme :GeodeticOntKZScheme ;
+    skos:editorialNote "English label and definition: authors' translation, not source-attested"@en .
+
+###  http://ontogeo.kz/geodeticont-kz#OrthoPhotoMap
+:OrthoPhotoMap rdf:type owl:Class , skos:Concept ;
+    rdfs:subClassOf :CartographicProduct ;
+    skos:prefLabel "ортофотоплан"@ru ;
+    skos:prefLabel "orthophoto map"@en ;
+    skos:prefLabel "ортофотожоспар"@kk ;
+    skos:definition "план, составленный по трансформированным аэрофотоснимкам"@ru ;
+    skos:definition "plan compiled from rectified aerial photographs"@en ;
+    dcterms:identifier "92"^^xsd:integer ;
+    rdfs:isDefinedBy doc:d07 ;
+    dcterms:source doc:d07 ;
+    skos:inScheme :GeodeticOntKZScheme ;
+    skos:editorialNote "English label and definition: authors' translation, not source-attested"@en ;
+    skos:editorialNote "Kazakh label: expert-reviewed, not source-attested"@en .
+
+###  http://ontogeo.kz/geodeticont-kz#DigitalTerrainModel
+:DigitalTerrainModel rdf:type owl:Class , skos:Concept ;
+    rdfs:subClassOf :DigitalCartographicData ;
+    skos:prefLabel "цифровая модель рельефа"@ru ;
+    skos:prefLabel "digital terrain model"@en ;
+    skos:prefLabel "бедердің сандық моделі"@kk ;
+    skos:definition "цифровое представление поверхности земли набором высотных отметок"@ru ;
+    skos:definition "digital representation of the ground surface by a set of elevations"@en ;
+    dcterms:identifier "93"^^xsd:integer ;
+    rdfs:isDefinedBy doc:d11 ;
+    dcterms:source doc:d11 ;
+    skos:inScheme :GeodeticOntKZScheme ;
+    skos:editorialNote "Kazakh label: expert-reviewed, not source-attested"@en .
+
+###  http://ontogeo.kz/geodeticont-kz#UndergroundUtility
+:UndergroundUtility rdf:type owl:Class , skos:Concept ;
+    rdfs:subClassOf :ConstructionObject ;
+    skos:prefLabel "подземная инженерная сеть"@ru ;
+    skos:prefLabel "underground utility"@en ;
+    skos:prefLabel "жерасты инженерлік желісі"@kk ;
+    skos:definition "инженерная коммуникация, проложенная ниже поверхности земли"@ru ;
+    skos:definition "utility line laid below the ground surface"@en ;
+    dcterms:identifier "94"^^xsd:integer ;
+    rdfs:isDefinedBy doc:d09 ;
+    dcterms:source doc:d09 ;
+    skos:inScheme :GeodeticOntKZScheme ;
+    skos:editorialNote "English label and definition: authors' translation, not source-attested"@en ;
+    skos:editorialNote "Kazakh label: expert-reviewed, not source-attested"@en .
+
+###  http://ontogeo.kz/geodeticont-kz#UtilityDetectionSurvey
+:UtilityDetectionSurvey rdf:type owl:Class , skos:Concept ;
+    rdfs:subClassOf :AsBuiltSurvey ;
+    skos:prefLabel "съёмка подземных коммуникаций"@ru ;
+    skos:prefLabel "underground utility survey"@en ;
+    skos:definition "работы по определению планово-высотного положения подземных коммуникаций"@ru ;
+    skos:definition "works determining the planimetric and height position of underground utilities"@en ;
+    dcterms:identifier "95"^^xsd:integer ;
+    rdfs:isDefinedBy doc:d09 ;
+    dcterms:source doc:d09 ;
+    skos:inScheme :GeodeticOntKZScheme ;
+    skos:editorialNote "English label and definition: authors' translation, not source-attested"@en .
+
+###  http://ontogeo.kz/geodeticont-kz#GeoinformationSystem
+:GeoinformationSystem rdf:type owl:Class , skos:Concept ;
+    rdfs:subClassOf :GISObject ;
+    skos:prefLabel "геоинформационная система"@ru ;
+    skos:prefLabel "geographic information system"@en ;
+    skos:prefLabel "геоақпараттық жүйе"@kk ;
+    skos:definition "система сбора, хранения и анализа пространственных данных"@ru ;
+    skos:definition "system for collecting, storing and analysing spatial data"@en ;
+    dcterms:identifier "96"^^xsd:integer ;
+    rdfs:isDefinedBy doc:d11 ;
+    dcterms:source doc:d11 ;
+    skos:inScheme :GeodeticOntKZScheme ;
+    skos:editorialNote "Kazakh label: expert-reviewed, not source-attested"@en .
+
+###  http://ontogeo.kz/geodeticont-kz#SpatialDataLayer
+:SpatialDataLayer rdf:type owl:Class , skos:Concept ;
+    rdfs:subClassOf :GISObject ;
+    skos:prefLabel "слой пространственных данных"@ru ;
+    skos:prefLabel "spatial data layer"@en ;
+    skos:prefLabel "кеңістіктік деректер қабаты"@kk ;
+    skos:definition "совокупность однотипных пространственных объектов с общими атрибутами"@ru ;
+    skos:definition "set of spatial features of the same type sharing common attributes"@en ;
+    dcterms:identifier "97"^^xsd:integer ;
+    rdfs:isDefinedBy doc:d11 ;
+    dcterms:source doc:d11 ;
+    skos:inScheme :GeodeticOntKZScheme ;
+    skos:editorialNote "English label and definition: authors' translation, not source-attested"@en ;
+    skos:editorialNote "Kazakh label: expert-reviewed, not source-attested"@en .
+
+###  http://ontogeo.kz/geodeticont-kz#FieldDocumentation
+:FieldDocumentation rdf:type owl:Class , skos:Concept ;
+    rdfs:subClassOf :TechnicalReport ;
+    skos:prefLabel "полевая техническая документация"@ru ;
+    skos:prefLabel "field technical documentation"@en ;
+    skos:prefLabel "дала техникалық құжаттамасы"@kk ;
+    skos:definition "документация, оформляемая непосредственно при производстве полевых работ"@ru ;
+    skos:definition "documentation prepared directly during field works"@en ;
+    dcterms:identifier "98"^^xsd:integer ;
+    rdfs:isDefinedBy doc:d12 ;
+    dcterms:source doc:d12 ;
+    skos:inScheme :GeodeticOntKZScheme ;
+    skos:editorialNote "English label and definition: authors' translation, not source-attested"@en ;
+    skos:editorialNote "Kazakh label: expert-reviewed, not source-attested"@en .
+
+###  http://ontogeo.kz/geodeticont-kz#FieldLog
+:FieldLog rdf:type owl:Class , skos:Concept ;
+    rdfs:subClassOf :TechnicalReport ;
+    skos:prefLabel "полевой журнал"@ru ;
+    skos:prefLabel "field log"@en ;
+    skos:prefLabel "дала журналы"@kk ;
+    skos:definition "документ для записи результатов полевых измерений"@ru ;
+    skos:definition "document for recording the results of field measurements"@en ;
+    dcterms:identifier "99"^^xsd:integer ;
+    rdfs:isDefinedBy doc:d12 ;
+    dcterms:source doc:d12 ;
+    skos:inScheme :GeodeticOntKZScheme ;
+    skos:editorialNote "Kazakh label: expert-reviewed, not source-attested"@en ;
+    :hasLegacyEquivalent :FieldDocumentation .
+
+###  http://ontogeo.kz/geodeticont-kz#TechnicalReportDoc
+:TechnicalReportDoc rdf:type owl:Class , skos:Concept ;
+    rdfs:subClassOf :TechnicalReport ;
+    skos:prefLabel "технический отчёт о геодезических работах"@ru ;
+    skos:prefLabel "technical report on geodetic works"@en ;
+    skos:prefLabel "геодезиялық жұмыстар туралы техникалық есеп"@kk ;
+    skos:definition "итоговый документ, содержащий сведения о выполненных работах и их результатах"@ru ;
+    skos:definition "final document containing information on the works performed and their results"@en ;
+    dcterms:identifier "100"^^xsd:integer ;
+    rdfs:isDefinedBy doc:d12 ;
+    dcterms:source doc:d12 ;
+    skos:inScheme :GeodeticOntKZScheme ;
+    skos:editorialNote "English label and definition: authors' translation, not source-attested"@en ;
+    skos:editorialNote "Kazakh label: expert-reviewed, not source-attested"@en .
+
+###  http://ontogeo.kz/geodeticont-kz#SurveyProgramme
+:SurveyProgramme rdf:type owl:Class , skos:Concept ;
+    rdfs:subClassOf :RegulatoryDocument ;
+    skos:prefLabel "программа работ"@ru ;
+    skos:prefLabel "survey programme"@en ;
+    skos:prefLabel "жұмыс бағдарламасы"@kk ;
+    skos:definition "документ, устанавливающий состав, объём и порядок выполнения работ"@ru ;
+    skos:definition "document establishing the scope, volume and sequence of works"@en ;
+    dcterms:identifier "101"^^xsd:integer ;
+    rdfs:isDefinedBy doc:d12 ;
+    dcterms:source doc:d12 ;
+    skos:inScheme :GeodeticOntKZScheme ;
+    skos:editorialNote "English label and definition: authors' translation, not source-attested"@en ;
+    skos:editorialNote "Kazakh label: expert-reviewed, not source-attested"@en .
+
+###  http://ontogeo.kz/geodeticont-kz#AcceptanceCertificate
+:AcceptanceCertificate rdf:type owl:Class , skos:Concept ;
+    rdfs:subClassOf :TechnicalReport ;
+    skos:prefLabel "акт приёмки"@ru ;
+    skos:prefLabel "acceptance certificate"@en ;
+    skos:prefLabel "қабылдау актісі"@kk ;
+    skos:definition "документ, удостоверяющий приёмку выполненных работ"@ru ;
+    skos:definition "document certifying acceptance of completed works"@en ;
+    dcterms:identifier "102"^^xsd:integer ;
+    rdfs:isDefinedBy doc:d12 ;
+    dcterms:source doc:d12 ;
+    skos:inScheme :GeodeticOntKZScheme ;
+    skos:editorialNote "Kazakh label: expert-reviewed, not source-attested"@en .
+
+###  http://ontogeo.kz/geodeticont-kz#ArchiveCopy
+:ArchiveCopy rdf:type owl:Class , skos:Concept ;
+    rdfs:subClassOf :TechnicalReport ;
+    skos:prefLabel "архивный экземпляр"@ru ;
+    skos:prefLabel "archive copy"@en ;
+    dcterms:identifier "103"^^xsd:integer ;
+    skos:inScheme :GeodeticOntKZScheme ;
+    skos:editorialNote "English label and definition: authors' translation, not source-attested"@en .
+
+###  http://ontogeo.kz/geodeticont-kz#GeodeticSupport
+:GeodeticSupport rdf:type owl:Class , skos:Concept ;
+    rdfs:subClassOf :GeodeticWork ;
+    skos:prefLabel "геодезическое обеспечение строительства"@ru ;
+    skos:prefLabel "geodetic support of construction"@en ;
+    skos:prefLabel "құрылысты геодезиялық қамтамасыз ету"@kk ;
+    skos:definition "комплекс работ, обеспечивающий соблюдение проектного положения объектов строительства"@ru ;
+    skos:definition "set of works ensuring compliance with the design position of construction objects"@en ;
+    dcterms:identifier "104"^^xsd:integer ;
+    rdfs:isDefinedBy doc:d02 ;
+    dcterms:source doc:d02 ;
+    skos:inScheme :GeodeticOntKZScheme ;
+    skos:editorialNote "English label and definition: authors' translation, not source-attested"@en ;
+    skos:editorialNote "Kazakh label: expert-reviewed, not source-attested"@en .
+
+###  http://ontogeo.kz/geodeticont-kz#GeodeticService
+:GeodeticService rdf:type owl:Class , skos:Concept ;
+    rdfs:subClassOf :GeodeticActivity ;
+    skos:prefLabel "геодезическая служба"@ru ;
+    skos:prefLabel "geodetic service"@en ;
+    skos:prefLabel "геодезиялық қызмет"@kk ;
+    skos:definition "подразделение, выполняющее геодезические работы на объекте строительства"@ru ;
+    skos:definition "unit performing geodetic works on a construction site"@en ;
+    dcterms:identifier "105"^^xsd:integer ;
+    rdfs:isDefinedBy doc:d02 ;
+    dcterms:source doc:d02 ;
+    skos:inScheme :GeodeticOntKZScheme ;
+    skos:editorialNote "Kazakh label: expert-reviewed, not source-attested"@en .
+
+###  http://ontogeo.kz/geodeticont-kz#ContractorResponsibility
+:ContractorResponsibility rdf:type owl:Class , skos:Concept ;
+    rdfs:subClassOf :GeodeticActivity ;
+    skos:prefLabel "ответственность подрядчика"@ru ;
+    skos:prefLabel "contractor responsibility"@en ;
+    dcterms:identifier "106"^^xsd:integer ;
+    skos:inScheme :GeodeticOntKZScheme ;
+    skos:editorialNote "English label and definition: authors' translation, not source-attested"@en .
+
+###  http://ontogeo.kz/geodeticont-kz#GeodeticTaskAssignment
+:GeodeticTaskAssignment rdf:type owl:Class , skos:Concept ;
+    rdfs:subClassOf :RegulatoryDocument ;
+    skos:prefLabel "задание на геодезические работы"@ru ;
+    skos:prefLabel "geodetic task assignment"@en ;
+    skos:prefLabel "геодезиялық жұмыстарға тапсырма"@kk ;
+    skos:definition "документ, определяющий содержание и требования к выполняемым работам"@ru ;
+    skos:definition "document defining the content of and requirements for the works to be performed"@en ;
+    dcterms:identifier "107"^^xsd:integer ;
+    rdfs:isDefinedBy doc:d12 ;
+    dcterms:source doc:d12 ;
+    skos:inScheme :GeodeticOntKZScheme ;
+    skos:editorialNote "English label and definition: authors' translation, not source-attested"@en ;
+    skos:editorialNote "Kazakh label: expert-reviewed, not source-attested"@en .
+
+###  http://ontogeo.kz/geodeticont-kz#QualityControl
+:QualityControl rdf:type owl:Class , skos:Concept ;
+    rdfs:subClassOf :GeodeticActivity ;
+    skos:prefLabel "контроль качества геодезических работ"@ru ;
+    skos:prefLabel "quality control of geodetic works"@en ;
+    skos:prefLabel "геодезиялық жұмыстардың сапасын бақылау"@kk ;
+    skos:definition "совокупность мероприятий по проверке соответствия работ установленным требованиям"@ru ;
+    skos:definition "set of activities verifying compliance of works with established requirements"@en ;
+    dcterms:identifier "108"^^xsd:integer ;
+    rdfs:isDefinedBy doc:d02 ;
+    dcterms:source doc:d02 ;
+    skos:inScheme :GeodeticOntKZScheme ;
+    skos:editorialNote "Kazakh label: expert-reviewed, not source-attested"@en .
+
+###  http://ontogeo.kz/geodeticont-kz#RoadPavement
+:RoadPavement rdf:type owl:Class , skos:Concept ;
+    rdfs:subClassOf :RoadObject ;
+    skos:prefLabel "дорожная одежда"@ru ;
+    skos:prefLabel "road pavement"@en ;
+    skos:prefLabel "жол киімі"@kk ;
+    skos:definition "многослойная конструкция проезжей части, воспринимающая нагрузку от транспорта"@ru ;
+    skos:definition "multi-layer carriageway structure taking the traffic load"@en ;
+    dcterms:identifier "109"^^xsd:integer ;
+    rdfs:isDefinedBy doc:d08 ;
+    dcterms:source doc:d08 ;
+    skos:inScheme :GeodeticOntKZScheme ;
+    skos:editorialNote "English label and definition: authors' translation, not source-attested"@en ;
+    skos:editorialNote "Kazakh label: source-attested"@en ;
+    skos:scopeNote "road-survey and diagnostics submodule; flagged by reviewers as lying at the edge of construction geodesy"@en .
+
+###  http://ontogeo.kz/geodeticont-kz#PavementLayer
+:PavementLayer rdf:type owl:Class , skos:Concept ;
+    rdfs:subClassOf :RoadPavement ;
+    skos:prefLabel "слой дорожной одежды"@ru ;
+    skos:prefLabel "pavement layer"@en ;
+    skos:prefLabel "жол киімінің қабаты"@kk ;
+    skos:definition "конструктивный элемент дорожной одежды из однородного материала"@ru ;
+    skos:definition "structural element of a road pavement made of a homogeneous material"@en ;
+    dcterms:identifier "110"^^xsd:integer ;
+    rdfs:isDefinedBy doc:d08 ;
+    dcterms:source doc:d08 ;
+    skos:inScheme :GeodeticOntKZScheme ;
+    skos:editorialNote "English label and definition: authors' translation, not source-attested"@en ;
+    skos:editorialNote "Kazakh label: expert-reviewed, not source-attested"@en ;
+    skos:scopeNote "road-survey and diagnostics submodule; flagged by reviewers as lying at the edge of construction geodesy"@en .
+
+###  http://ontogeo.kz/geodeticont-kz#PavementThickness
+:PavementThickness rdf:type owl:Class , skos:Concept ;
+    rdfs:subClassOf :RoadSurveyObject ;
+    skos:prefLabel "толщина слоя дорожной одежды"@ru ;
+    skos:prefLabel "pavement layer thickness"@en ;
+    skos:definition "расстояние между верхней и нижней границами слоя дорожной одежды"@ru ;
+    skos:definition "distance between the upper and lower boundaries of a pavement layer"@en ;
+    dcterms:identifier "111"^^xsd:integer ;
+    rdfs:isDefinedBy doc:d08 ;
+    dcterms:source doc:d08 ;
+    skos:inScheme :GeodeticOntKZScheme ;
+    skos:scopeNote "road-survey and diagnostics submodule; flagged by reviewers as lying at the edge of construction geodesy"@en ;
+    :canBeFormalizedAsRule false .
+
+###  http://ontogeo.kz/geodeticont-kz#Rutting
+:Rutting rdf:type owl:Class , skos:Concept ;
+    rdfs:subClassOf :PavementFailure ;
+    skos:prefLabel "колея"@ru ;
+    skos:prefLabel "rutting"@en ;
+    skos:prefLabel "қолтаңба"@kk ;
+    skos:definition "продольная деформация проезжей части в виде углубления по полосе наката"@ru ;
+    skos:definition "longitudinal deformation of the carriageway as a depression along the wheel path"@en ;
+    dcterms:identifier "112"^^xsd:integer ;
+    rdfs:isDefinedBy doc:d08 ;
+    dcterms:source doc:d08 ;
+    skos:inScheme :GeodeticOntKZScheme ;
+    skos:editorialNote "English label and definition: authors' translation, not source-attested"@en ;
+    skos:editorialNote "Kazakh label: expert-reviewed, not source-attested"@en ;
+    skos:scopeNote "road-survey and diagnostics submodule; flagged by reviewers as lying at the edge of construction geodesy"@en .
+
+###  http://ontogeo.kz/geodeticont-kz#PavementCracking
+:PavementCracking rdf:type owl:Class , skos:Concept ;
+    rdfs:subClassOf :PavementFailure ;
+    skos:prefLabel "трещина дорожного покрытия"@ru ;
+    skos:prefLabel "pavement cracking"@en ;
+    skos:prefLabel "жол жабынының жарығы"@kk ;
+    skos:definition "нарушение сплошности покрытия в виде разрыва материала"@ru ;
+    skos:definition "discontinuity of the surfacing in the form of a rupture of the material"@en ;
+    dcterms:identifier "113"^^xsd:integer ;
+    rdfs:isDefinedBy doc:d08 ;
+    dcterms:source doc:d08 ;
+    skos:inScheme :GeodeticOntKZScheme ;
+    skos:editorialNote "English label and definition: authors' translation, not source-attested"@en ;
+    skos:editorialNote "Kazakh label: expert-reviewed, not source-attested"@en ;
+    skos:scopeNote "road-survey and diagnostics submodule; flagged by reviewers as lying at the edge of construction geodesy"@en .
+
+###  http://ontogeo.kz/geodeticont-kz#Pothole
+:Pothole rdf:type owl:Class , skos:Concept ;
+    rdfs:subClassOf :PavementFailure ;
+    skos:prefLabel "выбоина"@ru ;
+    skos:prefLabel "pothole"@en ;
+    skos:prefLabel "шұңқыр"@kk ;
+    skos:definition "локальное разрушение покрытия с образованием углубления"@ru ;
+    skos:definition "local destruction of the surfacing forming a cavity"@en ;
+    dcterms:identifier "114"^^xsd:integer ;
+    rdfs:isDefinedBy doc:d08 ;
+    dcterms:source doc:d08 ;
+    skos:inScheme :GeodeticOntKZScheme ;
+    skos:editorialNote "Kazakh label: expert-reviewed, not source-attested"@en ;
+    skos:scopeNote "road-survey and diagnostics submodule; flagged by reviewers as lying at the edge of construction geodesy"@en .
+
+###  http://ontogeo.kz/geodeticont-kz#RoadRoughness
+:RoadRoughness rdf:type owl:Class , skos:Concept ;
+    rdfs:subClassOf :RoadSurveyObject ;
+    skos:prefLabel "ровность покрытия"@ru ;
+    skos:prefLabel "road roughness"@en ;
+    skos:prefLabel "жабынның тегістігі"@kk ;
+    skos:definition "характеристика продольного профиля покрытия, влияющая на условия движения"@ru ;
+    skos:definition "characteristic of the longitudinal surface profile affecting driving conditions"@en ;
+    dcterms:identifier "115"^^xsd:integer ;
+    rdfs:isDefinedBy doc:d08 ;
+    dcterms:source doc:d08 ;
+    skos:inScheme :GeodeticOntKZScheme ;
+    skos:editorialNote "English label and definition: authors' translation, not source-attested"@en ;
+    skos:editorialNote "Kazakh label: expert-reviewed, not source-attested"@en ;
+    skos:scopeNote "road-survey and diagnostics submodule; flagged by reviewers as lying at the edge of construction geodesy"@en .
+
+###  http://ontogeo.kz/geodeticont-kz#PavementFailure
+:PavementFailure rdf:type owl:Class , skos:Concept ;
+    rdfs:subClassOf :RoadObject ;
+    skos:prefLabel "дефект дорожной одежды"@ru ;
+    skos:prefLabel "pavement failure"@en ;
+    skos:prefLabel "жол киімінің ақауы"@kk ;
+    skos:definition "нарушение сплошности или геометрии дорожной одежды, снижающее её эксплуатационные качества"@ru ;
+    skos:definition "discontinuity or geometric defect of a road pavement reducing its serviceability"@en ;
+    dcterms:identifier "116"^^xsd:integer ;
+    rdfs:isDefinedBy doc:d08 ;
+    dcterms:source doc:d08 ;
+    skos:inScheme :GeodeticOntKZScheme ;
+    skos:editorialNote "English label and definition: authors' translation, not source-attested"@en ;
+    skos:editorialNote "Kazakh label: expert-reviewed, not source-attested"@en ;
+    skos:scopeNote "road-survey and diagnostics submodule; flagged by reviewers as lying at the edge of construction geodesy"@en .
+
+###  http://ontogeo.kz/geodeticont-kz#RadarProfile
+:RadarProfile rdf:type owl:Class , skos:Concept ;
+    rdfs:subClassOf :RoadSurveyObject ;
+    skos:prefLabel "георадарный профиль"@ru ;
+    skos:prefLabel "radar profile"@en ;
+    skos:prefLabel "георадарлық профиль"@kk ;
+    skos:definition "результат непрерывного электромагнитного зондирования вдоль заданной линии"@ru ;
+    skos:definition "result of continuous electromagnetic sounding along a given line"@en ;
+    dcterms:identifier "117"^^xsd:integer ;
+    rdfs:isDefinedBy doc:d08 ;
+    dcterms:source doc:d08 ;
+    skos:inScheme :GeodeticOntKZScheme ;
+    skos:editorialNote "Kazakh label: expert-reviewed, not source-attested"@en ;
+    skos:scopeNote "road-survey and diagnostics submodule; flagged by reviewers as lying at the edge of construction geodesy"@en .
+
+###  http://ontogeo.kz/geodeticont-kz#OverhaulInterval
+:OverhaulInterval rdf:type owl:Class , skos:Concept ;
+    rdfs:subClassOf :RoadSurveyObject ;
+    skos:prefLabel "межремонтный срок службы"@ru ;
+    skos:prefLabel "overhaul interval"@en ;
+    skos:prefLabel "жөндеуаралық қызмет мерзімі"@kk ;
+    skos:definition "нормируемый период эксплуатации до очередного капитального ремонта"@ru ;
+    skos:definition "normative period of operation until the next major repair"@en ;
+    dcterms:identifier "118"^^xsd:integer ;
+    rdfs:isDefinedBy doc:d08 ;
+    dcterms:source doc:d08 ;
+    skos:inScheme :GeodeticOntKZScheme ;
+    skos:editorialNote "English label and definition: authors' translation, not source-attested"@en ;
+    skos:editorialNote "Kazakh label: expert-reviewed, not source-attested"@en ;
+    skos:scopeNote "road-survey and diagnostics submodule; flagged by reviewers as lying at the edge of construction geodesy"@en .
+
+###  http://ontogeo.kz/geodeticont-kz#RoadDiagnostics
+:RoadDiagnostics rdf:type owl:Class , skos:Concept ;
+    rdfs:subClassOf :RoadSurveyObject ;
+    skos:prefLabel "диагностика автомобильной дороги"@ru ;
+    skos:prefLabel "road diagnostics"@en ;
+    skos:prefLabel "автомобиль жолын диагностикалау"@kk ;
+    skos:definition "обследование дороги с целью оценки её транспортно-эксплуатационного состояния"@ru ;
+    skos:definition "inspection of a road to assess its transport and operational condition"@en ;
+    dcterms:identifier "119"^^xsd:integer ;
+    rdfs:isDefinedBy doc:d08 ;
+    dcterms:source doc:d08 ;
+    skos:inScheme :GeodeticOntKZScheme ;
+    skos:editorialNote "English label and definition: authors' translation, not source-attested"@en ;
+    skos:editorialNote "Kazakh label: source-attested"@en ;
+    skos:scopeNote "road-survey and diagnostics submodule; flagged by reviewers as lying at the edge of construction geodesy"@en .
+
+
+##############################################################################
+#
+#    Concept scheme and thematic blocks (16 skos:Collection)
+#
+##############################################################################
+
+:GeodeticOntKZScheme rdf:type skos:ConceptScheme ;
+    skos:prefLabel "Тематические блоки GeodeticOnt-KZ"@ru ;
+    skos:prefLabel "GeodeticOnt-KZ thematic blocks"@en .
+
+###  Block 01
+:Block01_ControlNetworks rdf:type skos:Collection ;
+    skos:prefLabel "1 · Опорные сети"@ru ;
+    skos:prefLabel "1 · Control networks"@en ;
+    skos:member :GeodeticControlNetwork ,
+        :StateGeodeticNetwork ,
+        :CondensationNetwork ,
+        :SurveyJustificationNetwork ,
+        :ConstructionGeodeticGrid ,
+        :PlanControlNetwork ,
+        :HeightControlNetwork ,
+        :Triangulation ,
+        :Trilateration ,
+        :Polygonometry ,
+        :GeodeticTraverse ,
+        :ClosedTraverse ,
+        :NetworkOrder ,
+        :NetworkAdjustment ,
+        :ReferenceStation ,
+        :CORSNetwork ,
+        :LocalControlNetwork ,
+        :NetworkDensity .
+
+###  Block 02
+:Block02_CoordinateAndHeightSystems rdf:type skos:Collection ;
+    skos:prefLabel "2 · Системы координат и высот"@ru ;
+    skos:prefLabel "2 · Coordinate and height systems"@en ;
+    skos:member :CoordinateSystemWGS84 ,
+        :NationalCoordinateSystem ,
+        :LocalCoordinateSystem ,
+        :ConstructionCoordinateSystem ,
+        :CoordinateTransformation ,
+        :MapProjection ,
+        :GaussKrugerProjection ,
+        :CoordinateZone ,
+        :ReferenceEllipsoid ,
+        :Geoid ,
+        :BalticHeightSystem ,
+        :AbsoluteElevation ,
+        :RelativeElevation ,
+        :ConditionalZero ,
+        :HeightDatumTransfer .
+
+###  Block 03
+:Block03_LevellingNetworks rdf:type skos:Collection ;
+    skos:prefLabel "3 · Нивелирные сети"@ru ;
+    skos:prefLabel "3 · Levelling networks"@en ;
+    skos:member :LevellingNetwork .
+
+###  Block 04
+:Block04_ControlPointsMarksAndBenchmarks rdf:type skos:Collection ;
+    skos:prefLabel "4 · Пункты, знаки и реперы"@ru ;
+    skos:prefLabel "4 · Control points, marks and benchmarks"@en ;
+    skos:member :GeodeticPoint ,
+        :GeodeticMark ,
+        :CentreOfPoint ,
+        :DeepBenchmark ,
+        :WallBenchmark ,
+        :WorkingBenchmark ,
+        :OrientationPoint ,
+        :TemporaryMark ,
+        :PointPreservation .
+
+###  Block 05
+:Block05_MeasurementMethods rdf:type skos:Collection ;
+    skos:prefLabel "5 · Методы измерений"@ru ;
+    skos:prefLabel "5 · Measurement methods"@en ;
+    skos:member :AngleMeasurement ,
+        :LinearMeasurement ,
+        :Levelling ,
+        :GeometricLevelling ,
+        :TrigonometricLevelling ,
+        :SatelliteMeasurement ,
+        :RTKMethod ,
+        :StaticMethod ,
+        :TacheometricSurvey ,
+        :LaserScanning ,
+        :PhotogrammetricMethod ,
+        :AerialSurvey ,
+        :UAVSurvey ,
+        :ObservationSeries ,
+        :RedundantMeasurement ,
+        :MeasurementSeriesMean ,
+        :GroundPenetratingRadar .
+
+###  Block 06
+:Block06_SettingOutWorks rdf:type skos:Collection ;
+    skos:prefLabel "6 · Разбивочные работы"@ru ;
+    skos:prefLabel "6 · Setting-out works"@en ;
+    skos:member :SettingOut ,
+        :MainAxes .
+
+###  Block 07
+:Block07_AsBuiltSurveys rdf:type skos:Collection ;
+    skos:prefLabel "7 · Исполнительные съёмки"@ru ;
+    skos:prefLabel "7 · As-built surveys"@en ;
+    skos:member :AsBuiltSurveying ,
+        :AsBuiltDrawing ,
+        :AsBuiltSurveyOfUtilities ,
+        :ErectionHorizon ,
+        :ControlSurvey ,
+        :SurveyCompleteness .
+
+###  Block 08
+:Block08_DeformationMonitoring rdf:type skos:Collection ;
+    skos:prefLabel "8 · Мониторинг деформаций"@ru ;
+    skos:prefLabel "8 · Deformation monitoring"@en ;
+    skos:member :DeformationObservation ,
+        :Settlement ,
+        :Tilt ,
+        :ObservationCycle .
+
+###  Block 09
+:Block09_Instruments rdf:type skos:Collection ;
+    skos:prefLabel "9 · Инструменты"@ru ;
+    skos:prefLabel "9 · Instruments"@en ;
+    skos:member :Theodolite ,
+        :Level ,
+        :TotalStation ,
+        :GNSSReceiver ,
+        :LevellingStaff ,
+        :InstrumentCalibration .
+
+###  Block 10
+:Block10_AccuracyAndTolerances rdf:type skos:Collection ;
+    skos:prefLabel "10 · Точность и допуски"@ru ;
+    skos:prefLabel "10 · Accuracy and tolerances"@en ;
+    skos:member :ActualDeviation ,
+        :LimitDeviation ,
+        :Misclosure ,
+        :AccuracyClass .
+
+###  Block 11
+:Block11_TopographyAndCartography rdf:type skos:Collection ;
+    skos:prefLabel "11 · Топография и картография"@ru ;
+    skos:prefLabel "11 · Topography and cartography"@en ;
+    skos:member :TopographicSurvey ,
+        :TopographicPlan ,
+        :TopographicMap ,
+        :MapScale ,
+        :ContourInterval ,
+        :Contour ,
+        :ReliefRepresentation ,
+        :SituationDetail ,
+        :SurveyScaleAccuracy ,
+        :OrthoPhotoMap ,
+        :DigitalTerrainModel .
+
+###  Block 12
+:Block12_UndergroundUtilities rdf:type skos:Collection ;
+    skos:prefLabel "12 · Подземные коммуникации"@ru ;
+    skos:prefLabel "12 · Underground utilities"@en ;
+    skos:member :UndergroundUtility ,
+        :UtilityDetectionSurvey .
+
+###  Block 13
+:Block13_GisAndDigitalData rdf:type skos:Collection ;
+    skos:prefLabel "13 · ГИС и цифровые данные"@ru ;
+    skos:prefLabel "13 · GIS and digital data"@en ;
+    skos:member :GeoinformationSystem ,
+        :SpatialDataLayer .
+
+###  Block 14
+:Block14_ReportingAndDocumentation rdf:type skos:Collection ;
+    skos:prefLabel "14 · Отчётность и документация"@ru ;
+    skos:prefLabel "14 · Reporting and documentation"@en ;
+    skos:member :FieldDocumentation ,
+        :FieldLog ,
+        :TechnicalReportDoc ,
+        :SurveyProgramme ,
+        :AcceptanceCertificate ,
+        :ArchiveCopy .
+
+###  Block 15
+:Block15_OrganisationOfGeodeticWorks rdf:type skos:Collection ;
+    skos:prefLabel "15 · Организация геодезических работ"@ru ;
+    skos:prefLabel "15 · Organisation of geodetic works"@en ;
+    skos:member :GeodeticSupport ,
+        :GeodeticService ,
+        :ContractorResponsibility ,
+        :GeodeticTaskAssignment ,
+        :QualityControl .
+
+###  Block 16
+:Block16_RoadSurveyAndDiagnostics rdf:type skos:Collection ;
+    skos:prefLabel "16 · Дорожное обследование"@ru ;
+    skos:prefLabel "16 · Road survey and diagnostics"@en ;
+    skos:scopeNote "road-survey and diagnostics submodule; flagged by reviewers as lying at the edge of construction geodesy"@en ;
+    skos:member :RoadPavement ,
+        :PavementLayer ,
+        :PavementThickness ,
+        :Rutting ,
+        :PavementCracking ,
+        :Pothole ,
+        :RoadRoughness ,
+        :PavementFailure ,
+        :RadarProfile ,
+        :OverhaulInterval ,
+        :RoadDiagnostics .
+
+`},{name:"demo-geodeticont-kz-docs.ttl",text:`@prefix :        <http://ontogeo.kz/geodeticont-kz#> .
+@prefix owl:     <http://www.w3.org/2002/07/owl#> .
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+@prefix skos:    <http://www.w3.org/2004/02/skos/core#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix sh:      <http://www.w3.org/ns/shacl#> .
+@prefix ifc:     <http://www.buildingsmart-tech.org/ifcOWL/IFC4#> .
+@prefix geo:     <http://www.opengis.net/ont/geosparql#> .
+@prefix doc:     <http://ontogeo.kz/geodeticont-kz/doc/> .
+
+##############################################################################
+#
+#    Regulatory documents (ABox, synthetic)
+#
+##############################################################################
+
+###  http://ontogeo.kz/geodeticont-kz/doc/d01
+doc:d01 rdf:type :RegulatoryDocument ;
+    skos:prefLabel "СН РК 1.03-03-2023"@ru ;
+    dcterms:title "Геодезические работы в строительстве"@ru ;
+    :documentStatus "действующий" ;
+    :documentYear "2023"^^xsd:gYear ;
+    dcterms:identifier "d01" .
+
+###  http://ontogeo.kz/geodeticont-kz/doc/d02
+doc:d02 rdf:type :RegulatoryDocument ;
+    skos:prefLabel "СП РК 1.03-103-2013*"@ru ;
+    dcterms:title "Геодезические работы в строительстве. Правила производства"@ru ;
+    :documentStatus "действующий" ;
+    :documentYear "2013"^^xsd:gYear ;
+    dcterms:identifier "d02" .
+
+###  http://ontogeo.kz/geodeticont-kz/doc/d03
+doc:d03 rdf:type :RegulatoryDocument ;
+    skos:prefLabel "РДС РК 3.01-09-2012"@ru ;
+    dcterms:title "Инструкция по производству геодезических работ"@ru ;
+    :documentStatus "методический" ;
+    :documentYear "2012"^^xsd:gYear ;
+    dcterms:identifier "d03" .
+
+###  http://ontogeo.kz/geodeticont-kz/doc/d04
+doc:d04 rdf:type :RegulatoryDocument ;
+    skos:prefLabel "СП РК 1.02-105-2014"@ru ;
+    dcterms:title "Спутниковые методы определения координат"@ru ;
+    :documentStatus "действующий" ;
+    :documentYear "2014"^^xsd:gYear ;
+    dcterms:identifier "d04" .
+
+###  http://ontogeo.kz/geodeticont-kz/doc/d05
+doc:d05 rdf:type :RegulatoryDocument ;
+    skos:prefLabel "СП РК 1.02-101-2014"@ru ;
+    dcterms:title "Инженерно-геодезические изыскания для строительства"@ru ;
+    :documentStatus "действующий" ;
+    :documentYear "2014"^^xsd:gYear ;
+    dcterms:identifier "d05" .
+
+###  http://ontogeo.kz/geodeticont-kz/doc/d06
+doc:d06 rdf:type :RegulatoryDocument ;
+    skos:prefLabel "СН РК 1.02-02-2011"@ru ;
+    dcterms:title "Нивелирование I–IV классов"@ru ;
+    :documentStatus "действующий" ;
+    :documentYear "2011"^^xsd:gYear ;
+    dcterms:identifier "d06" .
+
+###  http://ontogeo.kz/geodeticont-kz/doc/d07
+doc:d07 rdf:type :RegulatoryDocument ;
+    skos:prefLabel "СП РК 1.02-107-2015"@ru ;
+    dcterms:title "Аэрофотосъёмочные и фотограмметрические работы"@ru ;
+    :documentStatus "действующий" ;
+    :documentYear "2015"^^xsd:gYear ;
+    dcterms:identifier "d07" .
+
+###  http://ontogeo.kz/geodeticont-kz/doc/d08
+doc:d08 rdf:type :RegulatoryDocument ;
+    skos:prefLabel "Инструкция по назначению межремонтных сроков службы дорожных одежд на основании георадарного обследования"@ru ;
+    dcterms:title "Инструкция по назначению межремонтных сроков службы дорожных одежд"@ru ;
+    :documentStatus "методический" ;
+    :documentYear "2019"^^xsd:gYear ;
+    dcterms:identifier "d08" .
+
+###  http://ontogeo.kz/geodeticont-kz/doc/d09
+doc:d09 rdf:type :RegulatoryDocument ;
+    skos:prefLabel "СП РК 3.01-101-2013"@ru ;
+    dcterms:title "Съёмка подземных инженерных коммуникаций"@ru ;
+    :documentStatus "действующий" ;
+    :documentYear "2013"^^xsd:gYear ;
+    dcterms:identifier "d09" .
+
+###  http://ontogeo.kz/geodeticont-kz/doc/d10
+doc:d10 rdf:type :RegulatoryDocument ;
+    skos:prefLabel "СП РК 5.01-102-2013"@ru ;
+    dcterms:title "Наблюдения за деформациями зданий и сооружений"@ru ;
+    :documentStatus "действующий" ;
+    :documentYear "2013"^^xsd:gYear ;
+    dcterms:identifier "d10" .
+
+###  http://ontogeo.kz/geodeticont-kz/doc/d11
+doc:d11 rdf:type :RegulatoryDocument ;
+    skos:prefLabel "СТ РК 1.14-2015"@ru ;
+    dcterms:title "Цифровые модели местности. Общие требования"@ru ;
+    :documentStatus "тезаурусный источник" ;
+    :documentYear "2015"^^xsd:gYear ;
+    dcterms:identifier "d11" .
+
+###  http://ontogeo.kz/geodeticont-kz/doc/d12
+doc:d12 rdf:type :RegulatoryDocument ;
+    skos:prefLabel "РДС РК 1.03-05-2011"@ru ;
+    dcterms:title "Состав и оформление технической документации"@ru ;
+    :documentStatus "методический" ;
+    :documentYear "2011"^^xsd:gYear ;
+    dcterms:identifier "d12" .
+
+###  http://ontogeo.kz/geodeticont-kz/doc/d13
+doc:d13 rdf:type :RegulatoryDocument ;
+    skos:prefLabel "СП РК 5.03-107-2013"@ru ;
+    dcterms:title "Бетонные и железобетонные конструкции"@ru ;
+    :documentStatus "действующий" ;
+    :documentYear "2013"^^xsd:gYear ;
+    dcterms:identifier "d13" .
+
+###  http://ontogeo.kz/geodeticont-kz/doc/d14
+doc:d14 rdf:type :RegulatoryDocument ;
+    skos:prefLabel "Глоссарий геодезических терминов"@ru ;
+    dcterms:title "Глоссарий геодезических терминов (справочный источник)"@ru ;
+    :documentStatus "тезаурусный источник" ;
+    :documentYear "2008"^^xsd:gYear ;
+    dcterms:identifier "d14" .
+
+###  http://ontogeo.kz/geodeticont-kz/doc/d15
+doc:d15 rdf:type :RegulatoryDocument ;
+    skos:prefLabel "Экспертное мнение"@ru ;
+    dcterms:title "Экспертное мнение специалиста (не документ)"@ru ;
+    :documentStatus "unverified" ;
+    dcterms:identifier "d15" .
+
+###  http://ontogeo.kz/geodeticont-kz/doc/d16
+doc:d16 rdf:type :RegulatoryDocument ;
+    skos:prefLabel "СН РК 3.03-01-2013"@ru ;
+    dcterms:title "Автомобильные дороги"@ru ;
+    :documentStatus "действующий" ;
+    :documentYear "2013"^^xsd:gYear ;
+    dcterms:identifier "d16" .
+
+###  http://ontogeo.kz/geodeticont-kz/doc/d17
+doc:d17 rdf:type :RegulatoryDocument ;
+    skos:prefLabel "СП РК 2.04-107-2013"@ru ;
+    dcterms:title "Строительная климатология"@ru ;
+    :documentStatus "действующий" ;
+    :documentYear "2013"^^xsd:gYear ;
+    dcterms:identifier "d17" .
+
+###  http://ontogeo.kz/geodeticont-kz/doc/d18
+doc:d18 rdf:type :RegulatoryDocument ;
+    skos:prefLabel "СТ РК ISO 19115-2010"@ru ;
+    dcterms:title "Географическая информация. Метаданные"@ru ;
+    :documentStatus "тезаурусный источник" ;
+    :documentYear "2010"^^xsd:gYear ;
+    dcterms:identifier "d18" .
+
+###  http://ontogeo.kz/geodeticont-kz/doc/d19
+doc:d19 rdf:type :RegulatoryDocument ;
+    skos:prefLabel "МСН 3.01-01-2010"@ru ;
+    dcterms:title "Межгосударственные строительные нормы (отменён)"@ru ;
+    :documentStatus "отменён" ;
+    :documentYear "2010"^^xsd:gYear ;
+    dcterms:identifier "d19" .
+
+`},{name:"demo-geodeticont-kz-shapes.ttl",text:`@prefix :        <http://ontogeo.kz/geodeticont-kz#> .
+@prefix owl:     <http://www.w3.org/2002/07/owl#> .
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+@prefix skos:    <http://www.w3.org/2004/02/skos/core#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix sh:      <http://www.w3.org/ns/shacl#> .
+@prefix ifc:     <http://www.buildingsmart-tech.org/ifcOWL/IFC4#> .
+@prefix geo:     <http://www.opengis.net/ont/geosparql#> .
+@prefix doc:     <http://ontogeo.kz/geodeticont-kz/doc/> .
+
+##############################################################################
+#
+#    SHACL shapes (1 full + 6 placeholders)
+#
+##############################################################################
+
+:DeviationShape rdf:type sh:NodeShape ;
+    sh:targetClass :Deviation ;
+    rdfs:label "Отклонение не превышает допустимого значения"@ru ;
+    sh:property [
+        sh:path :measuredValue ;
+        sh:datatype xsd:decimal ;
+        sh:lessThanOrEquals :permittedValue ;
+        sh:message "measuredValue must not exceed permittedValue"@en ;
+    ] .
+
+:LimitDeviationShape rdf:type sh:NodeShape ;
+    sh:targetClass :LimitDeviation ;
+    rdfs:label "Предельное отклонение — скалярный порог"@ru ;
+    sh:property [
+        sh:path :permittedValue ;
+        sh:datatype xsd:decimal ;
+        sh:minCount 1 ;
+    ] .
+
+:AccuracyClassShape rdf:type sh:NodeShape ;
+    sh:targetClass :AccuracyClass ;
+    rdfs:comment "TODO: resolves to a table parameterised by accuracy class / network order; value not confirmed by expert (workbook sheet 2)"@en .
+
+:CoordinateTransformationShape rdf:type sh:NodeShape ;
+    sh:targetClass :CoordinateTransformation ;
+    rdfs:comment "TODO: resolves to a table parameterised by zone and transformation parameters; value not confirmed by expert"@en .
+
+:PavementThicknessShape rdf:type sh:NodeShape ;
+    sh:targetClass :PavementThickness ;
+    rdfs:comment "TODO: resolves to a table parameterised by nominal size range; value not confirmed by expert"@en .
+
+:MisclosureShape rdf:type sh:NodeShape ;
+    sh:targetClass :Misclosure ;
+    rdfs:comment "TODO: limit is a function of traverse length; formula placeholder, not confirmed"@en .
+
+:SettlementShape rdf:type sh:NodeShape ;
+    rdfs:comment "TODO: limit delegated to geotechnical norms; no targetClass assigned yet"@en .
+`}],Hk={id:"geont-kz",title:"GeOnt-KZ — геотехника (онтология-предшественник)",languages:["ru","kk","en"],labelProperties:["http://www.w3.org/2000/01/rdf-schema#label","http://www.w3.org/2004/02/skos/core#prefLabel"],definitionProperties:["http://www.w3.org/2000/01/rdf-schema#comment","http://www.w3.org/2004/02/skos/core#definition"],minDefinitionLength:20,targets:null},Vk=[{name:"demo-legacy-geont.ttl",text:`@prefix :        <http://ontogeo.kz/geont-kz#> .
+@prefix owl:     <http://www.w3.org/2002/07/owl#> .
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+@prefix skos:    <http://www.w3.org/2004/02/skos/core#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ifc:     <http://www.buildingsmart-tech.org/ifcOWL/IFC4#> .
+@prefix geocore: <http://www.geoscience.org/geocore#> .
+@prefix ontolex: <http://www.w3.org/ns/lemon/ontolex#> .
+
+##############################################################################
+#
+#    Ontology
+#
+##############################################################################
+
+<http://ontogeo.kz/geont-kz> rdf:type owl:Ontology ;
+    owl:imports <http://www.w3.org/2004/02/skos/core> ;
+    owl:imports <http://www.buildingsmart-tech.org/ifcOWL/IFC4> ;
+    owl:versionInfo "0.4-demo-defective" ;
+    rdfs:label "GeOnt-KZ (СИНТЕТИЧЕСКИЙ ДЕФЕКТНЫЙ ДЕМОНАБОР)"@ru ;
+    rdfs:comment "ВНИМАНИЕ: сгенерировано build/make_demo_data.py. Набор намеренно воспроизводит типы дефектов, найденные в настоящем GeOnt-KZ.ttl (тег kz вместо kk, классы-сироты, множественные родители, провенанс литералом, свойства без домена и диапазона, категориальные ошибки иерархии). Определения вымышлены."@ru .
+
+
+##############################################################################
+#
+#    Object Properties
+#
+##############################################################################
+
+###  http://ontogeo.kz/geont-kz#hasSoilType
+:hasSoilType rdf:type owl:ObjectProperty ;
+    rdfs:domain :Soil ;
+    rdfs:range :Soil ;
+    rdfs:label "тип грунта"@kz .
+
+###  http://ontogeo.kz/geont-kz#hasStrength
+:hasStrength rdf:type owl:ObjectProperty ;
+    rdfs:label "прочность"@kz .
+
+###  http://ontogeo.kz/geont-kz#hasIceContent
+:hasIceContent rdf:type owl:ObjectProperty .
+
+###  http://ontogeo.kz/geont-kz#isLocatedIn
+:isLocatedIn rdf:type owl:ObjectProperty ;
+    rdfs:domain :Borehole ;
+    rdfs:label "расположен в"@kz .
+
+###  http://ontogeo.kz/geont-kz#hasTestResult
+:hasTestResult rdf:type owl:ObjectProperty ;
+    rdfs:range :FieldTest .
+
+###  http://ontogeo.kz/geont-kz#relatesToDocument
+:relatesToDocument rdf:type owl:ObjectProperty .
+
+###  http://ontogeo.kz/geont-kz#hasSubsoil
+:hasSubsoil rdf:type owl:ObjectProperty ;
+    rdfs:domain :Foundation ;
+    rdfs:range :Soil .
+
+###  http://ontogeo.kz/geont-kz#measuredAt
+:measuredAt rdf:type owl:ObjectProperty ;
+    rdfs:label "измерено на"@kz .
+
+
+##############################################################################
+#
+#    Data Properties
+#
+##############################################################################
+
+###  http://ontogeo.kz/geont-kz#hasValue
+:hasValue rdf:type owl:DatatypeProperty ;
+    rdfs:label "значение"@ru .
+
+###  http://ontogeo.kz/geont-kz#hasUnit
+:hasUnit rdf:type owl:DatatypeProperty .
+
+###  http://ontogeo.kz/geont-kz#hasDepth
+:hasDepth rdf:type owl:DatatypeProperty ;
+    rdfs:label "глубина"@ru .
+
+
+##############################################################################
+#
+#    Classes
+#
+##############################################################################
+
+###  http://ontogeo.kz/geont-kz#GeotechnicalEntity
+:GeotechnicalEntity rdf:type owl:Class ;
+    rdfs:label "GeotechnicalEntity"@en .
+
+###  http://ontogeo.kz/geont-kz#GeotechnicalProperty
+:GeotechnicalProperty rdf:type owl:Class ;
+    rdfs:label "GeotechnicalProperty"@en .
+
+###  http://ontogeo.kz/geont-kz#GeotechnicalWork
+:GeotechnicalWork rdf:type owl:Class ;
+    rdfs:label "GeotechnicalWork"@en .
+
+###  http://ontogeo.kz/geont-kz#StructuralEntity
+:StructuralEntity rdf:type owl:Class ;
+    rdfs:label "StructuralEntity"@en .
+
+###  http://ontogeo.kz/geont-kz#FieldTest
+:FieldTest rdf:type owl:Class ;
+    rdfs:label "FieldTest"@en .
+
+###  http://ontogeo.kz/geont-kz#FieldWork
+:FieldWork rdf:type owl:Class ;
+    rdfs:label "FieldWork"@en .
+
+###  http://ontogeo.kz/geont-kz#SeismicEntity
+:SeismicEntity rdf:type owl:Class ;
+    rdfs:label "SeismicEntity"@en .
+
+###  http://ontogeo.kz/geont-kz#LimitState
+:LimitState rdf:type owl:Class ;
+    rdfs:label "LimitState"@en .
+
+###  http://ontogeo.kz/geont-kz#LoadEntity
+:LoadEntity rdf:type owl:Class ;
+    rdfs:label "LoadEntity"@en .
+
+###  http://ontogeo.kz/geont-kz#QualityEntity
+:QualityEntity rdf:type owl:Class ;
+    rdfs:label "QualityEntity"@en .
+
+###  http://ontogeo.kz/geont-kz#Deformation
+:Deformation rdf:type owl:Class ;
+    rdfs:label "Deformation"@en .
+
+###  http://ontogeo.kz/geont-kz#Geotechnical_category
+:Geotechnical_category rdf:type owl:Class ;
+    rdfs:label "geotechnical category"@ru ;
+    rdfs:label "geotechnical category"@kz .
+
+###  http://ontogeo.kz/geont-kz#Soil_classification_system
+:Soil_classification_system rdf:type owl:Class ;
+    rdfs:label "soil classification system"@ru ;
+    rdfs:label "soil classification system"@kz .
+
+###  http://ontogeo.kz/geont-kz#Laboratory_test
+:Laboratory_test rdf:type owl:Class ;
+    rdfs:label "laboratory test"@ru ;
+    rdfs:label "laboratory test"@kz .
+
+###  http://ontogeo.kz/geont-kz#Engineering_geology
+:Engineering_geology rdf:type owl:Class ;
+    rdfs:label "engineering geology"@ru ;
+    rdfs:label "engineering geology"@kz .
+
+###  http://ontogeo.kz/geont-kz#Hydrogeology
+:Hydrogeology rdf:type owl:Class ;
+    rdfs:label "hydrogeology"@ru ;
+    rdfs:label "hydrogeology"@kz .
+
+###  http://ontogeo.kz/geont-kz#Groundwater_level
+:Groundwater_level rdf:type owl:Class .
+
+###  http://ontogeo.kz/geont-kz#Site_investigation_report
+:Site_investigation_report rdf:type owl:Class .
+
+###  http://ontogeo.kz/geont-kz#Soil
+:Soil rdf:type owl:Class ;
+    rdfs:subClassOf :GeotechnicalEntity ;
+    rdfs:label "грунт"@ru ;
+    rdfs:label "топырақ"@kz ;
+    rdfs:comment "любая горная порода, почва или техногенное образование"@ru ;
+    rdfs:comment "любая горная порода, почва или техногенное образование"@kz ;
+    rdfs:isDefinedBy "СН РК 5.01-01-2013" .
+
+###  http://ontogeo.kz/geont-kz#Clay_soil
+:Clay_soil rdf:type owl:Class ;
+    rdfs:subClassOf :Soil ;
+    rdfs:label "глинистый грунт"@ru ;
+    rdfs:label "сазды топырақ"@kz ;
+    rdfs:comment "связный грунт с числом пластичности более единицы"@ru ;
+    rdfs:comment "связный грунт с числом пластичности более единицы"@kz ;
+    rdfs:isDefinedBy "СН РК 5.01-01-2013" .
+
+###  http://ontogeo.kz/geont-kz#Sandy_soil
+:Sandy_soil rdf:type owl:Class ;
+    rdfs:subClassOf :Soil ;
+    rdfs:label "песчаный грунт"@ru ;
+    rdfs:label "құмды топырақ"@kz ;
+    rdfs:comment "несвязный грунт, содержащий менее 50 % частиц крупнее 2 мм"@ru ;
+    rdfs:comment "несвязный грунт, содержащий менее 50 % частиц крупнее 2 мм"@kz ;
+    rdfs:isDefinedBy "СН РК 5.01-01-2013" .
+
+###  http://ontogeo.kz/geont-kz#Anthropogenic_soil
+:Anthropogenic_soil rdf:type owl:Class ;
+    rdfs:subClassOf :Soil ;
+    rdfs:label "антропогенный грунт"@ru ;
+    rdfs:label "антропогендік топырақ"@kz ;
+    rdfs:comment "грунт, образованный в результате хозяйственной деятельности"@ru ;
+    rdfs:comment "грунт, образованный в результате хозяйственной деятельности"@kz ;
+    rdfs:isDefinedBy "СН РК 5.01-01-2013" .
+
+###  http://ontogeo.kz/geont-kz#Frozen_soil
+:Frozen_soil rdf:type owl:Class ;
+    rdfs:subClassOf :Soil ;
+    rdfs:label "мёрзлый грунт"@ru ;
+    rdfs:label "тоңды топырақ"@kz ;
+    rdfs:comment "грунт, имеющий отрицательную температуру и содержащий лёд"@ru ;
+    rdfs:comment "грунт, имеющий отрицательную температуру и содержащий лёд"@kz ;
+    rdfs:isDefinedBy "СП РК 5.01-102-2013" .
+
+###  http://ontogeo.kz/geont-kz#Permafrost
+:Permafrost rdf:type owl:Class ;
+    rdfs:subClassOf :Frozen_soil ;
+    rdfs:label "многолетнемёрзлый грунт"@ru ;
+    rdfs:label "көпжылдық тоңды топырақ"@kz ;
+    rdfs:comment "грунт, находящийся в мёрзлом состоянии не менее трёх лет"@ru ;
+    rdfs:comment "грунт, находящийся в мёрзлом состоянии не менее трёх лет"@kz ;
+    rdfs:isDefinedBy "СП РК 5.01-102-2013" .
+
+###  http://ontogeo.kz/geont-kz#Loess
+:Loess rdf:type owl:Class ;
+    rdfs:subClassOf :Clay_soil ;
+    rdfs:label "лёссовый грунт"@ru ;
+    rdfs:label "лёсс топырағы"@kz ;
+    rdfs:comment "пылеватый грунт, обладающий просадочностью при замачивании"@ru ;
+    rdfs:comment "пылеватый грунт, обладающий просадочностью при замачивании"@kz ;
+    rdfs:isDefinedBy "СН РК 5.01-01-2013" .
+
+###  http://ontogeo.kz/geont-kz#Subsidence
+:Subsidence rdf:type owl:Class ;
+    rdfs:subClassOf :Deformation ;
+    rdfs:label "просадка"@ru ;
+    rdfs:label "шөгу"@kz ;
+    rdfs:comment "деформация основания, возникающая при замачивании просадочного грунта"@ru ;
+    rdfs:comment "деформация основания, возникающая при замачивании просадочного грунта"@kz ;
+    rdfs:isDefinedBy "СН РК 5.01-01-2013" .
+
+###  http://ontogeo.kz/geont-kz#Settlement_geotech
+:Settlement_geotech rdf:type owl:Class ;
+    rdfs:subClassOf :Deformation ;
+    rdfs:label "осадка"@ru ;
+    rdfs:label "отыру"@kz ;
+    rdfs:comment "вертикальная деформация основания под нагрузкой"@ru ;
+    rdfs:comment "вертикальная деформация основания под нагрузкой"@kz ;
+    rdfs:isDefinedBy "СН РК 5.01-01-2013" .
+
+###  http://ontogeo.kz/geont-kz#Heave
+:Heave rdf:type owl:Class ;
+    rdfs:subClassOf :Deformation ;
+    rdfs:label "пучение"@ru ;
+    rdfs:label "көтерілу"@kz ;
+    rdfs:comment "подъём поверхности грунта при промерзании"@ru ;
+    rdfs:comment "подъём поверхности грунта при промерзании"@kz ;
+    rdfs:isDefinedBy "СП РК 5.01-102-2013" .
+
+###  http://ontogeo.kz/geont-kz#Bearing_capacity
+:Bearing_capacity rdf:type owl:Class ;
+    rdfs:subClassOf :GeotechnicalProperty ;
+    rdfs:label "несущая способность"@ru ;
+    rdfs:label "көтергіш қабілет"@kz ;
+    rdfs:isDefinedBy "СН РК 5.01-01-2013" .
+
+###  http://ontogeo.kz/geont-kz#Youngs_modulus
+:Youngs_modulus rdf:type owl:Class ;
+    rdfs:subClassOf :GeotechnicalProperty ;
+    rdfs:label "модуль деформации"@ru ;
+    rdfs:label "серпімділік модулі (бірінші типтегі серпімділік модулі)"@kz ;
+    rdfs:comment "отношение приращения напряжения к приращению относительной деформации"@ru ;
+    rdfs:comment "отношение приращения напряжения к приращению относительной деформации"@kz ;
+    rdfs:isDefinedBy "ГОСТ 12248-2010" .
+
+###  http://ontogeo.kz/geont-kz#Poisson_ratio
+:Poisson_ratio rdf:type owl:Class ;
+    rdfs:subClassOf :GeotechnicalProperty ;
+    rdfs:label "коэффициент Пуассона"@ru ;
+    rdfs:label "Пуассон коэффициенті"@kz ;
+    rdfs:comment "отношение поперечной деформации к продольной"@ru ;
+    rdfs:comment "отношение поперечной деформации к продольной"@kz ;
+    rdfs:isDefinedBy "ГОСТ 12248-2010" .
+
+###  http://ontogeo.kz/geont-kz#Cohesion
+:Cohesion rdf:type owl:Class ;
+    rdfs:subClassOf :GeotechnicalProperty ;
+    rdfs:label "удельное сцепление"@ru ;
+    rdfs:label "меншікті ілінісу"@kz ;
+    rdfs:comment "характеристика прочности грунта на сдвиг при нулевом нормальном напряжении"@ru ;
+    rdfs:comment "характеристика прочности грунта на сдвиг при нулевом нормальном напряжении"@kz ;
+    rdfs:isDefinedBy "ГОСТ 12248-2010" .
+
+###  http://ontogeo.kz/geont-kz#Friction_angle
+:Friction_angle rdf:type owl:Class ;
+    rdfs:subClassOf :GeotechnicalProperty ;
+    rdfs:label "угол внутреннего трения"@ru ;
+    rdfs:label "ішкі үйкеліс бұрышы"@kz ;
+    rdfs:comment "характеристика прочности грунта на сдвиг"@ru ;
+    rdfs:comment "характеристика прочности грунта на сдвиг"@kz ;
+    rdfs:isDefinedBy "ГОСТ 12248-2010" .
+
+###  http://ontogeo.kz/geont-kz#Porosity
+:Porosity rdf:type owl:Class ;
+    rdfs:subClassOf :GeotechnicalProperty ;
+    rdfs:label "пористость"@ru ;
+    rdfs:label "кеуектілік"@kz ;
+    rdfs:comment "отношение объёма пор к общему объёму грунта"@ru ;
+    rdfs:comment "отношение объёма пор к общему объёму грунта"@kz ;
+    rdfs:isDefinedBy "ГОСТ 5180-2015" .
+
+###  http://ontogeo.kz/geont-kz#Water_content
+:Water_content rdf:type owl:Class ;
+    rdfs:subClassOf :GeotechnicalProperty ;
+    rdfs:label "влажность грунта"@ru ;
+    rdfs:label "топырақ ылғалдылығы"@kz ;
+    rdfs:comment "отношение массы воды к массе сухого грунта"@ru ;
+    rdfs:comment "отношение массы воды к массе сухого грунта"@kz ;
+    rdfs:isDefinedBy "ГОСТ 5180-2015" .
+
+###  http://ontogeo.kz/geont-kz#Density
+:Density rdf:type owl:Class ;
+    rdfs:subClassOf :GeotechnicalProperty ;
+    rdfs:label "плотность грунта"@ru ;
+    rdfs:label "топырақ тығыздығы"@kz ;
+    rdfs:comment "отношение массы грунта к занимаемому им объёму"@ru ;
+    rdfs:comment "отношение массы грунта к занимаемому им объёму"@kz ;
+    rdfs:isDefinedBy "ГОСТ 5180-2015" .
+
+###  http://ontogeo.kz/geont-kz#Anisotropy
+:Anisotropy rdf:type owl:Class ;
+    rdfs:subClassOf :GeotechnicalProperty ;
+    rdfs:label "анизотропия"@ru ;
+    rdfs:label "анизотропия"@kz ;
+    rdfs:comment "зависимость свойств грунта от направления"@ru ;
+    rdfs:comment "зависимость свойств грунта от направления"@kz ;
+    rdfs:isDefinedBy "ГОСТ 12248-2010" .
+
+###  http://ontogeo.kz/geont-kz#Anisotropic_material
+:Anisotropic_material rdf:type owl:Class ;
+    rdfs:subClassOf :Anisotropy ;
+    rdfs:label "анизотропный материал"@ru ;
+    rdfs:label "анизотропты материал"@kz ;
+    rdfs:comment "материал, свойства которого зависят от направления"@ru ;
+    rdfs:comment "материал, свойства которого зависят от направления"@kz ;
+    rdfs:isDefinedBy "ГОСТ 12248-2010" .
+
+###  http://ontogeo.kz/geont-kz#Foundation
+:Foundation rdf:type owl:Class ;
+    rdfs:subClassOf :StructuralEntity ;
+    rdfs:label "фундамент"@ru ;
+    rdfs:label "іргетас"@kz ;
+    rdfs:comment "часть сооружения, передающая нагрузку на основание"@ru ;
+    rdfs:comment "часть сооружения, передающая нагрузку на основание"@kz ;
+    rdfs:isDefinedBy "СП РК 5.01-101-2013" .
+
+###  http://ontogeo.kz/geont-kz#Pile_foundation
+:Pile_foundation rdf:type owl:Class ;
+    rdfs:subClassOf :Foundation ;
+    rdfs:label "свайный фундамент"@ru ;
+    rdfs:label "қадалы іргетас"@kz ;
+    rdfs:comment "фундамент, состоящий из свай и объединяющего их ростверка"@ru ;
+    rdfs:comment "фундамент, состоящий из свай и объединяющего их ростверка"@kz ;
+    rdfs:isDefinedBy "СП РК 5.01-103-2013" .
+
+###  http://ontogeo.kz/geont-kz#Slab_foundation
+:Slab_foundation rdf:type owl:Class ;
+    rdfs:subClassOf :Foundation ;
+    rdfs:label "плитный фундамент"@ru ;
+    rdfs:label "тақталы іргетас"@kz ;
+    rdfs:comment "фундамент в виде сплошной плиты под всем сооружением"@ru ;
+    rdfs:comment "фундамент в виде сплошной плиты под всем сооружением"@kz ;
+    rdfs:isDefinedBy "СП РК 5.01-101-2013" .
+
+###  http://ontogeo.kz/geont-kz#Pile
+:Pile rdf:type owl:Class ;
+    rdfs:subClassOf :StructuralEntity ;
+    rdfs:subClassOf :Foundation ;
+    rdfs:label "свая"@ru ;
+    rdfs:label "қада"@kz ;
+    rdfs:comment "стержневой элемент, передающий нагрузку на грунт основания"@ru ;
+    rdfs:comment "стержневой элемент, передающий нагрузку на грунт основания"@kz ;
+    rdfs:isDefinedBy "СП РК 5.01-103-2013" .
+
+###  http://ontogeo.kz/geont-kz#Retaining_wall
+:Retaining_wall rdf:type owl:Class ;
+    rdfs:subClassOf :StructuralEntity ;
+    rdfs:label "подпорная стена"@ru ;
+    rdfs:label "тірек қабырға"@kz ;
+    rdfs:comment "сооружение, удерживающее массив грунта от обрушения"@ru ;
+    rdfs:comment "сооружение, удерживающее массив грунта от обрушения"@kz ;
+    rdfs:isDefinedBy "СП РК 5.01-104-2013" .
+
+###  http://ontogeo.kz/geont-kz#Excavation
+:Excavation rdf:type owl:Class ;
+    rdfs:subClassOf :GeotechnicalWork ;
+    rdfs:label "котлован"@ru ;
+    rdfs:label "қазаншұңқыр"@kz ;
+    rdfs:comment "выемка в грунте, устраиваемая для возведения подземной части"@ru ;
+    rdfs:comment "выемка в грунте, устраиваемая для возведения подземной части"@kz ;
+    rdfs:isDefinedBy "СП РК 5.01-101-2013" .
+
+###  http://ontogeo.kz/geont-kz#Slope
+:Slope rdf:type owl:Class ;
+    rdfs:subClassOf :GeotechnicalEntity ;
+    rdfs:label "откос"@ru ;
+    rdfs:label "еңіс"@kz ;
+    rdfs:comment "наклонная поверхность, ограничивающая выемку или насыпь"@ru ;
+    rdfs:comment "наклонная поверхность, ограничивающая выемку или насыпь"@kz ;
+    rdfs:isDefinedBy "СП РК 5.01-104-2013" .
+
+###  http://ontogeo.kz/geont-kz#Slope_stability
+:Slope_stability rdf:type owl:Class ;
+    rdfs:subClassOf :GeotechnicalProperty ;
+    rdfs:label "устойчивость откоса"@ru ;
+    rdfs:label "еңістің орнықтылығы"@kz ;
+    rdfs:isDefinedBy "СП РК 5.01-104-2013" .
+
+###  http://ontogeo.kz/geont-kz#Dewatering
+:Dewatering rdf:type owl:Class ;
+    rdfs:subClassOf :GeotechnicalWork ;
+    rdfs:label "водопонижение"@ru ;
+    rdfs:label "суды төмендету"@kz ;
+    rdfs:comment "искусственное понижение уровня подземных вод"@ru ;
+    rdfs:comment "искусственное понижение уровня подземных вод"@kz ;
+    rdfs:isDefinedBy "СП РК 5.01-101-2013" .
+
+###  http://ontogeo.kz/geont-kz#Soil_improvement
+:Soil_improvement rdf:type owl:Class ;
+    rdfs:subClassOf :GeotechnicalWork ;
+    rdfs:label "закрепление грунта"@ru ;
+    rdfs:label "топырақты бекіту"@kz ;
+    rdfs:comment "изменение свойств грунта техническими средствами"@ru ;
+    rdfs:comment "изменение свойств грунта техническими средствами"@kz ;
+    rdfs:isDefinedBy "СП РК 5.01-105-2013" .
+
+###  http://ontogeo.kz/geont-kz#Static_load_test
+:Static_load_test rdf:type owl:Class ;
+    rdfs:subClassOf :FieldTest ;
+    rdfs:label "статическое испытание сваи"@ru ;
+    rdfs:label "қаданы статикалық сынау"@kz ;
+    rdfs:comment "испытание сваи ступенчато возрастающей нагрузкой"@ru ;
+    rdfs:comment "испытание сваи ступенчато возрастающей нагрузкой"@kz ;
+    rdfs:isDefinedBy "ГОСТ 5686-2012" .
+
+###  http://ontogeo.kz/geont-kz#Dynamic_load_test
+:Dynamic_load_test rdf:type owl:Class ;
+    rdfs:subClassOf :FieldTest ;
+    rdfs:label "динамическое испытание сваи"@ru ;
+    rdfs:label "қаданы динамикалық сынау"@kz ;
+    rdfs:comment "испытание сваи ударной нагрузкой"@ru ;
+    rdfs:comment "испытание сваи ударной нагрузкой"@kz ;
+    rdfs:isDefinedBy "ГОСТ 5686-2012" .
+
+###  http://ontogeo.kz/geont-kz#Cone_penetration_test
+:Cone_penetration_test rdf:type owl:Class ;
+    rdfs:subClassOf :FieldTest ;
+    rdfs:label "статическое зондирование"@ru ;
+    rdfs:label "статикалық зондтау"@kz ;
+    rdfs:comment "полевое испытание вдавливанием зонда в грунт"@ru ;
+    rdfs:comment "полевое испытание вдавливанием зонда в грунт"@kz ;
+    rdfs:isDefinedBy "ГОСТ 19912-2012" .
+
+###  http://ontogeo.kz/geont-kz#Standard_penetration_test
+:Standard_penetration_test rdf:type owl:Class ;
+    rdfs:subClassOf :FieldTest ;
+    rdfs:label "динамическое зондирование"@ru ;
+    rdfs:label "динамикалық зондтау"@kz ;
+    rdfs:comment "полевое испытание забивкой зонда в грунт"@ru ;
+    rdfs:comment "полевое испытание забивкой зонда в грунт"@kz ;
+    rdfs:isDefinedBy "ГОСТ 19912-2012" .
+
+###  http://ontogeo.kz/geont-kz#Plate_load_test
+:Plate_load_test rdf:type owl:Class ;
+    rdfs:subClassOf :FieldTest ;
+    rdfs:label "испытание штампом"@ru ;
+    rdfs:label "штампен сынау"@kz ;
+    rdfs:comment "полевое испытание грунта статической нагрузкой на штамп"@ru ;
+    rdfs:comment "полевое испытание грунта статической нагрузкой на штамп"@kz ;
+    rdfs:isDefinedBy "ГОСТ 20276-2012" .
+
+###  http://ontogeo.kz/geont-kz#Borehole
+:Borehole rdf:type owl:Class ;
+    rdfs:subClassOf :FieldWork ;
+    rdfs:label "скважина"@ru ;
+    rdfs:label "ұңғыма"@kz ;
+    rdfs:comment "цилиндрическая горная выработка малого диаметра"@ru ;
+    rdfs:comment "цилиндрическая горная выработка малого диаметра"@kz ;
+    rdfs:isDefinedBy "СП РК 1.02-102-2014" .
+
+###  http://ontogeo.kz/geont-kz#Sampling
+:Sampling rdf:type owl:Class ;
+    rdfs:subClassOf :FieldWork ;
+    rdfs:label "отбор проб"@ru ;
+    rdfs:label "сынама алу"@kz ;
+    rdfs:comment "извлечение образцов грунта для лабораторных испытаний"@ru ;
+    rdfs:comment "извлечение образцов грунта для лабораторных испытаний"@kz ;
+    rdfs:isDefinedBy "ГОСТ 12071-2014" .
+
+###  http://ontogeo.kz/geont-kz#Seismic_microzoning
+:Seismic_microzoning rdf:type owl:Class ;
+    rdfs:subClassOf :SeismicEntity ;
+    rdfs:label "сейсмическое микрорайонирование"@ru ;
+    rdfs:label "сейсмикалық микроаудандастыру"@kz ;
+    rdfs:comment "уточнение сейсмичности площадки с учётом грунтовых условий"@ru ;
+    rdfs:comment "уточнение сейсмичности площадки с учётом грунтовых условий"@kz ;
+    rdfs:isDefinedBy "СП РК 2.03-30-2017" .
+
+###  http://ontogeo.kz/geont-kz#Design_earthquake
+:Design_earthquake rdf:type owl:Class ;
+    rdfs:subClassOf :SeismicEntity ;
+    rdfs:label "расчётное землетрясение"@ru ;
+    rdfs:label "есептік жер сілкінісі"@kz ;
+    rdfs:comment "землетрясение с параметрами, принимаемыми в расчёте конструкций"@ru ;
+    rdfs:comment "землетрясение с параметрами, принимаемыми в расчёте конструкций"@kz ;
+    rdfs:isDefinedBy "СП РК 2.03-30-2017" .
+
+###  http://ontogeo.kz/geont-kz#Seismic_intensity
+:Seismic_intensity rdf:type owl:Class ;
+    rdfs:subClassOf :SeismicEntity ;
+    rdfs:label "сейсмическая интенсивность"@ru ;
+    rdfs:label "сейсмикалық қарқындылық"@kz ;
+    rdfs:comment "мера силы сотрясения поверхности в баллах"@ru ;
+    rdfs:comment "мера силы сотрясения поверхности в баллах"@kz ;
+    rdfs:isDefinedBy "СП РК 2.03-30-2017" .
+
+###  http://ontogeo.kz/geont-kz#Response_spectrum
+:Response_spectrum rdf:type owl:Class ;
+    rdfs:subClassOf :SeismicEntity ;
+    rdfs:label "спектр реакции"@ru ;
+    rdfs:label "әсер спектрі"@kz ;
+    rdfs:comment "зависимость максимального отклика осциллятора от его периода"@ru ;
+    rdfs:comment "зависимость максимального отклика осциллятора от его периода"@kz ;
+    rdfs:isDefinedBy "СП РК 2.03-30-2017" .
+
+###  http://ontogeo.kz/geont-kz#Ultimate_limit_states
+:Ultimate_limit_states rdf:type owl:Class ;
+    rdfs:subClassOf :LimitState ;
+    rdfs:label "предельные состояния первой группы"@ru ;
+    rdfs:label "бірінші топтың шекті күйлері"@kz ;
+    rdfs:comment "состояния, при достижении которых конструкция теряет несущую способность"@ru ;
+    rdfs:comment "состояния, при достижении которых конструкция теряет несущую способность"@kz ;
+    rdfs:isDefinedBy "СН РК 5.03-01-2013" .
+
+###  http://ontogeo.kz/geont-kz#Accidental_actions
+:Accidental_actions rdf:type owl:Class ;
+    rdfs:subClassOf :Ultimate_limit_states ;
+    rdfs:label "особые воздействия"@ru ;
+    rdfs:label "арнайы жүктемелер"@kz ;
+    rdfs:comment "воздействия, возникающие в исключительных случаях"@ru ;
+    rdfs:comment "воздействия, возникающие в исключительных случаях"@kz ;
+    rdfs:isDefinedBy "СН РК 5.03-01-2013" .
+
+###  http://ontogeo.kz/geont-kz#Serviceability_limit_states
+:Serviceability_limit_states rdf:type owl:Class ;
+    rdfs:subClassOf :LimitState ;
+    rdfs:label "предельные состояния второй группы"@ru ;
+    rdfs:label "екінші топтың шекті күйлері"@kz ;
+    rdfs:comment "состояния, при которых нарушается нормальная эксплуатация"@ru ;
+    rdfs:comment "состояния, при которых нарушается нормальная эксплуатация"@kz ;
+    rdfs:isDefinedBy "СН РК 5.03-01-2013" .
+
+###  http://ontogeo.kz/geont-kz#Action_load_effect
+:Action_load_effect rdf:type owl:Class ;
+    rdfs:subClassOf :LoadEntity ;
+    rdfs:label "усилие от воздействия"@ru ;
+    rdfs:label "әсерден туындайтын күш"@kz ;
+    rdfs:comment "Конструкция элементтерінде кернеуді немесе олардың орын ауыстыруын тудыратын әсер"@ru ;
+    rdfs:comment "Конструкция элементтерінде кернеуді немесе олардың орын ауыстыруын тудыратын әсер"@kz ;
+    rdfs:isDefinedBy "СН РК 5.03-01-2013" .
+
+###  http://ontogeo.kz/geont-kz#Permanent_action
+:Permanent_action rdf:type owl:Class ;
+    rdfs:subClassOf :LoadEntity ;
+    rdfs:label "постоянное воздействие"@ru ;
+    rdfs:label "тұрақты жүктеме"@kz ;
+    rdfs:comment "воздействие, действующее в течение всего срока службы"@ru ;
+    rdfs:comment "воздействие, действующее в течение всего срока службы"@kz ;
+    rdfs:isDefinedBy "СН РК 5.03-01-2013" .
+
+###  http://ontogeo.kz/geont-kz#Variable_action
+:Variable_action rdf:type owl:Class ;
+    rdfs:subClassOf :LoadEntity ;
+    rdfs:label "переменное воздействие"@ru ;
+    rdfs:label "айнымалы жүктеме"@kz ;
+    rdfs:comment "воздействие, изменяющееся во времени"@ru ;
+    rdfs:comment "воздействие, изменяющееся во времени"@kz ;
+    rdfs:isDefinedBy "СН РК 5.03-01-2013" .
+
+###  http://ontogeo.kz/geont-kz#Acceptance_test
+:Acceptance_test rdf:type owl:Class ;
+    rdfs:subClassOf :QualityEntity ;
+    rdfs:label "приёмочное испытание"@ru ;
+    rdfs:label "қабылдау сынағы"@kz ;
+    rdfs:comment "испытание, проводимое при приёмке конструкции"@ru ;
+    rdfs:comment "испытание, проводимое при приёмке конструкции"@kz ;
+    rdfs:isDefinedBy "СН РК 5.03-01-2013" .
+
+###  http://ontogeo.kz/geont-kz#Quality_control_geotech
+:Quality_control_geotech rdf:type owl:Class ;
+    rdfs:subClassOf :QualityEntity ;
+    rdfs:label "контроль качества"@ru ;
+    rdfs:label "сапаны бақылау"@kz ;
+    rdfs:comment "проверка соответствия установленным требованиям"@ru ;
+    rdfs:comment "проверка соответствия установленным требованиям"@kz ;
+    rdfs:isDefinedBy "СН РК 5.03-01-2013" .
+
+###  http://ontogeo.kz/geont-kz#Monitoring_geotech
+:Monitoring_geotech rdf:type owl:Class ;
+    rdfs:subClassOf :QualityEntity ;
+    rdfs:label "геотехнический мониторинг"@ru ;
+    rdfs:label "геотехникалық мониторинг"@kz ;
+    rdfs:comment "система наблюдений за состоянием основания и конструкций"@ru ;
+    rdfs:comment "система наблюдений за состоянием основания и конструкций"@kz ;
+    rdfs:isDefinedBy "СП РК 5.01-101-2013" .
+
+
+##############################################################################
+#
+#    Bridges
+#
+##############################################################################
+
+:Foundation rdfs:subClassOf ifc:IfcFooting .
+:Pile rdfs:subClassOf ifc:IfcPile .
+:Retaining_wall rdfs:subClassOf ifc:IfcWall .
+:Borehole rdfs:subClassOf geocore:Borehole .
+:Soil rdfs:subClassOf geocore:GeologicUnit .
+
+
+##############################################################################
+#
+#    Lexical concepts (provenance hangs here, not on classes)
+#
+##############################################################################
+
+:Soil_Concept rdf:type owl:NamedIndividual , ontolex:LexicalConcept ;
+    rdfs:label "грунт"@kz ;
+    rdfs:isDefinedBy "СН РК 5.01-01-2013" .
+
+:Clay_soil_Concept rdf:type owl:NamedIndividual , ontolex:LexicalConcept ;
+    rdfs:label "глинистый грунт"@kz ;
+    rdfs:isDefinedBy "СН РК 5.01-01-2013" .
+
+:Sandy_soil_Concept rdf:type owl:NamedIndividual , ontolex:LexicalConcept ;
+    rdfs:label "песчаный грунт"@kz ;
+    rdfs:isDefinedBy "СН РК 5.01-01-2013" .
+
+:Anthropogenic_soil_Concept rdf:type owl:NamedIndividual , ontolex:LexicalConcept ;
+    rdfs:label "антропогенный грунт"@kz ;
+    rdfs:isDefinedBy "СН РК 5.01-01-2013" .
+
+:Frozen_soil_Concept rdf:type owl:NamedIndividual , ontolex:LexicalConcept ;
+    rdfs:label "мёрзлый грунт"@kz ;
+    rdfs:isDefinedBy "СП РК 5.01-102-2013" .
+
+:Permafrost_Concept rdf:type owl:NamedIndividual , ontolex:LexicalConcept ;
+    rdfs:label "многолетнемёрзлый грунт"@kz ;
+    rdfs:isDefinedBy "СП РК 5.01-102-2013" .
+
+:Loess_Concept rdf:type owl:NamedIndividual , ontolex:LexicalConcept ;
+    rdfs:label "лёссовый грунт"@kz ;
+    rdfs:isDefinedBy "СН РК 5.01-01-2013" .
+
+:Subsidence_Concept rdf:type owl:NamedIndividual , ontolex:LexicalConcept ;
+    rdfs:label "просадка"@kz ;
+    rdfs:isDefinedBy "СН РК 5.01-01-2013" .
+
+:Settlement_geotech_Concept rdf:type owl:NamedIndividual , ontolex:LexicalConcept ;
+    rdfs:label "осадка"@kz ;
+    rdfs:isDefinedBy "СН РК 5.01-01-2013" .
+
+:Heave_Concept rdf:type owl:NamedIndividual , ontolex:LexicalConcept ;
+    rdfs:label "пучение"@kz ;
+    rdfs:isDefinedBy "СП РК 5.01-102-2013" .
+
+:Bearing_capacity_Concept rdf:type owl:NamedIndividual , ontolex:LexicalConcept ;
+    rdfs:label "несущая способность"@kz ;
+    rdfs:isDefinedBy "СН РК 5.01-01-2013" .
+
+:Youngs_modulus_Concept rdf:type owl:NamedIndividual , ontolex:LexicalConcept ;
+    rdfs:label "модуль деформации"@kz ;
+    rdfs:isDefinedBy "ГОСТ 12248-2010" .
+
+`}]});var di={};Cs(di,{boot:()=>jy,loadLegacy:()=>Uy,render:()=>Q,select:()=>Oe,state:()=>c,testHooks:()=>qy});var Zs=Es(je());var _t="http://www.w3.org/1999/02/22-rdf-syntax-ns#",Ht="http://www.w3.org/2001/XMLSchema#",er="http://www.w3.org/2000/10/swap/",ee={xsd:{decimal:`${Ht}decimal`,boolean:`${Ht}boolean`,dateTime:`${Ht}dateTime`,double:`${Ht}double`,integer:`${Ht}integer`,string:`${Ht}string`},rdf:{type:`${_t}type`,nil:`${_t}nil`,first:`${_t}first`,rest:`${_t}rest`,langString:`${_t}langString`,dirLangString:`${_t}dirLangString`,reifies:`${_t}reifies`},owl:{sameAs:"http://www.w3.org/2002/07/owl#sameAs"},r:{forSome:`${er}reify#forSome`,forAll:`${er}reify#forAll`},log:{implies:`${er}log#implies`,isImpliedBy:`${er}log#isImpliedBy`}};var{xsd:tr}=ee,nr=32,rr=9,Hs=10,ir=13,Lu=35,Ou=/\\u([a-fA-F0-9]{4})|\\U([a-fA-F0-9]{8})|\\([^])/g,Vs={"\\":"\\","'":"'",'"':'"',n:`
+`,r:"\r",t:"	",f:"\f",b:"\b"},Ru={_:"_","~":"~",".":".","-":"-","!":"!",$:"$","&":"&","'":"'","(":"(",")":")","*":"*","+":"+",",":",",";":";","=":"=","/":"/","?":"?","#":"#","@":"@","%":"%"},zu=/[\x00-\x20<>\\"\{\}\|\^\`]/;function Ys(t){return t<=1114111&&(t<55296||t>57343)}var Tu={_iri:!0,_unescapedIri:!0,_simpleQuotedString:!0,_langcode:!0,_blank:!0,_commentLine:!0,_whitespace:!0},Iu=/$0^/,Cn=class{constructor(e){if(this._iri=/^<((?:[^ <>{}\\]|\\[uU])+)>[ \t]*/,this._unescapedIri=/^<([^\x00-\x20<>\\"\{\}\|\^\`]*)>[ \t]*/,this._simpleQuotedString=/^"([^"\\\r\n]*)"(?=[^"])/,this._simpleApostropheString=/^'([^'\\\r\n]*)'(?=[^'])/,this._langcode=/^@([a-z]+(?:-[a-z0-9]+)*)(?=[^a-z0-9])/i,this._prefix=/^((?:[A-Za-z\xc0-\xd6\xd8-\xf6\xf8-\u02ff\u0370-\u037d\u037f-\u1fff\u200c\u200d\u2070-\u218f\u2c00-\u2fef\u3001-\ud7ff\uf900-\ufdcf\ufdf0-\ufffd]|[\ud800-\udb7f][\udc00-\udfff])(?:\.?[\-0-9A-Z_a-z\xb7\xc0-\xd6\xd8-\xf6\xf8-\u037d\u037f-\u1fff\u200c\u200d\u203f\u2040\u2070-\u218f\u2c00-\u2fef\u3001-\ud7ff\uf900-\ufdcf\ufdf0-\ufffd]|[\ud800-\udb7f][\udc00-\udfff])*)?:(?=[#\s<])/,this._prefixed=/^((?:[A-Za-z\xc0-\xd6\xd8-\xf6\xf8-\u02ff\u0370-\u037d\u037f-\u1fff\u200c\u200d\u2070-\u218f\u2c00-\u2fef\u3001-\ud7ff\uf900-\ufdcf\ufdf0-\ufffd]|[\ud800-\udb7f][\udc00-\udfff])(?:\.?[\-0-9A-Z_a-z\xb7\xc0-\xd6\xd8-\xf6\xf8-\u037d\u037f-\u1fff\u200c\u200d\u203f\u2040\u2070-\u218f\u2c00-\u2fef\u3001-\ud7ff\uf900-\ufdcf\ufdf0-\ufffd]|[\ud800-\udb7f][\udc00-\udfff])*)?:((?:(?:[0-:A-Z_a-z\xc0-\xd6\xd8-\xf6\xf8-\u02ff\u0370-\u037d\u037f-\u1fff\u200c\u200d\u2070-\u218f\u2c00-\u2fef\u3001-\ud7ff\uf900-\ufdcf\ufdf0-\ufffd]|[\ud800-\udb7f][\udc00-\udfff]|%[0-9a-fA-F]{2}|\\[!#-\/;=?\-@_~])(?:(?:[\.\-0-:A-Z_a-z\xb7\xc0-\xd6\xd8-\xf6\xf8-\u037d\u037f-\u1fff\u200c\u200d\u203f\u2040\u2070-\u218f\u2c00-\u2fef\u3001-\ud7ff\uf900-\ufdcf\ufdf0-\ufffd]|[\ud800-\udb7f][\udc00-\udfff]|%[0-9a-fA-F]{2}|\\[!#-\/;=?\-@_~])*(?:[\-0-:A-Z_a-z\xb7\xc0-\xd6\xd8-\xf6\xf8-\u037d\u037f-\u1fff\u200c\u200d\u203f\u2040\u2070-\u218f\u2c00-\u2fef\u3001-\ud7ff\uf900-\ufdcf\ufdf0-\ufffd]|[\ud800-\udb7f][\udc00-\udfff]|%[0-9a-fA-F]{2}|\\[!#-\/;=?\-@_~]))?)?)(?:[ \t]+|(?=\.?[,;!\^\s#()\[\]\{\}"'<>]))/,this._variable=/^\?(?:(?:[A-Z_a-z\xc0-\xd6\xd8-\xf6\xf8-\u02ff\u0370-\u037d\u037f-\u1fff\u200c\u200d\u2070-\u218f\u2c00-\u2fef\u3001-\ud7ff\uf900-\ufdcf\ufdf0-\ufffd]|[\ud800-\udb7f][\udc00-\udfff])(?:[\-0-:A-Z_a-z\xb7\xc0-\xd6\xd8-\xf6\xf8-\u037d\u037f-\u1fff\u200c\u200d\u203f\u2040\u2070-\u218f\u2c00-\u2fef\u3001-\ud7ff\uf900-\ufdcf\ufdf0-\ufffd]|[\ud800-\udb7f][\udc00-\udfff])*)(?=[.,;!\^\s#()\[\]\{\}"'<>])/,this._blank=/^_:((?:[0-9A-Z_a-z\xc0-\xd6\xd8-\xf6\xf8-\u02ff\u0370-\u037d\u037f-\u1fff\u200c\u200d\u2070-\u218f\u2c00-\u2fef\u3001-\ud7ff\uf900-\ufdcf\ufdf0-\ufffd]|[\ud800-\udb7f][\udc00-\udfff])(?:\.?[\-0-9A-Z_a-z\xb7\xc0-\xd6\xd8-\xf6\xf8-\u037d\u037f-\u1fff\u200c\u200d\u203f\u2040\u2070-\u218f\u2c00-\u2fef\u3001-\ud7ff\uf900-\ufdcf\ufdf0-\ufffd]|[\ud800-\udb7f][\udc00-\udfff])*)(?:[ \t]+|(?=\.?[,;:!\^\s#()\[\]\{\}"'<>]))/,this._number=/^[\-+]?(?:(\d+\.\d*|\.?\d+)[eE][\-+]?|\d*(\.)?)\d+(?=\.?[,;:!\^\s#()\[\]\{\}"'<>])/,this._boolean=/^(?:true|false)(?=[.,;!\^\s#()\[\]\{\}"'<>])/,this._atKeyword=/^@[a-z]+(?=[\s#<:])/i,this._keyword=/^(?:PREFIX|BASE|VERSION|GRAPH)(?=[\s#<])/i,this._n3Verb=/^(?:has|is|of)(?=[\s#()\[\]\{\}"'<>?_+\-0-9])/,this._n3Id=/^id(?=[\s#<])/,this._shortPredicates=/^a(?=[\s#()\[\]\{\}"'<>])/,this._commentLine=/^[ \t]*#([^\n\r]*)(?:\r\n|\n|\r)([ \t]*)/,this._whitespace=/^[ \t]+/,e=e||{},this._isImpliedBy=e.isImpliedBy,this._lineMode=!!e.lineMode){this._n3Mode=!1;for(let n in this)!(n in Tu)&&this[n]instanceof RegExp&&(this[n]=Iu)}else this._n3Mode=e.n3!==!1;this.comments=!!e.comments,this._literalClosingPos=0}_tokenizeToEnd(e,n){let r=this._input,i=this._linePosition+r.length;for(;;){for(;;){let w=r.charCodeAt(0),O=0;if(w===nr||w===rr){let R=r.charCodeAt(1);O=R===nr||R===rr?this._whitespace.exec(r)[0].length:1,w=r.charCodeAt(O)}if(w===Lu){let R=this._commentLine.exec(r);if(R){let N=R[0].length;if(!n&&N===r.length&&r.charCodeAt(N-1)===ir)return this._linePosition=i-r.length,this._input=r;this.comments&&o(R[1],this._line,O),r=r.slice(N),i=r.length+R[2].length,this._line++}else{if(r=r.slice(O),!n)return this._linePosition=i-r.length,this._input=r;this.comments&&o(r.slice(1),this._line,0),r="";break}}else if(w===Hs||w===ir){if(!n&&w===ir&&O+1===r.length)return this._linePosition=i-r.length,this._input=r;O+=w===ir&&r.charCodeAt(O+1)===Hs?2:1;let R=0,N=r.charCodeAt(O);if(N===nr||N===rr){let E=r.charCodeAt(O+1);R=E===nr||E===rr?this._whitespace.exec(r.slice(O))[0].length:1}r=r.slice(O+R),i=r.length+R,this._line++}else{O!==0&&(r=r.slice(O));break}}if(r.length===0)return n&&(r=null,s("eof","","",this._line,0)),this._linePosition=i,this._input=r;let l=this._line,f=r[0],u="",p="",k="",h=null,g=0,b=0,_=0,S=!1;switch(f){case"^":if(r.length<3)break;if(r[1]==="^"){if(this._previousMarker="^^",r=r.slice(2),r[0]!=="<"){S=!0;break}}else{this._n3Mode&&(g=1,u="^");break}case"<":if(h=this._unescapedIri.exec(r))u="IRI",p=h[1],b=h[1].length+2;else if(h=this._iri.exec(r)){if(p=this._unescape(h[1],Vs),p===null||zu.test(p))return a(this);u="IRI",b=h[1].length+2}else r.length>2&&r[1]==="<"&&r[2]==="("?(u="<<(",g=3):!this._lineMode&&r.length>(n?1:2)&&r[1]==="<"?(u="<<",g=2):this._n3Mode&&r.length>1&&r[1]==="="?(g=2,this._isImpliedBy?(u="abbreviation",p="<"):(u="inverse",p=">")):this._n3Mode&&r.length>1&&r[1]==="-"&&(u="inversePredicate",g=2);break;case">":r.length>1&&r[1]===">"&&(u=">>",g=2);break;case"_":((h=this._blank.exec(r))||n&&(h=this._blank.exec(`${r} `)))&&(u="blank",k="_",p=h[1],b=h[1].length+2);break;case'"':if(h=this._simpleQuotedString.exec(r))p=h[1];else if({value:p,matchLength:g,finalLineLength:_}=this._parseLiteral(r),p===null)return a(this);(h!==null||g!==0)&&(u="literal",this._literalClosingPos=0);break;case"'":if(!this._lineMode){if(h=this._simpleApostropheString.exec(r))p=h[1];else if({value:p,matchLength:g,finalLineLength:_}=this._parseLiteral(r),p===null)return a(this);(h!==null||g!==0)&&(u="literal",this._literalClosingPos=0)}break;case"?":this._n3Mode&&(h=this._variable.exec(r))&&(u="var",p=h[0]);break;case"@":this._previousMarker==="literal"&&(h=this._langcode.exec(r))&&h[1]!=="version"?!n&&r[h[0].length]==="-"&&r[h[0].length+1]!=="-"?h=null:(u="langcode",p=h[1]):(h=this._atKeyword.exec(r))&&(u=h[0]);break;case".":if(r.length===1?n:r[1]<"0"||r[1]>"9"){u=".",g=1;break}case"0":case"1":case"2":case"3":case"4":case"5":case"6":case"7":case"8":case"9":case"+":case"-":if(r[1]==="-"){this._previousMarker==="langcode"&&(r.startsWith("--ltr")?(u="dircode",p="ltr",g=5):r.startsWith("--rtl")&&(u="dircode",p="rtl",g=5));break}(h=this._number.exec(r)||n&&(h=this._number.exec(`${r} `)))&&(u="literal",p=h[0],k=typeof h[1]=="string"?tr.double:typeof h[2]=="string"?tr.decimal:tr.integer);break;case"B":case"b":case"p":case"P":case"G":case"g":case"V":case"v":(h=this._keyword.exec(r))?u=h[0].toUpperCase():S=!0;break;case"f":case"t":this._boolean.test(r)?(u="literal",p=f==="t"?"true":"false",k=tr.boolean,g=p.length):S=!0;break;case"a":this._shortPredicates.test(r)?(u="abbreviation",p="a",g=1):S=!0;break;case"h":case"o":this._n3Mode&&(h=this._matchN3Verb(r,n))?u=h[0]:S=!0;break;case"i":this._n3Mode&&this._n3Id.test(r)?(u="id",g=2):this._n3Mode&&(h=this._matchN3Verb(r,n))?u=h[0]:S=!0;break;case"=":this._n3Mode&&r.length>1&&(u="abbreviation",r[1]!==">"?(g=1,p="="):(g=2,p=">"));break;case"!":if(!this._n3Mode)break;case")":if(!n&&(r.length===1||r.length===2&&r[1]===">"))break;if(r.length>2&&r[1]===">"&&r[2]===">"){u=")>>",g=3;break}case",":case";":case"[":case"]":case"(":case"}":case"~":this._lineMode||(g=1,u=f);break;case"{":!this._lineMode&&r.length>=2&&(r[1]==="|"?(u="{|",g=2):(u=f,g=1));break;case"|":r.length>=2&&r[1]==="}"&&(u="|}",g=2);break;default:S=!0}if(S&&((this._previousMarker==="@prefix"||this._previousMarker==="PREFIX")&&(h=this._prefix.exec(r))?(u="prefix",p=h[1]||""):((h=this._prefixed.exec(r))||n&&(h=this._prefixed.exec(`${r} `)))&&(u="prefixed",k=h[1]||"",p=this._unescape(h[2],Ru),b=k.length+h[2].length+1)),this._previousMarker==="^^")switch(u){case"prefixed":u="type";break;case"IRI":u="typeIRI";break;default:u=""}if(!u)return n||!/^'''|^"""/.test(r)&&/\n|\r/.test(r)?a(this):(this._linePosition=i-r.length,this._input=r);let v=g||h[0].length,x;_?(x={type:u,value:p,prefix:k,line:l,start:i-r.length,end:_,endLine:this._line},e(null,x)):x=s(u,p,k,l,b||v),this.previousToken=x,this._previousMarker=u,r=r.slice(v),_&&(i=r.length+_)}function o(l,f,u){let p=i-r.length+u;e(null,{type:"comment",value:l,prefix:"",line:f,start:p,end:p+l.length+1})}function s(l,f,u,p,k){let h=r?i-r.length:i,g=h+k,b={type:l,value:f,prefix:u,line:p,start:h,end:g};return e(null,b),b}function a(l){e(l._syntaxError(/^\S*/.exec(r)[0]))}}_matchN3Verb(e,n){let r=this._n3Verb.exec(e);if(!r)return null;let i=e[r[0].length];return i!=="-"&&i!=="_"&&(i<"0"||i>"9")?r:this._prefixed.exec(e)||this._prefixed.exec(`${e} `)||!n&&this._prefix.exec(`${e}: `)?null:r}_unescape(e,n){if(e.indexOf("\\")<0)return e;let r=!1,i=e.replace(Ou,(o,s,a,l)=>{if(typeof s=="string"){let f=Number.parseInt(s,16);return Ys(f)?String.fromCharCode(f):(r=!0,"")}if(typeof a=="string"){let f=Number.parseInt(a,16);return Ys(f)?f<=65535?String.fromCharCode(Number.parseInt(a,16)):String.fromCharCode(55296+((f-=65536)>>10),56320+(f&1023)):(r=!0,"")}return l in n?n[l]:(r=!0,"")});return r?null:i}_parseLiteral(e){if(e.length>=3){let n=e[0],r=e[1]===n&&e[2]===n?3:1,i=n;r===3&&(i=n==='"'?'"""':"'''");let o=Math.max(this._literalClosingPos,r);for(;(o=e.indexOf(i,o))>0;){let s=0;for(;e[o-s-1]==="\\";)s++;if(s%2===0){let a=e.substring(r,o),l=a.split(/\r\n|\r|\n/),f=l.length-1,u=o+r;if(r===1&&f!==0||r===3&&this._lineMode)break;this._line+=f;let p=f===0?0:l[l.length-1].length+r;return{value:this._unescape(a,Vs),matchLength:u,finalLineLength:p}}o++}this._literalClosingPos=e.length-r+1}return{value:"",matchLength:0,finalLineLength:0}}_syntaxError(e){this._input=null;let n=new Error(`Unexpected "${e}" on line ${this._line}.`);return n.context={token:void 0,line:this._line,previousToken:this.previousToken},n}_readStartingBom(e){return e.startsWith("\uFEFF")?(this._linePosition=1,e.slice(1)):e}tokenize(e,n){let r=this._tokenization={};if(this._line=1,this._linePosition=0,this._previousMarker=void 0,this.previousToken=void 0,this._literalClosingPos=0,this._input=void 0,typeof e=="string")if(this._input=this._readStartingBom(e),typeof n=="function")queueMicrotask(()=>{this._tokenization===r&&this._tokenizeToEnd(n,!0)});else{let i=[],o;if(this._tokenizeToEnd((s,a)=>s?o=s:i.push(a),!0),o)throw o;return i}else this._pendingBuffer=null,typeof e.setEncoding=="function"&&e.setEncoding("utf8"),e.on("data",i=>{this._tokenization===r&&this._input!==null&&i.length!==0&&(this._pendingBuffer&&(i=Zs.Buffer.concat([this._pendingBuffer,i]),this._pendingBuffer=null),i[i.length-1]&128?this._pendingBuffer=i:(typeof this._input>"u"?this._input=this._readStartingBom(typeof i=="string"?i:i.toString()):this._input+=i,this._tokenizeToEnd(n,!1)))}),e.on("end",()=>{this._tokenization===r&&typeof this._input=="string"&&this._tokenizeToEnd(n,!0)}),e.on("error",i=>{this._tokenization===r&&n(i)})}};var{rdf:Qs,xsd:lt}=ee,Yt,Nu=0;var _i={namedNode:Js,blankNode:Xs,variable:ta,literal:ea,defaultGraph:Au,quad:vi,triple:vi,fromTerm:En,fromQuad:na},ze=_i,Le=class t{constructor(e){this.id=e}get value(){return this.id}equals(e){return e instanceof t?this.id===e.id:!!e&&this.termType===e.termType&&this.value===e.value}hashCode(){return 0}toJSON(){return{termType:this.termType,value:this.value}}},Ln=class extends Le{constructor(e){super(e)}get termType(){return"NamedNode"}},dt=class t extends Le{constructor(e){super(e)}get termType(){return"Literal"}get value(){return this.id.substring(1,this.id.lastIndexOf('"'))}get language(){let e=this.id,n=e.lastIndexOf('"')+1,r=e.lastIndexOf("--");return n<e.length&&e[n++]==="@"?(r>n?e.substr(0,r):e).substr(n).toLowerCase():""}get direction(){let e=this.id,n=e.lastIndexOf('"'),r=e.lastIndexOf("--");return r>n&&r+2<e.length?e.substr(r+2).toLowerCase():""}get datatype(){return new Ln(this.datatypeString)}get datatypeString(){let e=this.id,n=e.lastIndexOf('"')+1,r=n<e.length?e[n]:"";return r==="^"?e.substr(n+2):r!=="@"?lt.string:e.indexOf("--",n)>0?Qs.dirLangString:Qs.langString}equals(e){return e instanceof t?this.id===e.id:!!e&&!!e.datatype&&this.termType===e.termType&&this.value===e.value&&this.language===e.language&&(this.direction===e.direction||this.direction===""&&!e.direction)&&this.datatype.value===e.datatype.value}toJSON(){return{termType:this.termType,value:this.value,language:this.language,direction:this.direction,datatype:{termType:"NamedNode",value:this.datatypeString}}}},or=class extends Le{constructor(e){super(`_:${e}`)}get termType(){return"BlankNode"}get value(){return this.id.substr(2)}},sr=class extends Le{constructor(e){super(`?${e}`)}get termType(){return"Variable"}get value(){return this.id.substr(1)}},ar=class extends Le{constructor(){return super(""),Yt||this}get termType(){return"DefaultGraph"}equals(e){return this===e||!!e&&this.termType===e.termType}};Yt=new ar;function vt(t,e,n){if(e=e||_i,!t)return e.defaultGraph();switch(t[0]){case"?":return e.variable(t.substr(1));case"_":return e.blankNode(t.substr(2));case'"':if(e===_i)return new dt(t);if(t[t.length-1]==='"')return e.literal(t.substr(1,t.length-2));let r=t.lastIndexOf('"',t.length-1),i;if(t[r+1]==="@"){i=t.substr(r+2);let o=i.lastIndexOf("--");o>0&&o<i.length&&(i={language:i.substr(0,o),direction:i.substr(o+2)})}else i=e.namedNode(t.substr(r+3));return e.literal(t.substr(1,r-1),i);case"[":t=JSON.parse(t);break;default:if(!n||!Array.isArray(t))return e.namedNode(t)}return e.quad(vt(t[0],e,!0),vt(t[1],e,!0),vt(t[2],e,!0),t[3]&&vt(t[3],e,!0))}function ct(t,e){if(typeof t=="string")return t;if(t instanceof Le&&t.termType!=="Quad")return t.id;if(!t)return Yt.id;switch(t.termType){case"NamedNode":return t.value;case"BlankNode":return`_:${t.value}`;case"Variable":return`?${t.value}`;case"DefaultGraph":return"";case"Literal":return`"${t.value}"${t.language?`@${t.language}${t.direction?`--${t.direction}`:""}`:t.datatype&&t.datatype.value!==lt.string?`^^${t.datatype.value}`:""}`;case"Quad":let n=[ct(t.subject,!0),ct(t.predicate,!0),ct(t.object,!0)];return t.graph&&t.graph.termType!=="DefaultGraph"&&n.push(ct(t.graph,!0)),e?n:JSON.stringify(n);default:throw new Error(`Unexpected termType: ${t.termType}`)}}var Vt=class extends Le{constructor(e,n,r,i){super(""),this._subject=e,this._predicate=n,this._object=r,this._graph=i||Yt}get termType(){return"Quad"}get subject(){return this._subject}get predicate(){return this._predicate}get object(){return this._object}get graph(){return this._graph}toJSON(){return{termType:this.termType,subject:this._subject.toJSON(),predicate:this._predicate.toJSON(),object:this._object.toJSON(),graph:this._graph.toJSON()}}equals(e){return!!e&&this._subject.equals(e.subject)&&this._predicate.equals(e.predicate)&&this._object.equals(e.object)&&this._graph.equals(e.graph)}};function Js(t){return new Ln(t)}function Xs(t){return new or(t||`n3-${Nu++}`)}function ea(t,e){if(typeof e=="string")return new dt(`"${t}"@${e.toLowerCase()}`);if(e!==void 0&&!("termType"in e))return new dt(`"${t}"@${e.language.toLowerCase()}${e.direction?`--${e.direction.toLowerCase()}`:""}`);let n=e?e.value:"";return n===""&&(typeof t=="boolean"?n=lt.boolean:typeof t=="number"?Number.isFinite(t)?n=Number.isInteger(t)?lt.integer:lt.double:(n=lt.double,Number.isNaN(t)||(t=t>0?"INF":"-INF")):t instanceof Date&&!Number.isNaN(t.getTime())&&(n=lt.dateTime,t=t.toISOString())),n===""||n===lt.string?new dt(`"${t}"`):new dt(`"${t}"^^${n}`)}function ta(t){return new sr(t)}function Au(){return Yt}function vi(t,e,n,r){return new Vt(t,e,n,r)}function En(t){if(t instanceof Le)return t;switch(t.termType){case"NamedNode":return Js(t.value);case"BlankNode":return Xs(t.value);case"Variable":return ta(t.value);case"DefaultGraph":return Yt;case"Literal":return ea(t.value,t.language||t.datatype);case"Quad":return na(t);default:throw new Error(`Unexpected termType: ${t.termType}`)}}function na(t){if(t instanceof Vt)return t;if(t.termType!=="Quad")throw new Error(`Unexpected termType: ${t.termType}`);return vi(En(t.subject),En(t.predicate),En(t.object),En(t.graph))}var ra=0,ft=class t{constructor(e){this._contextStack=[],this._graph=null,e=e||{},this._setBase(e.baseIRI),e.factory&&ia(this,e.factory);let n=typeof e.format=="string"?e.format.match(/\w*$/)[0].toLowerCase():"",r=/turtle/.test(n),i=/trig/.test(n),o=/triple/.test(n),s=/quad/.test(n),a=this._n3Mode=/n3/.test(n),l=o||s;this._emitCurrent=this._emit,a&&(this._createQuad=this._createQuadInDirection,this._emit=this._emitInDirection,this._emitCurrent=this._emitCurrentInDirection),(this._supportsNamedGraphs=!(r||a))||(this._readPredicateOrNamedGraph=this._readPredicate),this._supportsQuads=!(r||i||o||a),this._isImpliedBy=e.isImpliedBy,this._implicitEmptyPrefix=!!e.implicitEmptyPrefix,this._emptyFormulaAsTrue=!!e.emptyFormulaAsTrue,l&&(this._resolveRelativeIRI=f=>null),this._blankNodePrefix=typeof e.blankNodePrefix!="string"?"":e.blankNodePrefix.replace(/^(?!_:)/,"_:"),this._lexer=e.lexer||new Cn({lineMode:l,n3:a,isImpliedBy:this._isImpliedBy}),this._explicitQuantifiers=!!e.explicitQuantifiers,this._parseUnsupportedVersions=!!e.parseUnsupportedVersions,this._version=e.version}static _resetBlankNodePrefix(){ra=0}_setBase(e){if(!e)this._base="",this._basePath="";else{let n=e.indexOf("#");n>=0&&(e=e.substr(0,n)),this._base=e,this._basePath=e.indexOf("/")<0?e:e.replace(/[^\/?]*(?:\?.*)?$/,""),e=e.match(/^(?:([a-z][a-z0-9+.-]*:))?(?:\/\/[^\/]*)?/i),this._baseRoot=e[0],this._baseScheme=e[1]}}_saveContext(e,n,r,i,o){if(!this._n3Mode){this._contextStack.push({type:e,subject:r,predicate:i,object:o,graph:n});return}let s={type:e,subject:r,predicate:i,object:o,graph:n,inverse:this._inversePredicate,expectOf:this._expectOf,blankPrefix:this._prefixes._,quantified:this._quantified,emptyFormula:this._emptyFormula};e==="formula"&&(s.prefixes=this._prefixes,s.base=[this._base,this._basePath,this._baseRoot,this._baseScheme],this._prefixes=Object.create(this._prefixes)),this._contextStack.push(s),this._inversePredicate=!1,this._expectOf=!1,this._prefixes._=this._graph?`${this._graph.value}.`:".",this._quantified=Object.create(this._quantified),e==="formula"&&(this._subject=null,this._emptyFormula=!0)}_restoreContext(e,n){let r=this._contextStack.pop();if(!r||r.type!==e)return this._error(`Unexpected ${n.type}`,n);this._subject=r.subject,this._predicate=r.predicate,this._object=r.object,this._graph=r.graph,this._n3Mode&&(this._inversePredicate=r.inverse,this._expectOf=r.expectOf,e==="formula"?(this._prefixes=r.prefixes,[this._base,this._basePath,this._baseRoot,this._baseScheme]=r.base):this._prefixes._=r.blankPrefix,this._quantified=r.quantified,this._emptyFormula=r.emptyFormula)}_readBeforeTopContext(e){return this._version&&!this._isValidVersion(this._version)?this._error(`Detected unsupported version as media type parameter: "${this._version}"`,e):this._readInTopContext(e)}_readInTopContext(e){switch(e.type){case"eof":return this._graph!==null?this._error("Unclosed graph",e):(delete this._prefixes._,this._callback(null,null,this._prefixes));case"PREFIX":this._sparqlStyle=!0;case"@prefix":return this._readPrefix;case"BASE":this._sparqlStyle=!0;case"@base":return this._readBaseIRI;case"VERSION":this._sparqlStyle=!0;case"@version":return this._readVersion;case"{":if(this._supportsNamedGraphs)return this._graph="",this._subject=null,this._readSubject;case"GRAPH":if(this._supportsNamedGraphs)return this._readNamedGraphLabel;default:return this._readSubject(e)}}_readInFormulaContext(e){switch(e.type){case"PREFIX":this._sparqlStyle=!0;case"@prefix":return this._readPrefix;case"BASE":this._sparqlStyle=!0;case"@base":return this._readBaseIRI;default:return this._readSubject(e)}}_getStatementReader(){let e=this._contextStack[this._contextStack.length-1];return e&&e.type==="formula"?this._readInFormulaContext:this._readInTopContext}_readEntity(e,n){let r;switch(e.type){case"IRI":case"typeIRI":let i=this._resolveIRI(e.value);if(i===null)return this._error("Invalid IRI",e);r=this._factory.namedNode(i);break;case"type":case"prefixed":let o=this._prefixes[e.prefix];if(o===void 0)return this._error(`Undefined prefix "${e.prefix}:"`,e);r=this._factory.namedNode(o+e.value);break;case"blank":r=this._factory.blankNode(this._prefixes[e.prefix]+e.value);break;case"var":r=this._factory.variable(e.value.substr(1));break;default:return this._error(`Expected entity but got ${e.type}`,e)}return!n&&this._n3Mode&&r.id in this._quantified&&(r=this._quantified[r.id]),r}_readList(e,n,r,i){let o=this._contextStack;return(o.length&&o[o.length-1]).type==="<<"?this._error("Unexpected list in reified triple",e):(this._saveContext("list",this._graph,n,r,i),this._subject=null,this._readListItem)}_readSubject(e){switch(this._predicate=null,e.type!=="}"&&(this._emptyFormula=!1),e.type){case"[":return this._saveContext("blank",this._graph,this._subject=this._factory.blankNode(),null,null),this._readBlankNodeHead;case"(":return this._readList(e,this.RDF_NIL,null,null);case"{":return this._n3Mode?(this._saveContext("formula",this._graph,this._graph=this._factory.blankNode(),null,null),this._readInFormulaContext):this._error("Unexpected graph",e);case"}":return this._readPunctuation(e);case"@forSome":return this._n3Mode?(this._subject=null,this._predicate=this.N3_FORSOME,this._quantifier="blankNode",this._readQuantifierList):this._error('Unexpected "@forSome"',e);case"@forAll":return this._n3Mode?(this._subject=null,this._predicate=this.N3_FORALL,this._quantifier="variable",this._readQuantifierList):this._error('Unexpected "@forAll"',e);case"literal":return this._n3Mode?e.prefix.length===0?(this._literalValue=e.value,this._completeSubjectLiteral):(this._subject=this._factory.literal(e.value,this._factory.namedNode(e.prefix)),this._getPathReader(this._readPredicateOrNamedGraph)):this._error("Unexpected literal",e);case"<<(":return this._n3Mode?(this._saveContext("<<(",this._graph,null,null,null),this._graph=null,this._readSubject):this._error("Disallowed triple term as subject",e);case"<<":return this._saveContext("<<",this._graph,null,null,null),this._graph=null,this._readSubject;default:if((this._subject=this._readEntity(e))===void 0)return;if(this._n3Mode)return this._getPathReader(this._readPredicateOrNamedGraph)}return this._readPredicateOrNamedGraph}_readPredicate(e){let n=e.type,r=!1;switch(n){case"inverse":this._inversePredicate=!0;case"abbreviation":this._predicate=this.ABBREVIATIONS[e.value];break;case"has":return this._readPredicateAfterVerb;case"is":return this._inversePredicate=!0,this._expectOf=!0,this._readPredicateAfterVerb;case"inversePredicate":return this._inversePredicate=!0,this._readPredicateAfterVerb;case".":case"]":case"}":case"|}":return this._predicate===null&&!this._n3Mode?this._error(`Unexpected ${n}`,e):(this._subject=null,n==="]"?this._readBlankNodeTail(e):this._readPunctuation(e));case";":return this._predicate!==null?this._readPredicate:this._error("Expected predicate but got ;",e);case"literal":if(!this._n3Mode)return this._error("Unexpected literal",e);if(e.prefix.length===0)return this._literalValue=e.value,this._completePredicateLiteral;this._predicate=this._factory.literal(e.value,this._factory.namedNode(e.prefix)),r=!0;break;case"(":return this._n3Mode?this._readList(e,this._subject,this.RDF_NIL,null):this._error(`Expected entity but got ${n}`,e);case"[":return this._n3Mode?(this._saveContext("blank",this._graph,this._subject,this._subject=this._factory.blankNode(),null),this._readBlankNodeHead):this._error("Disallowed blank node as predicate",e);case"{":return this._n3Mode?(this._saveContext("formula",this._graph,this._subject,this._graph=this._factory.blankNode(),null),this._readSubject):this._readEntity(e);case"blank":if(!this._n3Mode)return this._error("Disallowed blank node as predicate",e);default:if((this._predicate=this._readEntity(e))===void 0)return;r=this._n3Mode}return this._validAnnotation=!0,r?this._getPathReader(this._readObject,"predicate"):this._readObject}_readPredicateAfterVerb(e){return e.type==="has"||e.type==="is"||e.type==="of"||e.type==="inversePredicate"?this._error(`Expected expression but got ${e.type}`,e):this._readPredicate(e)}_readObject(e){if(this._expectOf)return e.type!=="of"?this._error(`Expected of but got ${e.type}`,e):(this._expectOf=!1,this._readObject);switch(e.type){case"literal":if(e.prefix.length===0)return this._literalValue=e.value,this._readDataTypeOrLang;if(this._object=this._factory.literal(e.value,this._factory.namedNode(e.prefix)),this._n3Mode)return this._getPathReader(this._getContextEndReader());break;case"[":return this._saveContext("blank",this._graph,this._subject,this._predicate,this._subject=this._factory.blankNode()),this._readBlankNodeHead;case"(":return this._readList(e,this._subject,this._predicate,this.RDF_NIL);case"{":return this._n3Mode?(this._saveContext("formula",this._graph,this._subject,this._predicate,this._graph=this._factory.blankNode()),this._readInFormulaContext):this._error("Unexpected graph",e);case"<<(":return this._saveContext("<<(",this._graph,this._subject,this._predicate,null),this._graph=null,this._readSubject;case"<<":return this._saveContext("<<",this._graph,this._subject,this._predicate,null),this._graph=null,this._readSubject;default:if((this._object=this._readEntity(e))===void 0)return;if(this._n3Mode)return this._getPathReader(this._getContextEndReader())}return this._getContextEndReader()}_readPredicateOrNamedGraph(e){return e.type==="{"?this._readGraph(e):this._readPredicate(e)}_readGraph(e){return e.type!=="{"?this._error(`Expected graph but got ${e.type}`,e):(this._graph=this._subject,this._subject=null,this._readSubject)}_readBlankNodeHead(e){if(e.type==="]")return this._subject=null,this._readBlankNodeTail(e);{let n=this._contextStack;return(n.length>1&&n[n.length-2]).type==="<<"?this._error("Unexpected compound blank node expression in reified triple",e):e.type==="id"?this._readIriPropertyListId:(this._predicate=null,this._readPredicate(e))}}_readIriPropertyListId(e){let n=this._readEntity(e);if(n===void 0)return;if(n.termType!=="NamedNode")return this._error(`Expected IRI after id but got ${e.type}`,e);let r=this._subject;this._subject=n;let i=this._contextStack[this._contextStack.length-1];return i.subject===r&&(i.subject=n),i.predicate===r&&(i.predicate=n),i.object===r&&(i.object=n),this._predicate=null,this._readIriPropertyListPredicate}_readIriPropertyListPredicate(e){return e.type===";"||e.type==="]"||e.type==="."||e.type==="}"?this._error(`Expected predicate but got ${e.type}`,e):this._readPredicate(e)}_readBlankNodeTail(e){if(e.type!=="]")return this._readBlankNodePunctuation(e);this._subject!==null&&this._emitCurrent(this._subject,this._predicate,this._object,this._graph);let n=this._predicate===null;return this._restoreContext("blank",e),this._object!==null?this._getContextEndReader():this._predicate!==null?this._getPathReader(this._readObject,"predicate"):n?this._readPredicateOrNamedGraph:this._readPredicateAfterBlank}_readPredicateAfterBlank(e){switch(e.type){case".":case"}":return this._subject=null,this._readPunctuation(e);default:return this._readPredicate(e)}}_readListItem(e){let n=null,r=null,i=this._readListItem,o=this._subject,s=this._contextStack,a=s[s.length-1];switch(e.type){case"[":this._saveContext("blank",this._graph,r=this._factory.blankNode(),this.RDF_FIRST,this._subject=n=this._factory.blankNode()),i=this._readBlankNodeHead;break;case"(":this._saveContext("list",this._graph,r=this._factory.blankNode(),this.RDF_FIRST,this.RDF_NIL),this._subject=null;break;case")":if(this._restoreContext("list",e),s.length!==0&&s[s.length-1].type==="list"){if(this._n3Mode)return o!==null&&this._emit(o,this.RDF_REST,this.RDF_NIL,this._graph),this._saveContext("item",this._graph,this._subject,this._predicate,this._object),this._subject=this._object,this._predicate=null,this._getPathReader(this._readListItem);this._emit(this._subject,this._predicate,this._object,this._graph)}if(this._predicate===null){if(i=this._n3Mode?this._getPathReader(this._readPredicate):this._readPredicate,this._subject===this.RDF_NIL)return i}else if(this._object===null){if(i=this._getPathReader(this._readObject,"predicate"),this._predicate===this.RDF_NIL)return i}else if(i=this._getContextEndReader(),this._n3Mode&&(i=this._getPathReader(i)),this._object===this.RDF_NIL)return i;r=this.RDF_NIL;break;case"literal":e.prefix.length===0?(this._literalValue=e.value,i=this._readListItemDataTypeOrLang):(n=this._factory.literal(e.value,this._factory.namedNode(e.prefix)),i=this._getContextEndReader());break;case"{":return this._n3Mode?(r=this._factory.blankNode(),n=this._factory.blankNode(),o===null?a.predicate===null?a.subject=r:a.object=r:this._emit(o,this.RDF_REST,r,this._graph),this._emit(r,this.RDF_FIRST,n,this._graph),this._saveContext("formula",this._graph,r,this.RDF_FIRST,this._graph=n),this._subject=null,this._readInFormulaContext):this._error("Unexpected graph",e);case"<<(":this._saveContext("<<(",this._graph,null,null,null),this._graph=null,i=this._readSubject;break;case"<<":this._saveContext("<<",this._graph,null,null,null),this._graph=null,i=this._readSubject;break;default:if((n=this._readEntity(e))===void 0)return}if(r===null&&(this._subject=r=this._factory.blankNode()),(e.type==="<<"||e.type==="<<(")&&(s[s.length-1].subject=this._subject),o===null?a.predicate===null?a.subject=r:a.object===null?a.predicate=r:a.object=r:this._emit(o,this.RDF_REST,r,this._graph),n!==null){if(this._n3Mode&&(e.type==="IRI"||e.type==="prefixed"||e.type==="var"||e.type==="blank"||e.type==="literal"))return this._saveContext("item",this._graph,r,this.RDF_FIRST,n),this._subject=n,this._predicate=null,this._getPathReader(this._readListItem);this._emit(r,this.RDF_FIRST,n,this._graph)}return i}_readDataTypeOrLang(e){return this._completeObjectLiteral(e,!1)}_readListItemDataTypeOrLang(e){return this._completeObjectLiteral(e,!0)}_completeLiteral(e,n){let r,i=!1;switch(e.type){case"type":case"typeIRI":let o=this._readEntity(e);if(o===void 0)return;if(o.value===ee.rdf.langString||o.value===ee.rdf.dirLangString)return this._error("Detected illegal (directional) languaged-tagged string with explicit datatype",e);r=this._factory.literal(this._literalValue,o),e=null;break;case"langcode":if(e.value.split("-").some(s=>s.length>8))return this._error("Detected language tag with subtag longer than 8 characters",e);r=this._factory.literal(this._literalValue,e.value),this._literalLanguage=e.value,e=null,this._literalComponent=n,i=!0;break;default:r=this._factory.literal(this._literalValue)}return{token:e,literal:r,readCb:i}}_readDirCode(e){let n=this._literalComponent,r=this._literalListItem;if(e.type==="dircode"){let i=this._factory.literal(this._literalValue,{language:this._literalLanguage,direction:e.value});n==="subject"?this._subject=i:n==="predicate"?this._predicate=i:this._object=i,this._literalLanguage=void 0,e=null}if(n==="subject"||n==="predicate"){let i=n==="subject"?this._readPredicateOrNamedGraph:this._readObject;return this._getPathEndReader(e,i,n)||i.call(this,e)}return this._completeObjectLiteralPost(e,r)}_completeTermLiteral(e,n){let r=this._completeLiteral(e,n);if(!r)return;let i;if(n==="subject"?(this._subject=r.literal,i=this._readPredicateOrNamedGraph):(this._predicate=r.literal,this._validAnnotation=!0,i=this._readObject),r.readCb)return this._literalListItem=!1,this._readDirCode;let o=this._getPathEndReader(r.token,i,n);return o||i.call(this,r.token)}_completeSubjectLiteral(e){return this._completeTermLiteral(e,"subject")}_completePredicateLiteral(e){return this._completeTermLiteral(e,"predicate")}_completeObjectLiteral(e,n){let r=this._completeLiteral(e,"object");if(r)return this._object=r.literal,r.readCb?(this._literalListItem=n,this._readDirCode):this._completeObjectLiteralPost(r.token,n)}_completeObjectLiteralPost(e,n){return this._n3Mode&&(e===null||e.type==="!"||e.type==="^")?n?(this._saveContext("item",this._graph,this._subject,this.RDF_FIRST,this._object),this._subject=this._object,this._predicate=null,this._getPathEndReader(e,this._readListItem)):this._getPathEndReader(e,this._getContextEndReader()):(n&&this._emit(this._subject,this.RDF_FIRST,this._object,this._graph),e===null?this._getContextEndReader():(this._readCallback=this._getContextEndReader(),this._readCallback(e)))}_readFormulaTail(e){if(e.type!=="}")return this._readPunctuation(e);this._subject!==null&&this._emitCurrent(this._subject,this._predicate,this._object,this._graph);let n=this._graph,r=this._emptyFormula;return this._restoreContext("formula",e),r&&this._emptyFormulaAsTrue&&(this._subject===n?this._subject=this.N3_TRUE:this._predicate===n?this._predicate=this.N3_TRUE:this._object=this.N3_TRUE),this._object!==null?this._getPathReader(this._getContextEndReader(),"object"):this._predicate!==null?this._getPathReader(this._readObject,"predicate"):this._getPathReader(this._readPredicate,"subject")}_readPunctuation(e){let n,r=this._graph,i=!1,o=this._subject,s=this._inversePredicate;switch(e.type){case"}":if(this._graph===null)return this._error("Unexpected graph closing",e);if(this._n3Mode)return this._readFormulaTail(e);this._graph=null;case".":this._subject=null,this._tripleTerm=null,n=this._getStatementReader(),s&&(this._inversePredicate=!1);break;case";":s&&(this._inversePredicate=!1),n=this._readPredicate;break;case",":n=this._readObject;break;case"~":o!==null&&(this._tripleTerm=null),n=this._readReifierInAnnotation,i=!0;break;case"{|":o!==null&&(this._tripleTerm=null),this._subject=this._readTripleTerm(),this._inversePredicate=!1,this._validAnnotation=!1,i=!0,n=this._readPredicate;break;case"|}":if(!this._annotation)return this._error("Unexpected annotation syntax closing",e);if(!this._validAnnotation)return this._error("Annotation block can not be empty",e);this._subject=null,this._annotation=!1,this._inversePredicate=!1,n=this._getContextEndReader();break;default:if(this._supportsQuads&&this._graph===null&&(r=this._readEntity(e))!==void 0){n=this._readQuadPunctuation;break}return this._error(`Expected punctuation to follow "${this._object.id}"`,e)}if(o!==null&&(!i||i&&!this._annotation)){let a=this._predicate,l=this._object;this._emit(o,a,l,r,s)}return i&&(this._annotation=!0),n}_readBlankNodePunctuation(e){let n,r=!1;switch(e.type){case";":r=this._inversePredicate,n=this._readPredicate;break;case",":n=this._readObject;break;case"~":case"{|":case"|}":return this._readPunctuation(e);default:return this._error(`Expected punctuation to follow "${this._object.id}"`,e)}return this._subject===null?this._error("Expected ] to follow annotation",e):(this._emitCurrent(this._subject,this._predicate,this._object,this._graph),r&&(this._inversePredicate=!1),n)}_readQuadPunctuation(e){return e.type!=="."?this._error("Expected dot to follow quad",e):this._readInTopContext}_readPrefix(e){return e.type!=="prefix"?this._error("Expected prefix to follow @prefix",e):(this._prefix=e.value,this._readPrefixIRI)}_readPrefixIRI(e){if(e.type!=="IRI")return this._error(`Expected IRI to follow prefix "${this._prefix}:"`,e);let n=this._readEntity(e);return this._prefixes[this._prefix]=n.value,this._prefixCallback(this._prefix,n),this._readDeclarationPunctuation}_readBaseIRI(e){let n=e.type==="IRI"&&this._resolveIRI(e.value);return n?(this._setBase(n),this._readDeclarationPunctuation):this._error("Expected valid IRI to follow base declaration",e)}_isValidVersion(e){return this._parseUnsupportedVersions||t.SUPPORTED_VERSIONS.includes(e)}_readVersion(e){return e.type!=="literal"?this._error("Expected literal to follow version declaration",e):e.end-e.start!==e.value.length+2?this._error("Version declarations must use single quotes",e):(this._versionCallback(e.value),this._isValidVersion(e.value)?this._readDeclarationPunctuation:this._error(`Detected unsupported version: "${e.value}"`,e))}_readNamedGraphLabel(e){switch(e.type){case"IRI":case"blank":case"prefixed":return this._readSubject(e),this._readGraph;case"[":return this._readNamedGraphBlankLabel;default:return this._error("Invalid graph label",e)}}_readNamedGraphBlankLabel(e){return e.type!=="]"?this._error("Invalid graph label",e):(this._subject=this._factory.blankNode(),this._readGraph)}_readDeclarationPunctuation(e){return this._sparqlStyle?(this._sparqlStyle=!1,this._getStatementReader().call(this,e)):e.type!=="."?this._error("Expected declaration to end with a dot",e):this._getStatementReader()}_readQuantifierList(e){let n;switch(e.type){case"IRI":case"prefixed":if((n=this._readEntity(e,!0))!==void 0)break;default:return this._error(`Unexpected ${e.type}`,e)}return this._explicitQuantifiers?(this._subject===null?this._emit(this._graph||this.DEFAULTGRAPH,this._predicate,this._subject=this._factory.blankNode(),this.QUANTIFIERS_GRAPH):this._emit(this._subject,this.RDF_REST,this._subject=this._factory.blankNode(),this.QUANTIFIERS_GRAPH),this._emit(this._subject,this.RDF_FIRST,n,this.QUANTIFIERS_GRAPH)):this._quantified[n.id]=this._factory[this._quantifier](this._factory.blankNode().value),this._readQuantifierPunctuation}_readQuantifierPunctuation(e){return e.type===","?this._readQuantifierList:(this._explicitQuantifiers&&(this._emit(this._subject,this.RDF_REST,this.RDF_NIL,this.QUANTIFIERS_GRAPH),this._subject=null),this._readCallback=this._getContextEndReader(),this._readCallback(e))}_getPathReader(e,n){return this._afterPath=e,this._pathPosition=n||(this._predicate===null?"subject":"object"),this._readPath}_getPathEndReader(e,n,r){if(e!==null&&e.type!=="!"&&e.type!=="^")return null;let i=this._getPathReader(n,r);return e===null?i:i.call(this,e)}_readPath(e){switch(e.type){case"!":return this._readForwardPath;case"^":return this._readBackwardPath;default:let n=this._afterPath,r=this._contextStack,i=r.length&&r[r.length-1];if(i&&i.type==="item"){let o=this._subject;this._restoreContext("item",e),this._emit(this._subject,this.RDF_FIRST,o,this._graph)}return this._afterPath=null,this._pathPosition=null,n.call(this,e)}}_readForwardPath(e){let n,r,i=this._factory.blankNode();if((r=this._readEntity(e))!==void 0)return this._pathPosition==="subject"?(n=this._subject,this._subject=i):this._pathPosition==="predicate"?(n=this._predicate,this._predicate=i):(n=this._object,this._object=i),this._emit(n,r,i,this._graph),this._readPath}_readBackwardPath(e){let n=this._factory.blankNode(),r,i;if((r=this._readEntity(e))!==void 0)return this._pathPosition==="subject"?(i=this._subject,this._subject=n):this._pathPosition==="predicate"?(i=this._predicate,this._predicate=n):(i=this._object,this._object=n),this._emit(n,r,i,this._graph),this._readPath}_readTripleTermTail(e){if(e.type!==")>>")return this._error(`Expected )>> but got ${e.type}`,e);let n=this._createQuad(this._subject,this._predicate,this._object,this._graph,this._inversePredicate);this._restoreContext("<<(",e);let r=this._contextStack,i=r.length&&r[r.length-1];return i&&i.type==="list"?(this._emit(this._subject,this.RDF_FIRST,n,this._graph),this._getContextEndReader()):this._subject===null?(this._subject=n,this._readPredicate):(this._object=n,this._getContextEndReader())}_readReifiedTripleTailOrReifier(e){return e.type==="~"?this._readReifier:this._readReifiedTripleTail(e)}_readReifiedTripleTail(e){if(e.type!==">>")return this._error(`Expected >> but got ${e.type}`,e);this._tripleTerm=null;let n=this._readTripleTerm();this._restoreContext("<<",e);let r=this._contextStack,i=r.length&&r[r.length-1];return i&&i.type==="list"?(this._emit(this._subject,this.RDF_FIRST,n,this._graph),this._getContextEndReader()):this._subject===null?(this._subject=n,this._readPredicateOrReifierTripleEnd):(this._object=n,this._getContextEndReader())}_readPredicateOrReifierTripleEnd(e){return e.type==="."?(this._subject=null,this._readPunctuation(e)):this._readPredicate(e)}_readReifier(e){return this._reifier=this._readEntity(e),this._readReifiedTripleTail}_readReifierInAnnotation(e){return e.type==="IRI"||e.type==="typeIRI"||e.type==="type"||e.type==="prefixed"||e.type==="blank"||e.type==="var"?(this._reifier=this._readEntity(e),this._readAnnotationBlockOrPunctuation):(this._readTripleTerm(),this._subject=null,this._getContextEndReader().call(this,e))}_readAnnotationBlockOrPunctuation(e){if(e.type==="{|")return this._readPunctuation(e);switch(this._readTripleTerm(),this._annotation=!1,this._tripleTerm=null,e.type){case";":return this._inversePredicate=!1,this._readPredicate;case",":return this._readObject;default:return this._subject=null,this._getContextEndReader().call(this,e)}}_readTripleTerm(){let e=this._contextStack,n=e.length&&e[e.length-1],r=n?n.graph:void 0,i=this._reifier||this._factory.blankNode();return this._reifier=null,this._tripleTerm=this._tripleTerm||this._createQuad(this._subject,this._predicate,this._object,null,this._inversePredicate),this._emit(i,this.RDF_REIFIES,this._tripleTerm,r||this._graph||this.DEFAULTGRAPH),i}_getContextEndReader(){let e=this._contextStack;if(!e.length)return this._readPunctuation;switch(e[e.length-1].type){case"blank":return this._readBlankNodeTail;case"list":return this._readListItem;case"formula":return this._readFormulaTail;case"<<(":return this._readTripleTermTail;case"<<":return this._readReifiedTripleTailOrReifier}}_createQuad(e,n,r,i){return this._factory.quad(e,n,r,i||this.DEFAULTGRAPH)}_createQuadInDirection(e,n,r,i,o){return o?this._factory.quad(r,n,e,i||this.DEFAULTGRAPH):this._factory.quad(e,n,r,i||this.DEFAULTGRAPH)}_emitInDirection(e,n,r,i,o){this._callback(null,this._createQuad(e,n,r,i,o))}_emitCurrentInDirection(e,n,r,i){this._callback(null,this._createQuad(e,n,r,i,this._inversePredicate))}_emit(e,n,r,i){this._callback(null,this._factory.quad(e,n,r,i||this.DEFAULTGRAPH))}_error(e,n){let r=` on line ${n.line}.`;e.length+r.length>200&&(e=`${e.slice(0,199-r.length)}…`);let i=new Error(`${e}${r}`);i.context={token:n,line:n.line,previousToken:this._lexer.previousToken},this._callback(i),this._callback=On}_resolveIRI(e){return/^[a-z][a-z0-9+.-]*:/i.test(e)?e:this._resolveRelativeIRI(e)}_resolveRelativeIRI(e){if(!e.length)return this._base;switch(e[0]){case"#":return this._base+e;case"?":return this._base.replace(/(?:\?.*)?$/,e);case"/":return(e[1]==="/"?this._baseScheme:this._baseRoot)+this._removeDotSegments(e);default:return/^[^/:]*:/.test(e)?null:this._removeDotSegments(this._basePath+e)}}_removeDotSegments(e){if(!/(^|\/)\.\.?($|[/#?])/.test(e))return e;let n=e.length,r="",i=-1,o=-1,s=0,a="/";for(;i<n;){switch(a){case":":if(o<0&&e[++i]==="/"&&e[++i]==="/")for(;(o=i+1)<n&&e[o]!=="/";)i=o;break;case"?":case"#":i=n;break;case"/":if(e[i+1]===".")switch(a=e[++i+1],a){case"/":r+=e.substring(s,i-1),s=i+1;break;case void 0:case"?":case"#":return r+e.substring(s,i)+e.substr(i+1);case".":if(a=e[++i+1],a===void 0||a==="/"||a==="?"||a==="#"){if(r+=e.substring(s,i-2),(s=r.lastIndexOf("/"))>=o&&(r=r.substr(0,s)),a!=="/")return`${r}/${e.substr(i+1)}`;s=i+1}}}a=e[++i]}return r+e.substring(s)}parse(e,n,r,i){let o,s,a,l;if(n&&(n.onQuad||n.onPrefix||n.onComment||n.onVersion)?(o=n.onQuad,s=n.onPrefix,a=n.onComment,l=n.onVersion):(o=n,s=r,l=i),this._readCallback=this._readBeforeTopContext,this._sparqlStyle=!1,this._prefixes=Object.create(null),this._prefixes._=this._blankNodePrefix?this._blankNodePrefix.substr(2):`b${ra++}_`,this._n3Mode&&this._implicitEmptyPrefix&&this._base&&(this._prefixes[""]=this._resolveIRI("#")),this._prefixCallback=s||On,this._versionCallback=l||On,this._inversePredicate=!1,this._expectOf=!1,this._quantified=Object.create(null),this._emptyFormula=!1,!o){let u=[],p;if(this._callback=(k,h)=>{k?p=k:h&&u.push(h)},this._lexer.tokenize(e).every(k=>this._readCallback=this._readCallback(k)),p)throw p;return u}let f=(u,p)=>{u!==null?(this._callback(u),this._callback=On):this._readCallback&&(this._readCallback=this._readCallback(p))};a&&(this._lexer.comments=!0,f=(u,p)=>{u!==null?(this._callback(u),this._callback=On):this._readCallback&&(p.type==="comment"?a(p.value):this._readCallback=this._readCallback(p))}),this._callback=o,this._lexer.tokenize(e,f)}};function On(){}function ia(t,e){t._factory=e,t.DEFAULTGRAPH=e.defaultGraph(),t.RDF_FIRST=e.namedNode(ee.rdf.first),t.RDF_REST=e.namedNode(ee.rdf.rest),t.RDF_NIL=e.namedNode(ee.rdf.nil),t.RDF_REIFIES=e.namedNode(ee.rdf.reifies),t.N3_FORALL=e.namedNode(ee.r.forAll),t.N3_FORSOME=e.namedNode(ee.r.forSome),t.N3_TRUE=e.literal("true",e.namedNode(ee.xsd.boolean)),t.ABBREVIATIONS={a:e.namedNode(ee.rdf.type),"=":e.namedNode(ee.owl.sameAs),">":e.namedNode(ee.log.implies),"<":e.namedNode(ee.log.isImpliedBy)},t.QUANTIFIERS_GRAPH=e.namedNode("urn:n3:quantifiers")}ft.SUPPORTED_VERSIONS=["1.2","1.2-basic","1.1"];ia(ft.prototype,ze);function St(t){return!!t&&t.termType==="DefaultGraph"}function Zt(t){return t.replace(/[\]\/\(\)\*\+\?\.\\\$]/g,"\\$&")}var Du=/^:?[^:?#]*(?:[?#]|$)|^file:|^[^:]*:\/*[^?#]+?\/(?:\.\.?(?:\/|$)|\/)/i,Pu=/^(?:(?:[^/?#]{3,}|\.?[^/?#.]\.?)(?:\/[^/?#]{3,}|\.?[^/?#.]\.?)*\/?)?(?:[?#]|$)/,oa="./",Bu="../",Si="?",sa="#",Rn=class t{constructor(e){this.base=e,this._baseLength=0,this._baseMatcher=null,this._pathReplacements=new Array(e.length+1)}static supports(e){return!Du.test(e)}_getBaseMatcher(){if(this._baseMatcher)return this._baseMatcher;if(!t.supports(this.base))return this._baseMatcher=/.^/;let e=/^[^:]*:\/*/.exec(this.base)[0],n=["^",Zt(e)],r=[],i=[],o=/[^/?#]*([/?#])/y,s,a=0,l=0,f=o.lastIndex=e.length;for(;!a&&!l&&(s=o.exec(this.base));)s[1]===sa?l=o.lastIndex-1:(n.push(Zt(s[0]),"(?:"),r.push(")?"),s[1]!==Si?i.push(f=o.lastIndex):(a=f=o.lastIndex,l=this.base.indexOf(sa,a),this._pathReplacements[a]=Si));for(let u=0;u<i.length;u++)this._pathReplacements[i[u]]=Bu.repeat(i.length-u-1);return this._pathReplacements[i[i.length-1]]=oa,this._baseLength=l>0?l:this.base.length,n.push(Zt(this.base.substring(f,this._baseLength)),a?"(?:#|$)":"(?:[?#]|$)"),this._baseMatcher=new RegExp([...n,...r].join(""))}toRelative(e){let n=this._getBaseMatcher().exec(e);if(!n)return e;let r=n[0].length;if(r===this._baseLength&&r===e.length)return"";let i=this._pathReplacements[r];if(i){let o=e.substring(r);return i!==Si&&!Pu.test(o)?e:i===oa&&/^[^?#]/.test(o)?o:i+o}return e.substring(r-1)}};var zn=ze.defaultGraph(),{rdf:Fu,xsd:Qt}=ee,aa=/["\\\t\n\r\b\f\u0000-\u0019\ud800-\udbff]/,la=/["\\\t\n\r\b\f\u0000-\u0019]|[\ud800-\udbff][\udc00-\udfff]/g,ju={"\\":"\\\\",'"':'\\"',"	":"\\t","\n":"\\n","\r":"\\r","\b":"\\b","\f":"\\f"},Ct=class extends Le{equals(e){return e===this}},Jt=class{constructor(e,n){if(this._prefixRegex=/$0^/,this._hasPrefixes=!1,e&&typeof e.write!="function"&&(n=e,e=null),n=n||{},this._lists=n.lists,e)this._outputStream=e,this._endStream=n.end===void 0?!0:!!n.end;else{let r="";this._outputStream={write(i,o,s){r+=i,s&&s()},end:i=>{i&&i(null,r)}},this._endStream=!0}this._subject=null,/triple|quad/i.test(n.format)?(this._lineMode=!0,this._writeQuad=this._writeQuadLine):(this._lineMode=!1,this._graph=zn,this._prefixIRIs=Object.create(null),n.baseIRI&&(this._baseIri=new Rn(n.baseIRI),n.writeBase&&this._write(`@base <${n.baseIRI}>.
+`)),n.prefixes&&this.addPrefixes(n.prefixes))}get _inDefaultGraph(){return zn.equals(this._graph)}_write(e,n){this._outputStream.write(e,"utf8",n)}_writeQuad(e,n,r,i,o){try{i!==this._graph&&(!i.equals(this._graph)||i.termType!==this._graph.termType)&&(this._write((this._subject===null?"":this._inDefaultGraph?`.
+`:`
+}
+`)+(zn.equals(i)?"":`${this._encodeIriOrBlank(i)} {
+`)),this._graph=i,this._subject=null),e===this._subject||e.equals(this._subject)?n===this._predicate||n.equals(this._predicate)?this._write(`, ${this._encodeObject(r)}`,o):this._write(`;
+    ${this._encodePredicate(this._predicate=n)} ${this._encodeObject(r)}`,o):this._write(`${(this._subject===null?"":`.
+`)+this._encodeSubject(this._subject=e)} ${this._encodePredicate(this._predicate=n)} ${this._encodeObject(r)}`,o)}catch(s){o&&o(s)}}_writeQuadLine(e,n,r,i,o){delete this._prefixMatch,this._write(this.quadToString(e,n,r,i),o)}quadToString(e,n,r,i){return`${this._encodeSubject(e)} ${this._encodeIriOrBlank(n)} ${this._encodeObject(r)}${i&&!St(i)?` ${this._encodeIriOrBlank(i)} .
+`:` .
+`}`}quadsToString(e){let n="";for(let r of e)n+=this.quadToString(r.subject,r.predicate,r.object,r.graph);return n}_encodeSubject(e){return e.termType==="Quad"?this._encodeQuad(e):this._encodeIriOrBlank(e)}_encodeIriOrBlank(e){if(e.termType!=="NamedNode")return this._lists&&e.value in this._lists&&(e=this.list(this._lists[e.value])),e.termType==="Variable"?`?${e.value}`:"id"in e?e.id:`_:${e.value}`;let n=e.value;this._baseIri&&(n=this._baseIri.toRelative(n)),aa.test(n)&&(n=n.replace(la,da));let r=this._hasPrefixes?this._prefixRegex.exec(n):null;return r?r[1]?this._prefixIRIs[r[1]]+r[2]:n:`<${n}>`}_encodeLiteral(e){let n=e.value;aa.test(n)&&(n=n.replace(la,da));let r=e.language;if(r){let i=e.direction,o=i?`--${i}`:"";return`"${n}"@${r}${o}`}if(this._lineMode){if(e.datatype.value===Qt.string)return`"${n}"`}else switch(e.datatype.value){case Qt.string:return`"${n}"`;case Qt.boolean:if(n==="true"||n==="false")return n;break;case Qt.integer:if(/^[+-]?\d+$/.test(n))return n;break;case Qt.decimal:if(/^[+-]?\d*\.\d+$/.test(n))return n;break;case Qt.double:if(/^[+-]?(?:\d+\.\d*|\.?\d+)[eE][+-]?\d+$/.test(n))return n;break}return`"${n}"^^${this._encodeIriOrBlank(e.datatype)}`}_encodePredicate(e){return e.value===Fu.type?"a":this._encodeIriOrBlank(e)}_encodeObject(e){switch(e.termType){case"Quad":return this._encodeQuad(e);case"Literal":return this._encodeLiteral(e);default:return this._encodeIriOrBlank(e)}}_encodeQuad({subject:e,predicate:n,object:r,graph:i}){return`<<(${this._encodeSubject(e)} ${this._encodePredicate(n)} ${this._encodeObject(r)}${St(i)?"":` ${this._encodeIriOrBlank(i)}`})>>`}_blockedWrite(){throw new Error("Cannot write because the writer has been closed.")}addQuad(e,n,r,i,o){r===void 0?this._writeQuad(e.subject,e.predicate,e.object,e.graph,n):typeof i=="function"?this._writeQuad(e,n,r,zn,i):this._writeQuad(e,n,r,i||zn,o)}addQuads(e){for(let n=0;n<e.length;n++)this.addQuad(e[n])}addPrefix(e,n,r){let i={};i[e]=n,this.addPrefixes(i,r)}addPrefixes(e,n){if(!this._prefixIRIs)return n&&n();let r=!1;for(let i in e){let o=e[i];typeof o!="string"&&(o=o.value),r=!0,this._subject!==null&&(this._write(this._inDefaultGraph?`.
+`:`
+}
+`),this._subject=null,this._graph=""),this._prefixIRIs[o]=i+=":",this._write(`@prefix ${i} <${o}>.
+`)}if(r){this._hasPrefixes=!0;let i="",o="";for(let s in this._prefixIRIs)i+=i?`|${s}`:s,o+=(o?"|":"")+this._prefixIRIs[s];i=Zt(i,/[\]\/\(\)\*\+\?\.\\\$]/g,"\\$&"),this._prefixRegex=new RegExp(`^(?:${o})[^/]*$|^(${i})([_a-zA-Z0-9](?:\\.?[\\-_a-zA-Z0-9])*)$`)}this._write(r?`
+`:"",n)}blank(e,n){let r=e,i,o;switch(e===void 0?r=[]:e.termType?r=[{predicate:e,object:n}]:"length"in e||(r=[e]),o=r.length){case 0:return new Ct("[]");case 1:if(i=r[0],!(i.object instanceof Ct))return new Ct(`[ ${this._encodePredicate(i.predicate)} ${this._encodeObject(i.object)} ]`);default:let s="[";for(let a=0;a<o;a++)i=r[a],i.predicate.equals(e)?s+=`, ${this._encodeObject(i.object)}`:(s+=`${(a?`;
+  `:`
+  `)+this._encodePredicate(i.predicate)} ${this._encodeObject(i.object)}`,e=i.predicate);return new Ct(`${s}
+]`)}}list(e){let n=e&&e.length||0,r=new Array(n);for(let i=0;i<n;i++)r[i]=this._encodeObject(e[i]);return new Ct(`(${r.join(" ")})`)}end(e){this._subject!==null&&(this._write(this._inDefaultGraph?`.
+`:`
+}
+`),this._subject=null),this._write=this._blockedWrite;let n=e&&((r,i)=>{n=null,e(r,i)});if(this._endStream)try{return this._outputStream.end(n)}catch{}n&&n()}};function da(t){let e=ju[t];return e===void 0&&(t.length===1?(e=t.charCodeAt(0).toString(16),e="\\u0000".substr(0,6-e.length)+e):(e=((t.charCodeAt(0)-55296)*1024+t.charCodeAt(1)+9216).toString(16),e="\\U00000000".substr(0,10-e.length)+e)),e}var Go=Es(yc());var $o=Symbol("iter"),le=Symbol("size");function pk(t,e,n,r){let i=t&&t[e],o=i&&i[n];return!!o&&r in o}function gn(t,e,n=4){let r=t[le]||0;for(let i in e)i in t?n!==0&&(t[i]=gn(t[i],e[i],n-1)):(r++,t[i]=n===0?null:gn(Object.create(null),e[i],n-1));return n<=2&&(t[le]=r),t}function wc(t,e,n=4){let r=!1,i=0;n<=2&&e[le]<t[le]&&([t,e]=[e,t]);for(let o in t)if(o in e){let s=n===0?null:wc(t[o],e[o],n-1);if(s!==!1)r=r||Object.create(null),r[o]=s,i++;else if(n===3)return!1}return n<=2&&r&&(r[le]=i),r}function xc(t,e,n=4){let r=!1,i=0;for(let o in t)if(!(o in e))r=r||Object.create(null),r[o]=n===0?null:gn({},t[o],n-1),i++;else if(n!==0){let s=xc(t[o],e[o],n-1);if(s!==!1)r=r||Object.create(null),r[o]=s,i++;else if(n===3)return!1}return n<=2&&r&&(r[le]=i),r}var Gr=class{constructor(e={}){this._id=1,this._ids=Object.create(null),this._ids[""]=1,this._entities=Object.create(null),this._entities[1]="",this._blankNodeIndex=0,this._factory=e.factory||ze}_termFromId(e){if(e[0]==="."){let n=this._entities,r=e.split(".");return this._factory.quad(this._termFromId(n[r[1]]),this._termFromId(n[r[2]]),this._termFromId(n[r[3]]),r[4]&&this._termFromId(n[r[4]]))}return vt(e,this._factory)}_termToNumericId(e){if(e.termType==="Quad"){let n=this._termToNumericId(e.subject),r=this._termToNumericId(e.predicate),i=this._termToNumericId(e.object),o;return n&&r&&i&&(St(e.graph)||(o=this._termToNumericId(e.graph)))&&this._ids[o?`.${n}.${r}.${i}.${o}`:`.${n}.${r}.${i}`]}return this._ids[ct(e)]}_termToNewNumericId(e){let n=e&&e.termType==="Quad"?`.${this._termToNewNumericId(e.subject)}.${this._termToNewNumericId(e.predicate)}.${this._termToNewNumericId(e.object)}${St(e.graph)?"":`.${this._termToNewNumericId(e.graph)}`}`:ct(e);return this._ids[n]||(this._ids[this._entities[++this._id]=n]=this._id)}createBlankNode(e){let n,r;if(e)for(n=e=`_:${e}`,r=1;this._ids[n];)n=e+r++;else do n=`_:b${this._blankNodeIndex++}`;while(this._ids[n]);return this._ids[n]=++this._id,this._entities[this._id]=n,this._factory.blankNode(n.substr(2))}},Ft=class t{constructor(e,n){this._size=0,this._graphs=Object.create(null),!n&&e&&!e[0]&&typeof e.match!="function"&&(n=e,e=null),n=n||{},this._factory=n.factory||ze,this._entityIndex=n.entityIndex||new Gr({factory:this._factory}),this._entities=this._entityIndex._entities,this._termFromId=this._entityIndex._termFromId.bind(this._entityIndex),this._termToNumericId=this._entityIndex._termToNumericId.bind(this._entityIndex),this._termToNewNumericId=this._entityIndex._termToNewNumericId.bind(this._entityIndex),e&&this.addAll(e)}get size(){let e=this._size;if(e!==null)return e;e=0;let n=this._graphs,r,i;for(let o in n)for(let s in r=n[o].subjects)for(let a in i=r[s])e+=i[a][le];return this._size=e}_addToIndex(e,n,r,i){let o=e[n];o||(e[n]=o={[le]:0},e[le]++);let s=o[r];s||(o[r]=s={[le]:0},o[le]++);let a=i in s;return a||(s[i]=null,s[le]++),!a}_removeFromIndex(e,n,r,i){let o=e[n],s=o[r];delete s[i],--s[le]===0&&(delete o[r],--o[le]===0&&(delete e[n],e[le]--))}*_findInIndex(e,n,r,i,o,s,a,l){let f=this._entities,u=this._termFromId(f[l]),p={subject:null,predicate:null,object:null};if(i){let h=e[n],g=h&&h[r];if(!g||!(i in g))return;p[o]=this._termFromId(f[n]),p[s]=this._termFromId(f[r]),p[a]=this._termFromId(f[i]),yield this._factory.quad(p.subject,p.predicate,p.object,u);return}if(n&&!(n in e))return;let k=n?null:Object.keys(e);for(let h=0,g=n||k[0];g;g=k&&k[++h]){let b=e[g];if(!b)continue;if(p[o]=this._termFromId(f[g]),r&&!(r in b))return;let _=r?null:Object.keys(b);for(let S=0,v=r||_[0];v;v=_&&_[++S]){let x=b[v];if(!x)continue;p[s]=this._termFromId(f[v]);let w=Object.keys(x);for(let O=0;O<w.length;O++)p[a]=this._termFromId(f[w[O]]),yield this._factory.quad(p.subject,p.predicate,p.object,u)}}}_loop(e,n){for(let r in e)n(r)}_loopByKey0(e,n,r){let i,o;if(i=e[n])for(o in i)r(o)}_loopByKey1(e,n,r){let i,o;for(i in e)o=e[i],o[n]&&r(i)}_loopBy2Keys(e,n,r,i){let o,s,a;if((o=e[n])&&(s=o[r]))for(a in s)i(a)}_loopByKey0Deep(e,n,r){let i,o,s,a;if(i=e[n])for(s in i){o=i[s];for(a in o)r(a)}}_countInIndex(e,n,r,i){let o=0,s,a;if(n){if(!(s=e[n]))return 0;if(r)return(a=s[r])?i?i in a?1:0:a[le]:0;for(let l in s)o+=s[l][le];return o}for(let l in e){s=e[l];for(let f in s)o+=s[f][le]}return o}_getGraphs(e){return e=e===""?1:e&&(this._termToNumericId(e)||-1),typeof e!="number"?this._graphs:{[e]:this._graphs[e]}}_uniqueEntities(e){let n=Object.create(null);return r=>{r in n||(n[r]=!0,e(this._termFromId(this._entities[r],this._factory)))}}add(e){return this.addQuad(e),this}addQuad(e,n,r,i){n||(i=e.graph,r=e.object,n=e.predicate,e=e.subject),i=i?this._termToNewNumericId(i):1;let o=this._graphs[i];return o||(o=this._graphs[i]={subjects:{[le]:0},predicates:{[le]:0},objects:{[le]:0}},Object.freeze(o)),e=this._termToNewNumericId(e),n=this._termToNewNumericId(n),r=this._termToNewNumericId(r),this._addToIndex(o.subjects,e,n,r)?(this._addToIndex(o.predicates,n,r,e),this._addToIndex(o.objects,r,e,n),this._size=null,!0):!1}addQuads(e){for(let n=0;n<e.length;n++)this.addQuad(e[n])}delete(e){return this.removeQuad(e),this}has(e,n,r,i){if(e&&e.subject&&({subject:e,predicate:n,object:r,graph:i}=e),e&&n&&r&&i!==void 0&&i!==null){let o=this._termToNumericId(e),s=this._termToNumericId(n),a=this._termToNumericId(r),l=i===""||St(i)?1:this._termToNumericId(i),f=l&&this._graphs[l];return!!o&&!!s&&!!a&&!!f&&pk(f.subjects,o,s,a)}return!this.readQuads(e,n,r,i).next().done}import(e){return e.on("data",n=>{this.addQuad(n)}),e}removeQuad(e,n,r,i){n||({subject:e,predicate:n,object:r,graph:i}=e),i=i?this._termToNumericId(i):1;let o=this._graphs,s,a,l;return!(e=e&&this._termToNumericId(e))||!(n=n&&this._termToNumericId(n))||!(r=r&&this._termToNumericId(r))||!(s=o[i])||!(a=s.subjects[e])||!(l=a[n])||!(r in l)?!1:(this._removeFromIndex(s.subjects,e,n,r),this._removeFromIndex(s.predicates,n,r,e),this._removeFromIndex(s.objects,r,e,n),this._size!==null&&this._size--,s.subjects[le]===0&&delete o[i],!0)}removeQuads(e){for(let n=0;n<e.length;n++)this.removeQuad(e[n])}remove(e){return e.on("data",n=>{this.removeQuad(n)}),e}removeMatches(e,n,r,i){let o=new Go.Readable({objectMode:!0}),s=this.readQuads(e,n,r,i);return o._read=a=>{for(;--a>=0;){let{done:l,value:f}=s.next();if(l){o.push(null);return}o.push(f)}},this.remove(o)}deleteGraph(e){return this.removeMatches(null,null,null,e)}getQuads(e,n,r,i){return[...this.readQuads(e,n,r,i)]}*readQuads(e,n,r,i){let o=this._getGraphs(i),s,a,l,f;if(!(e&&!(a=this._termToNumericId(e))||n&&!(l=this._termToNumericId(n))||r&&!(f=this._termToNumericId(r))))for(let u in o)(s=o[u])&&(a?f?yield*this._findInIndex(s.objects,f,a,l,"object","subject","predicate",u):yield*this._findInIndex(s.subjects,a,l,null,"subject","predicate","object",u):l?yield*this._findInIndex(s.predicates,l,f,null,"predicate","object","subject",u):f?yield*this._findInIndex(s.objects,f,null,null,"object","subject","predicate",u):yield*this._findInIndex(s.subjects,null,null,null,"subject","predicate","object",u))}match(e,n,r,i){return new mt(this,e,n,r,i,{entityIndex:this._entityIndex})}countQuads(e,n,r,i){let o=this._getGraphs(i),s=0,a,l,f,u;if(e&&!(l=this._termToNumericId(e))||n&&!(f=this._termToNumericId(n))||r&&!(u=this._termToNumericId(r)))return 0;for(let p in o)(a=o[p])&&(e?r?s+=this._countInIndex(a.objects,u,l,f):s+=this._countInIndex(a.subjects,l,f,u):n?s+=this._countInIndex(a.predicates,f,u,l):s+=this._countInIndex(a.objects,u,l,f));return s}forEach(e,n,r,i,o){this.some(s=>(e(s,this),!1),n,r,i,o)}every(e,n,r,i,o){return!this.some(s=>!e(s,this),n,r,i,o)}some(e,n,r,i,o){for(let s of this.readQuads(n,r,i,o))if(e(s,this))return!0;return!1}getSubjects(e,n,r){let i=[];return this.forSubjects(o=>{i.push(o)},e,n,r),i}forSubjects(e,n,r,i){let o=this._getGraphs(i),s,a,l;if(e=this._uniqueEntities(e),!(n&&!(a=this._termToNumericId(n))||r&&!(l=this._termToNumericId(r))))for(i in o)(s=o[i])&&(a?l?this._loopBy2Keys(s.predicates,a,l,e):this._loopByKey1(s.subjects,a,e):l?this._loopByKey0(s.objects,l,e):this._loop(s.subjects,e))}getPredicates(e,n,r){let i=[];return this.forPredicates(o=>{i.push(o)},e,n,r),i}forPredicates(e,n,r,i){let o=this._getGraphs(i),s,a,l;if(e=this._uniqueEntities(e),!(n&&!(a=this._termToNumericId(n))||r&&!(l=this._termToNumericId(r))))for(i in o)(s=o[i])&&(a?l?this._loopBy2Keys(s.objects,l,a,e):this._loopByKey0(s.subjects,a,e):l?this._loopByKey1(s.predicates,l,e):this._loop(s.predicates,e))}getObjects(e,n,r){let i=[];return this.forObjects(o=>{i.push(o)},e,n,r),i}forObjects(e,n,r,i){let o=this._getGraphs(i),s,a,l;if(e=this._uniqueEntities(e),!(n&&!(a=this._termToNumericId(n))||r&&!(l=this._termToNumericId(r))))for(i in o)(s=o[i])&&(a?l?this._loopBy2Keys(s.subjects,a,l,e):this._loopByKey0Deep(s.subjects,a,e):l?this._loopByKey0(s.predicates,l,e):this._loop(s.objects,e))}getGraphs(e,n,r){let i=[];return this.forGraphs(o=>{i.push(o)},e,n,r),i}forGraphs(e,n,r,i){for(let o in this._graphs)this.some(s=>(e(s.graph),!0),n,r,i,this._termFromId(this._entities[o]))}createBlankNode(e){return this._entityIndex.createBlankNode(e)}extractLists({remove:e=!1,ignoreErrors:n=!1}={}){let r=Object.create(null),i=n?(()=>!0):((a,l)=>{throw new Error(`${a.value} ${l}`)}),o=this.getQuads(null,ee.rdf.rest,ee.rdf.nil,null),s=e?[...o]:[];return o.forEach(a=>{let l=[],f=!1,u,p,k=a.graph,h=a.subject;for(;h&&!f;){let g=this.getQuads(null,null,h,null),b=this.getQuads(h,null,null,null),_,S=null,v=null,x=null;for(let w=0;w<b.length&&!f;w++)_=b[w],_.graph.equals(k)?u?f=i(h,"has non-list arcs out"):_.predicate.value===ee.rdf.first?S?f=i(h,"has multiple rdf:first arcs"):s.push(S=_):_.predicate.value===ee.rdf.rest?v?f=i(h,"has multiple rdf:rest arcs"):s.push(v=_):g.length?f=i(h,"can't be subject and object"):(u=_,p="subject"):f=i(h,"not confined to single graph");for(let w=0;w<g.length&&!f;++w)_=g[w],u?f=i(h,"can't have coreferences"):_.predicate.value===ee.rdf.rest?x?f=i(h,"has incoming rdf:rest arcs"):x=_:(u=_,p="object");S?l.unshift(S.object):f=i(h,"has no list head"),h=x&&x.subject}f?e=!1:u&&(r[u[p].value]=l)}),e&&this.removeQuads(s),r}addAll(e){if(e instanceof mt&&(e=e.filtered),Array.isArray(e))this.addQuads(e);else if(e instanceof t&&e._entityIndex===this._entityIndex)e._size!==0&&(this._graphs=gn(this._graphs,e._graphs),this._size=null);else for(let n of e)this.add(n);return this}contains(e){if(e instanceof mt&&(e=e.filtered),e===this)return!0;if(!(e instanceof t)||this._entityIndex!==e._entityIndex)return e.every(f=>this.has(f));let n=this._graphs,r=e._graphs,i,o,s,a,l;for(let f in r){if(!(i=n[f]))return!1;i=i.subjects;for(let u in o=r[f].subjects){if(!(s=i[u]))return!1;for(let p in a=o[u]){if(!(l=s[p]))return!1;for(let k in a[p])if(!(k in l))return!1}}}return!0}deleteMatches(e,n,r,i){for(let o of this.match(e,n,r,i))this.removeQuad(o);return this}difference(e){if(e&&e instanceof mt&&(e=e.filtered),e===this)return new t({entityIndex:this._entityIndex});if(e instanceof t&&e._entityIndex===this._entityIndex){let n=new t({entityIndex:this._entityIndex}),r=xc(this._graphs,e._graphs);return r&&(n._graphs=r,n._size=null),n}return this.filter(n=>!e.has(n))}equals(e){return e instanceof mt&&(e=e.filtered),e===this||this.size===e.size&&this.contains(e)}filter(e){let n=new t({entityIndex:this._entityIndex});for(let r of this)e(r,this)&&n.add(r);return n}intersection(e){if(e instanceof mt&&(e=e.filtered),e===this){let n=new t({entityIndex:this._entityIndex});return n._graphs=gn(Object.create(null),this._graphs),n._size=this._size,n}else if(e instanceof t&&this._entityIndex===e._entityIndex){let n=new t({entityIndex:this._entityIndex}),r=wc(e._graphs,this._graphs);return r&&(n._graphs=r,n._size=null),n}return this.filter(n=>e.has(n))}map(e){let n=new t({entityIndex:this._entityIndex});for(let r of this)n.add(e(r,this));return n}reduce(e,n){let r=this.readQuads(),i=n===void 0?r.next().value:n;for(let o of r)i=e(i,o,this);return i}toArray(){return this.getQuads()}toCanonical(){throw new Error("not implemented")}toStream(){return this.match()}toString(){return new Jt().quadsToString(this)}union(e){let n=new t({entityIndex:this._entityIndex});return n._graphs=gn(Object.create(null),this._graphs),n._size=this._size,n.addAll(e),n}[Symbol.iterator](){return this.readQuads()}};function Ve(t,e,n=0){let r=e[n];if(r&&!(r in t))return!1;let i=!1,o=0;for(let s in r?{[r]:t[r]}:t){let a=n===2?null:Ve(t[s],e,n+1);a!==!1&&(i=i||Object.create(null),i[s]=a,o++)}return i&&(i[le]=o),i}var mt=class t extends Go.Readable{constructor(e,n,r,i,o,s){super({objectMode:!0}),Object.assign(this,{n3Store:e,subject:n,predicate:r,object:i,graph:o,options:s})}get filtered(){if(!this._filtered){let{n3Store:e,graph:n,object:r,predicate:i,subject:o}=this,s=this._filtered=new Ft({factory:e._factory,entityIndex:this.options.entityIndex}),a,l,f;if(o&&!(a=s._termToNumericId(o))||i&&!(l=s._termToNumericId(i))||r&&!(f=s._termToNumericId(r)))return s;let u=e._getGraphs(n);for(let p in u){let k,h,g,b;(b=u[p])&&(!a&&l?(h=Ve(b.predicates,[l,f,a]))&&(k=Ve(b.subjects,[a,l,f]),g=Ve(b.objects,[f,a,l])):f?(g=Ve(b.objects,[f,a,l]))&&(k=Ve(b.subjects,[a,l,f]),h=Ve(b.predicates,[l,f,a])):(k=Ve(b.subjects,[a,l,f]))&&(h=Ve(b.predicates,[l,f,a]),g=Ve(b.objects,[f,a,l])),k&&(s._graphs[p]={subjects:k,predicates:h,objects:g}))}s._size=null}return this._filtered}get size(){return this.filtered.size}_read(e){e>0&&!this[$o]&&(this[$o]=this[Symbol.iterator]());let n=this[$o];for(;--e>=0;){let{done:r,value:i}=n.next();if(r){this.push(null);return}this.push(i)}}addAll(e){return this.filtered.addAll(e)}contains(e){return this.filtered.contains(e)}deleteMatches(e,n,r,i){return this.filtered.deleteMatches(e,n,r,i)}difference(e){return this.filtered.difference(e)}equals(e){return this.filtered.equals(e)}every(e,n,r,i,o){return this.filtered.every(e,n,r,i,o)}filter(e){return this.filtered.filter(e)}forEach(e,n,r,i,o){return this.filtered.forEach(e,n,r,i,o)}import(e){return this.filtered.import(e)}intersection(e){return this.filtered.intersection(e)}map(e){return this.filtered.map(e)}some(e,n,r,i,o){return this.filtered.some(e,n,r,i,o)}toCanonical(){return this.filtered.toCanonical()}toStream(){return this._filtered?this._filtered.toStream():this.n3Store.match(this.subject,this.predicate,this.object,this.graph)}union(e){return this._filtered?this._filtered.union(e):this.n3Store.match(this.subject,this.predicate,this.object,this.graph).addAll(e)}toArray(){return this._filtered?this._filtered.toArray():this.n3Store.getQuads(this.subject,this.predicate,this.object,this.graph)}reduce(e,n){return this.filtered.reduce(e,n)}toString(){return new Jt().quadsToString(this)}add(e){return this.filtered.add(e)}delete(e){return this.filtered.delete(e)}has(e){return this.filtered.has(e)}match(e,n,r,i){return new t(this.filtered,e,n,r,i,this.options)}[Symbol.iterator](){return this._filtered?this._filtered[Symbol.iterator]():this.n3Store.readQuads(this.subject,this.predicate,this.object,this.graph)}};var A={rdf:"http://www.w3.org/1999/02/22-rdf-syntax-ns#",rdfs:"http://www.w3.org/2000/01/rdf-schema#",owl:"http://www.w3.org/2002/07/owl#",xsd:"http://www.w3.org/2001/XMLSchema#",skos:"http://www.w3.org/2004/02/skos/core#",dcterms:"http://purl.org/dc/terms/",dc:"http://purl.org/dc/elements/1.1/",sh:"http://www.w3.org/ns/shacl#",ontolex:"http://www.w3.org/ns/lemon/ontolex#"},Uo={id:"default",title:"Профиль по умолчанию",languages:["ru","kk","en"],definitionLanguages:["ru","en"],labelProperties:[A.skos+"prefLabel",A.rdfs+"label"],altLabelProperties:[A.skos+"altLabel",A.skos+"hiddenLabel"],definitionProperties:[A.skos+"definition",A.rdfs+"comment"],provenanceProperties:[A.rdfs+"isDefinedBy",A.dcterms+"source"],identifierProperties:[A.dcterms+"identifier"],noteProperties:{[A.skos+"editorialNote"]:{ru:"редакционная пометка",kk:"редакциялық белгі",en:"editorial note"},[A.skos+"changeNote"]:{ru:"изменение",kk:"өзгеріс",en:"change note"},[A.skos+"historyNote"]:{ru:"историческая справка",kk:"тарихи анықтама",en:"history note"},[A.skos+"scopeNote"]:{ru:"область применения",kk:"қолдану аясы",en:"scope note"},[A.rdfs+"comment"]:{ru:"примечание",kk:"ескертпе",en:"comment"},[A.skos+"example"]:{ru:"пример",kk:"мысал",en:"example"}},noteBadges:[{match:"authors'? translation",ru:"авторский перевод",kk:"авторлық аударма",en:"authors' translation"},{match:"expert-reviewed",ru:"экспертная проверка",kk:"сараптамалық тексеру",en:"expert-reviewed"},{match:"source-attested",ru:"подтверждён источником",kk:"дереккөзбен расталған",en:"source-attested"},{match:"merged duplicate",ru:"объединён дубль",kk:"қосарлану біріктірілді",en:"merged duplicate"},{match:"definition revised",ru:"определение исправлено",kk:"анықтама түзетілді",en:"definition revised"},{match:"submodule",ru:"субмодуль",kk:"субмодуль",en:"submodule"},{match:"\\[VERIFY[^\\]]*\\]",ru:"требует проверки",kk:"тексеруді қажет етеді",en:"needs verification"}],externalNamespaces:{"http://www.buildingsmart-tech.org/ifcOWL/IFC4#":{prefix:"ifc",label:"IFC4 (ifcOWL)"},"http://www.opengis.net/ont/geosparql#":{prefix:"geo",label:"GeoSPARQL"},"http://www.geoscience.org/geocore#":{prefix:"geocore",label:"GeoCore"},"http://www.w3.org/ns/lemon/ontolex#":{prefix:"ontolex",label:"OntoLex"},"http://purl.org/dc/terms/":{prefix:"dcterms",label:"Dublin Core Terms"},"http://www.w3.org/2004/02/skos/core#":{prefix:"skos",label:"SKOS"}},termRule:"identifier-or-collection",structuralClasses:[],rootClasses:[],countProperties:{legacy:[A.skos+"historyNote"]},minDefinitionLength:20,targets:null,map:{layout:"cluster",corner:"bottom-right",width:240,height:180,zoomThresholds:[.4,.8,1.6]},neighbourhoodDepth:1,maxNeighbourhoodNodes:60},_c=new Map;function qo(t){if(t instanceof RegExp)return t;let e=_c.get(t);return e||(e=new RegExp(t,"i"),_c.set(t,e)),e}function vc(t,e){if(!e)return t;let n=JSON.parse(JSON.stringify(t));for(let r of Object.keys(e)){let i=e[r];i&&typeof i=="object"&&!Array.isArray(i)&&n[r]&&typeof n[r]=="object"&&!Array.isArray(n[r])?Object.assign(n[r],i):n[r]=i}return n}var{namedNode:hk}=ze,Sc=A.rdf+"type",Cc=A.rdfs+"subClassOf",gk=A.skos+"broader",mk=A.skos+"narrower",bk=A.skos+"member",kk=A.skos+"inScheme",yk=A.rdfs+"domain",wk=A.rdfs+"range",xk=A.rdfs+"seeAlso",_k=A.sh+"targetClass",P={CLASS:"class",CONCEPT:"concept",OBJECT_PROPERTY:"objectProperty",DATA_PROPERTY:"dataProperty",ANNOTATION_PROPERTY:"annotationProperty",INDIVIDUAL:"individual",COLLECTION:"collection",SCHEME:"scheme",SHAPE:"shape",ONTOLOGY:"ontology"},vk={[A.owl+"Class"]:P.CLASS,[A.rdfs+"Class"]:P.CLASS,[A.skos+"Concept"]:P.CONCEPT,[A.owl+"ObjectProperty"]:P.OBJECT_PROPERTY,[A.owl+"DatatypeProperty"]:P.DATA_PROPERTY,[A.owl+"AnnotationProperty"]:P.ANNOTATION_PROPERTY,[A.owl+"NamedIndividual"]:P.INDIVIDUAL,[A.skos+"Collection"]:P.COLLECTION,[A.skos+"OrderedCollection"]:P.COLLECTION,[A.skos+"ConceptScheme"]:P.SCHEME,[A.sh+"NodeShape"]:P.SHAPE,[A.sh+"PropertyShape"]:P.SHAPE,[A.owl+"Ontology"]:P.ONTOLOGY};function Wo(t){let e=t.lastIndexOf("#");if(e>=0)return t.slice(e+1);let n=t.lastIndexOf("/");return n>=0?t.slice(n+1):t}function Ho(t){let e=t.lastIndexOf("#");if(e>=0)return t.slice(0,e+1);let n=t.lastIndexOf("/");return n>=0?t.slice(0,n+1):t}function Sk(t){return{iri:t,local:Wo(t),ns:Ho(t),curie:null,types:new Set,kinds:new Set,labels:{},altLabels:{},definitions:{},notes:[],parents:[],children:[],collections:[],members:[],schemes:[],provenance:[],identifiers:[],domainOf:[],rangeOf:[],domain:[],range:[],seeAlso:[],shapes:[],shapeTarget:null,external:!1,files:new Set,outgoing:[],incoming:[],literals:[],isTerm:!1,depth:0}}function Ko(t,e,n){(t[e]||(t[e]=[])).push(n)}function Ec(t,e){let n=typeof performance<"u"?performance.now():Date.now(),r=new Ft,i={},o=[],s=[];t.forEach((T,j)=>{let U=new ft({baseIRI:T.baseIRI||void 0}),de=0;try{let q=U.parse(T.text,null,(oe,H)=>{oe&&!i[oe]&&(i[oe]=H.value||String(H))});for(let oe of q)r.addQuad(oe.subject,oe.predicate,oe.object,hk("file:"+j)),de++}catch(q){s.push({file:T.name,message:String(q&&q.message||q)})}o.push({name:T.name,index:j,triples:de,bytes:T.text.length})});let a=new Set(e.labelProperties),l=new Set(e.altLabelProperties),f=new Set(e.definitionProperties),u=new Set(e.provenanceProperties),p=new Set(e.identifierProperties),k=new Set(Object.keys(e.noteProperties)),h=new Map,g=T=>{let j=h.get(T);return j||(j=Sk(T),h.set(T,j)),j},b=0;for(let T of r.getQuads(null,null,null,null)){b++;let j=T.subject,U=T.predicate.value,de=T.object;if(j.termType!=="NamedNode")continue;let q=g(j.value),oe=T.graph&&T.graph.value&&T.graph.value.startsWith("file:")?Number(T.graph.value.slice(5)):0;if(q.files.add(oe),de.termType==="Literal"){let te=de.language||"",yt={value:de.value,prop:U,lang:te,datatype:de.datatype?de.datatype.value:null};q.literals.push(yt),a.has(U)?Ko(q.labels,te,yt):l.has(U)?Ko(q.altLabels,te,de.value):f.has(U)&&Ko(q.definitions,te,yt),k.has(U)&&q.notes.push(yt),u.has(U)&&q.provenance.push({value:de.value,isIri:!1,prop:U}),p.has(U)&&q.identifiers.push(de.value);continue}if(de.termType!=="NamedNode"){U===Cc&&(q.hasAnonymousRestriction=!0);continue}let H=de.value;switch(U){case Sc:{q.types.add(H);let te=vk[H];te?q.kinds.add(te):q.kinds.add(P.INDIVIDUAL);break}case Cc:case gk:q.parents.includes(H)||q.parents.push(H),g(H);break;case mk:{let te=g(H);te.parents.includes(j.value)||te.parents.push(j.value);break}case bk:{q.members.push(H);let te=g(H);te.collections.includes(j.value)||te.collections.push(j.value);break}case kk:q.schemes.push(H);break;case yk:q.domain.push(H),g(H).domainOf.push(j.value);break;case wk:q.range.push(H),g(H).rangeOf.push(j.value);break;case xk:q.seeAlso.push(H);break;case _k:{q.shapeTarget=H;let te=g(H);te.shapes.includes(j.value)||te.shapes.push(j.value);break}default:u.has(U)?q.provenance.push({value:H,isIri:!0,prop:U}):k.has(U)?q.notes.push({value:H,prop:U,lang:"",isIri:!0}):U!==Sc&&(q.outgoing.push({prop:U,target:H}),g(H).incoming.push({prop:U,source:j.value}))}}let _=[...h.values()].filter(T=>T.kinds.has(P.ONTOLOGY)),S=new Map;for(let T of h.values())(T.kinds.has(P.CLASS)||T.kinds.has(P.CONCEPT))&&S.set(T.ns,(S.get(T.ns)||0)+1);let v="",x=-1;for(let[T,j]of S)j>x&&(x=j,v=T);!v&&_.length&&(v=_[0].iri+"#");let w=v.replace(/[#/]$/,""),O=new Set([v]);for(let T of S.keys())T.startsWith(w)&&O.add(T);for(let T of h.values())T.external=!(T.ns===v||T.iri.startsWith(w)),T.curie=Ck(T.iri,i,v);for(let T of h.values())for(let j of T.parents){let U=h.get(j);U&&!U.children.includes(T.iri)&&U.children.push(T.iri)}let R=new Set(e.structuralClasses||[]);for(let T of h.values())(T.kinds.has(P.CLASS)||T.kinds.has(P.CONCEPT))&&(T.external||(R.size?T.isTerm=!R.has(T.local):T.isTerm=T.identifiers.length>0||T.collections.length>0||T.kinds.has(P.CONCEPT)));let N=new Map,E=(T,j)=>{if(N.has(T))return N.get(T);let U=h.get(T);if(!U)return 1;let de=U.parents.filter(oe=>{let H=h.get(oe);return H&&!H.external}),q=1;if(de.length){let oe=new Set(j);oe.add(T);let H=0;for(let te of de)oe.has(te)||(H=Math.max(H,E(te,oe)));q=1+H}return N.set(T,q),q},L=[...h.values()].filter(T=>!T.external&&(T.kinds.has(P.CLASS)||T.kinds.has(P.CONCEPT)));for(let T of L)T.depth=E(T.iri,new Set);let D=L.filter(T=>!T.parents.some(j=>{let U=h.get(j);return U&&!U.external})).sort((T,j)=>T.local.localeCompare(j.local)),$=L.filter(T=>T.ns===v),ie=new Set($.map(T=>T.iri)),Z=new Map,pe=(T,j)=>{if(Z.has(T))return Z.get(T);let U=h.get(T),de=U?U.parents.filter(oe=>ie.has(oe)):[],q=1;if(de.length){let oe=new Set(j);oe.add(T);let H=0;for(let te of de)oe.has(te)||(H=Math.max(H,pe(te,oe)));q=1+H}return Z.set(T,q),q};for(let T of $)T.nsDepth=pe(T.iri,new Set);let Ee=$.filter(T=>!T.parents.some(j=>ie.has(j))).sort((T,j)=>T.local.localeCompare(j.local)),Qe=[...h.values()].filter(T=>T.kinds.has(P.COLLECTION)).sort((T,j)=>T.local.localeCompare(j.local,"ru")),Ae=2166136261;for(let T of t){let j=T.text;for(let U=0;U<j.length;U++)Ae^=j.charCodeAt(U),Ae=Math.imul(Ae,16777619)>>>0}let ke={hash:Ae.toString(16).padStart(8,"0"),entities:h,store:r,prefixes:i,files:o,parseErrors:s,tripleCount:b,mainNs:v,ontoBase:w,packageNs:[...O],ontology:_[0]||null,ontologies:_,roots:D,collections:Qe,classes:L,nsClasses:$,nsRoots:Ee,profile:e,loadMs:Math.round(((typeof performance<"u"?performance.now():Date.now())-n)*10)/10};return ke.searchIndex=Ek(ke),ke}function Ck(t,e,n){if(t.startsWith(n))return":"+t.slice(n.length);let r=null,i=0;for(let[o,s]of Object.entries(e))s&&t.startsWith(s)&&s.length>i&&(r=o,i=s.length);return r?r+":"+t.slice(i):t}function G(t,e,n){if(typeof e=="string"&&(e=t.entities.get(e)),!e)return{text:"",lang:null,fallback:!1};let r=[n,...t.profile.languages.filter(i=>i!==n),""];for(let i of r){let o=e.labels[i];if(o&&o.length)return{text:o[0].value,lang:i||null,fallback:i!==n}}return{text:e.local,lang:null,fallback:!0,isLocalName:!0}}function Lc(t,e){let n=[];for(let r of t.profile.languages){let i=e.labels[r];n.push({lang:r,value:i&&i.length?i[0].value:null,extra:i?i.slice(1).map(o=>o.value):[]})}for(let r of Object.keys(e.labels))t.profile.languages.includes(r)||n.push({lang:r||"(без тега)",value:e.labels[r][0].value,foreign:!0});return n}function Oc(t){return t.toLowerCase().replace(/ё/g,"е").replace(/[әӘ]/g,"а").replace(/[ғҒ]/g,"г").replace(/[қҚ]/g,"к").replace(/[ңҢ]/g,"н").replace(/[өӨ]/g,"о").replace(/[ұҰүҮ]/g,"у").replace(/[һҺ]/g,"х").replace(/[іІ]/g,"и").replace(/[^\p{L}\p{N}]+/gu," ").trim()}function Ek(t){let e=[];for(let n of t.entities.values()){if(n.kinds.has(P.ONTOLOGY))continue;let r=[];for(let i of Object.keys(n.labels))for(let o of n.labels[i])r.push({t:"label",lang:i,v:o.value});for(let i of Object.keys(n.altLabels))for(let o of n.altLabels[i])r.push({t:"alt",lang:i,v:o});for(let i of Object.keys(n.definitions))for(let o of n.definitions[i])r.push({t:"def",lang:i,v:o.value});r.push({t:"iri",lang:"",v:n.local}),e.push({iri:n.iri,parts:r,folded:r.map(i=>Oc(i.v))})}return e}function Lk(t,e,n){if(Math.abs(t.length-e.length)>n)return n+1;let r=new Array(e.length+1),i=new Array(e.length+1);for(let o=0;o<=e.length;o++)r[o]=o;for(let o=1;o<=t.length;o++){i[0]=o;let s=i[0];for(let a=1;a<=e.length;a++)i[a]=Math.min(r[a]+1,i[a-1]+1,r[a-1]+(t[o-1]===e[a-1]?0:1)),i[a]<s&&(s=i[a]);if(s>n)return n+1;for(let a=0;a<=e.length;a++)r[a]=i[a]}return r[e.length]}function Rc(t,e,{fuzzy:n=!1,limit:r=200}={}){let i=Oc(e||"");if(!i)return[];let o=[];for(let s of t.searchIndex){let a=0,l=null;for(let f=0;f<s.parts.length;f++){let u=s.folded[f],p=s.parts[f],k=0,h=u.indexOf(i);if(h===0)k=100;else if(h>0)k=70;else if(n&&i.length>=4)for(let g of u.split(" ")){if(Math.abs(g.length-i.length)>2)continue;let b=Lk(i,g,Math.max(1,Math.floor(i.length/4)));b<=Math.max(1,Math.floor(i.length/4))&&(k=Math.max(k,45-b*5))}k&&(p.t==="alt"&&(k-=8),p.t==="def"&&(k-=30),p.t==="iri"&&(k-=20),k>a&&(a=k,l=p))}a>0&&o.push({iri:s.iri,score:a,hit:l})}return o.sort((s,a)=>a.score-s.score||t.entities.get(s.iri).local.localeCompare(t.entities.get(a.iri).local)),o.slice(0,r)}var{namedNode:mn}=ze,W={ERROR:"error",WARN:"warn",INFO:"info"},Ok=/^[a-z]{2,3}(-[A-Za-z0-9]{2,8})*$/,Ur={kz:"kk",kaz:"kk",rus:"ru",eng:"en",ru_RU:"ru"};function z(t,e,n){return{ru:t,en:e,kk:n||t}}function zc(t){let e=t.profile,n=t.entities,r=[],i=y=>(y.count=y.items.length,r.push(y),y),o=t.nsClasses,s=new Set(o.map(y=>y.iri)),a=o.filter(y=>y.isTerm),l=o.filter(y=>!y.isTerm),f=[...n.values()].filter(y=>!y.external&&(y.kinds.has(P.OBJECT_PROPERTY)||y.kinds.has(P.DATA_PROPERTY))),u=[...n.values()].filter(y=>y.kinds.has(P.SHAPE)),p=a.length?a:o,k=t.collections,h=y=>y.parents.filter(I=>s.has(I)),g=Tc(t),b=new Set,_=new Set;for(let y of t.store.getQuads(null,mn(A.rdfs+"subClassOf"),null,null))b.add(Vo(y.subject));for(let y of e.labelProperties)for(let I of t.store.getQuads(null,mn(y),null,null))_.add(Vo(I.subject));let S=g.filter(y=>!b.has(y)).length,v=g.filter(y=>!_.has(y)).length,x=new Set(e.rootClasses||[]),w=z("Счёт по именованным классам неймспейса онтологии.","Counted over named classes in the ontology namespace.");i({id:"parse-errors",group:"files",severity:W.ERROR,title:z("Файлы, которые не удалось разобрать","Files that failed to parse","Талданбаған файлдар"),explain:z("Файл с синтаксической ошибкой Turtle не загружается целиком — ни один его триплет не попал в граф, и все числа ниже посчитаны без него. Исправьте указанную строку и откройте файл снова.","A file with a Turtle syntax error is dropped entirely: none of its triples are in the graph and every figure below excludes it."),items:t.parseErrors.map(y=>({iri:null,label:y.file,detail:y.message}))}),i({id:"multiple-roots",group:"structure",severity:t.nsRoots.length>1?W.WARN:W.INFO,title:z("Корней иерархии","Hierarchy roots","Иерархия түбірлері"),explain:z("Класс без родителя внутри онтологии считается корнем. Обычно корень должен быть один; несколько корней означают, что часть ветвей не подключена к общему предку.","A class with no internal parent is a root. Normally there should be exactly one."),items:t.nsRoots.map(y=>({iri:y.iri}))}),i({id:"no-parent",group:"structure",severity:W.WARN,title:z("Классы без родителя","Classes without a parent","Аталық класы жоқ кластар"),explain:z("Кроме объявленных корней (список rootClasses в профиле), каждый класс должен иметь родителя внутри онтологии — rdfs:subClassOf или skos:broader. Класс-сирота не попадает ни в одну ветвь и не виден эксперту при обходе иерархии.","Apart from the declared root, every class should have a parent; orphans never appear when walking the hierarchy."),items:t.nsRoots.filter(y=>!x.has(y.local)).map(y=>({iri:y.iri})),scope:w,alt:{label:z("по всем owl:Class, включая анонимные и внешние","over all owl:Class incl. anonymous and external"),count:S}});let O=[];for(let y of o){let I=new Set([y.iri]),B=[...h(y)];for(;B.length;){let V=B.pop();if(V===y.iri){O.push(y.iri);break}if(I.has(V))continue;I.add(V);let _e=n.get(V);_e&&B.push(...h(_e))}}i({id:"subclass-cycles",group:"structure",severity:W.ERROR,title:z("Циклы subClassOf","subClassOf cycles","subClassOf циклдері"),explain:z("Цикл в иерархии делает онтологию неконсистентной для ризонера и ломает вычисление глубины.","A cycle makes the ontology inconsistent for a reasoner."),items:[...new Set(O)].map(y=>({iri:y}))}),i({id:"multi-parent",group:"structure",severity:W.INFO,title:z("Несколько родителей","Multiple parents","Бірнеше аталық класс"),explain:z("Не ошибка, но список стоит просмотреть: множественное наследование часто появляется случайно при слиянии версий.","Not an error, but worth reviewing: multiple inheritance often appears by accident when merging versions."),items:o.filter(y=>h(y).length>1).map(y=>({iri:y.iri,detail:h(y).map(I=>n.get(I).curie).join(", ")}))}),i({id:"structural-without-children",group:"structure",severity:W.WARN,title:z("Структурные классы без потомков","Structural classes with no subclasses","Ұрпағы жоқ құрылымдық кластар"),explain:z("Структурный класс существует, чтобы собирать под собой термины. Пустой структурный класс либо лишний, либо термины к нему не привязаны.","A structural class exists to group terms; an empty one is either redundant or its terms were not attached."),items:l.filter(y=>y.children.length===0).map(y=>({iri:y.iri}))}),i({id:"empty-collections",group:"structure",severity:W.WARN,title:z("Пустые коллекции","Empty collections","Бос коллекциялар"),explain:z("skos:Collection без skos:member — тематический блок, в который не попал ни один термин.","A skos:Collection with no members is a thematic block that received no terms."),items:k.filter(y=>y.members.length===0).map(y=>({iri:y.iri}))}),k.length&&(i({id:"terms-outside-collections",group:"structure",severity:W.WARN,title:z("Термины вне всех блоков","Terms outside all collections","Ешбір блокқа кірмейтін терминдер"),explain:z("Термин, не входящий ни в одну коллекцию, не виден эксперту при проверке по блокам.","A term in no collection is invisible to an expert reviewing block by block."),items:a.filter(y=>y.collections.length===0).map(y=>({iri:y.iri}))}),i({id:"terms-in-several-collections",group:"structure",severity:W.WARN,title:z("Термины в нескольких блоках","Terms in several collections","Бірнеше блоктағы терминдер"),explain:z("По правилу пакета термин входит ровно в одну коллекцию; иначе счёт терминов в таблице блоков не сойдётся.","Package rule: exactly one co

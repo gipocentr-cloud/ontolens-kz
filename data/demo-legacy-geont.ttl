@@ -1,0 +1,680 @@
+@prefix :        <http://ontogeo.kz/geont-kz#> .
+@prefix owl:     <http://www.w3.org/2002/07/owl#> .
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+@prefix skos:    <http://www.w3.org/2004/02/skos/core#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ifc:     <http://www.buildingsmart-tech.org/ifcOWL/IFC4#> .
+@prefix geocore: <http://www.geoscience.org/geocore#> .
+@prefix ontolex: <http://www.w3.org/ns/lemon/ontolex#> .
+
+##############################################################################
+#
+#    Ontology
+#
+##############################################################################
+
+<http://ontogeo.kz/geont-kz> rdf:type owl:Ontology ;
+    owl:imports <http://www.w3.org/2004/02/skos/core> ;
+    owl:imports <http://www.buildingsmart-tech.org/ifcOWL/IFC4> ;
+    owl:versionInfo "0.4-demo-defective" ;
+    rdfs:label "GeOnt-KZ (СИНТЕТИЧЕСКИЙ ДЕФЕКТНЫЙ ДЕМОНАБОР)"@ru ;
+    rdfs:comment "ВНИМАНИЕ: сгенерировано build/make_demo_data.py. Набор намеренно воспроизводит типы дефектов, найденные в настоящем GeOnt-KZ.ttl (тег kz вместо kk, классы-сироты, множественные родители, провенанс литералом, свойства без домена и диапазона, категориальные ошибки иерархии). Определения вымышлены."@ru .
+
+
+##############################################################################
+#
+#    Object Properties
+#
+##############################################################################
+
+###  http://ontogeo.kz/geont-kz#hasSoilType
+:hasSoilType rdf:type owl:ObjectProperty ;
+    rdfs:domain :Soil ;
+    rdfs:range :Soil ;
+    rdfs:label "тип грунта"@kz .
+
+###  http://ontogeo.kz/geont-kz#hasStrength
+:hasStrength rdf:type owl:ObjectProperty ;
+    rdfs:label "прочность"@kz .
+
+###  http://ontogeo.kz/geont-kz#hasIceContent
+:hasIceContent rdf:type owl:ObjectProperty .
+
+###  http://ontogeo.kz/geont-kz#isLocatedIn
+:isLocatedIn rdf:type owl:ObjectProperty ;
+    rdfs:domain :Borehole ;
+    rdfs:label "расположен в"@kz .
+
+###  http://ontogeo.kz/geont-kz#hasTestResult
+:hasTestResult rdf:type owl:ObjectProperty ;
+    rdfs:range :FieldTest .
+
+###  http://ontogeo.kz/geont-kz#relatesToDocument
+:relatesToDocument rdf:type owl:ObjectProperty .
+
+###  http://ontogeo.kz/geont-kz#hasSubsoil
+:hasSubsoil rdf:type owl:ObjectProperty ;
+    rdfs:domain :Foundation ;
+    rdfs:range :Soil .
+
+###  http://ontogeo.kz/geont-kz#measuredAt
+:measuredAt rdf:type owl:ObjectProperty ;
+    rdfs:label "измерено на"@kz .
+
+
+##############################################################################
+#
+#    Data Properties
+#
+##############################################################################
+
+###  http://ontogeo.kz/geont-kz#hasValue
+:hasValue rdf:type owl:DatatypeProperty ;
+    rdfs:label "значение"@ru .
+
+###  http://ontogeo.kz/geont-kz#hasUnit
+:hasUnit rdf:type owl:DatatypeProperty .
+
+###  http://ontogeo.kz/geont-kz#hasDepth
+:hasDepth rdf:type owl:DatatypeProperty ;
+    rdfs:label "глубина"@ru .
+
+
+##############################################################################
+#
+#    Classes
+#
+##############################################################################
+
+###  http://ontogeo.kz/geont-kz#GeotechnicalEntity
+:GeotechnicalEntity rdf:type owl:Class ;
+    rdfs:label "GeotechnicalEntity"@en .
+
+###  http://ontogeo.kz/geont-kz#GeotechnicalProperty
+:GeotechnicalProperty rdf:type owl:Class ;
+    rdfs:label "GeotechnicalProperty"@en .
+
+###  http://ontogeo.kz/geont-kz#GeotechnicalWork
+:GeotechnicalWork rdf:type owl:Class ;
+    rdfs:label "GeotechnicalWork"@en .
+
+###  http://ontogeo.kz/geont-kz#StructuralEntity
+:StructuralEntity rdf:type owl:Class ;
+    rdfs:label "StructuralEntity"@en .
+
+###  http://ontogeo.kz/geont-kz#FieldTest
+:FieldTest rdf:type owl:Class ;
+    rdfs:label "FieldTest"@en .
+
+###  http://ontogeo.kz/geont-kz#FieldWork
+:FieldWork rdf:type owl:Class ;
+    rdfs:label "FieldWork"@en .
+
+###  http://ontogeo.kz/geont-kz#SeismicEntity
+:SeismicEntity rdf:type owl:Class ;
+    rdfs:label "SeismicEntity"@en .
+
+###  http://ontogeo.kz/geont-kz#LimitState
+:LimitState rdf:type owl:Class ;
+    rdfs:label "LimitState"@en .
+
+###  http://ontogeo.kz/geont-kz#LoadEntity
+:LoadEntity rdf:type owl:Class ;
+    rdfs:label "LoadEntity"@en .
+
+###  http://ontogeo.kz/geont-kz#QualityEntity
+:QualityEntity rdf:type owl:Class ;
+    rdfs:label "QualityEntity"@en .
+
+###  http://ontogeo.kz/geont-kz#Deformation
+:Deformation rdf:type owl:Class ;
+    rdfs:label "Deformation"@en .
+
+###  http://ontogeo.kz/geont-kz#Geotechnical_category
+:Geotechnical_category rdf:type owl:Class ;
+    rdfs:label "geotechnical category"@ru ;
+    rdfs:label "geotechnical category"@kz .
+
+###  http://ontogeo.kz/geont-kz#Soil_classification_system
+:Soil_classification_system rdf:type owl:Class ;
+    rdfs:label "soil classification system"@ru ;
+    rdfs:label "soil classification system"@kz .
+
+###  http://ontogeo.kz/geont-kz#Laboratory_test
+:Laboratory_test rdf:type owl:Class ;
+    rdfs:label "laboratory test"@ru ;
+    rdfs:label "laboratory test"@kz .
+
+###  http://ontogeo.kz/geont-kz#Engineering_geology
+:Engineering_geology rdf:type owl:Class ;
+    rdfs:label "engineering geology"@ru ;
+    rdfs:label "engineering geology"@kz .
+
+###  http://ontogeo.kz/geont-kz#Hydrogeology
+:Hydrogeology rdf:type owl:Class ;
+    rdfs:label "hydrogeology"@ru ;
+    rdfs:label "hydrogeology"@kz .
+
+###  http://ontogeo.kz/geont-kz#Groundwater_level
+:Groundwater_level rdf:type owl:Class .
+
+###  http://ontogeo.kz/geont-kz#Site_investigation_report
+:Site_investigation_report rdf:type owl:Class .
+
+###  http://ontogeo.kz/geont-kz#Soil
+:Soil rdf:type owl:Class ;
+    rdfs:subClassOf :GeotechnicalEntity ;
+    rdfs:label "грунт"@ru ;
+    rdfs:label "топырақ"@kz ;
+    rdfs:comment "любая горная порода, почва или техногенное образование"@ru ;
+    rdfs:comment "любая горная порода, почва или техногенное образование"@kz ;
+    rdfs:isDefinedBy "СН РК 5.01-01-2013" .
+
+###  http://ontogeo.kz/geont-kz#Clay_soil
+:Clay_soil rdf:type owl:Class ;
+    rdfs:subClassOf :Soil ;
+    rdfs:label "глинистый грунт"@ru ;
+    rdfs:label "сазды топырақ"@kz ;
+    rdfs:comment "связный грунт с числом пластичности более единицы"@ru ;
+    rdfs:comment "связный грунт с числом пластичности более единицы"@kz ;
+    rdfs:isDefinedBy "СН РК 5.01-01-2013" .
+
+###  http://ontogeo.kz/geont-kz#Sandy_soil
+:Sandy_soil rdf:type owl:Class ;
+    rdfs:subClassOf :Soil ;
+    rdfs:label "песчаный грунт"@ru ;
+    rdfs:label "құмды топырақ"@kz ;
+    rdfs:comment "несвязный грунт, содержащий менее 50 % частиц крупнее 2 мм"@ru ;
+    rdfs:comment "несвязный грунт, содержащий менее 50 % частиц крупнее 2 мм"@kz ;
+    rdfs:isDefinedBy "СН РК 5.01-01-2013" .
+
+###  http://ontogeo.kz/geont-kz#Anthropogenic_soil
+:Anthropogenic_soil rdf:type owl:Class ;
+    rdfs:subClassOf :Soil ;
+    rdfs:label "антропогенный грунт"@ru ;
+    rdfs:label "антропогендік топырақ"@kz ;
+    rdfs:comment "грунт, образованный в результате хозяйственной деятельности"@ru ;
+    rdfs:comment "грунт, образованный в результате хозяйственной деятельности"@kz ;
+    rdfs:isDefinedBy "СН РК 5.01-01-2013" .
+
+###  http://ontogeo.kz/geont-kz#Frozen_soil
+:Frozen_soil rdf:type owl:Class ;
+    rdfs:subClassOf :Soil ;
+    rdfs:label "мёрзлый грунт"@ru ;
+    rdfs:label "тоңды топырақ"@kz ;
+    rdfs:comment "грунт, имеющий отрицательную температуру и содержащий лёд"@ru ;
+    rdfs:comment "грунт, имеющий отрицательную температуру и содержащий лёд"@kz ;
+    rdfs:isDefinedBy "СП РК 5.01-102-2013" .
+
+###  http://ontogeo.kz/geont-kz#Permafrost
+:Permafrost rdf:type owl:Class ;
+    rdfs:subClassOf :Frozen_soil ;
+    rdfs:label "многолетнемёрзлый грунт"@ru ;
+    rdfs:label "көпжылдық тоңды топырақ"@kz ;
+    rdfs:comment "грунт, находящийся в мёрзлом состоянии не менее трёх лет"@ru ;
+    rdfs:comment "грунт, находящийся в мёрзлом состоянии не менее трёх лет"@kz ;
+    rdfs:isDefinedBy "СП РК 5.01-102-2013" .
+
+###  http://ontogeo.kz/geont-kz#Loess
+:Loess rdf:type owl:Class ;
+    rdfs:subClassOf :Clay_soil ;
+    rdfs:label "лёссовый грунт"@ru ;
+    rdfs:label "лёсс топырағы"@kz ;
+    rdfs:comment "пылеватый грунт, обладающий просадочностью при замачивании"@ru ;
+    rdfs:comment "пылеватый грунт, обладающий просадочностью при замачивании"@kz ;
+    rdfs:isDefinedBy "СН РК 5.01-01-2013" .
+
+###  http://ontogeo.kz/geont-kz#Subsidence
+:Subsidence rdf:type owl:Class ;
+    rdfs:subClassOf :Deformation ;
+    rdfs:label "просадка"@ru ;
+    rdfs:label "шөгу"@kz ;
+    rdfs:comment "деформация основания, возникающая при замачивании просадочного грунта"@ru ;
+    rdfs:comment "деформация основания, возникающая при замачивании просадочного грунта"@kz ;
+    rdfs:isDefinedBy "СН РК 5.01-01-2013" .
+
+###  http://ontogeo.kz/geont-kz#Settlement_geotech
+:Settlement_geotech rdf:type owl:Class ;
+    rdfs:subClassOf :Deformation ;
+    rdfs:label "осадка"@ru ;
+    rdfs:label "отыру"@kz ;
+    rdfs:comment "вертикальная деформация основания под нагрузкой"@ru ;
+    rdfs:comment "вертикальная деформация основания под нагрузкой"@kz ;
+    rdfs:isDefinedBy "СН РК 5.01-01-2013" .
+
+###  http://ontogeo.kz/geont-kz#Heave
+:Heave rdf:type owl:Class ;
+    rdfs:subClassOf :Deformation ;
+    rdfs:label "пучение"@ru ;
+    rdfs:label "көтерілу"@kz ;
+    rdfs:comment "подъём поверхности грунта при промерзании"@ru ;
+    rdfs:comment "подъём поверхности грунта при промерзании"@kz ;
+    rdfs:isDefinedBy "СП РК 5.01-102-2013" .
+
+###  http://ontogeo.kz/geont-kz#Bearing_capacity
+:Bearing_capacity rdf:type owl:Class ;
+    rdfs:subClassOf :GeotechnicalProperty ;
+    rdfs:label "несущая способность"@ru ;
+    rdfs:label "көтергіш қабілет"@kz ;
+    rdfs:isDefinedBy "СН РК 5.01-01-2013" .
+
+###  http://ontogeo.kz/geont-kz#Youngs_modulus
+:Youngs_modulus rdf:type owl:Class ;
+    rdfs:subClassOf :GeotechnicalProperty ;
+    rdfs:label "модуль деформации"@ru ;
+    rdfs:label "серпімділік модулі (бірінші типтегі серпімділік модулі)"@kz ;
+    rdfs:comment "отношение приращения напряжения к приращению относительной деформации"@ru ;
+    rdfs:comment "отношение приращения напряжения к приращению относительной деформации"@kz ;
+    rdfs:isDefinedBy "ГОСТ 12248-2010" .
+
+###  http://ontogeo.kz/geont-kz#Poisson_ratio
+:Poisson_ratio rdf:type owl:Class ;
+    rdfs:subClassOf :GeotechnicalProperty ;
+    rdfs:label "коэффициент Пуассона"@ru ;
+    rdfs:label "Пуассон коэффициенті"@kz ;
+    rdfs:comment "отношение поперечной деформации к продольной"@ru ;
+    rdfs:comment "отношение поперечной деформации к продольной"@kz ;
+    rdfs:isDefinedBy "ГОСТ 12248-2010" .
+
+###  http://ontogeo.kz/geont-kz#Cohesion
+:Cohesion rdf:type owl:Class ;
+    rdfs:subClassOf :GeotechnicalProperty ;
+    rdfs:label "удельное сцепление"@ru ;
+    rdfs:label "меншікті ілінісу"@kz ;
+    rdfs:comment "характеристика прочности грунта на сдвиг при нулевом нормальном напряжении"@ru ;
+    rdfs:comment "характеристика прочности грунта на сдвиг при нулевом нормальном напряжении"@kz ;
+    rdfs:isDefinedBy "ГОСТ 12248-2010" .
+
+###  http://ontogeo.kz/geont-kz#Friction_angle
+:Friction_angle rdf:type owl:Class ;
+    rdfs:subClassOf :GeotechnicalProperty ;
+    rdfs:label "угол внутреннего трения"@ru ;
+    rdfs:label "ішкі үйкеліс бұрышы"@kz ;
+    rdfs:comment "характеристика прочности грунта на сдвиг"@ru ;
+    rdfs:comment "характеристика прочности грунта на сдвиг"@kz ;
+    rdfs:isDefinedBy "ГОСТ 12248-2010" .
+
+###  http://ontogeo.kz/geont-kz#Porosity
+:Porosity rdf:type owl:Class ;
+    rdfs:subClassOf :GeotechnicalProperty ;
+    rdfs:label "пористость"@ru ;
+    rdfs:label "кеуектілік"@kz ;
+    rdfs:comment "отношение объёма пор к общему объёму грунта"@ru ;
+    rdfs:comment "отношение объёма пор к общему объёму грунта"@kz ;
+    rdfs:isDefinedBy "ГОСТ 5180-2015" .
+
+###  http://ontogeo.kz/geont-kz#Water_content
+:Water_content rdf:type owl:Class ;
+    rdfs:subClassOf :GeotechnicalProperty ;
+    rdfs:label "влажность грунта"@ru ;
+    rdfs:label "топырақ ылғалдылығы"@kz ;
+    rdfs:comment "отношение массы воды к массе сухого грунта"@ru ;
+    rdfs:comment "отношение массы воды к массе сухого грунта"@kz ;
+    rdfs:isDefinedBy "ГОСТ 5180-2015" .
+
+###  http://ontogeo.kz/geont-kz#Density
+:Density rdf:type owl:Class ;
+    rdfs:subClassOf :GeotechnicalProperty ;
+    rdfs:label "плотность грунта"@ru ;
+    rdfs:label "топырақ тығыздығы"@kz ;
+    rdfs:comment "отношение массы грунта к занимаемому им объёму"@ru ;
+    rdfs:comment "отношение массы грунта к занимаемому им объёму"@kz ;
+    rdfs:isDefinedBy "ГОСТ 5180-2015" .
+
+###  http://ontogeo.kz/geont-kz#Anisotropy
+:Anisotropy rdf:type owl:Class ;
+    rdfs:subClassOf :GeotechnicalProperty ;
+    rdfs:label "анизотропия"@ru ;
+    rdfs:label "анизотропия"@kz ;
+    rdfs:comment "зависимость свойств грунта от направления"@ru ;
+    rdfs:comment "зависимость свойств грунта от направления"@kz ;
+    rdfs:isDefinedBy "ГОСТ 12248-2010" .
+
+###  http://ontogeo.kz/geont-kz#Anisotropic_material
+:Anisotropic_material rdf:type owl:Class ;
+    rdfs:subClassOf :Anisotropy ;
+    rdfs:label "анизотропный материал"@ru ;
+    rdfs:label "анизотропты материал"@kz ;
+    rdfs:comment "материал, свойства которого зависят от направления"@ru ;
+    rdfs:comment "материал, свойства которого зависят от направления"@kz ;
+    rdfs:isDefinedBy "ГОСТ 12248-2010" .
+
+###  http://ontogeo.kz/geont-kz#Foundation
+:Foundation rdf:type owl:Class ;
+    rdfs:subClassOf :StructuralEntity ;
+    rdfs:label "фундамент"@ru ;
+    rdfs:label "іргетас"@kz ;
+    rdfs:comment "часть сооружения, передающая нагрузку на основание"@ru ;
+    rdfs:comment "часть сооружения, передающая нагрузку на основание"@kz ;
+    rdfs:isDefinedBy "СП РК 5.01-101-2013" .
+
+###  http://ontogeo.kz/geont-kz#Pile_foundation
+:Pile_foundation rdf:type owl:Class ;
+    rdfs:subClassOf :Foundation ;
+    rdfs:label "свайный фундамент"@ru ;
+    rdfs:label "қадалы іргетас"@kz ;
+    rdfs:comment "фундамент, состоящий из свай и объединяющего их ростверка"@ru ;
+    rdfs:comment "фундамент, состоящий из свай и объединяющего их ростверка"@kz ;
+    rdfs:isDefinedBy "СП РК 5.01-103-2013" .
+
+###  http://ontogeo.kz/geont-kz#Slab_foundation
+:Slab_foundation rdf:type owl:Class ;
+    rdfs:subClassOf :Foundation ;
+    rdfs:label "плитный фундамент"@ru ;
+    rdfs:label "тақталы іргетас"@kz ;
+    rdfs:comment "фундамент в виде сплошной плиты под всем сооружением"@ru ;
+    rdfs:comment "фундамент в виде сплошной плиты под всем сооружением"@kz ;
+    rdfs:isDefinedBy "СП РК 5.01-101-2013" .
+
+###  http://ontogeo.kz/geont-kz#Pile
+:Pile rdf:type owl:Class ;
+    rdfs:subClassOf :StructuralEntity ;
+    rdfs:subClassOf :Foundation ;
+    rdfs:label "свая"@ru ;
+    rdfs:label "қада"@kz ;
+    rdfs:comment "стержневой элемент, передающий нагрузку на грунт основания"@ru ;
+    rdfs:comment "стержневой элемент, передающий нагрузку на грунт основания"@kz ;
+    rdfs:isDefinedBy "СП РК 5.01-103-2013" .
+
+###  http://ontogeo.kz/geont-kz#Retaining_wall
+:Retaining_wall rdf:type owl:Class ;
+    rdfs:subClassOf :StructuralEntity ;
+    rdfs:label "подпорная стена"@ru ;
+    rdfs:label "тірек қабырға"@kz ;
+    rdfs:comment "сооружение, удерживающее массив грунта от обрушения"@ru ;
+    rdfs:comment "сооружение, удерживающее массив грунта от обрушения"@kz ;
+    rdfs:isDefinedBy "СП РК 5.01-104-2013" .
+
+###  http://ontogeo.kz/geont-kz#Excavation
+:Excavation rdf:type owl:Class ;
+    rdfs:subClassOf :GeotechnicalWork ;
+    rdfs:label "котлован"@ru ;
+    rdfs:label "қазаншұңқыр"@kz ;
+    rdfs:comment "выемка в грунте, устраиваемая для возведения подземной части"@ru ;
+    rdfs:comment "выемка в грунте, устраиваемая для возведения подземной части"@kz ;
+    rdfs:isDefinedBy "СП РК 5.01-101-2013" .
+
+###  http://ontogeo.kz/geont-kz#Slope
+:Slope rdf:type owl:Class ;
+    rdfs:subClassOf :GeotechnicalEntity ;
+    rdfs:label "откос"@ru ;
+    rdfs:label "еңіс"@kz ;
+    rdfs:comment "наклонная поверхность, ограничивающая выемку или насыпь"@ru ;
+    rdfs:comment "наклонная поверхность, ограничивающая выемку или насыпь"@kz ;
+    rdfs:isDefinedBy "СП РК 5.01-104-2013" .
+
+###  http://ontogeo.kz/geont-kz#Slope_stability
+:Slope_stability rdf:type owl:Class ;
+    rdfs:subClassOf :GeotechnicalProperty ;
+    rdfs:label "устойчивость откоса"@ru ;
+    rdfs:label "еңістің орнықтылығы"@kz ;
+    rdfs:isDefinedBy "СП РК 5.01-104-2013" .
+
+###  http://ontogeo.kz/geont-kz#Dewatering
+:Dewatering rdf:type owl:Class ;
+    rdfs:subClassOf :GeotechnicalWork ;
+    rdfs:label "водопонижение"@ru ;
+    rdfs:label "суды төмендету"@kz ;
+    rdfs:comment "искусственное понижение уровня подземных вод"@ru ;
+    rdfs:comment "искусственное понижение уровня подземных вод"@kz ;
+    rdfs:isDefinedBy "СП РК 5.01-101-2013" .
+
+###  http://ontogeo.kz/geont-kz#Soil_improvement
+:Soil_improvement rdf:type owl:Class ;
+    rdfs:subClassOf :GeotechnicalWork ;
+    rdfs:label "закрепление грунта"@ru ;
+    rdfs:label "топырақты бекіту"@kz ;
+    rdfs:comment "изменение свойств грунта техническими средствами"@ru ;
+    rdfs:comment "изменение свойств грунта техническими средствами"@kz ;
+    rdfs:isDefinedBy "СП РК 5.01-105-2013" .
+
+###  http://ontogeo.kz/geont-kz#Static_load_test
+:Static_load_test rdf:type owl:Class ;
+    rdfs:subClassOf :FieldTest ;
+    rdfs:label "статическое испытание сваи"@ru ;
+    rdfs:label "қаданы статикалық сынау"@kz ;
+    rdfs:comment "испытание сваи ступенчато возрастающей нагрузкой"@ru ;
+    rdfs:comment "испытание сваи ступенчато возрастающей нагрузкой"@kz ;
+    rdfs:isDefinedBy "ГОСТ 5686-2012" .
+
+###  http://ontogeo.kz/geont-kz#Dynamic_load_test
+:Dynamic_load_test rdf:type owl:Class ;
+    rdfs:subClassOf :FieldTest ;
+    rdfs:label "динамическое испытание сваи"@ru ;
+    rdfs:label "қаданы динамикалық сынау"@kz ;
+    rdfs:comment "испытание сваи ударной нагрузкой"@ru ;
+    rdfs:comment "испытание сваи ударной нагрузкой"@kz ;
+    rdfs:isDefinedBy "ГОСТ 5686-2012" .
+
+###  http://ontogeo.kz/geont-kz#Cone_penetration_test
+:Cone_penetration_test rdf:type owl:Class ;
+    rdfs:subClassOf :FieldTest ;
+    rdfs:label "статическое зондирование"@ru ;
+    rdfs:label "статикалық зондтау"@kz ;
+    rdfs:comment "полевое испытание вдавливанием зонда в грунт"@ru ;
+    rdfs:comment "полевое испытание вдавливанием зонда в грунт"@kz ;
+    rdfs:isDefinedBy "ГОСТ 19912-2012" .
+
+###  http://ontogeo.kz/geont-kz#Standard_penetration_test
+:Standard_penetration_test rdf:type owl:Class ;
+    rdfs:subClassOf :FieldTest ;
+    rdfs:label "динамическое зондирование"@ru ;
+    rdfs:label "динамикалық зондтау"@kz ;
+    rdfs:comment "полевое испытание забивкой зонда в грунт"@ru ;
+    rdfs:comment "полевое испытание забивкой зонда в грунт"@kz ;
+    rdfs:isDefinedBy "ГОСТ 19912-2012" .
+
+###  http://ontogeo.kz/geont-kz#Plate_load_test
+:Plate_load_test rdf:type owl:Class ;
+    rdfs:subClassOf :FieldTest ;
+    rdfs:label "испытание штампом"@ru ;
+    rdfs:label "штампен сынау"@kz ;
+    rdfs:comment "полевое испытание грунта статической нагрузкой на штамп"@ru ;
+    rdfs:comment "полевое испытание грунта статической нагрузкой на штамп"@kz ;
+    rdfs:isDefinedBy "ГОСТ 20276-2012" .
+
+###  http://ontogeo.kz/geont-kz#Borehole
+:Borehole rdf:type owl:Class ;
+    rdfs:subClassOf :FieldWork ;
+    rdfs:label "скважина"@ru ;
+    rdfs:label "ұңғыма"@kz ;
+    rdfs:comment "цилиндрическая горная выработка малого диаметра"@ru ;
+    rdfs:comment "цилиндрическая горная выработка малого диаметра"@kz ;
+    rdfs:isDefinedBy "СП РК 1.02-102-2014" .
+
+###  http://ontogeo.kz/geont-kz#Sampling
+:Sampling rdf:type owl:Class ;
+    rdfs:subClassOf :FieldWork ;
+    rdfs:label "отбор проб"@ru ;
+    rdfs:label "сынама алу"@kz ;
+    rdfs:comment "извлечение образцов грунта для лабораторных испытаний"@ru ;
+    rdfs:comment "извлечение образцов грунта для лабораторных испытаний"@kz ;
+    rdfs:isDefinedBy "ГОСТ 12071-2014" .
+
+###  http://ontogeo.kz/geont-kz#Seismic_microzoning
+:Seismic_microzoning rdf:type owl:Class ;
+    rdfs:subClassOf :SeismicEntity ;
+    rdfs:label "сейсмическое микрорайонирование"@ru ;
+    rdfs:label "сейсмикалық микроаудандастыру"@kz ;
+    rdfs:comment "уточнение сейсмичности площадки с учётом грунтовых условий"@ru ;
+    rdfs:comment "уточнение сейсмичности площадки с учётом грунтовых условий"@kz ;
+    rdfs:isDefinedBy "СП РК 2.03-30-2017" .
+
+###  http://ontogeo.kz/geont-kz#Design_earthquake
+:Design_earthquake rdf:type owl:Class ;
+    rdfs:subClassOf :SeismicEntity ;
+    rdfs:label "расчётное землетрясение"@ru ;
+    rdfs:label "есептік жер сілкінісі"@kz ;
+    rdfs:comment "землетрясение с параметрами, принимаемыми в расчёте конструкций"@ru ;
+    rdfs:comment "землетрясение с параметрами, принимаемыми в расчёте конструкций"@kz ;
+    rdfs:isDefinedBy "СП РК 2.03-30-2017" .
+
+###  http://ontogeo.kz/geont-kz#Seismic_intensity
+:Seismic_intensity rdf:type owl:Class ;
+    rdfs:subClassOf :SeismicEntity ;
+    rdfs:label "сейсмическая интенсивность"@ru ;
+    rdfs:label "сейсмикалық қарқындылық"@kz ;
+    rdfs:comment "мера силы сотрясения поверхности в баллах"@ru ;
+    rdfs:comment "мера силы сотрясения поверхности в баллах"@kz ;
+    rdfs:isDefinedBy "СП РК 2.03-30-2017" .
+
+###  http://ontogeo.kz/geont-kz#Response_spectrum
+:Response_spectrum rdf:type owl:Class ;
+    rdfs:subClassOf :SeismicEntity ;
+    rdfs:label "спектр реакции"@ru ;
+    rdfs:label "әсер спектрі"@kz ;
+    rdfs:comment "зависимость максимального отклика осциллятора от его периода"@ru ;
+    rdfs:comment "зависимость максимального отклика осциллятора от его периода"@kz ;
+    rdfs:isDefinedBy "СП РК 2.03-30-2017" .
+
+###  http://ontogeo.kz/geont-kz#Ultimate_limit_states
+:Ultimate_limit_states rdf:type owl:Class ;
+    rdfs:subClassOf :LimitState ;
+    rdfs:label "предельные состояния первой группы"@ru ;
+    rdfs:label "бірінші топтың шекті күйлері"@kz ;
+    rdfs:comment "состояния, при достижении которых конструкция теряет несущую способность"@ru ;
+    rdfs:comment "состояния, при достижении которых конструкция теряет несущую способность"@kz ;
+    rdfs:isDefinedBy "СН РК 5.03-01-2013" .
+
+###  http://ontogeo.kz/geont-kz#Accidental_actions
+:Accidental_actions rdf:type owl:Class ;
+    rdfs:subClassOf :Ultimate_limit_states ;
+    rdfs:label "особые воздействия"@ru ;
+    rdfs:label "арнайы жүктемелер"@kz ;
+    rdfs:comment "воздействия, возникающие в исключительных случаях"@ru ;
+    rdfs:comment "воздействия, возникающие в исключительных случаях"@kz ;
+    rdfs:isDefinedBy "СН РК 5.03-01-2013" .
+
+###  http://ontogeo.kz/geont-kz#Serviceability_limit_states
+:Serviceability_limit_states rdf:type owl:Class ;
+    rdfs:subClassOf :LimitState ;
+    rdfs:label "предельные состояния второй группы"@ru ;
+    rdfs:label "екінші топтың шекті күйлері"@kz ;
+    rdfs:comment "состояния, при которых нарушается нормальная эксплуатация"@ru ;
+    rdfs:comment "состояния, при которых нарушается нормальная эксплуатация"@kz ;
+    rdfs:isDefinedBy "СН РК 5.03-01-2013" .
+
+###  http://ontogeo.kz/geont-kz#Action_load_effect
+:Action_load_effect rdf:type owl:Class ;
+    rdfs:subClassOf :LoadEntity ;
+    rdfs:label "усилие от воздействия"@ru ;
+    rdfs:label "әсерден туындайтын күш"@kz ;
+    rdfs:comment "Конструкция элементтерінде кернеуді немесе олардың орын ауыстыруын тудыратын әсер"@ru ;
+    rdfs:comment "Конструкция элементтерінде кернеуді немесе олардың орын ауыстыруын тудыратын әсер"@kz ;
+    rdfs:isDefinedBy "СН РК 5.03-01-2013" .
+
+###  http://ontogeo.kz/geont-kz#Permanent_action
+:Permanent_action rdf:type owl:Class ;
+    rdfs:subClassOf :LoadEntity ;
+    rdfs:label "постоянное воздействие"@ru ;
+    rdfs:label "тұрақты жүктеме"@kz ;
+    rdfs:comment "воздействие, действующее в течение всего срока службы"@ru ;
+    rdfs:comment "воздействие, действующее в течение всего срока службы"@kz ;
+    rdfs:isDefinedBy "СН РК 5.03-01-2013" .
+
+###  http://ontogeo.kz/geont-kz#Variable_action
+:Variable_action rdf:type owl:Class ;
+    rdfs:subClassOf :LoadEntity ;
+    rdfs:label "переменное воздействие"@ru ;
+    rdfs:label "айнымалы жүктеме"@kz ;
+    rdfs:comment "воздействие, изменяющееся во времени"@ru ;
+    rdfs:comment "воздействие, изменяющееся во времени"@kz ;
+    rdfs:isDefinedBy "СН РК 5.03-01-2013" .
+
+###  http://ontogeo.kz/geont-kz#Acceptance_test
+:Acceptance_test rdf:type owl:Class ;
+    rdfs:subClassOf :QualityEntity ;
+    rdfs:label "приёмочное испытание"@ru ;
+    rdfs:label "қабылдау сынағы"@kz ;
+    rdfs:comment "испытание, проводимое при приёмке конструкции"@ru ;
+    rdfs:comment "испытание, проводимое при приёмке конструкции"@kz ;
+    rdfs:isDefinedBy "СН РК 5.03-01-2013" .
+
+###  http://ontogeo.kz/geont-kz#Quality_control_geotech
+:Quality_control_geotech rdf:type owl:Class ;
+    rdfs:subClassOf :QualityEntity ;
+    rdfs:label "контроль качества"@ru ;
+    rdfs:label "сапаны бақылау"@kz ;
+    rdfs:comment "проверка соответствия установленным требованиям"@ru ;
+    rdfs:comment "проверка соответствия установленным требованиям"@kz ;
+    rdfs:isDefinedBy "СН РК 5.03-01-2013" .
+
+###  http://ontogeo.kz/geont-kz#Monitoring_geotech
+:Monitoring_geotech rdf:type owl:Class ;
+    rdfs:subClassOf :QualityEntity ;
+    rdfs:label "геотехнический мониторинг"@ru ;
+    rdfs:label "геотехникалық мониторинг"@kz ;
+    rdfs:comment "система наблюдений за состоянием основания и конструкций"@ru ;
+    rdfs:comment "система наблюдений за состоянием основания и конструкций"@kz ;
+    rdfs:isDefinedBy "СП РК 5.01-101-2013" .
+
+
+##############################################################################
+#
+#    Bridges
+#
+##############################################################################
+
+:Foundation rdfs:subClassOf ifc:IfcFooting .
+:Pile rdfs:subClassOf ifc:IfcPile .
+:Retaining_wall rdfs:subClassOf ifc:IfcWall .
+:Borehole rdfs:subClassOf geocore:Borehole .
+:Soil rdfs:subClassOf geocore:GeologicUnit .
+
+
+##############################################################################
+#
+#    Lexical concepts (provenance hangs here, not on classes)
+#
+##############################################################################
+
+:Soil_Concept rdf:type owl:NamedIndividual , ontolex:LexicalConcept ;
+    rdfs:label "грунт"@kz ;
+    rdfs:isDefinedBy "СН РК 5.01-01-2013" .
+
+:Clay_soil_Concept rdf:type owl:NamedIndividual , ontolex:LexicalConcept ;
+    rdfs:label "глинистый грунт"@kz ;
+    rdfs:isDefinedBy "СН РК 5.01-01-2013" .
+
+:Sandy_soil_Concept rdf:type owl:NamedIndividual , ontolex:LexicalConcept ;
+    rdfs:label "песчаный грунт"@kz ;
+    rdfs:isDefinedBy "СН РК 5.01-01-2013" .
+
+:Anthropogenic_soil_Concept rdf:type owl:NamedIndividual , ontolex:LexicalConcept ;
+    rdfs:label "антропогенный грунт"@kz ;
+    rdfs:isDefinedBy "СН РК 5.01-01-2013" .
+
+:Frozen_soil_Concept rdf:type owl:NamedIndividual , ontolex:LexicalConcept ;
+    rdfs:label "мёрзлый грунт"@kz ;
+    rdfs:isDefinedBy "СП РК 5.01-102-2013" .
+
+:Permafrost_Concept rdf:type owl:NamedIndividual , ontolex:LexicalConcept ;
+    rdfs:label "многолетнемёрзлый грунт"@kz ;
+    rdfs:isDefinedBy "СП РК 5.01-102-2013" .
+
+:Loess_Concept rdf:type owl:NamedIndividual , ontolex:LexicalConcept ;
+    rdfs:label "лёссовый грунт"@kz ;
+    rdfs:isDefinedBy "СН РК 5.01-01-2013" .
+
+:Subsidence_Concept rdf:type owl:NamedIndividual , ontolex:LexicalConcept ;
+    rdfs:label "просадка"@kz ;
+    rdfs:isDefinedBy "СН РК 5.01-01-2013" .
+
+:Settlement_geotech_Concept rdf:type owl:NamedIndividual , ontolex:LexicalConcept ;
+    rdfs:label "осадка"@kz ;
+    rdfs:isDefinedBy "СН РК 5.01-01-2013" .
+
+:Heave_Concept rdf:type owl:NamedIndividual , ontolex:LexicalConcept ;
+    rdfs:label "пучение"@kz ;
+    rdfs:isDefinedBy "СП РК 5.01-102-2013" .
+
+:Bearing_capacity_Concept rdf:type owl:NamedIndividual , ontolex:LexicalConcept ;
+    rdfs:label "несущая способность"@kz ;
+    rdfs:isDefinedBy "СН РК 5.01-01-2013" .
+
+:Youngs_modulus_Concept rdf:type owl:NamedIndividual , ontolex:LexicalConcept ;
+    rdfs:label "модуль деформации"@kz ;
+    rdfs:isDefinedBy "ГОСТ 12248-2010" .
+

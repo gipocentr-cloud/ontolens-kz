@@ -1,0 +1,25 @@
+@base <http://example.org/tricky/> .
+@prefix : <http://example.org/tricky#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+<> a owl:Ontology .
+:Root a owl:Class ; rdfs:label "корень"@ru , "root"@EN .
+:A a owl:Class ; rdfs:subClassOf :Root ;
+   rdfs:label "класс «А» с кавычками \"внутри\""@ru ;
+   rdfs:comment """многострочное
+определение с переводом строки"""@ru ;
+   rdfs:label "без тега" .
+:B a owl:Class ;
+   rdfs:subClassOf :Root , [ a owl:Restriction ; owl:onProperty :p ; owl:someValuesFrom :A ] ;
+   owl:equivalentClass [ a owl:Class ; owl:unionOf ( :A :C ) ] ;
+   rdfs:label "Б"@kk-Cyrl .
+:C a owl:Class ; rdfs:subClassOf <relative-parent> ; rdfs:label 'одинарные кавычки'@ru .
+<relative-parent> a owl:Class ; rdfs:label "относительный IRI"@ru .
+:p a owl:ObjectProperty ; rdfs:domain :A ; rdfs:range :B ; rdfs:label "свойство"@ru .
+:n a owl:DatatypeProperty ; rdfs:range xsd:decimal .
+:A :n 1.5e3 , -7 , true .
+_:x a owl:Class ; rdfs:label "анонимный с меткой"@ru .

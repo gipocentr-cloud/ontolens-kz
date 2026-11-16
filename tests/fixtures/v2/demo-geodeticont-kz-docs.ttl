@@ -1,0 +1,169 @@
+@prefix :        <http://ontogeo.kz/geodeticont-kz#> .
+@prefix owl:     <http://www.w3.org/2002/07/owl#> .
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+@prefix skos:    <http://www.w3.org/2004/02/skos/core#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix sh:      <http://www.w3.org/ns/shacl#> .
+@prefix ifc:     <http://www.buildingsmart-tech.org/ifcOWL/IFC4#> .
+@prefix geo:     <http://www.opengis.net/ont/geosparql#> .
+@prefix doc:     <http://ontogeo.kz/geodeticont-kz/doc/> .
+
+##############################################################################
+#
+#    Regulatory documents (ABox, synthetic)
+#
+##############################################################################
+
+###  http://ontogeo.kz/geodeticont-kz/doc/d01
+doc:d01 rdf:type :RegulatoryDocument ;
+    skos:prefLabel "СН РК 1.03-03-2023"@ru ;
+    dcterms:title "Геодезические работы в строительстве"@ru ;
+    :documentStatus "действующий" ;
+    :documentYear "2023"^^xsd:gYear ;
+    dcterms:identifier "d01" .
+
+###  http://ontogeo.kz/geodeticont-kz/doc/d02
+doc:d02 rdf:type :RegulatoryDocument ;
+    skos:prefLabel "СП РК 1.03-103-2013*"@ru ;
+    dcterms:title "Геодезические работы в строительстве. Правила производства"@ru ;
+    :documentStatus "действующий" ;
+    :documentYear "2013"^^xsd:gYear ;
+    dcterms:identifier "d02" .
+
+###  http://ontogeo.kz/geodeticont-kz/doc/d03
+doc:d03 rdf:type :RegulatoryDocument ;
+    skos:prefLabel "РДС РК 3.01-09-2012"@ru ;
+    dcterms:title "Инструкция по производству геодезических работ"@ru ;
+    :documentStatus "методический" ;
+    :documentYear "2012"^^xsd:gYear ;
+    dcterms:identifier "d03" .
+
+###  http://ontogeo.kz/geodeticont-kz/doc/d04
+doc:d04 rdf:type :RegulatoryDocument ;
+    skos:prefLabel "СП РК 1.02-105-2014"@ru ;
+    dcterms:title "Спутниковые методы определения координат"@ru ;
+    :documentStatus "действующий" ;
+    :documentYear "2014"^^xsd:gYear ;
+    dcterms:identifier "d04" .
+
+###  http://ontogeo.kz/geodeticont-kz/doc/d05
+doc:d05 rdf:type :RegulatoryDocument ;
+    skos:prefLabel "СП РК 1.02-101-2014"@ru ;
+    dcterms:title "Инженерно-геодезические изыскания для строительства"@ru ;
+    :documentStatus "действующий" ;
+    :documentYear "2014"^^xsd:gYear ;
+    dcterms:identifier "d05" .
+
+###  http://ontogeo.kz/geodeticont-kz/doc/d06
+doc:d06 rdf:type :RegulatoryDocument ;
+    skos:prefLabel "СН РК 1.02-02-2011"@ru ;
+    dcterms:title "Нивелирование I–IV классов"@ru ;
+    :documentStatus "действующий" ;
+    :documentYear "2011"^^xsd:gYear ;
+    dcterms:identifier "d06" .
+
+###  http://ontogeo.kz/geodeticont-kz/doc/d07
+doc:d07 rdf:type :RegulatoryDocument ;
+    skos:prefLabel "СП РК 1.02-107-2015"@ru ;
+    dcterms:title "Аэрофотосъёмочные и фотограмметрические работы"@ru ;
+    :documentStatus "действующий" ;
+    :documentYear "2015"^^xsd:gYear ;
+    dcterms:identifier "d07" .
+
+###  http://ontogeo.kz/geodeticont-kz/doc/d08
+doc:d08 rdf:type :RegulatoryDocument ;
+    skos:prefLabel "Инструкция по назначению межремонтных сроков службы дорожных одежд на основании георадарного обследования"@ru ;
+    dcterms:title "Инструкция по назначению межремонтных сроков службы дорожных одежд"@ru ;
+    :documentStatus "методический" ;
+    :documentYear "2019"^^xsd:gYear ;
+    dcterms:identifier "d08" .
+
+###  http://ontogeo.kz/geodeticont-kz/doc/d09
+doc:d09 rdf:type :RegulatoryDocument ;
+    skos:prefLabel "СП РК 3.01-101-2013"@ru ;
+    dcterms:title "Съёмка подземных инженерных коммуникаций"@ru ;
+    :documentStatus "действующий" ;
+    :documentYear "2013"^^xsd:gYear ;
+    dcterms:identifier "d09" .
+
+###  http://ontogeo.kz/geodeticont-kz/doc/d10
+doc:d10 rdf:type :RegulatoryDocument ;
+    skos:prefLabel "СП РК 5.01-102-2013"@ru ;
+    dcterms:title "Наблюдения за деформациями зданий и сооружений"@ru ;
+    :documentStatus "действующий" ;
+    :documentYear "2013"^^xsd:gYear ;
+    dcterms:identifier "d10" .
+
+###  http://ontogeo.kz/geodeticont-kz/doc/d11
+doc:d11 rdf:type :RegulatoryDocument ;
+    skos:prefLabel "СТ РК 1.14-2015"@ru ;
+    dcterms:title "Цифровые модели местности. Общие требования"@ru ;
+    :documentStatus "тезаурусный источник" ;
+    :documentYear "2015"^^xsd:gYear ;
+    dcterms:identifier "d11" .
+
+###  http://ontogeo.kz/geodeticont-kz/doc/d12
+doc:d12 rdf:type :RegulatoryDocument ;
+    skos:prefLabel "РДС РК 1.03-05-2011"@ru ;
+    dcterms:title "Состав и оформление технической документации"@ru ;
+    :documentStatus "методический" ;
+    :documentYear "2011"^^xsd:gYear ;
+    dcterms:identifier "d12" .
+
+###  http://ontogeo.kz/geodeticont-kz/doc/d13
+doc:d13 rdf:type :RegulatoryDocument ;
+    skos:prefLabel "СП РК 5.03-107-2013"@ru ;
+    dcterms:title "Бетонные и железобетонные конструкции"@ru ;
+    :documentStatus "действующий" ;
+    :documentYear "2013"^^xsd:gYear ;
+    dcterms:identifier "d13" .
+
+###  http://ontogeo.kz/geodeticont-kz/doc/d14
+doc:d14 rdf:type :RegulatoryDocument ;
+    skos:prefLabel "Глоссарий геодезических терминов"@ru ;
+    dcterms:title "Глоссарий геодезических терминов (справочный источник)"@ru ;
+    :documentStatus "тезаурусный источник" ;
+    :documentYear "2008"^^xsd:gYear ;
+    dcterms:identifier "d14" .
+
+###  http://ontogeo.kz/geodeticont-kz/doc/d15
+doc:d15 rdf:type :RegulatoryDocument ;
+    skos:prefLabel "Экспертное мнение"@ru ;
+    dcterms:title "Экспертное мнение специалиста (не документ)"@ru ;
+    :documentStatus "unverified" ;
+    dcterms:identifier "d15" .
+
+###  http://ontogeo.kz/geodeticont-kz/doc/d16
+doc:d16 rdf:type :RegulatoryDocument ;
+    skos:prefLabel "СН РК 3.03-01-2013"@ru ;
+    dcterms:title "Автомобильные дороги"@ru ;
+    :documentStatus "действующий" ;
+    :documentYear "2013"^^xsd:gYear ;
+    dcterms:identifier "d16" .
+
+###  http://ontogeo.kz/geodeticont-kz/doc/d17
+doc:d17 rdf:type :RegulatoryDocument ;
+    skos:prefLabel "СП РК 2.04-107-2013"@ru ;
+    dcterms:title "Строительная климатология"@ru ;
+    :documentStatus "действующий" ;
+    :documentYear "2013"^^xsd:gYear ;
+    dcterms:identifier "d17" .
+
+###  http://ontogeo.kz/geodeticont-kz/doc/d18
+doc:d18 rdf:type :RegulatoryDocument ;
+    skos:prefLabel "СТ РК ISO 19115-2010"@ru ;
+    dcterms:title "Географическая информация. Метаданные"@ru ;
+    :documentStatus "тезаурусный источник" ;
+    :documentYear "2010"^^xsd:gYear ;
+    dcterms:identifier "d18" .
+
+###  http://ontogeo.kz/geodeticont-kz/doc/d19
+doc:d19 rdf:type :RegulatoryDocument ;
+    skos:prefLabel "МСН 3.01-01-2010"@ru ;
+    dcterms:title "Межгосударственные строительные нормы (отменён)"@ru ;
+    :documentStatus "отменён" ;
+    :documentYear "2010"^^xsd:gYear ;
+    dcterms:identifier "d19" .
+

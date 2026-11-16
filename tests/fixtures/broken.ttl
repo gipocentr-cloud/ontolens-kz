@@ -1,0 +1,5 @@
+@prefix : <http://example.org/broken#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+:Good a owl:Class .
+:Bad a owl:Class ;
+    rdfs:label "нет префикса rdfs" .

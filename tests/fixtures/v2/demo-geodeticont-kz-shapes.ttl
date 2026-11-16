@@ -1,0 +1,55 @@
+@prefix :        <http://ontogeo.kz/geodeticont-kz#> .
+@prefix owl:     <http://www.w3.org/2002/07/owl#> .
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+@prefix skos:    <http://www.w3.org/2004/02/skos/core#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix sh:      <http://www.w3.org/ns/shacl#> .
+@prefix ifc:     <http://www.buildingsmart-tech.org/ifcOWL/IFC4#> .
+@prefix geo:     <http://www.opengis.net/ont/geosparql#> .
+@prefix doc:     <http://ontogeo.kz/geodeticont-kz/doc/> .
+
+##############################################################################
+#
+#    SHACL shapes (1 full + 6 placeholders)
+#
+##############################################################################
+
+:DeviationShape rdf:type sh:NodeShape ;
+    sh:targetClass :Deviation ;
+    rdfs:label "Отклонение не превышает допустимого значения"@ru ;
+    sh:property [
+        sh:path :measuredValue ;
+        sh:datatype xsd:decimal ;
+        sh:lessThanOrEquals :permittedValue ;
+        sh:message "measuredValue must not exceed permittedValue"@en ;
+    ] .
+
+:LimitDeviationShape rdf:type sh:NodeShape ;
+    sh:targetClass :LimitDeviation ;
+    rdfs:label "Предельное отклонение — скалярный порог"@ru ;
+    sh:property [
+        sh:path :permittedValue ;
+        sh:datatype xsd:decimal ;
+        sh:minCount 1 ;
+    ] .
+
+:AccuracyClassShape rdf:type sh:NodeShape ;
+    sh:targetClass :AccuracyClass ;
+    rdfs:comment "TODO: resolves to a table parameterised by accuracy class / network order; value not confirmed by expert (workbook sheet 2)"@en .
+
+:CoordinateTransformationShape rdf:type sh:NodeShape ;
+    sh:targetClass :CoordinateTransformation ;
+    rdfs:comment "TODO: resolves to a table parameterised by zone and transformation parameters; value not confirmed by expert"@en .
+
+:PavementThicknessShape rdf:type sh:NodeShape ;
+    sh:targetClass :PavementThickness ;
+    rdfs:comment "TODO: resolves to a table parameterised by nominal size range; value not confirmed by expert"@en .
+
+:MisclosureShape rdf:type sh:NodeShape ;
+    sh:targetClass :Misclosure ;
+    rdfs:comment "TODO: limit is a function of traverse length; formula placeholder, not confirmed"@en .
+
+:SettlementShape rdf:type sh:NodeShape ;
+    rdfs:comment "TODO: limit delegated to geotechnical norms; no targetClass assigned yet"@en .

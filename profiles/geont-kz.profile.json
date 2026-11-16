@@ -1,0 +1,11 @@
+{
+  "id": "geont-kz",
+  "title": "GeOnt-KZ — геотехника (онтология-предшественник)",
+  "languages": ["ru", "kk", "en"],
+  "labelProperties": ["http://www.w3.org/2000/01/rdf-schema#label",
+                      "http://www.w3.org/2004/02/skos/core#prefLabel"],
+  "definitionProperties": ["http://www.w3.org/2000/01/rdf-schema#comment",
+                           "http://www.w3.org/2004/02/skos/core#definition"],
+  "minDefinitionLength": 20,
+  "targets": null
+}

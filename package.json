@@ -1,0 +1,24 @@
+{
+  "name": "ontolens",
+  "version": "3.1.0",
+  "description": "OntoLens — визуализатор прикладных онтологий для экспертной валидации",
+  "scripts": {
+    "data": "python3 build/make_demo_data.py && python3 build/make_stress.py",
+    "build": "node build/make_bundle.mjs",
+    "test": "node tests/run.mjs && node tests/run2.mjs && node tests/robustness.mjs && node tests/carry.mjs && node tests/a11y.mjs && node tests/platform.mjs && node tests/loader.mjs",
+    "protocol": "python3 build/make_protocol.py",
+    "all": "npm run data && npm run build && npm run test && npm run protocol",
+    "test:platform": "node tests/platform.mjs && node tests/loader.mjs"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "firebase": "^12.19.0",
+    "n3": "^2.7.12"
+  },
+  "devDependencies": {
+    "axe-core": "^4.13.0",
+    "esbuild": "^0.28.2"
+  },
+  "private": true,
+  "type": "module"
+}

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>OntoLens-KZ</title>
+<style>
+html,body{margin:0;height:100%;background:#F2F1EC;font:14px/1.4 "PT Sans","Segoe UI",system-ui,sans-serif;color:#16181C}
+#app{height:100%}
+.boot{display:flex;align-items:center;justify-content:center;height:100%;color:#6B675E;text-align:center;padding:0 16px}
+</style>
+</head>
+<body>
+<div id="app"><div class="boot" id="boot">OntoLens…</div></div>
+<script>
+/*
+ * Загрузчик OntoLens-KZ для onto.buildingsmart.kz.
+ * Этот файл кладётся на хостинг один раз и больше не меняется.
+ * Само приложение (dist/platform.js) и настройки (dist/config.js) берутся из репозитория GitHub
+ * через jsDelivr; адрес фиксируется по последнему коммиту, поэтому обновление видно сразу после пуша.
+ */
+(function () {
+  var REPO = 'gipocentr-cloud/ontolens-kz';   // репозиторий на GitHub
+  var BRANCH = 'main';
+  var KEY = 'ontolens.loader.sha';
+
+  function fail(msg) {
+    document.getElementById('app').innerHTML = '<div class="boot">Не удалось загрузить OntoLens: ' + msg +
+      '.<br>Проверьте подключение к интернету и обновите страницу.</div>';
+  }
+  function add(src, done) {
+    var s = document.createElement('script');
+    s.src = src; s.onload = function () { done(true); }; s.onerror = function () { done(false); };
+    document.body.appendChild(s);
+  }
+  function load(ref) {
+    var base = 'https://cdn.jsdelivr.net/gh/' + REPO + '@' + ref + '/dist/';
+    add(base + 'config.js', function () {
+      add(base + 'platform.js', function (ok) { if (!ok) fail('нет связи с cdn.jsdelivr.net'); });
+    });
+  }
+  // последний коммит запоминается на 2 минуты: меньше обращений к GitHub (60 в час на один IP)
+  try {
+    var c = JSON.parse(localStorage.getItem(KEY) || 'null');
+    if (c && Date.now() - c.t < 120000) { load(c.sha); return; }
+  } catch (e) { /* без кэша */ }
+  fetch('https://api.github.com/repos/' + REPO + '/commits/' + BRANCH, { headers: { Accept: 'application/vnd.github.sha' } })
+    .then(function (r) { return r.ok ? r.text() : Promise.reject(r.status); })
+    .then(function (sha) {
+      sha = sha.trim();
+      try { localStorage.setItem(KEY, JSON.stringify({ sha: sha, t: Date.now() })); } catch (e) { /* ничего */ }
+      load(sha);
+    })
+    .catch(function () { load(BRANCH); });   // GitHub недоступен — ветка (обновится с задержкой кэша jsDelivr)
+})();
+</script>
+</body>
+</html>

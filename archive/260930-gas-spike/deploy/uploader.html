@@ -1,0 +1,183 @@
+<title>OntoLens: загрузка на Диск</title>
+<style>
+/* Одна колонка-протокол: шапка, две группы файлов, кнопки и журнал. Палитра OntoLens. */
+:root {
+  --bg: #F2F1EC; --panel: #FFFFFF; --ink: #16181C; --muted: #6B675E; --line: #DAD6CC;
+  --accent: #C2410C; --ok: #3F7A4E; --warn: #B9762C; --bad: #A33A32; --info: #2F6F7E;
+  --serif: "PT Serif", Georgia, serif; --sans: "PT Sans", system-ui, sans-serif; --mono: "IBM Plex Mono", ui-monospace, monospace;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #16181C; --panel: #1F2126; --ink: #ECEAE4; --muted: #A8A49B; --line: #33363D;
+  --accent: #E0703A; --ok: #6FB081; --warn: #D9A05A; --bad: #E07A70; --info: #6FB3C2; color-scheme: dark } }
+:root[data-theme="dark"] {
+  --bg: #16181C; --panel: #1F2126; --ink: #ECEAE4; --muted: #A8A49B; --line: #33363D;
+  --accent: #E0703A; --ok: #6FB081; --warn: #D9A05A; --bad: #E07A70; --info: #6FB3C2; color-scheme: dark }
+body { background: var(--bg); color: var(--ink); font: 15px/1.5 var(--sans); }
+.wrap { max-width: 760px; margin: 0 auto; padding-inline: 16px; padding-block: 28px 40px; display: grid; gap: 22px; }
+h1 { font: 700 26px/1.2 var(--serif); margin: 0; text-wrap: balance; }
+.eyebrow { font: 12px var(--mono); color: var(--muted); letter-spacing: .04em; }
+p { margin: 0; max-width: 65ch; }
+.lead { color: var(--muted); }
+section { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 14px 16px; display: grid; gap: 10px; min-width: 0; }
+section h2 { font: 700 15px/1.3 var(--sans); margin: 0; display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+section h2 code { font: 12px var(--mono); color: var(--muted); font-weight: 400; }
+ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
+li { display: flex; gap: 10px; align-items: baseline; justify-content: space-between; min-width: 0; }
+li .name { font: 13px var(--mono); overflow-wrap: anywhere; min-width: 0; }
+li .size { font: 12px var(--mono); color: var(--muted); font-variant-numeric: tabular-nums; margin-left: auto; white-space: nowrap; }
+.chip { font-size: 12px; padding: 1px 8px; border-radius: 99px; border: 1px solid var(--line); color: var(--muted); white-space: nowrap; }
+.chip.ok { color: var(--ok); border-color: var(--ok); }
+.chip.run { color: var(--info); border-color: var(--info); }
+.chip.bad { color: var(--bad); border-color: var(--bad); }
+.chip.skip { color: var(--warn); border-color: var(--warn); }
+.actions { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+button { font: 600 14px var(--sans); padding: 9px 16px; border-radius: 8px; border: 1px solid var(--line); background: var(--panel); color: var(--ink); cursor: pointer; }
+button.primary { background: var(--accent); border-color: var(--accent); color: #fff; }
+button:disabled { opacity: .5; cursor: default; }
+button:focus-visible { outline: 2px solid var(--info); outline-offset: 2px; }
+#msg { font-size: 14px; }
+#msg.bad { color: var(--bad); } #msg.ok { color: var(--ok); }
+.note { font-size: 13px; color: var(--muted); }
+</style>
+
+<div class="wrap">
+  <header style="display:grid;gap:6px">
+    <div class="eyebrow">OntoLens-KZ · сборка 260930-9e867f</div>
+    <h1>Загрузка OntoLens в папку web-OntoLens</h1>
+    <p class="lead">Страница кладёт на ваш Google Диск собранное приложение и синтетический демонабор. Дальше их отдаёт веб-приложение Apps Script. Загрузка идёт от вашего имени через подключённый Google Drive; при первом нажатии claude.ai спросит разрешение.</p>
+  </header>
+
+  <section aria-labelledby="g-app">
+    <h2 id="g-app">Приложение <code>web-OntoLens/app/</code></h2>
+    <ul id="list-app"></ul>
+    <p class="note">Части страницы и манифест OntoLens-app.json. Манифест загружается последним: пока его нет, сервер показывает прежнюю сборку.</p>
+  </section>
+
+  <section aria-labelledby="g-demo">
+    <h2 id="g-demo">Демонабор <code>web-OntoLens/онтология/demo-synthetic/</code></h2>
+    <ul id="list-demo"></ul>
+    <p class="note">119 синтетических терминов, 16 блоков. Файлы, которые уже есть в папке, не перезаписываются.</p>
+  </section>
+
+  <div class="actions">
+    <button id="go" class="primary" type="button" disabled>Загрузить на Диск</button>
+    <button id="check" type="button" disabled>Проверить Диск</button>
+    <span id="msg" role="status">Подключаюсь к Google Drive…</span>
+  </div>
+</div>
+
+<script>
+const ITEMS = [{"group":"app","title":"OntoLens-app-260930-9e867f-1.html","path":"payload/app-1.txt","parent":"1y98mSCQjC9tPTBRBJ73Ai_yw2Tb5HPhO","mime":"text/html","bytes":185031},{"group":"app","title":"OntoLens-app-260930-9e867f-2.html","path":"payload/app-2.txt","parent":"1y98mSCQjC9tPTBRBJ73Ai_yw2Tb5HPhO","mime":"text/html","bytes":194309},{"group":"app","title":"OntoLens-app-260930-9e867f-3.html","path":"payload/app-3.txt","parent":"1y98mSCQjC9tPTBRBJ73Ai_yw2Tb5HPhO","mime":"text/html","bytes":195322},{"group":"app","title":"OntoLens-app.json","path":"payload/manifest.txt","parent":"1y98mSCQjC9tPTBRBJ73Ai_yw2Tb5HPhO","mime":"application/json","manifest":true,"bytes":180},{"group":"demo","title":"demo-geodeticont-kz.ttl","path":"payload/demo-geodeticont-kz.ttl.txt","parent":"1gDtyA16i22Ya6U7XvkcKTYzafCxHnMIa","mime":"text/turtle","once":true,"bytes":126615},{"group":"demo","title":"demo-geodeticont-kz-docs.ttl","path":"payload/demo-geodeticont-kz-docs.ttl.txt","parent":"1gDtyA16i22Ya6U7XvkcKTYzafCxHnMIa","mime":"text/turtle","once":true,"bytes":7867},{"group":"demo","title":"demo-geodeticont-kz-shapes.ttl","path":"payload/demo-geodeticont-kz-shapes.ttl.txt","parent":"1gDtyA16i22Ya6U7XvkcKTYzafCxHnMIa","mime":"text/turtle","once":true,"bytes":2512},{"group":"demo","title":"geodeticont-kz.profile.json","path":"payload/geodeticont-kz.profile.json.txt","parent":"1gDtyA16i22Ya6U7XvkcKTYzafCxHnMIa","mime":"application/json","once":true,"bytes":1165}];
+const FOLDERS = {"app":"1y98mSCQjC9tPTBRBJ73Ai_yw2Tb5HPhO","demo":"1gDtyA16i22Ya6U7XvkcKTYzafCxHnMIa"};
+const SERVER = 'Google Drive';
+const st = {};                 // path -> {state, text}
+let mcp = null, busy = false;
+
+const $ = (id) => document.getElementById(id);
+function kb(n) { return (n / 1024).toFixed(0) + ' КБ'; }
+const LABEL = { wait: 'ждёт', have: 'уже на Диске', run: 'загружается', ok: 'загружено', bad: 'ошибка', skip: 'пропущено' };
+const CLS = { wait: '', have: 'ok', run: 'run', ok: 'ok', bad: 'bad', skip: 'skip' };
+
+function render() {
+  for (const g of ['app', 'demo']) {
+    const ul = $('list-' + g);
+    ul.replaceChildren(...ITEMS.filter((x) => x.group === g).map((x) => {
+      const s = st[x.path] || { state: 'wait' };
+      const li = document.createElement('li');
+      const n = document.createElement('span'); n.className = 'name'; n.textContent = x.title;
+      const z = document.createElement('span'); z.className = 'size'; z.textContent = kb(s.size || x.bytes || 0);
+      const c = document.createElement('span'); c.className = 'chip ' + CLS[s.state]; c.textContent = LABEL[s.state];
+      if (s.text) c.title = s.text;
+      li.append(n, z, c);
+      return li;
+    }));
+  }
+}
+
+function say(text, kind) { const m = $('msg'); m.textContent = text; m.className = kind || ''; }
+
+function explain(e) {
+  const code = e && e.code;
+  if (code === 'server_not_connected') return 'Google Drive не подключён: добавьте его в claude.ai → Настройки → Connectors и откройте страницу снова.';
+  if (code === 'needs_reauth') return 'Доступ к Google Drive истёк: переподключите его в claude.ai → Настройки → Connectors.';
+  if (code === 'not_in_manifest') return 'Доступ к Google Drive для этой страницы отклонён. Разрешите его в настройках страницы и нажмите ещё раз.';
+  if (code === 'selection_required') return 'Подключено несколько Google Drive — выберите один в запросе claude.ai.';
+  if (code === 'blocked_by_policy' || code === 'approval_required') return 'Политика организации не разрешает эту операцию с Google Drive.';
+  if (code === 'tool_error') return 'Google Drive отклонил запрос: ' + (e.message || '') + '.';
+  return 'Google Drive не ответил (' + (e && e.message || code || 'ошибка') + '). Нажмите «Загрузить» ещё раз — загруженные файлы будут пропущены.';
+}
+
+async function existing() {
+  const out = {};
+  for (const [k, id] of Object.entries(FOLDERS)) {
+    const r = await mcp.callTool(SERVER, 'search_files',
+      { query: `parentId = '${id}'`, excludeContentSnippets: true, pageSize: 100 }, { cache: false });
+    out[id] = new Set(((r.payload && r.payload.files) || []).map((f) => f.title));
+  }
+  return out;
+}
+
+async function check() {
+  if (busy) return;
+  busy = true; setButtons();
+  say('Смотрю, что уже лежит на Диске…');
+  try {
+    const have = await existing();
+    let n = 0;
+    for (const x of ITEMS) {
+      const cur = st[x.path] || {};
+      if (have[x.parent].has(x.title)) { st[x.path] = { ...cur, state: 'have' }; n++; }
+      else if (cur.state !== 'bad') st[x.path] = { ...cur, state: 'wait' };
+    }
+    render();
+    say(n === ITEMS.length ? 'Все файлы этой сборки уже на Диске.' : `На Диске: ${n} из ${ITEMS.length}.`, n === ITEMS.length ? 'ok' : '');
+  } catch (e) { say(explain(e), 'bad'); }
+  busy = false; setButtons();
+}
+
+async function upload() {
+  if (busy) return;
+  busy = true; setButtons();
+  let have;
+  try { say('Смотрю, что уже лежит на Диске…'); have = await existing(); }
+  catch (e) { say(explain(e), 'bad'); busy = false; setButtons(); return; }
+  let done = 0, skipped = 0, failed = 0;
+  for (const x of ITEMS) {
+    const present = have[x.parent].has(x.title);
+    if (present && !x.manifest) { st[x.path] = { ...st[x.path], state: 'have' }; skipped++; render(); continue; }
+    if (x.manifest && failed) { st[x.path] = { ...st[x.path], state: 'skip', text: 'не все части загружены' }; render(); continue; }
+    st[x.path] = { ...st[x.path], state: 'run' }; render();
+    say(`Загружаю ${x.title}…`);
+    try {
+      const text = await (await fetch(x.path)).text();
+      await mcp.callTool(SERVER, 'create_file', {
+        title: x.title, parentId: x.parent, textContent: text,
+        contentMimeType: x.mime, disableConversionToGoogleType: true,
+      });
+      st[x.path] = { state: 'ok', size: new Blob([text]).size }; done++;
+    } catch (e) {
+      st[x.path] = { state: 'bad', text: explain(e) }; failed++;
+      say(explain(e), 'bad');
+      if (['server_not_connected', 'needs_reauth', 'not_in_manifest', 'blocked_by_policy', 'approval_required', 'selection_required'].includes(e && e.code)) {
+        render(); busy = false; setButtons(); return;
+      }
+    }
+    render();
+  }
+  if (!failed) say(`Готово: загружено ${done}, уже было ${skipped}. Можно закрыть страницу.`, 'ok');
+  else say(`Загружено ${done}, с ошибкой ${failed}. Нажмите «Загрузить» ещё раз — готовые файлы будут пропущены.`, 'bad');
+  busy = false; setButtons();
+}
+
+function setButtons() { $('go').disabled = !mcp || busy; $('check').disabled = !mcp || busy; }
+
+render();
+$('go').addEventListener('click', upload);
+$('check').addEventListener('click', check);
+(async () => {
+  try { mcp = window.claude && await window.claude.use('mcp'); } catch (e) { mcp = null; }
+  if (!mcp) { say('Здесь нет доступа к Google Drive. Откройте страницу в claude.ai, где подключён Google Drive.', 'bad'); return; }
+  setButtons();
+  say('Готово к загрузке. Файлы, которые уже есть на Диске, будут пропущены.');
+})();
+</script>

@@ -1,0 +1,43 @@
+{
+  "_comment": "Подтверждённые формализации и аксиомы синтетического корпуса (протокол закладки — tests/conflicts.mjs).",
+  "classes": [
+    {"id": "S_docs", "label": "совокупность документов", "basis": "структурный класс корпуса"},
+    {"id": "S_digital", "label": "цифровое представление", "basis": "структурный класс корпуса"},
+    {"id": "S_org", "label": "организация", "basis": "структурный класс корпуса"},
+    {"id": "S_customer", "label": "заказчик", "parent": "S_org", "basis": "структурный класс корпуса"},
+    {"id": "S_contractor", "label": "генеральный подрядчик", "parent": "S_org", "basis": "структурный класс корпуса"},
+    {"id": "S_property", "label": "свойство", "basis": "структурный класс корпуса"},
+    {"id": "S_set", "label": "набор информации", "basis": "структурный класс корпуса"},
+    {"id": "S_file", "label": "файл", "basis": "структурный класс корпуса"},
+    {"id": "S_building", "label": "здание, строение или сооружение", "basis": "структурный класс корпуса"},
+    {"id": "S_design", "label": "разработка проектной документации", "basis": "структурный класс корпуса"},
+    {"id": "S_survey", "label": "геодезическая съёмка", "basis": "структурный класс корпуса"}
+  ],
+  "props": [
+    {"id": "P_appointedBy", "label": "кем назначается"},
+    {"id": "P_performs", "label": "выполняет"},
+    {"id": "P_hasValueUnit", "label": "имеет значение и единицу измерения"},
+    {"id": "P_represents", "label": "представляет"}
+  ],
+  "axioms": [
+    {"id": "AX1", "type": "disjoint", "a": "S_docs", "b": "S_digital", "basis": "решение редактора: документ и цифровое представление — разные сущности (СТ РК ISO 1087-1, п. 3.2.1)", "by": "editor@example.com", "date": "2026-10-06"},
+    {"id": "AX2", "type": "functional", "prop": "P_appointedBy", "basis": "решение редактора: у оператора один назначающий субъект", "by": "editor@example.com", "date": "2026-10-06"}
+  ],
+  "formal": {
+    "Строительный кодекс РК|1.12": {"genus": "S_docs", "diffs": [{"prop": "P_represents", "value": "S_building", "quote": "об объекте строительства"}]},
+    "ТКН РК ТИМСО (проект)|3.18": {"genus": "S_digital", "diffs": [{"prop": "P_represents", "value": "S_building", "quote": "объекта строительства"}]},
+    "Строительный кодекс РК|1.20": {"genus": "S_docs", "diffs": []},
+    "ТКН РК ТИМСО (проект)|3.7": {"genus": "@электронная модель", "diffs": []},
+    "СТ РК ISO 19650-1|3.2.4": {"genus": "S_digital", "diffs": []},
+    "ТКН РК ТИМСО (проект)|3.25": {"genus": "S_org", "diffs": [{"prop": "P_appointedBy", "value": "S_customer", "quote": "назначаемая заказчиком"}]},
+    "СТ РК ISO 19650-1|3.4.2": {"genus": "S_org", "diffs": [{"prop": "P_appointedBy", "value": "S_contractor", "quote": "назначаемая генеральным подрядчиком"}]},
+    "СТ РК ISO 19650-1|3.3.12": {"genus": "S_property", "diffs": []},
+    "ТКН РК ТИМСО (проект)|3.2": {"genus": "S_property", "diffs": [{"prop": "P_hasValueUnit", "literal": "имя, значение и единица измерения", "quote": "имеющее имя, значение и единицу измерения"}]},
+    "СТ РК ISO 19650-1|3.3.12a": {"genus": "S_set", "diffs": []},
+    "ТКН РК ТИМСО (проект)|3.9": {"genus": "S_file", "diffs": []},
+    "ТКН РК ТИМСО (проект)|3.40": {"genus": "S_org", "diffs": [{"prop": "P_performs", "value": "S_design", "quote": "выполняющая разработку проектной документации"}]},
+    "Строительный кодекс РК|1.31": {"genus": "S_org", "diffs": [{"prop": "P_performs", "value": "S_design", "quote": "выполняющая разработку проектной документации"}]},
+    "Строительный кодекс РК|1.5": {"genus": "S_building", "diffs": []},
+    "ТКН РК ТИМСО (проект)|3.1": {"genus": "S_building", "diffs": []}
+  }
+}

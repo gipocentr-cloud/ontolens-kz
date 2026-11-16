@@ -1,0 +1,92 @@
+rules_version = '2';
+
+// OntoLens-KZ: правила доступа (ТЗ v2.2, раздел 7).
+// Вся защита данных — здесь: серверного кода у платформы нет.
+service cloud.firestore {
+  match /databases/{db}/documents {
+
+    // ---------- кто вошёл
+    function signedIn() { return request.auth != null && request.auth.token.email_verified == true; }
+    function me() { return request.auth.token.email.lower(); }
+    function personPath() { return /databases/$(db)/documents/people/$(me()); }
+    function active() { return signedIn() && exists(personPath()) && get(personPath()).data.active == true; }
+    // первый администратор задан здесь: он может завести себя и остальных
+    function superadmin() { return signedIn() && me() in ['gipocentr@gmail.com']; }
+    function isAdmin() { return superadmin() || (active() && get(personPath()).data.role == 'admin'); }
+
+    // ---------- роль в онтологии
+    function onto(oid) { return get(/databases/$(db)/documents/ontologies/$(oid)).data; }
+    function isEditor(oid) { return isAdmin() || (active() && me() in onto(oid).editors); }
+    function isMember(oid) { return isEditor(oid) || (active() && me() in onto(oid).experts); }
+
+    match /people/{email} {
+      allow get: if signedIn() && (email == me() || isAdmin());
+      allow list: if isAdmin();
+      allow create, update: if isAdmin()
+        && request.resource.data.email == email
+        && request.resource.data.role in ['admin', 'member'];
+      allow delete: if false;   // отключение — active=false, история сохраняется
+    }
+
+    match /ontologies/{oid} {
+      allow get: if isMember(oid);
+      // список: администратор — все; остальные — только запросом array-contains по своему email
+      allow list: if isAdmin()
+        || (active() && (me() in resource.data.experts || me() in resource.data.editors));
+      allow create, delete: if isAdmin();
+      allow update: if isAdmin()
+        || (isEditor(oid) && request.resource.data.diff(resource.data).affectedKeys()
+              .hasOnly(['experts', 'visibility', 'currentVersion', 'updated']));
+
+      match /versions/{vid} {
+        allow read: if isMember(oid);
+        allow create: if isEditor(oid) && request.resource.data.createdBy == me();
+        allow update, delete: if false;   // опубликованная версия не меняется
+        match /chunks/{cid} {
+          allow read: if isMember(oid);
+          allow create: if isEditor(oid);
+          allow update, delete: if false;
+        }
+      }
+
+      // работа редактора над корпусом (ТЗ v3.1): формализации, классы, свойства, аксиомы
+      match /work/{wid} {
+        allow read: if isMember(oid);
+        allow write: if isEditor(oid)
+          && request.resource.data.type in ['formal', 'class', 'prop', 'axiom']
+          && wid == request.resource.data.type + '__' + request.resource.data.id;
+      }
+
+      match /reviews/{rid} {
+        function mineId(version, h) { return version + '__' + me() + '__' + h; }
+        function visibleToMe(r) {
+          return onto(oid).visibility == 'open'
+            || (onto(oid).visibility == 'after_own'
+                && exists(/databases/$(db)/documents/ontologies/$(oid)/reviews/$(mineId(r.version, r.h))));
+        }
+        // чтение одного документа: своё, всё — редактору, чужое — по правилу видимости;
+        // несуществующий документ участнику «виден» (иначе нельзя отличить «нет оценки» от «скрыто»)
+        allow get: if isEditor(oid)
+          || (isMember(oid) && (resource == null || resource.data.email == me() || visibleToMe(resource.data)));
+        // запросы: редактору — все; эксперту — только свои (запрос where email == me)
+        allow list: if isEditor(oid) || (isMember(oid) && resource.data.email == me());
+        // запись: только своя, только на текущую версию, с правильным идентификатором, не в закрытой онтологии
+        allow create, update: if isMember(oid)
+          && request.resource.data.email == me()
+          && request.resource.data.version == onto(oid).currentVersion
+          && onto(oid).status != 'closed'
+          && rid == mineId(request.resource.data.version, request.resource.data.h)
+          && request.resource.data.verdict in ['ok', 'fix', 'delete', 'not_my_domain', 'duplicate', 'unclear',
+                                               'conflict', 'compatible', 'same_concept', 'split']
+          && (request.resource.data.verdict != 'unclear' || request.resource.data.comment.size() > 0);
+        allow delete: if false;
+      }
+    }
+
+    match /log/{id} {
+      allow create: if signedIn() && request.resource.data.email == me();
+      allow read: if isAdmin();
+      allow update, delete: if false;
+    }
+  }
+}
