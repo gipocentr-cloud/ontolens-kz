@@ -157,6 +157,8 @@ await page.waitForSelector('.previewbar', { timeout: 15000 });
 ok('предпросмотр: панель публикации', /Новая версия/.test(await page.locator('.previewbar').innerText()));
 await page.screenshot({ path: join(OUT, '55-preview.png') });
 await page.locator('.previewbar button', { hasText: 'Опубликовать' }).click();
+// .card h1 есть уже в предпросмотре — ждём окончания публикации по базе
+await page.waitForFunction(() => window.__ontolensBackend._db().ontologies['geodeticont-kz'].currentVersion === 'v2', null, { timeout: 15000 }).catch(() => {});
 await page.waitForSelector('.card h1', { timeout: 15000 });
 d = await db();
 ok('опубликована v2 и стала текущей', d.ontologies['geodeticont-kz'].currentVersion === 'v2' && !!d.versions['geodeticont-kz/v2']);
@@ -177,19 +179,83 @@ await loginAs('gipocentr@gmail.com');
 await page.waitForSelector('.sh-top', { timeout: 15000 });
 await page.evaluate(() => { location.hash = '#/admin'; });
 await page.waitForSelector('#p-email');
+ok('управление: онтологии списком, настройки свёрнуты', await page.locator('.orow').count() >= 2 && await page.locator('#o-panel').count() === 0);
 await page.fill('#p-email', 'New.Expert@Example.com');
 await page.fill('#p-name', 'Новый Э. Э.');
-await page.locator('form.form button[type=submit]').first().click();
+await page.locator('#p-form button[type=submit]').click();
 await page.waitForSelector('text=new.expert@example.com');
+await page.locator('.newo > summary').click();
 await page.fill('#o-title', 'TimsoOnt-KZ — тест');
 await page.fill('#o-editors', 'editor@example.com');
-await page.locator('form.form button[type=submit]').nth(1).click();
-await page.waitForSelector('text=timsoont-kz-test');
+await page.locator('#o-form button[type=submit]').click();
+await page.waitForSelector('#o-panel[data-oid="timsoont-kz-test"]');
 d = await db();
 ok('администратор: участник заведён (email в нижнем регистре)', !!d.people['new.expert@example.com']);
 ok('администратор: онтология создана с редактором', d.ontologies['timsoont-kz-test'] && d.ontologies['timsoont-kz-test'].editors[0] === 'editor@example.com');
+ok('после создания раскрыта её карточка с «Загрузить первую версию»', await page.locator('#o-panel button', { hasText: 'Загрузить первую версию' }).count() === 1);
 ok('журнал ведётся', d.log.length > 5);
+
+// эксперт: неизвестный адрес без имени — отказ; с именем — заводится участником и назначается
+await page.fill('#add-experts', 'novyi@example.com');
+await page.locator('#add-experts').locator('xpath=ancestor::form').locator('button[type=submit]').click();
+await page.waitForSelector('text=нет среди участников. Укажите имя');
+d = await db();
+ok('неизвестный эксперт без имени не добавлен', d.ontologies['timsoont-kz-test'].experts.length === 0 && !d.people['novyi@example.com']);
+await page.fill('#add-experts', 'novyi@example.com');
+await page.fill('#add-experts-name', 'Новый Н. Н.');
+await page.locator('#add-experts').locator('xpath=ancestor::form').locator('button[type=submit]').click();
+await page.waitForSelector('#o-panel .chips span[title="novyi@example.com"]');
+d = await db();
+ok('эксперт добавлен и заведён участником', d.ontologies['timsoont-kz-test'].experts.includes('novyi@example.com') && d.people['novyi@example.com'] && d.people['novyi@example.com'].name === 'Новый Н. Н.');
+await page.fill('#add-editors', 'expert2@example.com');
+await page.locator('#add-editors').locator('xpath=ancestor::form').locator('button[type=submit]').click();
+await page.waitForSelector('#o-panel .chips span[title="expert2@example.com"]');
+await page.getByRole('button', { name: 'Убрать editor@example.com из списка «Редакторы»' }).click();
+await page.waitForTimeout(200);
+d = await db();
+ok('редакторы: добавление и удаление', JSON.stringify(d.ontologies['timsoont-kz-test'].editors) === '["expert2@example.com"]', d.ontologies['timsoont-kz-test'].editors);
+
+await page.fill('#e-title', 'TimsoOnt-KZ — переименована');
+await page.fill('#e-desc', 'Новое описание');
+await page.locator('#e-title').locator('xpath=ancestor::form').locator('button[type=submit]').click();
+await page.waitForSelector('#o-panel h2:has-text("переименована")');
+await page.getByRole('radio', { name: 'экспертиза закрыта' }).click();
+await page.waitForSelector('#o-panel [role=radio][aria-checked=true]:has-text("экспертиза закрыта")');
+await page.selectOption('#e-vis', 'blind');
+await page.waitForTimeout(200);
+d = await db();
+const t1 = d.ontologies['timsoont-kz-test'];
+ok('название, описание, статус, видимость меняются', t1.title === 'TimsoOnt-KZ — переименована' && t1.description === 'Новое описание' && t1.status === 'closed' && t1.visibility === 'blind', t1);
+ok('код онтологии не изменился', !!d.ontologies['timsoont-kz-test']);
+
+// онтология с версиями: список версий, текущая, удаления нет
+await page.locator('.orow[data-oid="geodeticont-kz"]').click();
+await page.waitForSelector('#o-panel[data-oid="geodeticont-kz"] #o-versions tbody tr');
+const vrows = await page.locator('#o-versions tbody tr').count();
+ok('версии онтологии перечислены', vrows === 2, vrows);
+ok('текущая версия отмечена, у прежней — «Сделать текущей»', await page.locator('#o-versions .pill.cur').count() === 1 && await page.locator('#o-versions button', { hasText: 'Сделать текущей' }).count() === 1);
+ok('есть «Открыть» и «Загрузить новую версию»', await page.locator('#o-panel button', { hasText: 'Открыть' }).count() === 1 && await page.locator('#o-panel button', { hasText: 'Загрузить новую версию' }).count() === 1);
+ok('онтологию с версиями удалить нельзя', await page.locator('#o-delete button').count() === 0);
+err = '';
+try { await page.evaluate(() => window.__ontolensBackend.deleteOntology('geodeticont-kz')); } catch (e) { err = e.message; }
+ok('сервер тоже не даёт удалить онтологию с версиями', /опубликованные версии/.test(err), err);
+const axeSrc = readFileSync(join(ROOT, 'node_modules/axe-core/axe.min.js'), 'utf8');
+await page.addScriptTag({ content: axeSrc });
+const axeRes = await page.evaluate(async () => (await window.axe.run(document, { runOnly: { type: 'tag', values: ['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa'] } })).violations.map((v) => v.id + ':' + v.nodes.length + ' ' + v.nodes.map((n) => n.target.join(' ') + ' ' + (n.any[0] && n.any[0].message)).join(' | ')));
+ok('управление: нарушений WCAG 2.1 AA нет (axe)', axeRes.length === 0, axeRes);
 await page.screenshot({ path: join(OUT, '56-admin.png'), fullPage: true });
+
+// удаление онтологии без версий (подтверждение — принять)
+page.removeAllListeners('dialog');
+page.on('dialog', (dl) => dl.accept());
+await page.evaluate(() => { location.hash = '#/admin/timsoont-kz-test'; });
+await page.waitForSelector('#o-delete button');
+await page.locator('#o-delete button').click();
+await page.waitForSelector('text=Онтология timsoont-kz-test удалена');
+d = await db();
+ok('онтология без версий удалена', !d.ontologies['timsoont-kz-test']);
+page.removeAllListeners('dialog');
+page.on('dialog', (dl) => dl.dismiss());
 
 // эксперт не видит управление
 await loginAs('expert1@example.com');

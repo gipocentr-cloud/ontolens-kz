@@ -95,6 +95,14 @@ export function createMockBackend(opts = {}) {
       return clone(next);
     },
 
+    async deleteOntology(oid) {
+      await delay(); if (!isAdmin()) deny();
+      const o = onto(oid);
+      if (o.currentVersion || Object.values(db.versions).some((v) => v.oid === oid)) throw new Error('У онтологии есть опубликованные версии — удалить нельзя, отправьте её в архив');
+      delete db.ontologies[oid]; log('ontology.delete', oid); persist();
+      return { ok: true };
+    },
+
     // ---------------- версии
     async listVersions(oid) {
       await delay(); if (!isMember(oid)) deny();

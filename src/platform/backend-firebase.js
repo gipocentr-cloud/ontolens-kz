@@ -17,7 +17,7 @@ import {
 } from 'firebase/auth';
 import {
   initializeFirestore, persistentLocalCache, doc, getDoc, getDocs, setDoc, updateDoc, addDoc, collection, query, where,
-  orderBy, limit, serverTimestamp, writeBatch,
+  orderBy, limit, serverTimestamp, writeBatch, deleteDoc,
 } from 'firebase/firestore';
 import { normEmail, reviewId, iriKey, cleanReview, splitText } from './common.js';
 
@@ -118,6 +118,15 @@ export function createFirebaseBackend(config) {
       await updateDoc(doc(fs, 'ontologies', oid), p);
       log('ontology.update', oid + ' ' + Object.keys(patch).join(','));
       return this.getOntology(oid);
+    },
+
+    /** Удаление — только онтологии без опубликованных версий (то же проверяют правила). */
+    async deleteOntology(oid) {
+      const o = await this.getOntology(oid);
+      if (o.currentVersion || (await this.listVersions(oid)).length) throw new Error('У онтологии есть опубликованные версии — удалить нельзя, отправьте её в архив');
+      await deleteDoc(doc(fs, 'ontologies', oid));
+      log('ontology.delete', oid);
+      return { ok: true };
     },
 
     async listVersions(oid) {

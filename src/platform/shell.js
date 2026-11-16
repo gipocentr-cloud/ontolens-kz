@@ -3,7 +3,7 @@
  * управление, предпросмотр и публикация версии, переход в рабочее пространство.
  *
  * Адреса: #/ — список, #/o/<код> — работа с онтологией, #/o/<код>/new — новая версия,
- * #/o/<код>/people — эксперты онтологии, #/admin — управление.
+ * #/o/<код>/people — эксперты онтологии, #/admin — управление, #/admin/<код> — настройки онтологии.
  */
 import { openWorkspace, state as WS } from '../app.js';
 import { CSS } from '../ui/styles.js';
@@ -49,7 +49,7 @@ const SHELL_CSS = `
 .tblwrap{overflow-x:auto}
 .form{display:flex;gap:8px;flex-wrap:wrap;align-items:end;background:var(--white);border:1px solid var(--line);border-radius:8px;padding:12px}
 .form label{display:grid;gap:4px;font-size:12px;color:var(--muted-2)}
-.form input,.form select,.form textarea{padding:6px 8px;border:1px solid var(--line-3);border-radius:6px;background:#fff;min-width:160px}
+.form input,.form select,.form textarea,.osec select{padding:6px 8px;border:1px solid var(--line-3);border-radius:6px;background:#fff;min-width:160px}
 .form textarea{min-width:min(520px,80vw);min-height:60px}
 .pill{display:inline-block;padding:1px 8px;border-radius:99px;font-size:11.5px;border:1px solid var(--line-3)}
 .pill.off{color:var(--red);border-color:var(--red)}
@@ -57,6 +57,39 @@ const SHELL_CSS = `
 .chips{display:flex;gap:6px;flex-wrap:wrap}
 .chips span{background:var(--paper-2);border:1px solid var(--line-2);border-radius:99px;padding:2px 8px;font-size:12px}
 .chips button{border:0;background:none;color:var(--red);padding:0 0 0 4px}
+.sh h2 .cnt,.osec h3 .cnt{color:var(--muted-2);font-weight:400}
+.newo>summary{cursor:pointer;display:inline-block;padding:7px 13px;border-radius:7px;border:1px solid var(--line-3);background:var(--white);font-size:13.5px;margin-bottom:8px}
+.newo[open]>summary{background:var(--paper-2)}
+.olist{display:grid;gap:8px}
+.orow{display:grid;grid-template-columns:minmax(200px,2.2fr) auto minmax(120px,1fr) minmax(170px,1.2fr) auto 16px;gap:12px;align-items:center;text-align:left;width:100%;background:var(--white);border:1px solid var(--line);border-radius:9px;padding:11px 14px;font-size:13.5px;cursor:pointer}
+.orow:hover,.orow:focus-visible{border-color:var(--ink)}
+.orow .ot{font-weight:600}
+.om{color:var(--muted-2);font-size:12.5px}
+.chev{color:var(--muted-2);font-size:18px}
+.opanel{background:var(--white);border:1.5px solid var(--ink);border-radius:10px;padding:16px 18px;display:grid;gap:16px;scroll-margin-top:12px}
+.ohead{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:start}
+.ohead h2{font-family:var(--serif);font-size:21px;margin:0 0 4px}
+.ogrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(380px,1fr));gap:14px 22px}
+.osec{display:grid;gap:8px;align-content:start;border-top:1px solid var(--line-2);padding-top:10px}
+.osec h3{font-size:13px;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);margin:0}
+.hint{font-size:12.5px;color:var(--muted-2);margin:0;line-height:1.45}
+.warnx{color:var(--red);font-style:normal;font-size:11px}
+.form.inl{background:none;border:0;padding:0}
+.form.inl{flex-wrap:wrap}
+.form.inl label{flex:1 1 220px}
+.form.inl input{min-width:150px;flex:1 1 180px}
+.form.inl label input{width:100%;box-sizing:border-box}
+.seg2{display:inline-flex;flex-wrap:wrap;border:1px solid var(--line-3);border-radius:8px;overflow:hidden;justify-self:start}
+.seg2 button{border:0;border-right:1px solid var(--line-3);background:var(--white);padding:6px 11px;font-size:13px}
+.seg2 button:last-child{border-right:0}
+.seg2 button[aria-checked="true"]{background:var(--ink);color:var(--paper)}
+.pill.st-open{color:#2E5E3A;border-color:#2E5E3A}
+.pill.st-closed{color:#7A4F00;border-color:#C79A3C}
+.pill.st-archived{color:var(--muted-2)}
+.pill.cur{color:#2E5E3A;border-color:#2E5E3A}
+.sh .btn.bad{color:var(--red);border-color:var(--red)}
+.logd>summary{cursor:pointer}
+@media (max-width:760px){.orow{grid-template-columns:1fr auto}.orow .om,.orow code{display:none}}
 `;
 
 function h(tag, attrs, ...kids) {
@@ -276,80 +309,201 @@ export function startShell(mount, backend, opts = {}) {
   }
 
   // ------------------------------------------------------------ управление (администратор)
-  async function adminScreen() {
+  // #/admin — список онтологий и участников; #/admin/<код> — карточка онтологии раскрыта.
+  const STATUS = { open: 'экспертиза открыта', closed: 'экспертиза закрыта', archived: 'в архиве' };
+  const fmtDate = (s) => { try { return new Date(s).toLocaleDateString('ru-RU'); } catch (e) { return s || ''; } };
+
+  async function adminScreen(openId) {
     if (!ctx.admin) { go('#/'); return; }
     loading();
     let people = [], onts = [], log = [];
     try { [people, onts, log] = await Promise.all([backend.listPeople(), backend.listOntologies(), backend.listLog(50)]); } catch (e) { fail(e); }
     people.sort((a, b) => a.email.localeCompare(b.email));
+    onts.sort((a, b) => (a.status === 'archived') - (b.status === 'archived') || a.title.localeCompare(b.title, 'ru'));
+    const known = new Map(people.map((p) => [p.email, p]));
+    const nameOf = (e) => (known.get(e) && known.get(e).name) || e;
+    const again = () => adminScreen(openId);
+    const done = (text) => { flash.text = text; flash.kind = 'ok'; };
 
+    // общий список адресов для подсказки в полях
+    const dl = h('datalist#people-list', ...people.filter((p) => p.active !== false).map((p) => h('option', { value: p.email }, p.name)));
+
+    // ---------- онтологии
+    const ot = h('input', { type: 'text', id: 'o-title', required: true, placeholder: 'GeodeticOnt-KZ — строительная геодезия' });
+    const oc = h('input', { type: 'text', id: 'o-code', placeholder: 'латиница; пусто — из названия' });
+    const oe = h('input', { type: 'text', id: 'o-editors', placeholder: 'email через запятую', list: 'people-list' });
+    const od = h('input', { type: 'text', id: 'o-desc', placeholder: 'одна строка' });
+    const ontForm = h('form#o-form.form', { onsubmit: async (ev) => {
+      ev.preventDefault();
+      const id = slugCode(oc.value || ot.value);
+      const editors = oe.value.split(/[,;\s]+/).map(normEmail).filter(Boolean);
+      try { await backend.createOntology({ id, title: ot.value.trim(), description: od.value.trim(), editors, experts: [] }); done(`Создана онтология ${id}. Следующий шаг — загрузить первую версию.`); go('#/admin/' + id); return; }
+      catch (e) { fail(e); }
+      again();
+    } }, h('label', 'Название', ot), h('label', 'Код', oc), h('label', 'Редакторы', oe), h('label', 'Описание', od), h('button.btn.primary', { type: 'submit' }, 'Создать'));
+    const newBox = h('details.newo', onts.length ? null : { open: true }, h('summary', '+ Новая онтология'), ontForm);
+
+    const rows = h('div.olist', ...onts.map((o) => (o.id === openId ? ontologyPanel(o) : ontologyRow(o))));
+
+    function ontologyRow(o) {
+      return h('button.orow', { type: 'button', 'aria-expanded': 'false', 'data-oid': o.id, onclick: () => go('#/admin/' + o.id) },
+        h('span.ot', o.title), h('code', o.id),
+        h('span.om', o.currentVersion ? 'версия ' + o.currentVersion : 'версия не загружена'),
+        h('span.om', `редакторов ${o.editors.length} · экспертов ${o.experts.length}`),
+        h('span', { class: 'pill st-' + o.status }, STATUS[o.status] || o.status),
+        h('span.chev', '›'));
+    }
+
+    // список адресов с удалением и добавлением; новых людей сразу заводит участниками
+    function emailList(o, field, label, hint) {
+      const list = o[field];
+      const chips = h('div.chips', ...list.map((e) => h('span', { title: e },
+        nameOf(e), known.has(e) ? null : h('em.warnx', ' (нет среди участников)'),
+        h('button', { type: 'button', 'aria-label': `Убрать ${e} из списка «${label}»`, onclick: async () => {
+          try { await backend.updateOntology(o.id, { [field]: list.filter((x) => x !== e) }); done(`${e} убран.`); } catch (err) { fail(err); }
+          again();
+        } }, '✕'))));
+      const em = h('input', { type: 'email', id: `add-${field}`, placeholder: 'email (Google)', list: 'people-list', required: true, 'aria-label': `email — ${label}` });
+      const nm = h('input', { type: 'text', id: `add-${field}-name`, placeholder: 'Ф. И. О. (если новый)', 'aria-label': `имя — ${label}` });
+      const form = h('form.form.inl', { onsubmit: async (ev) => {
+        ev.preventDefault();
+        const e = normEmail(em.value);
+        if (!e) return;
+        try {
+          if (!known.has(e)) {
+            if (!nm.value.trim()) { fail(`${e} нет среди участников. Укажите имя — участник будет заведён, иначе он не сможет войти.`); again(); return; }
+            await backend.savePerson({ email: e, name: nm.value.trim(), role: 'member', active: true });
+          }
+          await backend.updateOntology(o.id, { [field]: Array.from(new Set([...list, e])) });
+          done(`${e} добавлен.`);
+        } catch (err) { fail(err); }
+        again();
+      } }, em, nm, h('button.btn', { type: 'submit' }, 'Добавить'));
+      return h('section.osec', h('h3', label, h('span.cnt', ' ' + list.length)), hint ? h('p.hint', hint) : null,
+        list.length ? chips : h('p.hint', 'Пока никого.'), form);
+    }
+
+    function ontologyPanel(o) {
+      const panel = h('section#o-panel.opanel', { 'data-oid': o.id, 'aria-label': o.title });
+      const close = h('button.btn', { type: 'button', onclick: () => go('#/admin') }, 'Свернуть');
+      const head = h('div.ohead',
+        h('div', h('h2', o.title), h('div.om', h('code', o.id), ' · ', o.currentVersion ? 'текущая версия ' + o.currentVersion : 'версия не загружена',
+          ' · ', h('span', { class: 'pill st-' + o.status }, STATUS[o.status] || o.status))),
+        h('div.acts',
+          o.currentVersion ? h('button.btn.primary', { type: 'button', onclick: () => go('#/o/' + o.id) }, 'Открыть') : null,
+          h('button.btn', { type: 'button', class: o.currentVersion ? 'btn' : 'btn primary', onclick: () => go('#/o/' + o.id + '/new') },
+            o.currentVersion ? 'Загрузить новую версию' : 'Загрузить первую версию'),
+          close));
+
+      // название и описание
+      const t = h('input', { type: 'text', id: 'e-title', value: o.title, required: true });
+      const dsc = h('input', { type: 'text', id: 'e-desc', value: o.description || '' });
+      const info = h('section.osec', h('h3', 'Название и описание'),
+        h('form.form.inl', { onsubmit: async (ev) => {
+          ev.preventDefault();
+          try { await backend.updateOntology(o.id, { title: t.value.trim(), description: dsc.value.trim() }); done('Сохранено.'); } catch (e) { fail(e); }
+          again();
+        } }, h('label', 'Название', t), h('label', 'Описание', dsc), h('button.btn', { type: 'submit' }, 'Сохранить')),
+        h('p.hint', 'Код ', h('code', o.id), ' не меняется: по нему хранятся версии и оценки.'));
+
+      // статус
+      const stat = h('section.osec', h('h3', 'Статус и видимость оценок'),
+        h('div.seg2', { role: 'radiogroup', 'aria-label': 'Статус онтологии' }, ...Object.entries(STATUS).map(([k, txt]) =>
+          h('button', { type: 'button', role: 'radio', 'aria-checked': String(o.status === k), onclick: async () => {
+            if (o.status === k) return;
+            try { await backend.updateOntology(o.id, { status: k }); done(`Статус: ${txt}.`); } catch (e) { fail(e); }
+            again();
+          } }, txt))),
+        h('p.hint', 'Закрыта — эксперты видят онтологию, но новые оценки не принимаются. В архиве — онтология скрыта у всех, кроме администратора.'));
+
+      // видимость оценок
+      const vis = h('select', { id: 'e-vis', 'aria-label': 'Видимость чужих оценок' }, ...Object.entries(VIS).map(([k, tx]) =>
+        h('option', { value: k, selected: o.visibility === k ? true : null }, tx)));
+      vis.addEventListener('change', async () => {
+        try { await backend.updateOntology(o.id, { visibility: vis.value }); done('Правило видимости сохранено.'); } catch (e) { fail(e); }
+        again();
+      });
+      stat.append(h('label', { style: { display: 'grid', gap: '4px', fontSize: '12px', color: 'var(--muted-2)', marginTop: '6px' } }, 'Чужие оценки эксперты видят', vis));
+
+      // версии — загружаются отдельно
+      const verBox = h('section#o-versions.osec', h('h3', 'Версии'), h('p.hint', 'Загрузка…'));
+      (async () => {
+        let vs = [];
+        try { vs = await backend.listVersions(o.id); } catch (e) { verBox.replaceChildren(h('h3', 'Версии'), h('p.err', String(e.message || e))); return; }
+        const del = document.getElementById('o-delete');
+        if (del && vs.length) del.replaceChildren(h('h3', 'Удаление'), h('p.hint', 'Удалить нельзя: у онтологии есть опубликованные версии и, возможно, оценки. Отправьте её в архив.'));
+        if (!vs.length) { verBox.replaceChildren(h('h3', 'Версии'), h('p.hint', 'Версий нет. Нажмите «Загрузить первую версию»: выберите файлы .ttl и profile.json, проверьте диагностику и опубликуйте.')); return; }
+        verBox.replaceChildren(h('h3', 'Версии', h('span.cnt', ' ' + vs.length)),
+          h('div.tblwrap', h('table.tbl', h('thead', h('tr', h('th', 'Версия'), h('th', 'Дата'), h('th', 'Кто'), h('th', 'Терминов'), h('th', 'Файлы'), h('th', ''))),
+            h('tbody', ...vs.map((v) => h('tr',
+              h('td', h('b', v.id)), h('td', fmtDate(v.created)), h('td', nameOf(v.createdBy)),
+              h('td', String((v.metrics && v.metrics.terms) || '—')),
+              h('td', (v.files || []).map((f) => f.name).join(', ') + (v.profileName ? ' + ' + v.profileName : '')),
+              h('td', v.id === o.currentVersion ? h('span.pill.cur', 'текущая') : h('button.btn', { type: 'button', onclick: async () => {
+                if (!confirm(`Сделать текущей версию ${v.id}? Эксперты будут оценивать её; оценки других версий сохраняются.`)) return;
+                try { await backend.updateOntology(o.id, { currentVersion: v.id }); done(`Текущая версия — ${v.id}.`); } catch (e) { fail(e); }
+                again();
+              } }, 'Сделать текущей'))))))));
+      })();
+
+      const delSec = h('section#o-delete.osec.danger', h('h3', 'Удаление'),
+        o.currentVersion ? h('p.hint', 'Удалить нельзя: у онтологии есть опубликованные версии и, возможно, оценки. Отправьте её в архив.')
+          : h('div', h('p.hint', 'Версий нет, поэтому онтологию можно удалить.'), h('button.btn.bad', { type: 'button', onclick: async () => {
+            if (!confirm(`Удалить онтологию «${o.title}» (${o.id})? Это нельзя отменить.`)) return;
+            try { await backend.deleteOntology(o.id); done(`Онтология ${o.id} удалена.`); go('#/admin'); return; } catch (e) { fail(e); }
+            again();
+          } }, 'Удалить онтологию')));
+
+      panel.append(head,
+        h('div.ogrid',
+          emailList(o, 'editors', 'Редакторы', 'Загружают версии, видят все оценки, назначают экспертов.'),
+          emailList(o, 'experts', 'Эксперты', 'Оценивают текущую версию.'),
+          info, stat),
+        verBox, delSec);
+      return panel;
+    }
+
+    // ---------- участники
     const pe = h('input', { type: 'email', id: 'p-email', required: true });
     const pn = h('input', { type: 'text', id: 'p-name', required: true, placeholder: 'Фамилия И. О.' });
     const pr = h('select', { id: 'p-role' }, h('option', { value: 'member' }, 'участник'), h('option', { value: 'admin' }, 'администратор'));
-    const peopleForm = h('form.form', { onsubmit: async (ev) => {
+    const peopleForm = h('form#p-form.form', { onsubmit: async (ev) => {
       ev.preventDefault();
-      try { await backend.savePerson({ email: pe.value, name: pn.value, role: pr.value, active: true }); flash.text = `Сохранён ${normEmail(pe.value)}.`; flash.kind = 'ok'; }
+      try { await backend.savePerson({ email: pe.value, name: pn.value, role: pr.value, active: true }); done(`Сохранён ${normEmail(pe.value)}.`); }
       catch (e) { fail(e); }
-      adminScreen();
+      again();
     } }, h('label', 'Email (Google)', pe), h('label', 'Имя для отчётов', pn), h('label', 'Роль', pr), h('button.btn.primary', { type: 'submit' }, 'Добавить или обновить'));
 
     const peopleTbl = h('table.tbl', h('thead', h('tr', h('th', 'Email'), h('th', 'Имя'), h('th', 'Роль'), h('th', 'Онтологии'), h('th', ''))),
       h('tbody', ...people.map((p) => {
-        const where = onts.filter((o) => o.editors.includes(p.email) || o.experts.includes(p.email))
-          .map((o) => `${o.title} (${o.editors.includes(p.email) ? 'редактор' : 'эксперт'})`).join('; ');
+        const where = onts.filter((o) => o.editors.includes(p.email) || o.experts.includes(p.email));
         return h('tr', h('td', p.email), h('td', p.name), h('td', p.role === 'admin' ? 'администратор' : 'участник', p.active === false ? h('span.pill.off', { style: { marginLeft: '6px' } }, 'отключён') : null),
-          h('td', where || '—'),
-          h('td', h('button.btn', { onclick: async () => {
+          h('td', where.length ? where.flatMap((o, i) => [i ? '; ' : '', h('a', { href: '#/admin/' + o.id }, o.title), ` (${o.editors.includes(p.email) ? 'редактор' : 'эксперт'})`]) : '—'),
+          h('td', h('button.btn', { type: 'button', onclick: async () => {
             try { await backend.savePerson({ ...p, active: p.active === false }); } catch (e) { fail(e); }
-            adminScreen();
+            again();
           } }, p.active === false ? 'Включить' : 'Отключить')));
       })));
-
-    const ot = h('input', { type: 'text', id: 'o-title', required: true, placeholder: 'GeodeticOnt-KZ — строительная геодезия' });
-    const oc = h('input', { type: 'text', id: 'o-code', placeholder: 'код (латиница), можно пусто' });
-    const oe = h('input', { type: 'text', id: 'o-editors', placeholder: 'email редакторов через запятую' });
-    const od = h('input', { type: 'text', id: 'o-desc', placeholder: 'описание, одна строка' });
-    const ontForm = h('form.form', { onsubmit: async (ev) => {
-      ev.preventDefault();
-      const id = slugCode(oc.value || ot.value);
-      const editors = oe.value.split(/[,;\s]+/).map(normEmail).filter(Boolean);
-      try { await backend.createOntology({ id, title: ot.value.trim(), description: od.value.trim(), editors, experts: [] }); flash.text = `Создана онтология ${id}.`; flash.kind = 'ok'; }
-      catch (e) { fail(e); }
-      adminScreen();
-    } }, h('label', 'Название', ot), h('label', 'Код', oc), h('label', 'Редакторы', oe), h('label', 'Описание', od), h('button.btn.primary', { type: 'submit' }, 'Создать'));
-
-    const ontTbl = h('table.tbl', h('thead', h('tr', h('th', 'Код'), h('th', 'Название'), h('th', 'Версия'), h('th', 'Редакторы'), h('th', 'Экспертов'), h('th', 'Статус'), h('th', ''))),
-      h('tbody', ...onts.map((o) => h('tr', h('td', h('code', o.id)), h('td', o.title), h('td', o.currentVersion || '—'),
-        h('td', o.editors.join(', ') || '—'), h('td', String(o.experts.length)), h('td', o.status),
-        h('td', h('div.acts',
-          h('button.btn', { onclick: async () => {
-            const v = prompt('Редакторы (email через запятую):', o.editors.join(', '));
-            if (v == null) return;
-            try { await backend.updateOntology(o.id, { editors: v.split(/[,;\s]+/).map(normEmail).filter(Boolean) }); } catch (e) { fail(e); }
-            adminScreen();
-          } }, 'Редакторы'),
-          h('button.btn', { onclick: async () => {
-            const next = o.status === 'open' ? 'closed' : o.status === 'closed' ? 'archived' : 'open';
-            try { await backend.updateOntology(o.id, { status: next }); } catch (e) { fail(e); }
-            adminScreen();
-          } }, o.status === 'open' ? 'Закрыть экспертизу' : o.status === 'closed' ? 'В архив' : 'Открыть')))))));
 
     const logTbl = h('table.tbl', h('thead', h('tr', h('th', 'Когда'), h('th', 'Кто'), h('th', 'Что'), h('th', 'Подробности'))),
       h('tbody', ...log.map((x) => h('tr', h('td', new Date(x.ts).toLocaleString('ru-RU')), h('td', x.email), h('td', x.action), h('td', x.details)))));
 
-    show(frame('admin',
-      h('div', h('h1', 'Управление'), h('p.lead', 'Люди, онтологии и журнал действий. Вход — только через Google, поэтому указывайте адрес, которым человек входит в Google.')),
-      h('h2', 'Участники'), peopleForm, h('div.tblwrap', peopleTbl),
-      h('h2', 'Онтологии'), ontForm, h('div.tblwrap', ontTbl),
-      h('h2', 'Журнал (последние 50)'), h('div.tblwrap', logTbl),
-      h('div.acts', h('button.btn', { onclick: async () => {
+    show(frame('admin', dl,
+      h('div', h('h1', 'Управление'), h('p.lead', 'Онтологии, участники и журнал. Нажмите на онтологию, чтобы открыть её настройки: версии, редакторы, эксперты, статус. Вход — только через Google, поэтому указывайте адрес, которым человек входит в Google.')),
+      h('h2', 'Онтологии', h('span.cnt', ' ' + onts.length)), newBox,
+      onts.length ? rows : h('div.empty-o', 'Онтологий пока нет.'),
+      h('h2', 'Участники', h('span.cnt', ' ' + people.length)), peopleForm, h('div.tblwrap', peopleTbl),
+      h('details.logd', h('summary', h('h2', { style: { display: 'inline' } }, 'Журнал (последние 50)')), h('div.tblwrap', logTbl)),
+      h('div.acts', h('button.btn', { type: 'button', onclick: async () => {
         try {
           const all = await backend.exportAll();
           const blob = new Blob([JSON.stringify(all, null, 1)], { type: 'application/json' });
           const a = h('a', { href: URL.createObjectURL(blob), download: `ontolens-backup-${new Date().toISOString().slice(0, 10)}.json` });
           document.body.append(a); a.click(); a.remove();
-        } catch (e) { fail(e); adminScreen(); }
+        } catch (e) { fail(e); again(); }
       } }, 'Выгрузить всю базу (JSON)'))));
+    const pnl = document.getElementById('o-panel');
+    if (pnl) pnl.scrollIntoView({ block: 'start' });
   }
 
   // ------------------------------------------------------------ маршрутизация
@@ -364,7 +518,7 @@ export function startShell(mount, backend, opts = {}) {
     }
     if (!ctx.person || ctx.person.active === false) { noAccess(); return; }
     const parts = (location.hash.replace(/^#\/?/, '') || '').split('/').filter(Boolean);
-    if (parts[0] === 'admin') return adminScreen();
+    if (parts[0] === 'admin') return adminScreen(parts[1] ? decodeURIComponent(parts[1]) : null);
     if (parts[0] === 'o' && parts[1]) {
       if (parts[2] === 'new') return workspace(parts[1], true);
       if (parts[2] === 'people') return peopleOfOntology(parts[1]);

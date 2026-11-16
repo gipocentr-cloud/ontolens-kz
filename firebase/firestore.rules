@@ -33,7 +33,9 @@ service cloud.firestore {
       // список: администратор — все; остальные — только запросом array-contains по своему email
       allow list: if isAdmin()
         || (active() && (me() in resource.data.experts || me() in resource.data.editors));
-      allow create, delete: if isAdmin();
+      allow create: if isAdmin();
+      // удалить можно только онтологию без опубликованной версии; остальные — в архив
+      allow delete: if isAdmin() && resource.data.currentVersion == '';
       allow update: if isAdmin()
         || (isEditor(oid) && request.resource.data.diff(resource.data).affectedKeys()
               .hasOnly(['experts', 'visibility', 'currentVersion', 'updated']));
